@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from './Header';
-import RealEstatePageHeader from './PageHeader';
+import MainNavBar from './MainNavBar/MainNavBar';
+import RealEstateNavBar from './RealEstateNavBar';
 import RealEstatePageBody from './RealEstatePageBody';
-import RealEstatePageFooter from './RealEstatePageFooter';
+import RealEstatePageFooter from './footer/RealEstatePageFooter';
 
 class RealEstatePage extends React.Component {
     render() {
         return (
             <div>
-                <Header />
-                <RealEstatePageHeader />
+                <MainNavBar />
+                <RealEstateNavBar />
                 <RealEstatePageBody />
                 <RealEstatePageFooter />
             </div>

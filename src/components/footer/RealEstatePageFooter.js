@@ -1,8 +1,8 @@
 import React from 'react';
-import {paragraph} from '../data/textData/footer/RealEstatePageFooter';
+import {paragraph} from '../../data/textData/footer/RealEstatePageFooter';
 import FooterLinks from './FooterLinks';
 import SocialMediaLinks from './SocialMediaLinks';
-import {copyRightText} from '../data/textData/footer/Footer';
+import {copyRightText} from '../../data/textData/footer/Footer';
 import FooterBottomNavLinks from './FooterBottomNavLinks';
 
 const RealEstatePageFooter = () => {

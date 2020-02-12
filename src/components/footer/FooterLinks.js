@@ -1,5 +1,5 @@
 import React from 'react';
-import { linksSections } from '../data/textData/footer/Footer';
+import { linksSections } from '../../data/textData/footer/Footer';
 import FooterLinksSection from './FooterLinksSection.js';
 
 const FooterLinks = () => (
