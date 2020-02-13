@@ -3,7 +3,7 @@
     height: 7.5rem;
     display: flex;
     flex-direction: row-reverse;
-
+    justify-content: space-between;
 }
 
 .main-nav-bar__nav-item {
@@ -11,39 +11,132 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 $l-size;
-    font-size: $font-size-large;
+    padding: 0 $m-size;
+    font-size: $font-size-m;
     height: 100%;
     > a {
         color: $text-color;
         text-decoration: none;
-
     }
 }
-.main-nav-bar__nav-item:hover {
-    background: $very-light-gray;
-}
 
-.main-nav-bar__yad2-icon {
+.main-nav-bar__yad2-icon__wrapper {
     @extend .main-nav-bar__nav-item;
-    padding-right: $s-size;
-    height: 100%;
-}
-.main-nav-bar__yad2-icon:hover {
-    background: white;
+    width:10rem;
+    a {
+        height: 100%;
+        width:auto;
+    }
+    padding: 1rem $m-size 1rem 1rem;
 }
 
-.nav-item__drop-down {
+.main-nav-bar__yad2-icon{
+    height: 100%;
+    width:auto;
+}
+
+.drop-down-list-wrapper{
     z-index: 10;
     background: white;
+    position: absolute;
+    border: 1px solid $very-light-gray;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
+    direction: rtl;
 }
-.nav-item__drop-down__container {
+
+.main-nav-bar__nav-item__drop-down {
+    
+}
+.main-nav-bar__nav-item__drop-down__container {
     margin: $l-size $l-size;
     display: flex;
     flex-direction: column;
+    direction: rtl;
     >a {
         padding: $s-size $m-size;
         text-decoration: none;
         color: $text-color;
+    }
+    >a:hover{
+        color: $orange;
+    }
+}
+
+.main-nav-bar__right-side{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.main-nav-bar__left-side{
+    display: flex;
+    flex-direction: row;
+}
+
+.add-listing-button__wrapper{
+    display: flex;
+    align-items: center;
+    a{
+        text-decoration: none;
+    }
+}
+
+.add-listing-button {
+    padding: 0.8rem $l-size;
+    margin: $l-size $l-size;
+    border-radius: 2.5rem;
+    background: $green;
+    color: white;
+    direction: rtl;
+}
+.add-listing-button:hover{
+    background: $dark-green;
+}
+
+.personal-area-button__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $m-size;
+    background: white;
+    >a{
+        text-decoration: none;
+        color: orange;
+    }
+}
+.personal-area-button__wrapper:hover{
+   background: $very-very-light-gray; 
+}
+
+.saved-listings-button__wrapper{
+
+}
+.saved-listings-button__wrapper:hover{
+    @extend .personal-area-button__wrapper:hover
+}
+
+.saved-listings-button__drop-down__container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30rem;
+    >h4{
+        text-align: center;
+        margin:$s-size;
+    }
+    >p{
+        text-align: center;
+        margin:$s-size;
+    }
+}
+
+.generic-nav-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 $m-size;
+    background: white;
+    >a{
+        text-decoration: none;
+        color: $text-color;
+        font-size: 3rem;
     }
 }

@@ -5,38 +5,50 @@ class NavItemDropDown extends React.Component {
         x: 0,
         y: 0
     }
-    id = '';
+    id;
     currentItem;
-    mouseHover;
+    parentRect;
+
+    setStateCoordinates(parentRect, currentItem) {
+        const x = parentRect.right - currentItem.getBoundingClientRect().width;
+        const y = parentRect.bottom;
+        this.setState(() => ({ x, y }));
+    }
 
     componentDidMount() {
         this.currentItem = document.getElementById(this.id);
-        this.setState(() => ({
-            x: (this.parentRect.right - this.currentItem.width),
-            y: (this.parentRect.bottom)
-        }));
-        this.currentItem.onmouseover = () => {
-            this.mouseHover({ isDropDownHovered: true });
 
+        this.setStateCoordinates(this.parentRect, this.currentItem);
+
+        this.currentItem.onmouseenter = () => {
+            this.setIsHoveredDropDown(true);
         };
-        this.currentItem.onmouseout = () => {
-            this.mouseHover({ isDropDownHovered: false });
+        this.currentItem.onmouseleave = () => {
+            this.setIsHoveredDropDown(false);
         };
+    }
+    componentWillUnmount() {
+        this.currentItem.onmouseenter = undefined;
+        this.currentItem.onmouseleave = undefined;
     }
 
     render() {
-        const { linksSection, mouseHover, parentRect } = this.props;
+        const { linksSection, setIsHoveredDropDown, parentRect } = this.props;
         const { links } = linksSection;
-        this.mouseHover = mouseHover;
+        this.setIsHoveredDropDown = setIsHoveredDropDown;
         this.parentRect = parentRect;
-        this.id = 'main-nav-bar__nav-item__drop-down' + linksSection.title;
-
+        this.className = 'main-nav-bar__nav-item__drop-down';
+        this.id = this.className + linksSection.title;
+        const styleTagContent = {
+            left: this.state.x + 'px',
+            top: this.state.y + 'px'
+        };
         return (
-            <div className={this.id}>
-                <div className="nav-item__drop-down__container">
+            <div className={this.className+" drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
+                <div className="main-nav-bar__nav-item__drop-down__container">
                     {
                         links.map((link) => (
-                            <a href={link.url}>{link.text}</a>
+                            <a key={link.text} href={link.url}>{link.text}</a>
                         ))
                     }
                 </div>

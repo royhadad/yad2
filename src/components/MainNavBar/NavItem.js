@@ -3,49 +3,63 @@ import NavItemDropDown from './NavItemDropDown';
 
 class NavItem extends React.Component {
     state = {
-        isItemHovered: false,
+        isNavItemHovered: false,
         isDropDownHovered: false,
         navItemRect: undefined
     }
-    id='';
+    id;
     currentItem;
 
-    mouseHover(hoverUpdate){
-        this.setState(()=>(hoverUpdate));
+    getDerivedBackgroundFromState(state) {
+        if (state.isDropDownHovered) {
+            return '#EEEEEE';
+        } else if (state.isNavItemHovered) {
+            return '#DDDDDD';
+        } else {
+            return 'white';
+        }
     }
-    componentDidMount(){
+    setIsHoveredDropDown(isHovered) {
+        this.setState({ isDropDownHovered: isHovered });
+    }
+    setIsHoveredNavItem(isHovered) {
+        this.setState({ isNavItemHovered: isHovered });
+    }
+    setNavItemRect() {
+        this.setState(() => ({ navItemRect: this.currentItem.getBoundingClientRect() }));
+    }
+    componentDidMount() {
         this.currentItem = document.getElementById(this.id);
-        this.setState(()=>({
-            navItemRect: this.currentItem.getBoundingClientRect()
-        }));
-        this.currentItem.onmouseover = ()=>{
-            this.mouseHover({isItemHovered: true});
-            this.setState(()=>({
-                navItemRect: this.currentItem.getBoundingClientRect()
-            }));
+
+        this.currentItem.onmouseenter = () => {
+            this.setNavItemRect();
+            this.setIsHoveredNavItem(true);
         };
-        this.currentItem.onmouseout = ()=>{
-            this.mouseHover({isItemHovered: false});
+        this.currentItem.onmouseleave = () => {
+            this.setIsHoveredNavItem(false);
         };
     }
-    componentWillUnmount(){
-        this.currentItem.onmouseover=undefined;
-        this.currentItem.onmouseout=undefined;
+    componentWillUnmount() {
+        this.currentItem.onmouseenter = undefined;
+        this.currentItem.onmouseleave = undefined;
     }
 
     render() {
-        const shouldShowDropDown = this.state.isItemHovered || this.state.isDropDownHovered;
+        const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
         const { linksSection } = this.props;
-        this.id = 'main-nav-bar__nav-item'+linksSection.title;
+        this.className = 'main-nav-bar__nav-item';
+        this.id = this.className + linksSection.title;
 
+        const style = { background: this.getDerivedBackgroundFromState(this.state) };
         return (
-            <div className="main-nav-bar__nav-item" id={this.id}>
+            <div className={this.className} id={this.id} style={style}>
                 <a href={linksSection.titleURL}>
                     {linksSection.title}
                 </a>
-                {shouldShowDropDown && <NavItemDropDown linksSection={linksSection} mouseHover={this.mouseHover} parentRect={this.state.navItemRect}/>}
+                {shouldShowDropDown && <NavItemDropDown linksSection={linksSection} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
             </div>
         );
+
     };
 }
 
