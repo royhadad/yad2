@@ -1,0 +1,18 @@
+.search-results__wrapper{
+    height: 150rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+
+}
+
+.search-results__wrapper__right-side{
+    width: 72%;
+    border: 1px solid $very-light-gray;
+    direction: rtl;
+}
+
+.search-results__wrapper__left-side{
+    width: 27%;
+    border: 1px solid $very-light-gray;
+}

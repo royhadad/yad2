@@ -1,0 +1,24 @@
+.search-bar__main__container{
+    display: flex;
+    margin-top: $l-size;
+    position: relative;
+}
+
+.search-bar__main__advanced-button{
+    background: $very-very-light-gray;
+    border: none;
+    padding: $s-size $m-size;
+    margin: 0 $s-size;
+}
+
+.search-bar__main__advanced-button:hover{
+    background: darken($very-very-light-gray, 20%);
+}
+
+.search-bar__main__search-button{
+    background: $orange;
+    color: white;
+    border: none;
+    padding: $s-size $m-size;
+    margin: 0 $s-size;
+}

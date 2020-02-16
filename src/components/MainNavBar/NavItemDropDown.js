@@ -1,4 +1,5 @@
 import React from 'react';
+import {deriveXfromViewPortX, deriveYfromViewPortY} from '../../utility/calculatePositions';
 
 class NavItemDropDown extends React.Component {
     state = {
@@ -40,8 +41,8 @@ class NavItemDropDown extends React.Component {
         this.className = 'main-nav-bar__nav-item__drop-down';
         this.id = this.className + linksSection.title;
         const styleTagContent = {
-            left: this.state.x + 'px',
-            top: this.state.y + 'px'
+            left: deriveXfromViewPortX(this.state.x) + 'px',
+            top: deriveYfromViewPortY(this.state.y) + 'px'
         };
         return (
             <div className={this.className+" drop-down-list-wrapper"} id={this.id} style={styleTagContent}>

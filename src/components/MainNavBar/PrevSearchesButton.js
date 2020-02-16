@@ -1,5 +1,6 @@
 import React from 'react';
 import prevSearchesFixture from '../../data/fixtures/PrevSearchesButton';
+import {deriveXfromViewPortX, deriveYfromViewPortY} from '../../utility/calculatePositions';
 
 class PrevSearchesButton extends React.Component {
     state = {
@@ -100,8 +101,8 @@ class PrevSearchesDropDown extends React.Component {
         this.className = 'prev-searches-button__drop-down';
         this.id = this.className + '1';
         const styleTagContent = {
-            left: this.state.x + 'px',
-            top: this.state.y + 'px',
+            left: deriveXfromViewPortX(this.state.x) + 'px',
+            top: deriveYfromViewPortY(this.state.y) + 'px',
         };
         return (
             <div className={this.className + " drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
@@ -123,7 +124,7 @@ class PrevSearchesList extends React.Component {
             <div className='prev-searches-list'>
                 {
                     prevSearchesFixture.map((search => (
-                        <PrevSearchesItem search={search} />
+                        <PrevSearchesItem key={JSON.stringify(search)} search={search} />
                     )))
                 }
             </div>

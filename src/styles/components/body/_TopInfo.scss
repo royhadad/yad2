@@ -1,0 +1,29 @@
+.top-info__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    padding: $m-size;
+}
+
+.top-info__currentNav{
+    color: $light-gray;
+}
+
+.top-info__accessibility-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 0.3rem;
+    border: none;
+    padding: 0.6rem $s-size;
+    background: darkblue;
+}
+.top-info__accessibility-button:hover{
+    background: darken(darkblue, 10%);
+}
+.top-info__spacer{
+    width: 100%;
+    height: 20rem;
+}
