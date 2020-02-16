@@ -1,6 +1,7 @@
 import React from 'react';
+import prevSearchesFixture from '../../data/fixtures/PrevSearchesButton';
 
-class SavedListingsButton extends React.Component {
+class PrevSearchesButton extends React.Component {
     state = {
         isNavItemHovered: false,
         isDropDownHovered: false,
@@ -12,7 +13,7 @@ class SavedListingsButton extends React.Component {
     getDerivedBackgroundFromState(state) {
         if (state.isDropDownHovered) {
             return '#EEEEEE';
-        } else{
+        } else {
             return 'white';
         }
     }
@@ -42,39 +43,25 @@ class SavedListingsButton extends React.Component {
     }
 
     render() {
-        let imojiJSX, title, body;
-        if(this.props.type==='carComparison'){            
-            imojiJSX = <span style={{ fontFamily: 'Calibri' }} role="img" aria-label="arrows">&#8646;</span>;
-            title='השוואת רכבים';
-            body='הרשימה שלך ריקה כרגע, אפשר להוסיף רכבים להשוואה בלחיצה על הכפתור להשוואה בפינה הימנית של כל מודעה';
-            this.className = 'car-comparison-button__wrapper';
-        }
-        else if(this.props.type==='savedListings'){
-            imojiJSX = <span style={{ fontFamily: 'Calibri' }} role="img" aria-label="heart">&#9825;</span>;
-            title='מודעות שמורות';
-            body='הרשימה שלך ריקה כרגע, אפשר להוסיף מודעות לרשימה בלחיצה על הסימן בפינה הימנית של כל מודעה';
-            this.className = 'saved-listings-button__wrapper';
-        }
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
-        this.id = this.className +"1";
-
+        this.className = 'prev-searches-button__wrapper';
+        this.id = this.className + "1";
+        const imojiJSX = <img src='/images/prevSearchesButton.png' alt='circular arrow with clock inside' />
 
         return (
-            <div className={this.className+' generic-nav-item'} id={this.id}>
+            <div className={this.className + ' generic-nav-item'} id={this.id}>
                 <a href='url'>
-                    <div className="saved-listings-button">
-                        {imojiJSX}
-                    </div>
+                    {imojiJSX}
                 </a>
-                {shouldShowDropDown && <SavedListingsDropDown title={title} body={body} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
+                {shouldShowDropDown && <PrevSearchesDropDown setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
             </div>
         );
     }
 };
 
-export default SavedListingsButton;
+export default PrevSearchesButton;
 
-class SavedListingsDropDown extends React.Component {
+class PrevSearchesDropDown extends React.Component {
     state = {
         x: 0,
         y: 0
@@ -84,7 +71,7 @@ class SavedListingsDropDown extends React.Component {
     parentRect;
 
     setStateCoordinates(parentRect, currentItem) {
-        const x = parentRect.right - currentItem.getBoundingClientRect().width/2;
+        const x = parentRect.right - currentItem.getBoundingClientRect().width / 2;
         const y = parentRect.bottom;
         this.setState(() => ({ x, y }));
     }
@@ -110,19 +97,51 @@ class SavedListingsDropDown extends React.Component {
         const { setIsHoveredDropDown, parentRect } = this.props;
         this.setIsHoveredDropDown = setIsHoveredDropDown;
         this.parentRect = parentRect;
-        this.className = 'saved-listings-button__drop-down';
+        this.className = 'prev-searches-button__drop-down';
         this.id = this.className + '1';
         const styleTagContent = {
             left: this.state.x + 'px',
             top: this.state.y + 'px',
         };
         return (
-            <div className={this.className+" drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
-                <div className="saved-listings-button__drop-down__container">
-                    <h4>{this.props.title}</h4>
-                    <p>{this.props.body}</p>
+            <div className={this.className + " drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
+                <div className="prev-searches-button__drop-down__container">
+                    <h4>חיפושים אחרונים</h4>
+                    <PrevSearchesList />
+                    <div className='prev-searches-button__drop-down__to-all-searches'>
+                        <a href='url'>לכל החיפושים האחרונים</a>
+                    </div>
                 </div>
             </div>
         );
     };
+}
+
+class PrevSearchesList extends React.Component {
+    render() {
+        return (
+            <div className='prev-searches-list'>
+                {
+                    prevSearchesFixture.map((search => (
+                        <PrevSearchesItem search={search} />
+                    )))
+                }
+            </div>
+        );
+    }
+}
+
+const PrevSearchesItem = ({ search }) => {
+    return (
+        <div className='prev-searches-item__wrapper'>
+            <a href='url'>
+                <div className='prev-searches-item__container'>
+                    <h4>נדלן</h4>
+                    <p>
+                        {search.areaText}
+                    </p>
+                </div>
+            </a>
+        </div>
+    );
 }

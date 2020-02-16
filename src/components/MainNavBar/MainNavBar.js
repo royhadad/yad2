@@ -4,6 +4,7 @@ import { linksSections } from '../../data/textData/MainNavBar';
 import AddListingButton from './AddListingButton';
 import PersonalAreaButton from './PersonalAreaButton';
 import SavedListingsButton from './SavedListingsButton';
+import PrevSearchesButton from './PrevSearchesButton';
 class MainNavBar extends React.Component {
 
 
@@ -27,6 +28,7 @@ class MainNavBar extends React.Component {
                     <AddListingButton />
                     <PersonalAreaButton />
                     <SavedListingsButton type="savedListings"/>
+                    <PrevSearchesButton />
                     <SavedListingsButton type="carComparison"/>
                 </div>
             </div>
