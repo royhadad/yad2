@@ -5,6 +5,7 @@ import AddListingButton from './AddListingButton';
 import PersonalAreaButton from './PersonalAreaButton';
 import SavedListingsButton from './SavedListingsButton';
 import PrevSearchesButton from './PrevSearchesButton';
+import {Link} from 'react-router-dom';
 class MainNavBar extends React.Component {
 
 
@@ -14,9 +15,9 @@ class MainNavBar extends React.Component {
             <div className="main-nav-bar">
                 <div className="main-nav-bar__right-side">
                     <div className='main-nav-bar__yad2-icon__wrapper'>
-                        <a href="url">
+                        <Link to="/realestate">
                             <img className="main-nav-bar__yad2-icon" alt="yad 2" src='/images/yad2.png' />
-                        </a>
+                        </Link>
                     </div>
                     {
                         linksSections.map((linksSection) => (

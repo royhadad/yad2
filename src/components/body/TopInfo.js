@@ -7,7 +7,7 @@ const TopInfo = () => {
                 <div className='top-info__currentNav'>
                     אבא-> אמא -> סבא
             </div>
-                <button className='top-info__accessibility-button'>
+                <button className='top-info__accessibility-button' onClick={()=>alert('TODO')}>
                     נגישות <span style={{ fontFamily: 'Calibri', fontSize: '3rem' }} role="img" aria-label="person">&#9855;</span>
                 </button>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import prevSearchesFixture from '../../data/fixtures/PrevSearchesButton';
-import {deriveXfromViewPortX, deriveYfromViewPortY} from '../../utility/calculatePositions';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
+import { Link } from 'react-router-dom';
 
 class PrevSearchesButton extends React.Component {
     state = {
@@ -51,9 +52,9 @@ class PrevSearchesButton extends React.Component {
 
         return (
             <div className={this.className + ' generic-nav-item'} id={this.id}>
-                <a href='url'>
+                <Link to='/latestsearches' className='react-link'>
                     {imojiJSX}
-                </a>
+                </Link>
                 {shouldShowDropDown && <PrevSearchesDropDown setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
             </div>
         );
@@ -110,7 +111,9 @@ class PrevSearchesDropDown extends React.Component {
                     <h4>חיפושים אחרונים</h4>
                     <PrevSearchesList />
                     <div className='prev-searches-button__drop-down__to-all-searches'>
-                        <a href='url'>לכל החיפושים האחרונים</a>
+                        <Link to='/latestsearches' className='react-link'>
+                            לכל החיפושים האחרונים
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -135,14 +138,14 @@ class PrevSearchesList extends React.Component {
 const PrevSearchesItem = ({ search }) => {
     return (
         <div className='prev-searches-item__wrapper'>
-            <a href='url'>
+            <Link to={'/latestsearches/'+JSON.stringify(search)} className='react-link'>
                 <div className='prev-searches-item__container'>
                     <h4>נדלן</h4>
                     <p>
                         {search.areaText}
                     </p>
                 </div>
-            </a>
+            </Link>
         </div>
     );
 }

@@ -23,13 +23,9 @@
     margin: $m-size auto;
     text-align: center;
 }
-.footer__version-pro-link>a{
+.footer__version-pro-link>.react-link-regular{
     color: white;
     font-size: 2.5rem;
-    text-decoration: none;
-}
-.footer__version-pro-link>a:hover {
-    text-decoration: underline;
 }
 
 .footer__bottom-nav-links {
@@ -38,11 +34,6 @@
     justify-content: space-between;
     width: 28vw;
     margin: $l-size auto;
-    > a {
-        color: $footer-paragraph;
-        text-decoration: none;
-        
-    }
 }
 
 .footer__copy-right-text {

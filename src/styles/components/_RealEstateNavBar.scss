@@ -1,6 +1,6 @@
 .real-estate-nav-bar {
     @extend .main-nav-bar;
-    height: $real-estate-nav-bar-height;
+    height: 5rem;
     border-top: 1px solid $very-light-gray;
     box-shadow: 0 0.5rem 0.6rem rgba(0, 0, 0, 0.1);
 }
@@ -9,18 +9,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    >a{
-        padding: 0 $m-size;
-        text-decoration: none;
-        color: $text-color;
-    }
 }
 .real-estate-nav-item__wrapper:hover{
     background: $very-very-light-gray;
 }
 
 .real-estate-nav-item__container{
-    padding: $s-size;
+    padding: 0;
 }
 
 .icon-spacer{

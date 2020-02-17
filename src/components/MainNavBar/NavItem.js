@@ -1,5 +1,6 @@
 import React from 'react';
 import NavItemDropDown from './NavItemDropDown';
+import { Link } from 'react-router-dom';
 
 class NavItem extends React.Component {
     state = {
@@ -53,9 +54,9 @@ class NavItem extends React.Component {
         const style = { background: this.getDerivedBackgroundFromState(this.state) };
         return (
             <div className={this.className} id={this.id} style={style}>
-                <a href={linksSection.titleURL}>
+                <Link to={linksSection.titleURL} className='react-link'>
                     {linksSection.title}
-                </a>
+                </Link>
                 {shouldShowDropDown && <NavItemDropDown linksSection={linksSection} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
             </div>
         );

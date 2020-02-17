@@ -26,3 +26,23 @@ button:disabled {
 .is-active {
   font-weight: bold;
 }
+
+.react-link{
+    padding: 0 $m-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    text-decoration: none;
+    color: $text-color;
+    height:100%;
+    direction: rtl;
+}
+
+.react-link-regular{
+    direction: rtl;
+    color: $footer-paragraph;
+    text-decoration: none;
+}
+.react-link-regular:hover{
+    text-decoration: underline;
+}

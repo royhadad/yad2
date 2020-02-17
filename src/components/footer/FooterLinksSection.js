@@ -1,6 +1,5 @@
 import React from 'react';
-//TODO change a to Link
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const FooterLinksSection = ({ title, links }) => (
     <div className="footer__links__section">
@@ -8,7 +7,7 @@ const FooterLinksSection = ({ title, links }) => (
         <ul>
             {
                 links.map((link) => (
-                    <li className="footer__li" key={link.text}><a className="footer__link" href={link.url}>{link.text}</a></li>
+                    <li className="footer__li" key={link.text}><Link to={link.url} className="react-link-regular">{link.text}</Link></li>
                 ))
             }
         </ul>

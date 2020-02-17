@@ -1,12 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 const AddListingButton = () => {
     return (
         <div className="add-listing-button__wrapper">
-            <a href="url">
+            <Link to='/realestate/add-listing' className='react-link'>
                 <div className="add-listing-button">
                     + פרסום מודעה חדשה
                 </div>
-            </a>
+            </Link>
         </div>
     );
 };

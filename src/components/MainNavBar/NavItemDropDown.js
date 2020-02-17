@@ -1,5 +1,6 @@
 import React from 'react';
-import {deriveXfromViewPortX, deriveYfromViewPortY} from '../../utility/calculatePositions';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
+import { Link } from 'react-router-dom';
 
 class NavItemDropDown extends React.Component {
     state = {
@@ -14,6 +15,11 @@ class NavItemDropDown extends React.Component {
         const x = parentRect.right - currentItem.getBoundingClientRect().width;
         const y = parentRect.bottom;
         this.setState(() => ({ x, y }));
+    }
+    getContainerWidth(links) {   
+        const maxInCollum = 8;
+        let numOfCollums = Math.ceil(links.length/maxInCollum);
+        return numOfCollums*200+44;
     }
 
     componentDidMount() {
@@ -44,12 +50,13 @@ class NavItemDropDown extends React.Component {
             left: deriveXfromViewPortX(this.state.x) + 'px',
             top: deriveYfromViewPortY(this.state.y) + 'px'
         };
+        const containerStyleTag = { width: this.getContainerWidth(links)+'px' }
         return (
-            <div className={this.className+" drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
-                <div className="main-nav-bar__nav-item__drop-down__container">
+            <div className={this.className + " drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
+                <div className="main-nav-bar__nav-item__drop-down__container" style={containerStyleTag}>
                     {
                         links.map((link) => (
-                            <a key={link.text} href={link.url}>{link.text}</a>
+                            <Link key={link.text} to={link.url} className='react-link'>{link.text}</Link>
                         ))
                     }
                 </div>

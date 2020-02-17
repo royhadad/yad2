@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class SearchBarHeader extends React.Component {
     state = {
@@ -24,13 +25,14 @@ export default SearchBarHeader;
 
 class SearchBarHeaderDropDown extends React.Component {
     render() {
+        const preFix='/realestate';
         return (
             <div className='search-bar__header__drop-down__wrapper'>
                 <div className='search-bar__header__drop-down__header'>ניתן לחפש גם:</div>
-                <SearchBarHeaderDropDownItem text='מכירה' url='url' />
-                <SearchBarHeaderDropDownItem text='השכרה' url='url' />
-                <SearchBarHeaderDropDownItem text='שותפים' url='url' />
-                <SearchBarHeaderDropDownItem text='מסחרי' url='url' />
+                <SearchBarHeaderDropDownItem text='מכירה' url={preFix+'/forsale'} />
+                <SearchBarHeaderDropDownItem text='השכרה' url={preFix+'/rent'} />
+                <SearchBarHeaderDropDownItem text='שותפים' url={preFix+'/roommates'} />
+                <SearchBarHeaderDropDownItem text='מסחרי' url={preFix+'/commercial'} />
             </div>
         );
     }
@@ -39,9 +41,9 @@ class SearchBarHeaderDropDown extends React.Component {
 const SearchBarHeaderDropDownItem = ({ text, url }) => {
     return (
         <div className='search-bar__header__drop-down__item'>
-            <a href={url}>
+            <Link to={url}>
                 {text}
-            </a>
+            </Link>
         </div>
     );
 }

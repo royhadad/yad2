@@ -14,15 +14,6 @@
     padding: 0 0;
     font-size: $font-size-m;
     height: 100%;
-    > a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 $m-size;
-        height:100%;
-        color: $text-color;
-        text-decoration: none;
-    }
 }
 
 .main-nav-bar__yad2-icon__wrapper {
@@ -47,22 +38,26 @@
     border: 1px solid $very-light-gray;
     box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
     direction: rtl;
+    width: auto;
+    height: auto;
 }
 
-.main-nav-bar__nav-item__drop-down {
-    
-}
 .main-nav-bar__nav-item__drop-down__container {
-    margin: $l-size $l-size;
+    margin: $l-size $s-size $s-size $l-size;
     display: flex;
     flex-direction: column;
-    direction: rtl;
-    >a {
-        padding: $s-size $m-size;
+    flex-wrap: wrap; 
+    max-height: 32rem;
+
+    >.react-link {
+        padding: $xs-size $m-size;
         text-decoration: none;
         color: $text-color;
+        display: inline-block;
+        height: auto;
+        font-size: $font-size-m;
     }
-    >a:hover{
+    >.react-link:hover{
         color: $orange;
     }
 }
@@ -74,6 +69,9 @@
 .main-nav-bar__left-side{
     display: flex;
     flex-direction: row;
+    @media (max-width: $desktop-breakpoint) {
+        display: none;
+    }
 }
 
 .add-listing-button__wrapper{
@@ -86,7 +84,7 @@
 
 .add-listing-button {
     padding: 0.8rem $l-size;
-    margin: $l-size $l-size;
+    margin: $l-size 0;
     border-radius: 2.5rem;
     background: $green;
     color: white;
@@ -102,7 +100,7 @@
     justify-content: center;
     padding: 0 0;
     background: white;
-    >a{
+    >.react-link{
         display: flex;
         align-items: center;
         justify-content: center;
@@ -144,7 +142,7 @@
     justify-content: center;
     padding: 0 0;
     background: white;
-    >a{
+    .react-link{
         padding: $m-size;
         text-decoration: none;
         color: $text-color;
@@ -152,9 +150,6 @@
     }
 }
 
-.prev-searches-button__wrapper:hover{
-    background: $very-very-light-gray;
-}
 .car-comparison-button__wrapper:hover{
     background: $very-very-light-gray;
 }
@@ -163,17 +158,12 @@
     @extend .main-nav-bar__nav-item;
     padding:0;
     width:5rem;
-    >a{
-        padding:$s-size;
-        height: 100%;
+    .react-link{
         width:100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding:0;
     }
     img{
-        max-width:100%;
-        width: auto;
+        width: 50%;
     }
 }
 .prev-searches-button__wrapper:hover{
@@ -194,7 +184,7 @@
         padding: $s-size $m-size;
     }
     >p{
-
+        color:$text-color;
     }
 }
 
@@ -205,12 +195,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    >a{
-        direction: rtl;
-        text-align: right;
-        text-decoration: none;
-        color: $text-color;
-    }
 }
 .prev-searches-button__drop-down__to-all-searches:hover{
     background: $very-very-light-gray;

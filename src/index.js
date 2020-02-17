@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppRouter, {  } from './routers/AppRouter';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import RealEstatePage from './components/RealEstatePage';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<RealEstatePage />, document.getElementById('root'));
+ReactDOM.render(<AppRouter />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
