@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 //#endregion
 
-router.get('/api/feed/', (req, res) => {
+router.get('/api/feed', (req, res) => {
     let responseObj = new ResponseObj();
     responseObj.data = 'this should be the feed object';
     res.send(JSON.stringify(responseObj));

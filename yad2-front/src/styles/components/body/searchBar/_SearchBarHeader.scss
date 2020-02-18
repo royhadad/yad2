@@ -31,11 +31,14 @@
         font-size: $font-size-s;
     }
 }
-.search-bar__header__drop-down__item:hover{
+.search-bar__header__drop-down__item__selected{
     background: lighten($orange, 45%);
     >a{
         color: $orange;
     }
+}
+.search-bar__header__drop-down__item:hover{
+    @extend .search-bar__header__drop-down__item__selected;   
 }
 
 .search-bar__header__drop-down__header{
