@@ -1,3 +1,36 @@
 .filter-bar__wrapper{
-    background: red;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.sort-by__wrapper{
+    display: flex;
+    justify-content: center;
+    >span{
+        direction: ltr;
+    }
+}
+
+.filter-bar__sort-by__button {
+    padding: $xs-size;
+    border: $regular-border;
+    margin-right: $m-size;
+    display: flex;
+    justify-content: space-between;
+    >.bottom-arrow-icon{
+        margin: 0 $xl-size 0 $s-size;
+    }
+    >.filter-bar__sort-by__button__text{
+        margin: 0 $m-size 0 0;
+    }
+}
+
+.filter-bar__sort-by__drop-down {
+    @extend .drop-down-list;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: greenyellow;
+
 }

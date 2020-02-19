@@ -7,8 +7,8 @@ export default () => {
     return (
         <div className='search-results__wrapper'>
             <div className='search-results__wrapper__right-side'>
-                <SearchResultsMetaData/>
-                <FilterBar/>
+                <SearchResultsMetaData />
+                <FilterBar />
                 <SearchResults />
             </div>
             <div className='search-results__wrapper__left-side'>

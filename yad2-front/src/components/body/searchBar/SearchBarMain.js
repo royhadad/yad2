@@ -1,5 +1,6 @@
 import React from 'react';
-
+import resources from '../../../resources.json';
+const searchBarResources = resources.body.searchBar;
 class SearchBarMain extends React.Component {
 
     onClickSearch = () => {
@@ -10,11 +11,11 @@ class SearchBarMain extends React.Component {
         return (
             <div className='search-bar__main__container'>
                 <span>
-                חפשו אזור, עיר, שכונה או רחוב<input></input>
+                {searchBarResources.locationInput.description}<input></input>
                 </span>
-                <button className='search-bar__main__advanced-button' onClick={this.props.toggleShouldLoadAdvancedSearch}>+ חיפוש מתקדם</button>
+                <button className='search-bar__main__advanced-button' onClick={this.props.toggleShouldLoadAdvancedSearch}>{searchBarResources.advancedSearchButton}</button>
                 <button className='search-bar__main__search-button' onClick={this.onClickSearch}>
-                    <span style={{ fontFamily: 'Calibri', fontSize: '1.5rem' }} role="img" aria-label="search">&#128269;</span> חיפוש
+                    <span>{resources.general.unicodeChars.search}</span>{searchBarResources.searchButton}
                 </button>
             </div>
         );

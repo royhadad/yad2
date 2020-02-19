@@ -1,21 +1,21 @@
 import React from 'react';
 
 class SearchResults extends React.Component {
-    state={
-        data:undefined
+    state = {
+        data: undefined
     }
-    componentDidMount(){
-        fetch('http://localhost:8080/api/feed').then((res)=>{
-            this.setState({data: res});
-            
-        });
+    componentDidMount() {
+        fetch('/api/feed')
+            .then(res => res.json())
+            .then((res) => {
+                this.setState({ data: res.data });          
+            });
     }
-    render() {        
+    render() {
         return (
             <div>
                 <p>
-                    {JSON.stringify(this.state.data)}
-                    aaa
+                    {this.state.data}
                 </p>
             </div>
         );

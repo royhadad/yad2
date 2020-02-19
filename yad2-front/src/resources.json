@@ -1,0 +1,66 @@
+{
+    "header": {
+        "addItemButton": {
+            "text": "+ פרסום מודעה חדשה"
+        },
+        "prevSearchesButton":{
+            "title":"חיפושים אחרונים",
+            "toAllSearches":"לכל החיפושים האחרונים"
+        },
+        "savedItemsButton": {
+            "title": "מודעות שמורות",
+            "body": "הרשימה שלך ריקה כרגע, אפשר להוסיף מודעות לרשימה בלחיצה על הסימן בפינה הימנית של כל מודעה",
+            "url": "/favorites"
+        },
+        "carComparisonButton": {
+            "title": "השוואת רכבים",
+            "body": "הרשימה שלך ריקה כרגע, אפשר להוסיף רכבים להשוואה בלחיצה על הכפתור להשוואה בפינה הימנית של כל מודעה",
+            "url": "/car-comparison"
+        }
+    },
+    "body": {
+        "topInfo": {
+            "accessibilityText": "נגישות "
+        },
+        "searchBar": {
+            "searchBarHeader":{
+                "dropDownHeader":"ניתן לחפש גם:",
+                "titleRight": "איזה נכס ",
+                "titleLeft": " תרצו לחפש?"
+            },
+            "searchButton": " חיפוש",
+            "advancedSearchButton": "+ חיפוש מתקדם",
+            "locationInput": {
+                "description": "חפשו אזור, עיר, שכונה או רחוב",
+                "placeholder": "לדוגמא: רמות, באר שבע"
+            }
+        },
+        "searchResults": {
+            "filterBar": {
+                "sortByButton": "מיין לפי",
+                "sortByDropDown": {
+                    "date": "לפי תאריך",
+                    "priceHighLow": "מחיר - מהיקר לזול",
+                    "priceLowHigh": "מחיר - מהזול ליקר"
+                }
+            }
+        }
+    },
+    "footer": {},
+    "general": {
+        "unicodeChars": {
+            "downFacingArrow": "▼",
+            "person": "👤",
+            "search": "🔍",
+            "personInWheelchair": "♿",
+            "oppositeArrows": "⇆",
+            "heart": "♡"
+        },
+        "propertyTypes":{
+            "forsale":"מכירה",
+            "rent":"השכרה",
+            "roommates":"שותפים",
+            "commercial":"מסחרי"
+        }
+    }
+}

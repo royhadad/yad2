@@ -74,7 +74,7 @@
     }
 }
 
-.add-listing-button__wrapper{
+.add-item-button__wrapper{
     display: flex;
     align-items: center;
     a{
@@ -82,7 +82,7 @@
     }
 }
 
-.add-listing-button {
+.add-item-button {
     padding: 0.8rem $l-size;
     margin: $l-size 0;
     border-radius: 2.5rem;
@@ -90,7 +90,7 @@
     color: white;
     direction: rtl;
 }
-.add-listing-button:hover{
+.add-item-button:hover{
     background: $dark-green;
 }
 
@@ -114,14 +114,14 @@
    background: $very-very-light-gray; 
 }
 
-.saved-listings-button__wrapper{
+.saved-items-button__wrapper{
 
 }
-.saved-listings-button__wrapper:hover{
+.saved-items-button__wrapper:hover{
     @extend .personal-area-button__wrapper:hover
 }
 
-.saved-listings-button__drop-down__container{
+.saved-items-button__drop-down__container{
     display:flex;
     align-items: center;
     flex-direction: column;

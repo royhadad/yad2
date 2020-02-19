@@ -1,9 +1,9 @@
 import React from 'react';
 import NavItem from './NavItem';
 import { linksSections } from '../../data/textData/MainNavBar';
-import AddListingButton from './AddListingButton';
+import AddItemButton from './AddItemButton';
 import PersonalAreaButton from './PersonalAreaButton';
-import SavedListingsButton from './SavedListingsButton';
+import SavedItemsButton from './SavedItemsButton';
 import PrevSearchesButton from './PrevSearchesButton';
 import {Link} from 'react-router-dom';
 class MainNavBar extends React.Component {
@@ -26,11 +26,11 @@ class MainNavBar extends React.Component {
                     }
                 </div>
                 <div className="main-nav-bar__left-side">
-                    <AddListingButton />
+                    <AddItemButton />
                     <PersonalAreaButton />
-                    <SavedListingsButton type="savedListings"/>
+                    <SavedItemsButton type="savedItems"/>
                     <PrevSearchesButton />
-                    <SavedListingsButton type="carComparison"/>
+                    <SavedItemsButton type="carComparison"/>
                 </div>
             </div>
         );

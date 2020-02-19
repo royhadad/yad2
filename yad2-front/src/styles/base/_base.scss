@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    color: $text-color;
 }
 
 html {
@@ -45,4 +46,9 @@ button:disabled {
 }
 .react-link-regular:hover{
     text-decoration: underline;
+}
+
+.drop-down-list{
+    position: absolute;
+    z-index: 10;
 }

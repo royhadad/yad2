@@ -1,4 +1,5 @@
 import React from 'react';
+import resources from '../../resources.json';
 
 const TopInfo = () => {
     return (
@@ -8,7 +9,7 @@ const TopInfo = () => {
                     אבא-> אמא -> סבא
             </div>
                 <button className='top-info__accessibility-button' onClick={()=>alert('TODO')}>
-                    נגישות <span style={{ fontFamily: 'Calibri', fontSize: '3rem' }} role="img" aria-label="person">&#9855;</span>
+                    {resources.body.topInfo.accessibilityText}<span>{resources.general.unicodeChars.personInWheelchair}</span>
                 </button>
             </div>
             <div className='top-info__spacer'></div>

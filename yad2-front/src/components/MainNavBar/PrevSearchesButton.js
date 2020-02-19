@@ -2,6 +2,8 @@ import React from 'react';
 import prevSearchesFixture from '../../data/fixtures/PrevSearchesButton';
 import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
 import { Link } from 'react-router-dom';
+import resources from '../../resources.json';
+const prevSearchesResources = resources.header.prevSearchesButton;
 
 class PrevSearchesButton extends React.Component {
     state = {
@@ -108,11 +110,11 @@ class PrevSearchesDropDown extends React.Component {
         return (
             <div className={this.className + " drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
                 <div className="prev-searches-button__drop-down__container">
-                    <h4>חיפושים אחרונים</h4>
+                    <h4>{prevSearchesResources.title}</h4>
                     <PrevSearchesList />
                     <div className='prev-searches-button__drop-down__to-all-searches'>
                         <Link to='/latestsearches' className='react-link'>
-                            לכל החיפושים האחרונים
+                            {prevSearchesResources.toAllSearches}
                         </Link>
                     </div>
                 </div>

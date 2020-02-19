@@ -1,8 +1,11 @@
 import React from 'react';
 import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
 import { Link } from 'react-router-dom';
+import resources from '../../resources.json';
+const savedItemsButtonResources = resources.header.savedItemsButton;
+const carComparisonButtonResources = resources.header.carComparisonButton;
 
-class SavedListingsButton extends React.Component {
+class SavedItemsButton extends React.Component {
     state = {
         isNavItemHovered: false,
         isDropDownHovered: false,
@@ -46,18 +49,18 @@ class SavedListingsButton extends React.Component {
     render() {
         let imojiJSX, title, body, url;
         if (this.props.type === 'carComparison') {
-            imojiJSX = <span style={{ fontFamily: 'Calibri' }} role="img" aria-label="arrows">&#8646;</span>;
-            title = 'השוואת רכבים';
-            body = 'הרשימה שלך ריקה כרגע, אפשר להוסיף רכבים להשוואה בלחיצה על הכפתור להשוואה בפינה הימנית של כל מודעה';
+            imojiJSX = <span>{resources.general.unicodeChars.oppositeArrows}</span>;
+            title = savedItemsButtonResources.title;
+            body = savedItemsButtonResources.body;
             this.className = 'car-comparison-button__wrapper';
-            url = '/car-comparison';
+            url = savedItemsButtonResources.url;
         }
-        else if (this.props.type === 'savedListings') {
-            imojiJSX = <span style={{ fontFamily: 'Calibri' }} role="img" aria-label="heart">&#9825;</span>;
-            title = 'מודעות שמורות';
-            body = 'הרשימה שלך ריקה כרגע, אפשר להוסיף מודעות לרשימה בלחיצה על הסימן בפינה הימנית של כל מודעה';
-            this.className = 'saved-listings-button__wrapper';
-            url = '/favorites';
+        else if (this.props.type === 'savedItems') {
+            imojiJSX = <span>{resources.general.unicodeChars.heart}</span>;
+            title = carComparisonButtonResources.title;
+            body = carComparisonButtonResources.body;
+            this.className = 'saved-items-button__wrapper';
+            url = carComparisonButtonResources.url;
         }
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
         this.id = this.className + "1";
@@ -66,19 +69,19 @@ class SavedListingsButton extends React.Component {
         return (
             <div className={this.className + ' generic-nav-item'} id={this.id}>
                 <Link to={url} className='react-link'>
-                    <div className="saved-listings-button">
+                    <div className="saved-items-button">
                         {imojiJSX}
                     </div>
                 </Link>
-                {shouldShowDropDown && <SavedListingsDropDown title={title} body={body} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
+                {shouldShowDropDown && <SavedItemsDropDown title={title} body={body} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
             </div>
         );
     }
 };
 
-export default SavedListingsButton;
+export default SavedItemsButton;
 
-class SavedListingsDropDown extends React.Component {
+class SavedItemsDropDown extends React.Component {
     state = {
         x: 0,
         y: 0
@@ -114,7 +117,7 @@ class SavedListingsDropDown extends React.Component {
         const { setIsHoveredDropDown, parentRect } = this.props;
         this.setIsHoveredDropDown = setIsHoveredDropDown;
         this.parentRect = parentRect;
-        this.className = 'saved-listings-button__drop-down';
+        this.className = 'saved-items-button__drop-down';
         this.id = this.className + '1';
         const styleTagContent = {
             left: deriveXfromViewPortX(this.state.x) + 'px',
@@ -122,7 +125,7 @@ class SavedListingsDropDown extends React.Component {
         };
         return (
             <div className={this.className + " drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
-                <div className="saved-listings-button__drop-down__container">
+                <div className="saved-items-button__drop-down__container">
                     <h4>{this.props.title}</h4>
                     <p>{this.props.body}</p>
                 </div>

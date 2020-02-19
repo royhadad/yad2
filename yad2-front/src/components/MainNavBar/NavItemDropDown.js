@@ -17,9 +17,9 @@ class NavItemDropDown extends React.Component {
         this.setState(() => ({ x, y }));
     }
     getContainerWidth(links) {   
-        const maxInCollum = 8;
-        let numOfCollums = Math.ceil(links.length/maxInCollum);
-        return numOfCollums*200+44;
+        const maxInColumns = 8;
+        let numOfColumns = Math.ceil(links.length/maxInColumns);
+        return numOfColumns*200+44;
     }
 
     componentDidMount() {

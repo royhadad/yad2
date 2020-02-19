@@ -19,6 +19,9 @@
     border: none;
     padding: 0.6rem $s-size;
     background: darkblue;
+    >span{
+        font-size: 3rem;
+    }
 }
 .top-info__accessibility-button:hover{
     background: darken(darkblue, 10%);

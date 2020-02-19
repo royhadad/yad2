@@ -1,12 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import resources from '../../resources.json';
 
 const PersonalAreaButton = () => {
     return (
         <div className="personal-area-button__wrapper">
             <Link to='' className='react-link'>
                 <div className="personal-area-button">
-                    <span style={{ fontFamily: 'Calibri' }} role="img" aria-label="person">&#128100;</span>
+                    {resources.general.unicodeChars.person}
                 </div>
             </Link>
         </div>
