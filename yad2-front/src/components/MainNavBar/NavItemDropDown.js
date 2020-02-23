@@ -1,13 +1,15 @@
 import React from 'react';
 import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid';
 
 class NavItemDropDown extends React.Component {
     state = {
         x: 0,
         y: 0
     }
-    id;
+    className='main-nav-bar__nav-item__drop-down';
+    id=this.className+uuid();
     currentItem;
     parentRect;
 
@@ -44,8 +46,6 @@ class NavItemDropDown extends React.Component {
         const { links } = linksSection;
         this.setIsHoveredDropDown = setIsHoveredDropDown;
         this.parentRect = parentRect;
-        this.className = 'main-nav-bar__nav-item__drop-down';
-        this.id = this.className + linksSection.title;
         const styleTagContent = {
             left: deriveXfromViewPortX(this.state.x) + 'px',
             top: deriveYfromViewPortY(this.state.y) + 'px'

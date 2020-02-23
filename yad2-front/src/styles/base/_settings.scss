@@ -13,6 +13,7 @@ $gray: #666;
 $blue: #1c88bf;
 $dark-blue: #364051;
 $orange: #ff7100;
+$light-orange: lighten($orange, 45%);
 $green: #0FCA80;
 $dark-green: #0E9C64;
 $regular-border: 1px solid $very-light-gray;

@@ -1,10 +1,8 @@
 const filtersReducerDefaultState = {
     sortBy: 'date',
-    showOnlyItemsWithImage: false,
-    showOnlyItemsWithPrice: false,
     search: {
         location: undefined,
-        type:[],
+        type: [],
         properties: [],
         minRooms: undefined,
         maxRooms: undefined,
@@ -16,9 +14,11 @@ const filtersReducerDefaultState = {
         maxSize: undefined,
         minEntryDate: undefined,
         onlyImmediateEntry: false,
-        text: undefined
+        text: undefined,
+        showOnlyItemsWithImage: false,
+        showOnlyItemsWithPrice: false
     }
-  };
+};
 
 export default (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
@@ -44,13 +44,19 @@ export default (state = filtersReducerDefaultState, action) => {
             };
         case 'TOGGLE_SHOW_ONLY_ITEMS_WITH_PRICE':
             return {
-                ...state,
-                showOnlyItemsWithPrice: !state.showOnlyItemsWithPrice
+                sortBy: state.sortBy,
+                search: {
+                    ...state.search,
+                    showOnlyItemsWithPrice: !state.showOnlyItemsWithPrice
+                }
             };
         case 'TOGGLE_SHOW_ONLY_ITEMS_WITH_IMAGE':
             return {
-                ...state,
-                showOnlyItemsWithImage: !state.showOnlyItemsWithImage
+                sortBy: state.sortBy,
+                search: {
+                    ...state.search,
+                    showOnlyItemsWithImage: !state.showOnlyItemsWithImage
+                }
             };
         default:
             return state;

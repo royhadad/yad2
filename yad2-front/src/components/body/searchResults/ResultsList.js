@@ -15,9 +15,9 @@ class SearchResults extends React.Component {
         return (
             <div className='results-list'>
                 {
-                    this.state.data.map((item) => {
+                    this.state.data.map((item, index) => {
                         return (
-                            <div style={{ height: '500', border: '1px solid gray' }}>
+                            <div key={item} style={{ height: '500', border: '1px solid gray' }}>
                                 {item}
                             </div>
                         );

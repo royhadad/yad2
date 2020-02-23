@@ -2,6 +2,7 @@ import React from 'react';
 import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
 import { Link } from 'react-router-dom';
 import resources from '../../resources.json';
+import uuid from 'uuid';
 const savedItemsButtonResources = resources.header.savedItemsButton;
 const carComparisonButtonResources = resources.header.carComparisonButton;
 
@@ -11,6 +12,7 @@ class SavedItemsButton extends React.Component {
         isDropDownHovered: false,
         navItemRect: undefined
     }
+    className;
     id;
     currentItem;
 
@@ -63,7 +65,7 @@ class SavedItemsButton extends React.Component {
             url = carComparisonButtonResources.url;
         }
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
-        this.id = this.className + "1";
+        this.id = this.className + uuid();
 
 
         return (
@@ -86,7 +88,8 @@ class SavedItemsDropDown extends React.Component {
         x: 0,
         y: 0
     }
-    id;
+    className='saved-items-button__drop-down';
+    id=this.className+uuid();
     currentItem;
     parentRect;
 
@@ -117,8 +120,6 @@ class SavedItemsDropDown extends React.Component {
         const { setIsHoveredDropDown, parentRect } = this.props;
         this.setIsHoveredDropDown = setIsHoveredDropDown;
         this.parentRect = parentRect;
-        this.className = 'saved-items-button__drop-down';
-        this.id = this.className + '1';
         const styleTagContent = {
             left: deriveXfromViewPortX(this.state.x) + 'px',
             top: deriveYfromViewPortY(this.state.y) + 'px',

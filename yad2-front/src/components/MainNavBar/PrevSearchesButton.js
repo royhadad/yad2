@@ -3,6 +3,7 @@ import prevSearchesFixture from '../../data/fixtures/PrevSearchesButton';
 import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
 import { Link } from 'react-router-dom';
 import resources from '../../resources.json';
+import uuid from 'uuid';
 const prevSearchesResources = resources.header.prevSearchesButton;
 
 class PrevSearchesButton extends React.Component {
@@ -11,7 +12,8 @@ class PrevSearchesButton extends React.Component {
         isDropDownHovered: false,
         navItemRect: undefined
     }
-    id;
+    className='prev-searches-button__wrapper';
+    id=this.className+uuid();
     currentItem;
 
     getDerivedBackgroundFromState(state) {
@@ -48,8 +50,6 @@ class PrevSearchesButton extends React.Component {
 
     render() {
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
-        this.className = 'prev-searches-button__wrapper';
-        this.id = this.className + "1";
         const imojiJSX = <img src='/images/prevSearchesButton.png' alt='circular arrow with clock inside' />
 
         return (
@@ -70,7 +70,8 @@ class PrevSearchesDropDown extends React.Component {
         x: 0,
         y: 0
     }
-    id;
+    className='prev-searches-button__drop-down';
+    id=this.className+uuid();
     currentItem;
     parentRect;
 
@@ -101,8 +102,6 @@ class PrevSearchesDropDown extends React.Component {
         const { setIsHoveredDropDown, parentRect } = this.props;
         this.setIsHoveredDropDown = setIsHoveredDropDown;
         this.parentRect = parentRect;
-        this.className = 'prev-searches-button__drop-down';
-        this.id = this.className + '1';
         const styleTagContent = {
             left: deriveXfromViewPortX(this.state.x) + 'px',
             top: deriveYfromViewPortY(this.state.y) + 'px',

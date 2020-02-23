@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get('/api/feed', (req, res) => {
     let responseObj = new ResponseObj();
-    responseObj.data = ['item1', 'item2', 'item2'];
+    responseObj.data = ['item1', 'item2', 'item3'];
     res.send(JSON.stringify(responseObj));
 });
 

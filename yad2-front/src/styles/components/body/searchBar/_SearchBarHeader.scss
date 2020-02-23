@@ -32,7 +32,7 @@
     }
 }
 .search-bar__header__drop-down__item__selected{
-    background: lighten($orange, 45%);
+    background: $light-orange;
     >a{
         color: $orange;
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavItemDropDown from './NavItemDropDown';
 import { Link } from 'react-router-dom';
+import uuid from 'uuid';
 
 class NavItem extends React.Component {
     state = {
@@ -8,7 +9,8 @@ class NavItem extends React.Component {
         isDropDownHovered: false,
         navItemRect: undefined
     }
-    id;
+    className='main-nav-bar__nav-item';
+    id=this.className+uuid();
     currentItem;
 
     getDerivedBackgroundFromState(state) {
@@ -48,8 +50,6 @@ class NavItem extends React.Component {
     render() {
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
         const { linksSection } = this.props;
-        this.className = 'main-nav-bar__nav-item';
-        this.id = this.className + linksSection.title;
 
         const style = { background: this.getDerivedBackgroundFromState(this.state) };
         return (

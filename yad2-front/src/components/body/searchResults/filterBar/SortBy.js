@@ -93,8 +93,9 @@ class SortByDropDownWithoutOnclickoutside extends React.Component {
         );
     }
 }
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
     sortBy: (sortByOption) => {
+        ownProps.toggleDropDown();
         switch (sortByOption) {
             case 'date':
                 dispatch(sortByDate());

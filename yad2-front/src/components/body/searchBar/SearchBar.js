@@ -2,12 +2,15 @@ import React from 'react';
 import SearchBarHeader from './SearchBarHeader';
 import SearchBarMain from './SearchBarMain';
 import SearchBarAdvanced from './SearchBarAdvanced';
+import uuid from 'uuid';
 
 class SearchBar extends React.Component {
     state = {
         shouldLoadAdvancedSearch: false,
         parentRect: undefined
     };
+    className='search-bar__wrapper';
+    id=this.className+uuid();
     componentDidMount() {
     }
     toggleShouldLoadAdvancedSearch = () => {
@@ -18,7 +21,7 @@ class SearchBar extends React.Component {
     }
     render() {
         return (
-            <div className='search-bar__wrapper' id='search-bar__wrapper1'>
+            <div className={this.className} id={this.id}>
                 <SearchBarHeader />
                 <SearchBarMain toggleShouldLoadAdvancedSearch={this.toggleShouldLoadAdvancedSearch} />
                 {this.state.shouldLoadAdvancedSearch && <SearchBarAdvanced parentRect={this.state.parentRect} />}

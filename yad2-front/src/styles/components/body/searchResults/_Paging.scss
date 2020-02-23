@@ -1,0 +1,29 @@
+.paging__wrapper{
+    background: white;
+    width:100%;
+    height: 10rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.paging__item{
+    background: white;
+    color:$text-color;
+    padding: 0.7rem $s-size;  
+}
+
+.paging__item__three-dots{
+    background: white;
+    color:$text-color;
+    width: 3rem;
+}
+.paging__item:hover{
+    background: $light-orange;
+}
+.paging__item__selected{
+    @extend .paging__item;
+    background: $light-orange;
+    color: $orange;
+    font-weight: 800;
+}
