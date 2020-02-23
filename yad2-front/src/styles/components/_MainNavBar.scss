@@ -36,7 +36,7 @@
     background: white;
     position: absolute;
     border: 1px solid $very-light-gray;
-    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
+    box-shadow: $regular-box-shadow;
     direction: rtl;
     width: auto;
     height: auto;

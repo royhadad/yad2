@@ -52,3 +52,6 @@ button:disabled {
     position: absolute;
     z-index: 10;
 }
+button, input, textarea:focus{
+    outline:none;
+}

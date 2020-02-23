@@ -1,7 +1,11 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside'
-import {deriveXfromViewPortX, deriveYfromViewPortY} from '../../../../utility/calculatePositions';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../../../utility/calculatePositions';
 import resources from '../../../../resources.json';
+import uuid from 'uuid';
+import RadioButton from '../../../generics/RadioButton';
+import { connect } from 'react-redux';
+import { sortByDate, sortByPriceHighlow, sortByPriceLowHigh } from '../../../../actions/filters';
 const filterBarResources = resources.body.searchResults.filterBar;
 const sortByDropDownOptions = filterBarResources.sortByDropDown;
 
@@ -10,21 +14,27 @@ class SortBy extends React.Component {
         shouldShowDropDown: false,
         parentRect: undefined
     }
-    componentDidMount(){
-        console.log(document.getElementById('ababa').getBoundingClientRect().top);
-        
-        this.setState({parentRect: document.getElementById('ababa').getBoundingClientRect()});
+    className = 'sort-by__wrapper';
+    id = this.className + uuid();
+    updateParentRect() {
+        this.setState({ parentRect: document.getElementById(this.id).getBoundingClientRect() });
+
+    }
+    componentDidMount() {
+        window.addEventListener('resize', () => this.updateParentRect());
+        window.addEventListener('scroll', () => this.updateParentRect());
     }
     toggleDropDown = () => {
+        this.updateParentRect();
         this.setState((prevState) => ({ shouldShowDropDown: !prevState.shouldShowDropDown }));
     }
     render() {
         return (
-            <div className='sort-by__wrapper' id="ababa">
+            <div className={this.className} id={this.id}>
                 <span>{filterBarResources.sortByButton}</span>
                 <SortByDropDownButton text={sortByDropDownOptions[this.props.filters.sortBy]} toggleDropDown={this.toggleDropDown} />
                 {
-                    this.state.shouldShowDropDown && <SortByDropDown parentRect={this.state.parentRect} toggleDropDown={this.toggleDropDown} outsideClickIgnoreClass={'sortByDropDown__ignoreClickOutside'} />
+                    this.state.shouldShowDropDown && <SortByDropDown parentRect={this.state.parentRect} sortBySelected={this.props.filters.sortBy} toggleDropDown={this.toggleDropDown} outsideClickIgnoreClass={'sortByDropDown__ignoreClickOutside'} />
                 }
             </div>
         );
@@ -51,15 +61,53 @@ class SortByDropDownWithoutOnclickoutside extends React.Component {
     handleClickOutside = this.props.toggleDropDown;
     render() {
         const parentRect = this.props.parentRect;
-        const style = {
-            left: deriveXfromViewPortX(parentRect.left)+'px',
-            top: deriveYfromViewPortY(parentRect.bottom)+'px'
+        const width = parentRect.width * 0.9;
+        const dropDownStyle = {
+            left: deriveXfromViewPortX(parentRect.left + parentRect.width / 2 - width / 2),
+            top: deriveYfromViewPortY(parentRect.bottom + 20),
+            width: width
+        };
+        const topArrowStyle = {
+            top: dropDownStyle.top - 10
         }
         return (
-            <div className='filter-bar__sort-by__drop-down' style={style}>
-                safdsgsdggdh
-            </div>
+            <React.Fragment>
+                <div className={'arrow-up'} style={topArrowStyle} />
+                <div className='filter-bar__sort-by__drop-down' style={dropDownStyle}>
+                    {
+                        Object.keys(sortByDropDownOptions).map((key) => {
+                            const text = sortByDropDownOptions[key];
+                            return (
+                                <button
+                                    key={key}
+                                    className='filter-bar__sort-by__drop-down__item sortByDropDown__ignoreClickOutside'
+                                    onClick={() => this.props.sortBy(key)}>
+                                    <RadioButton isChecked={key === this.props.sortBySelected} />
+                                    <span>{text}</span>
+                                </button>
+                            );
+                        })
+                    }
+                </div>
+            </React.Fragment>
         );
     }
 }
-const SortByDropDown = onClickOutside(SortByDropDownWithoutOnclickoutside);
+const mapDispatchToProps = (dispatch) => ({
+    sortBy: (sortByOption) => {
+        switch (sortByOption) {
+            case 'date':
+                dispatch(sortByDate());
+                break;
+            case 'priceHighLow':
+                dispatch(sortByPriceHighlow());
+                break;
+            case 'priceLowHigh':
+                dispatch(sortByPriceLowHigh());
+                break;
+            default:
+                break;
+        }
+    }
+})
+const SortByDropDown = connect(undefined, mapDispatchToProps)(onClickOutside(SortByDropDownWithoutOnclickoutside));

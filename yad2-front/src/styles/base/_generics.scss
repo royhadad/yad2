@@ -1,0 +1,30 @@
+.radio-button__wrapper{
+    width:$ml-size;
+    height:$ml-size;
+    .outer-1 {
+        background-color:$light-gray;
+        width:100%; /* You can define it by % also */
+        height:100%; /* You can define it by % also*/
+        position:relative;
+        border:none;
+        border-radius: 50%;
+    }
+    .inner-1 {
+    background-color:white;
+    top: 10%; left:10%; /* of the container */
+    width:80%; /* of the outer-1 */
+    height:80%; /* of the outer-1 */
+    position: absolute;
+    border:none;
+    border-radius: 50%;
+    }
+    .inner-2 {
+    background-color:white;
+    top: 25%; left:25%; /* of the container */
+    width:50%; /* of the inner-1 */
+    height:50%; /* of the inner-1 */
+    position: absolute;
+    border:none;
+    border-radius: 50%;
+    }
+}

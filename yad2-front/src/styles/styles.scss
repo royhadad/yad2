@@ -1,5 +1,6 @@
 @import './base/settings';
 @import './base/base';
+@import './base/generics';
 @import './components/footer';
 @import './components//MainNavBar';
 @import './components/RealEstateNavBar';
@@ -11,3 +12,4 @@
 @import './components/body/searchBar/SearchBarAdvanced';
 @import './components/body/searchResults/SearchResultsWrapper';
 @import './components/body/searchResults/filterBar/FilterBar';
+@import './components/body/searchResults/ResultsList';

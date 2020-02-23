@@ -1,6 +1,6 @@
 .search-bar__wrapper{
     direction: rtl;
     background: white;
-    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+    box-shadow: $lighter-box-shadow;
     padding: $m-size;
 }

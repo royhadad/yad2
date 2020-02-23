@@ -42,7 +42,11 @@
                     "date": "לפי תאריך",
                     "priceHighLow": "מחיר - מהיקר לזול",
                     "priceLowHigh": "מחיר - מהזול ליקר"
-                }
+                },
+                "filterText": "הצג מודעות",
+                "filterWithPriceText": "עם מחיר",
+                "filterWithImageText":"עם תמונה",
+                "showMapText": "תצוגת מפה"
             }
         }
     },
@@ -50,11 +54,15 @@
     "general": {
         "unicodeChars": {
             "downFacingArrow": "▼",
+            "upFacingArrow": "▲",
             "person": "👤",
             "search": "🔍",
             "personInWheelchair": "♿",
             "oppositeArrows": "⇆",
-            "heart": "♡"
+            "heart": "♡",
+            "shekel":"₪",
+            "image":"🖼",
+            "map": "🗺️"
         },
         "propertyTypes":{
             "forsale":"מכירה",

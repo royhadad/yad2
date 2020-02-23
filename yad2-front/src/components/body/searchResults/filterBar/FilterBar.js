@@ -7,13 +7,17 @@ import {
     toggleShowOnlyItemsWithPrice,
     toggleShowOnlyItemsWithImage
 } from '../../../../actions/filters';
+import FilterButtons from './FilterButtons';
 import SortBy from './SortBy';
+import ShowMap from './ShowMap';
 
 class FilterBar extends React.Component {
-    render() {        
+    render() {
         return (
             <div className='filter-bar__wrapper'>
-                <SortBy filters={this.props.filters}/>
+                <SortBy filters={this.props.filters} />
+                <FilterButtons filters={this.props.filters} />
+                <ShowMap />
             </div>
         );
     }
