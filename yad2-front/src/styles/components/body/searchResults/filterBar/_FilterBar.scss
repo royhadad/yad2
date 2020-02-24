@@ -80,6 +80,7 @@
     @extend .filter-bar__button;
     color: $orange;
     border-color: $orange;
+    font-weight: $bold-weight;
 }
 .filter-bar__button__selected:hover{
     background: white;

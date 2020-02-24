@@ -1,20 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setCurrentPage } from '../../../actions/items';
+import { deriveYfromViewPortY } from '../../../utility/calculatePositions';
 
 class Paging extends React.Component {
-    numberOfPagesToShow = 7;
+    numOfPagesToShow = 7;
     getPagesToShow(numOfPages, currentPage) {
         let start, end;
-        if (this.numberOfPagesToShow <= numOfPages - 2) {
+        if (numOfPages - 2 <= this.numOfPagesToShow) {
             return {
                 start: 2,
                 end: numOfPages - 1
             }
         }
-        //TODO
-        start = 2;
-        end = Math.min(start + this.numberOfPagesToShow, numOfPages - 1);
+        const before = Math.floor(this.numOfPagesToShow / 2);
+        const after = Math.floor(this.numOfPagesToShow / 2);
+        if (currentPage - before > 1 && currentPage + after < numOfPages) {
+            start = currentPage - before;
+        } else if (currentPage - before <= 1) {
+            start = 2;
+        } else if (currentPage + after >= numOfPages) {
+            start = numOfPages - this.numOfPagesToShow;
+        }
+        if (!start) {
+            console.log('paging error!!!', { numOfPages, currentPage });
+        }
+        end = Math.min(start + this.numOfPagesToShow - 1);
         return { start, end };
     }
     getPagesJSX({ start, end }) {
@@ -24,7 +35,7 @@ class Paging extends React.Component {
         }
         return (
             pages.map((pageNumber) => (
-                <PagingItem pageNumber={pageNumber} />
+                <PagingItem key={pageNumber} pageNumber={pageNumber} />
             ))
         );
     }
@@ -43,7 +54,7 @@ class Paging extends React.Component {
     }
 }
 const mapStateToProps1 = (state) => ({
-    numOfPages: state.items.numberOfPages,
+    numOfPages: state.items.numOfPages,
     currentPage: state.items.currentPage
 });
 export default connect(mapStateToProps1)(Paging);
@@ -55,10 +66,19 @@ const PagingItemWithoutStore = ({ pageNumber, isSelected, setCurrentPage }) => {
         </div>
     );
 };
+const getScrollToYPositionTopOfSearchBar = () => {
+    const topOfSearchResultsWrapperYPosition = deriveYfromViewPortY(document.getElementsByClassName('search-bar__wrapper')[0].getBoundingClientRect().top);
+    const currentPosition = window.pageYOffset || document.documentElement.scrollTop;
+    return Math.min(topOfSearchResultsWrapperYPosition, currentPosition);
+}
 const mapStateToProps2 = (state, ownProps) => ({
     isSelected: state.items.currentPage === ownProps.pageNumber
 });
 const mapDispatchToProps2 = (dispatch, ownProps) => ({
-    setCurrentPage: () => dispatch(setCurrentPage(ownProps.pageNumber))
+    setCurrentPage: () => {
+        dispatch(setCurrentPage(ownProps.pageNumber));
+
+        window.scrollTo(0, getScrollToYPositionTopOfSearchBar());
+    }
 });
 const PagingItem = connect(mapStateToProps2, mapDispatchToProps2)(PagingItemWithoutStore);

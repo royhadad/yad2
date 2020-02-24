@@ -1,3 +1,9 @@
+//SET CATAGORY
+export const setCategory = (category) => ({
+    type: 'SET_CATEGORY',
+    category
+});
+
 //SORT BY DATE
 export const sortByDate = () => ({
     type: 'SORT_BY_DATE'

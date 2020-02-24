@@ -1,6 +1,6 @@
 import React from 'react';
-import { history } from '../routers/AppRouter';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const RealEstateNavBar = () => {
     return (
@@ -22,31 +22,28 @@ const RealEstateNavBar = () => {
     );
 };
 
-const RealEstateNavBarItem = ({ text, url }) => {
-    const currentPath = history.location.pathname;
-    const preFix = '/realestate';
-    const afterRealEstate = currentPath.slice(currentPath.indexOf(preFix) + preFix.length);
-    let regularStyle = {};
-    const specialStyle = { boxShadow: 'inset 0 -0.3rem 0 #ff7100', color: '#ff7100' };
-    if (
-        afterRealEstate !== '/forsale' &&
-        afterRealEstate !== '/rent' &&
-        afterRealEstate !== '/roommates' &&
-        afterRealEstate !== '/commercial'
-    ) {
-        history.push(preFix + '/forsale');
+class RealEstateNavBarItemWithoutStore extends React.Component {
+    render() {
+        const { text, url, category } = this.props;
+        let regularStyle = {};
+        const specialStyle = { boxShadow: 'inset 0 -0.3rem 0 #ff7100', color: '#ff7100' };
+        const style = url === '/realestate/' + category ? specialStyle : regularStyle;
+        return (
+            <div className='real-estate-nav-item__wrapper' style={style}>
+                <Link to={url} className='react-link'>
+                    <div className='real-estate-nav-item__container'>
+                        {text}
+                    </div>
+                </Link>
+            </div>
+        );
     }
-    const style = currentPath === url ? specialStyle : regularStyle;
-    return (
-        <div className='real-estate-nav-item__wrapper' style={style}>
-            <Link to={url} className='react-link'>
-                <div className='real-estate-nav-item__container'>
-                    {text}
-                </div>
-            </Link>
-        </div>
-    );
-};
+}
+const mapStateToProps = (state) => ({
+    category: state.filters.search.category
+});
+const RealEstateNavBarItem = connect(mapStateToProps)(RealEstateNavBarItemWithoutStore);
+
 const RealEstateNavBarLinks = ({ text, url }) => {
     return (
         <div className='real-estate-nav-link__wrapper'>

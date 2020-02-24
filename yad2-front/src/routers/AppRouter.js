@@ -6,7 +6,10 @@ import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/loginPage/LoginPage';
 //import PrivateRoute from './PrivateRoute';
 //import PublicRoute from './PublicRoute';
-
+const RedirectToHome = (props)=>{
+    props.history.push('/realestate');
+    return null;
+}
 export const history = createBrowserHistory();
 
 const AppRouter = () => (
@@ -15,7 +18,7 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/login" component={LoginPage} />
                 <Route path="/realestate" component={RealEstatePage} />
-                <Route path="/" component={RealEstatePage} exact={true} />
+                <Route path="/" component={RedirectToHome} exact={true} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>

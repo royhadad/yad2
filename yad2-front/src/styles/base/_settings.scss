@@ -16,9 +16,6 @@ $orange: #ff7100;
 $light-orange: lighten($orange, 45%);
 $green: #0FCA80;
 $dark-green: #0E9C64;
-$regular-border: 1px solid $very-light-gray;
-$regular-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
-$lighter-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
 
 //Font Size
 $font-size-s: 1.4rem;
@@ -34,3 +31,9 @@ $l-size: 3.2rem;
 $xl-size: 4.8rem;
 $desktop-breakpoint: 60rem;
 $top-nav-bar-height: 7.5rem;
+
+// Others
+$regular-border: 1px solid $very-light-gray;
+$regular-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
+$lighter-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+$bold-weight: 600;

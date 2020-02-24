@@ -7,11 +7,10 @@ class NavItem extends React.Component {
     state = {
         isNavItemHovered: false,
         isDropDownHovered: false,
-        navItemRect: undefined
+        parentRect: undefined,
+        className: 'main-nav-bar__nav-item',
+        id: 'main-nav-bar__nav-item' + uuid()
     }
-    className='main-nav-bar__nav-item';
-    id=this.className+uuid();
-    currentItem;
 
     getDerivedBackgroundFromState(state) {
         if (state.isDropDownHovered) {
@@ -28,36 +27,40 @@ class NavItem extends React.Component {
     setIsHoveredNavItem(isHovered) {
         this.setState({ isNavItemHovered: isHovered });
     }
-    setNavItemRect() {
-        this.setState(() => ({ navItemRect: this.currentItem.getBoundingClientRect() }));
+    updateParentRect = () => {
+        this.setState((prevState) => ({ parentRect: document.getElementById(prevState.id).getBoundingClientRect() }));
     }
     componentDidMount() {
-        this.currentItem = document.getElementById(this.id);
-
-        this.currentItem.onmouseenter = () => {
-            this.setNavItemRect();
+        const currentItem = document.getElementById(this.state.id);
+        this.updateParentRect();
+        window.addEventListener('resize', this.updateParentRect);
+        window.addEventListener('scroll', this.updateParentRect);
+        currentItem.onmouseenter = () => {
             this.setIsHoveredNavItem(true);
         };
-        this.currentItem.onmouseleave = () => {
+        currentItem.onmouseleave = () => {
             this.setIsHoveredNavItem(false);
         };
     }
     componentWillUnmount() {
-        this.currentItem.onmouseenter = undefined;
-        this.currentItem.onmouseleave = undefined;
+        const currentItem = document.getElementById(this.state.id);
+        window.removeEventListener('resize', this.updateParentRect);
+        window.removeEventListener('scroll', this.updateParentRect);
+        currentItem.onmouseenter = undefined;
+        currentItem.onmouseleave = undefined;
     }
 
-    render() {
+    render() {        
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
         const { linksSection } = this.props;
 
         const style = { background: this.getDerivedBackgroundFromState(this.state) };
         return (
-            <div className={this.className} id={this.id} style={style}>
+            <div className={this.state.className} id={this.state.id} style={style}>
                 <Link to={linksSection.titleURL} className='react-link'>
                     {linksSection.title}
                 </Link>
-                {shouldShowDropDown && <NavItemDropDown linksSection={linksSection} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.navItemRect} />}
+                {shouldShowDropDown && <NavItemDropDown linksSection={linksSection} setIsHoveredDropDown={this.setIsHoveredDropDown.bind(this)} parentRect={this.state.parentRect} />}
             </div>
         );
 

@@ -12,17 +12,20 @@ const sortByDropDownOptions = filterBarResources.sortByDropDown;
 class SortBy extends React.Component {
     state = {
         shouldShowDropDown: false,
-        parentRect: undefined
+        parentRect: undefined,
+        className: 'sort-by__wrapper',
+        id: 'sort-by__wrapper' + uuid()
     }
-    className = 'sort-by__wrapper';
-    id = this.className + uuid();
-    updateParentRect() {
-        this.setState({ parentRect: document.getElementById(this.id).getBoundingClientRect() });
-
+    updateParentRect = () => {
+        this.setState({ parentRect: document.getElementById(this.state.id).getBoundingClientRect() });
     }
     componentDidMount() {
-        window.addEventListener('resize', () => this.updateParentRect());
-        window.addEventListener('scroll', () => this.updateParentRect());
+        window.addEventListener('resize', this.updateParentRect);
+        window.addEventListener('scroll', this.updateParentRect);
+    }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.updateParentRect);
+        window.removeEventListener('scroll', this.updateParentRect);
     }
     toggleDropDown = () => {
         this.updateParentRect();
@@ -30,7 +33,7 @@ class SortBy extends React.Component {
     }
     render() {
         return (
-            <div className={this.className} id={this.id}>
+            <div className={this.state.className} id={this.state.id}>
                 <span>{filterBarResources.sortByButton}</span>
                 <SortByDropDownButton text={sortByDropDownOptions[this.props.filters.sortBy]} toggleDropDown={this.toggleDropDown} />
                 {

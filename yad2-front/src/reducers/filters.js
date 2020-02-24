@@ -1,6 +1,7 @@
 const filtersReducerDefaultState = {
     sortBy: 'date',
     search: {
+        category: 'forsale',
         location: undefined,
         type: [],
         properties: [],
@@ -22,6 +23,14 @@ const filtersReducerDefaultState = {
 
 export default (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
+        case 'SET_CATEGORY':
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    category: action.category
+                }
+            };
         case 'SET_SEARCH':
             return {
                 ...state,
@@ -52,7 +61,7 @@ export default (state = filtersReducerDefaultState, action) => {
             };
         case 'TOGGLE_SHOW_ONLY_ITEMS_WITH_IMAGE':
             return {
-                sortBy: state.sortBy,
+                ...state,
                 search: {
                     ...state.search,
                     showOnlyItemsWithImage: !state.showOnlyItemsWithImage

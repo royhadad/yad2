@@ -10,11 +10,10 @@ class PrevSearchesButton extends React.Component {
     state = {
         isNavItemHovered: false,
         isDropDownHovered: false,
-        navItemRect: undefined
+        navItemRect: undefined,
+        className: 'prev-searches-button__wrapper',
+        id: 'prev-searches-button__wrapper' + uuid()
     }
-    className='prev-searches-button__wrapper';
-    id=this.className+uuid();
-    currentItem;
 
     getDerivedBackgroundFromState(state) {
         if (state.isDropDownHovered) {
@@ -30,22 +29,20 @@ class PrevSearchesButton extends React.Component {
         this.setState({ isNavItemHovered: isHovered });
     }
     setNavItemRect() {
-        this.setState(() => ({ navItemRect: this.currentItem.getBoundingClientRect() }));
+        this.setState((prevState) => ({ navItemRect: document.getElementById(prevState.id).getBoundingClientRect() }));
     }
     componentDidMount() {
-        this.currentItem = document.getElementById(this.id);
-
-        this.currentItem.onmouseenter = () => {
+        document.getElementById(this.state.id).onmouseenter = () => {
             this.setNavItemRect();
             this.setIsHoveredNavItem(true);
         };
-        this.currentItem.onmouseleave = () => {
+        document.getElementById(this.state.id).onmouseleave = () => {
             this.setIsHoveredNavItem(false);
         };
     }
     componentWillUnmount() {
-        this.currentItem.onmouseenter = undefined;
-        this.currentItem.onmouseleave = undefined;
+        document.getElementById(this.state.id).onmouseenter = undefined;
+        document.getElementById(this.state.id).onmouseleave = undefined;
     }
 
     render() {
@@ -53,7 +50,7 @@ class PrevSearchesButton extends React.Component {
         const imojiJSX = <img src='/images/prevSearchesButton.png' alt='circular arrow with clock inside' />
 
         return (
-            <div className={this.className + ' generic-nav-item'} id={this.id}>
+            <div className={this.state.className + ' generic-nav-item'} id={this.state.id}>
                 <Link to='/latestsearches' className='react-link'>
                     {imojiJSX}
                 </Link>
@@ -68,46 +65,39 @@ export default PrevSearchesButton;
 class PrevSearchesDropDown extends React.Component {
     state = {
         x: 0,
-        y: 0
+        y: 0,
+        className: 'prev-searches-button__drop-down',
+        id: 'prev-searches-button__drop-down' + uuid()
     }
-    className='prev-searches-button__drop-down';
-    id=this.className+uuid();
-    currentItem;
-    parentRect;
-
-    setStateCoordinates(parentRect, currentItem) {
+    componentDidMount() {
+        const parentRect = this.props.parentRect;
+        const currentItem = document.getElementById(this.state.id);
         const x = parentRect.right - currentItem.getBoundingClientRect().width / 2;
         const y = parentRect.bottom;
-        this.setState(() => ({ x, y }));
-    }
-
-    componentDidMount() {
-        this.currentItem = document.getElementById(this.id);
-
-        this.setStateCoordinates(this.parentRect, this.currentItem);
-
-        this.currentItem.onmouseenter = () => {
-            this.setIsHoveredDropDown(true);
-        };
-        this.currentItem.onmouseleave = () => {
-            this.setIsHoveredDropDown(false);
-        };
+        this.setState((prevState) => {
+            document.getElementById(prevState.id).onmouseenter = () => {
+                this.setIsHoveredDropDown(true);
+            };
+            document.getElementById(prevState.id).onmouseleave = () => {
+                this.setIsHoveredDropDown(false);
+            };
+            return { x, y };
+        });
     }
     componentWillUnmount() {
-        this.currentItem.onmouseenter = undefined;
-        this.currentItem.onmouseleave = undefined;
+        document.getElementById(this.state.id).onmouseenter = undefined;
+        document.getElementById(this.state.id).onmouseleave = undefined;
     }
 
     render() {
-        const { setIsHoveredDropDown, parentRect } = this.props;
+        const { setIsHoveredDropDown } = this.props;
         this.setIsHoveredDropDown = setIsHoveredDropDown;
-        this.parentRect = parentRect;
         const styleTagContent = {
-            left: deriveXfromViewPortX(this.state.x) + 'px',
-            top: deriveYfromViewPortY(this.state.y) + 'px',
+            left: deriveXfromViewPortX(this.state.x),
+            top: deriveYfromViewPortY(this.state.y),
         };
         return (
-            <div className={this.className + " drop-down-list-wrapper"} id={this.id} style={styleTagContent}>
+            <div className={this.state.className + " drop-down-list-wrapper"} id={this.state.id} style={styleTagContent}>
                 <div className="prev-searches-button__drop-down__container">
                     <h4>{prevSearchesResources.title}</h4>
                     <PrevSearchesList />
@@ -139,7 +129,7 @@ class PrevSearchesList extends React.Component {
 const PrevSearchesItem = ({ search }) => {
     return (
         <div className='prev-searches-item__wrapper'>
-            <Link to={'/latestsearches/'+JSON.stringify(search)} className='react-link'>
+            <Link to={'/latestsearches/' + JSON.stringify(search)} className='react-link'>
                 <div className='prev-searches-item__container'>
                     <h4>נדלן</h4>
                     <p>

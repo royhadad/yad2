@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 class SearchResults extends React.Component {
     state = {
@@ -28,4 +29,4 @@ class SearchResults extends React.Component {
     }
 }
 
-export default SearchResults;
+export default connect()(SearchResults);

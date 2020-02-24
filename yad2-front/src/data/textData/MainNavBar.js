@@ -7,7 +7,7 @@ linksSections.push(new LinksSection('נדל"ן', [
     new Link('דירות למכירה', preFix+'/forsale'),
     new Link('דירות להשכרה', preFix+'/rent'),
     new Link(`שותפים`, preFix+'/roommates'),
-    new Link('מסחרי', preFix+'commercial'),
+    new Link('מסחרי', preFix+'/commercial'),
     new Link('חיפוש על גבי מפה', '/map'),
     new Link('כונס נכסים', '/kones'),
     new Link('מדד הנדל"ן', '/realestateindex'),
