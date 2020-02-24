@@ -13,10 +13,26 @@ const RealEstateNavBar = () => {
                 <RealEstateNavBarItem text='נדל"ן מסחרי' url='/realestate/commercial' />
             </div>
             <div className="main-nav-bar__left-side">
-                <RealEstateNavBarLinks url='/kones' text='כונס נכסים' />
-                <RealEstateNavBarLinks url='/realestateindex' text='מדד הנדל"ן' />
-                <RealEstateNavBarLinks url='/yad1' text='יד1 דירות חדשות' />
-                <RealEstateNavBarLinks url='/yadata' text='yadata הערכת שווי נכס' />
+                <RealEstateNavBarLinks
+                    url='/kones'
+                    text='כונס נכסים'
+                    icon={<img className='icon' src='/images/favicon.png' alt='placeholder' />}
+                />
+                <RealEstateNavBarLinks
+                    url='/realestateindex'
+                    text='מדד הנדל"ן'
+                    icon={<img className='icon' src='/images/favicon.png' alt='placeholder' />}
+                />
+                <RealEstateNavBarLinks
+                    url='/yad1'
+                    text='יד1 דירות חדשות'
+                    icon={<img className='icon__yad1' src='/images/yad1_logo.svg' alt='yad1' />}
+                />
+                <RealEstateNavBarLinks
+                    url='/yadata'
+                    text=' הערכת שווי נכס'
+                    icon={<img className='icon__yadata' src='/images/yadata_logo_black.svg' alt='yadata' />}
+                />
             </div>
         </div>
     );
@@ -44,11 +60,12 @@ const mapStateToProps = (state) => ({
 });
 const RealEstateNavBarItem = connect(mapStateToProps)(RealEstateNavBarItemWithoutStore);
 
-const RealEstateNavBarLinks = ({ text, url }) => {
+const RealEstateNavBarLinks = ({ text, url, icon }) => {
     return (
         <div className='real-estate-nav-link__wrapper'>
             <Link to={url} className='react-link'>
                 <div className='real-estate-nav-link__container'>
+                    {icon}
                     {text}
                 </div>
             </Link>

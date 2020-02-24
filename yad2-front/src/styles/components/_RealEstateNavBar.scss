@@ -31,4 +31,15 @@
 }
 .real-estate-nav-link__container{
     @extend .real-estate-nav-item__container;
+    display: flex;
+    align-items: center;
+}
+
+.icon__yad1{
+    margin-left: $xs-size;
+    height: 50%;
+    width: 20%;
+}
+.icon__yadata{
+    margin-left: $xs-size;
 }
