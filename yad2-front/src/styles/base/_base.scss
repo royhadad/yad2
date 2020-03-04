@@ -55,3 +55,20 @@ button:disabled {
 button, input, textarea:focus{
     outline:none;
 }
+
+.input{
+    width: 20rem;
+    height: $form-input-height;
+    background: white;
+    padding: $xs-size;
+    border: $regular-border;
+    display: flex;
+    justify-content: space-between;
+    color: $light-gray;
+}
+input{
+    @extend .input;
+}
+::placeholder {
+    color: $light-gray;
+  }

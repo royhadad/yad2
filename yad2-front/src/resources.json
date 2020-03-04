@@ -3,9 +3,9 @@
         "addItemButton": {
             "text": "+ פרסום מודעה חדשה"
         },
-        "prevSearchesButton":{
-            "title":"חיפושים אחרונים",
-            "toAllSearches":"לכל החיפושים האחרונים"
+        "prevSearchesButton": {
+            "title": "חיפושים אחרונים",
+            "toAllSearches": "לכל החיפושים האחרונים"
         },
         "savedItemsButton": {
             "title": "מודעות שמורות",
@@ -23,16 +23,263 @@
             "accessibilityText": "נגישות "
         },
         "searchBar": {
-            "searchBarHeader":{
-                "dropDownHeader":"ניתן לחפש גם:",
+            "searchBarHeader": {
+                "dropDownHeader": "ניתן לחפש גם:",
                 "titleRight": "איזה נכס ",
                 "titleLeft": " תרצו לחפש?"
             },
             "searchButton": " חיפוש",
             "advancedSearchButton": "+ חיפוש מתקדם",
             "locationInput": {
-                "description": "חפשו אזור, עיר, שכונה או רחוב",
+                "metaText": "חפשו אזור, עיר, שכונה או רחוב",
                 "placeholder": "לדוגמא: רמות, באר שבע"
+            },
+            "typeInput": {
+                "metaText": "סוג נכס",
+                "placeholder": "בחרו סוגי נכסים",
+                "expandButtonText":{
+                    "expand": "עוד סוגים >",
+                    "collapse": "< פחות סוגים"
+                },
+                "types": {
+                    "forsale": [
+                        {
+                            "value": "apartment",
+                            "text": "דירה"
+                        },
+                        {
+                            "value": "gardenApartment",
+                            "text": "דירת גן"
+                        },
+                        {
+                            "value": "privateAndKoteg",
+                            "text": "פרטי/קוטג'"
+                        },
+                        {
+                            "value": "roofAndPenthouse",
+                            "text": "גג/פנטהאוז"
+                        },
+                        {
+                            "value": "fields",
+                            "text": "מגרשים"
+                        },
+                        {
+                            "value": "duplex",
+                            "text": "דופלקס"
+                        },
+                        {
+                            "value": "double",
+                            "text": "דו משפחתי"
+                        },
+                        {
+                            "value": "vacationApartment",
+                            "text": "דירת נופש"
+                        },
+                        {
+                            "value": "basementAndParter",
+                            "text": "מרתף/פרטר"
+                        },
+                        {
+                            "value": "triple",
+                            "text": "טריפלקס"
+                        },
+                        {
+                            "value": "unit",
+                            "text": "יחידת דיור"
+                        },
+                        {
+                            "value": "farm",
+                            "text": "משק חקלאי/נחלה"
+                        },
+                        {
+                            "value": "auxiliary farm",
+                            "text": "משק עזר"
+                        },
+                        {
+                            "value": "assistedLiving",
+                            "text": "דיור מוגן"
+                        },
+                        {
+                            "value": "apartmentBuilding",
+                            "text": "בניין מגורים"
+                        },
+                        {
+                            "value": "studioAndLoft",
+                            "text": "סטודיו/לופט"
+                        },
+                        {
+                            "value": "storage",
+                            "text": "מחסן"
+                        },
+                        {
+                            "value": "parking",
+                            "text": "חניה"
+                        },
+                        {
+                            "value": "acquisitionGroup",
+                            "text": "קב' רכישה/זכות לנכס"
+                        },
+                        {
+                            "value": "general",
+                            "text": "כללי"
+                        }
+                    ],
+                    "rent": [
+                        {
+                            "value": "apartment",
+                            "text": "דירה"
+                        },
+                        {
+                            "value": "gardenApartment",
+                            "text": "דירת גן"
+                        },
+                        {
+                            "value": "privateAndKoteg",
+                            "text": "פרטי/קוטג'"
+                        },
+                        {
+                            "value": "roofAndPenthouse",
+                            "text": "גג/פנטהאוז"
+                        },
+                        {
+                            "value": "fields",
+                            "text": "מגרשים"
+                        },
+                        {
+                            "value": "duplex",
+                            "text": "דופלקס"
+                        },
+                        {
+                            "value": "double",
+                            "text": "דו משפחתי"
+                        },
+                        {
+                            "value": "basementAndParter",
+                            "text": "מרתף/פרטר"
+                        },
+                        {
+                            "value": "triple",
+                            "text": "טריפלקס"
+                        },
+                        {
+                            "value": "unit",
+                            "text": "יחידת דיור"
+                        },
+                        {
+                            "value": "farm",
+                            "text": "משק חקלאי/נחלה"
+                        },
+                        {
+                            "value": "auxiliary farm",
+                            "text": "משק עזר"
+                        },
+                        {
+                            "value": "assistedLiving",
+                            "text": "דיור מוגן"
+                        },
+                        {
+                            "value": "apartmentTrading",
+                            "text": "החלפת דירות"
+                        },
+                        {
+                            "value": "apartmentBuilding",
+                            "text": "בניין מגורים"
+                        },
+                        {
+                            "value": "sublet",
+                            "text": "סאבלט"
+                        },
+                        {
+                            "value": "studioAndLoft",
+                            "text": "סטודיו/לופט"
+                        },
+                        {
+                            "value": "storage",
+                            "text": "מחסן"
+                        },
+                        {
+                            "value": "parking",
+                            "text": "חניה"
+                        },
+                        {
+                            "value": "acquisitionGroup",
+                            "text": "קב' רכישה/זכות לנכס"
+                        },
+                        {
+                            "value": "general",
+                            "text": "כללי"
+                        }
+                    ],
+                    "commercial": [
+                        {
+                            "value": "halls",
+                            "text": "אולמות"
+                        },
+                        {
+                            "value": "officeBuilding",
+                            "text": "בניין משרדים"
+                        },
+                        {
+                            "value": "stores",
+                            "text": "חנויות/שטח מסחרי"
+                        },
+                        {
+                            "value": "sharedWorkSpace",
+                            "text": "חלל עבודה משותף"
+                        },
+                        {
+                            "value": "parkingLot",
+                            "text": "חניון"
+                        },
+                        {
+                            "value": "general",
+                            "text": "כללי"
+                        },
+                        {
+                            "value": "vacationApartment",
+                            "text": "דירת נופש"
+                        },
+                        {
+                            "value": "industrialBuildings",
+                            "text": "מבני תעשיה"
+                        },
+                        {
+                            "value": "fields",
+                            "text": "מגרשים"
+                        },
+                        {
+                            "value": "warehouses",
+                            "text": "מחסנים"
+                        },
+                        {
+                            "value": "basement",
+                            "text": "מרתף"
+                        },
+                        {
+                            "value": "offices",
+                            "text": "משרדים"
+                        },
+                        {
+                            "value": "studio",
+                            "text": "סטודיו"
+                        },
+                        {
+                            "value": "businessForSale",
+                            "text": "עסקים למכירה"
+                        },
+                        {
+                            "value": "hotel",
+                            "text": "בית מלון"
+                        },
+                        {
+                            "value": "clinics",
+                            "text": "קליניקות"
+                        }
+                    ]
+                }
+            },
+            "rooms": {
+                "metaText": "חדרים"
             }
         },
         "searchResults": {
@@ -45,7 +292,7 @@
                 },
                 "filterText": "הצג מודעות",
                 "filterWithPriceText": "עם מחיר",
-                "filterWithImageText":"עם תמונה",
+                "filterWithImageText": "עם תמונה",
                 "showMapText": "תצוגת מפה"
             }
         }
@@ -60,15 +307,16 @@
             "personInWheelchair": "♿",
             "oppositeArrows": "⇆",
             "heart": "♡",
-            "shekel":"₪",
-            "image":"🖼",
-            "map": "🗺️"
+            "shekel": "₪",
+            "image": "🖼",
+            "map": "🗺️",
+            "checkmark": "✔"
         },
-        "propertyTypes":{
-            "forsale":"מכירה",
-            "rent":"השכרה",
-            "roommates":"שותפים",
-            "commercial":"מסחרי"
+        "propertyTypes": {
+            "forsale": "מכירה",
+            "rent": "השכרה",
+            "roommates": "שותפים",
+            "commercial": "מסחרי"
         }
     }
 }

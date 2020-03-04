@@ -28,3 +28,15 @@
     border-radius: 50%;
     }
 }
+
+.search-field__wrapper{
+
+
+    >p{
+        font-size: $font-size-s;
+        margin-bottom: 0;
+    }
+    >.search-field__invisible-meta-text{
+        visibility: hidden;
+    }
+}

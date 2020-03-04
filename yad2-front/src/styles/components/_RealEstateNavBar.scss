@@ -24,6 +24,7 @@
 
 .real-estate-nav-link__wrapper{
     @extend .real-estate-nav-item__wrapper;
+    flex-shrink: 3;
 }
 .real-estate-nav-link__wrapper:hover{
     background: $very-light-gray;
@@ -33,13 +34,25 @@
     @extend .real-estate-nav-item__container;
     display: flex;
     align-items: center;
+    flex-direction: row;
+    @media (min-width: $desktop-breakpoint-plus) {
+        white-space: nowrap;
+    }
 }
 
 .icon__yad1{
     margin-left: $xs-size;
-    height: 50%;
-    width: 20%;
+    height: 2rem;
 }
 .icon__yadata{
     margin-left: $xs-size;
+    height: 1.5rem;
+}
+.icon__kones{
+    margin-left: $xs-size;
+    height:4rem;
+}
+.icon__real-estate-index{
+    margin-left: $xs-size;
+    height: 4rem;
 }

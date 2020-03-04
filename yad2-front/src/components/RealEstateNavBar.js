@@ -1,7 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+/*
 
+                <RealEstateNavBarLinks
+                    url='/kones'
+                    text='כונס נכסים'
+                    icon={<img className='icon__yad1' src='/images/kones-nehasim.svg' alt='kones nehasim' />}
+                />
+                <RealEstateNavBarLinks
+                    url='/realestateindex'
+                    text='מדד הנדל"ן'
+                    icon={<img className='icon__yad1' src='/images/realEstateIndex.svg' alt='placeholder' />}
+                />
+
+*/
 const RealEstateNavBar = () => {
     return (
         <div className="real-estate-nav-bar">
@@ -14,24 +27,24 @@ const RealEstateNavBar = () => {
             </div>
             <div className="main-nav-bar__left-side">
                 <RealEstateNavBarLinks
-                    url='/kones'
-                    text='כונס נכסים'
-                    icon={<img className='icon' src='/images/favicon.png' alt='placeholder' />}
-                />
-                <RealEstateNavBarLinks
-                    url='/realestateindex'
-                    text='מדד הנדל"ן'
-                    icon={<img className='icon' src='/images/favicon.png' alt='placeholder' />}
+                    url='/yadata'
+                    text=' הערכת שווי נכס'
+                    icon={<img className='icon__yadata' src='/images/yadata_logo_black.svg' alt='yadata' viewBox='1' />}
                 />
                 <RealEstateNavBarLinks
                     url='/yad1'
                     text='יד1 דירות חדשות'
-                    icon={<img className='icon__yad1' src='/images/yad1_logo.svg' alt='yad1' />}
+                    icon={<img className='icon__yad1' src='/images/yad1_logo.svg' alt='yad1' viewBox='1' />}
                 />
                 <RealEstateNavBarLinks
-                    url='/yadata'
-                    text=' הערכת שווי נכס'
-                    icon={<img className='icon__yadata' src='/images/yadata_logo_black.svg' alt='yadata' />}
+                    url='/realestateindex'
+                    text='מדד הנדל"ן'
+                    icon={<img className='icon__real-estate-index' src='/images/realEstateIndex.svg' alt='real estate index' viewBox='1' />}
+                />
+                <RealEstateNavBarLinks
+                    url='/kones'
+                    text='כונס נכסים'
+                    icon={<img className='icon__kones' src='/images/kones-nehasim.svg' alt='kones nehasim' viewBox='1' />}
                 />
             </div>
         </div>

@@ -5,6 +5,6 @@
     border-top: $very-light-gray;
     height: 30rem;
     border-top: 1px solid $very-light-gray;
-    box-shadow: 1.5rem 1.5rem 1.5rem -1.5rem rgba(0, 0, 0, 0.3), -1.5rem 1.5rem 1.5rem -1.5rem rgba(0, 0, 0, 0.2);
+    box-shadow: $top-and-sides-box-shadow;
     text-align: center;
 }

@@ -9,6 +9,7 @@
     border: none;
     padding: $s-size $m-size;
     margin: 0 $s-size;
+    height: $form-input-height;
 }
 
 .search-bar__main__advanced-button:hover{
@@ -24,4 +25,9 @@
     >span{
         font-size: 1.5rem;
     }
+    height: $form-input-height;
+}
+
+.search-field__wrapper{
+    margin-right: $m-size;
 }
