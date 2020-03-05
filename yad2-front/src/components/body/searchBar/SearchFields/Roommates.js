@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMinRooms, setMaxRooms } from '../../../../actions/filters';
+import { setMinRoommates, setMaxRoommates } from '../../../../actions/filters';
 import RangePicker from '../../../generics/RangePicker';
-class Rooms extends React.Component {
+class Roommates extends React.Component {
     getOptions = () => {
         const options = [];
-        for (let i = 1; i <= 12; i += 0.5) {
+        for (let i = 2; i <= 5; i++) {
             options.push(i);
         }
         return options;
@@ -13,7 +13,7 @@ class Rooms extends React.Component {
     render() {
         return (
             <RangePicker
-                placeholder={'חדרים'}
+                placeholder={'שותפים'}
                 fromOptions={this.getOptions()}
                 toOptions={this.getOptions()}
                 dispatchFrom={this.props.dispatchFrom}
@@ -25,11 +25,11 @@ class Rooms extends React.Component {
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    dispatchFrom: (minRooms) => dispatch(setMinRooms(minRooms)),
-    dispatchTo: (maxRooms) => dispatch(setMaxRooms(maxRooms))
+    dispatchFrom: (minRoommates) => dispatch(setMinRoommates(minRoommates)),
+    dispatchTo: (maxRoommates) => dispatch(setMaxRoommates(maxRoommates))
 });
 const mapStateToProps = (state) => ({
-    from: state.filters.minRooms,
-    to: state.filters.maxRooms
+    from: state.filters.minRoommates,
+    to: state.filters.maxRoommates
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Rooms);
+export default connect(mapStateToProps, mapDispatchToProps)(Roommates);

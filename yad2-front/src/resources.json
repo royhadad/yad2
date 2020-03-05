@@ -278,6 +278,10 @@
                     ]
                 }
             },
+            "commercialType":{
+                "metaText": "בחרו עסקה",
+                "placeholder": "סוג עסקה"
+            },
             "rooms": {
                 "metaText": "חדרים"
             }

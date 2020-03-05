@@ -7,39 +7,21 @@
     >p{
         color:$orange;
         margin-right: $m-size;
+        cursor: pointer;
     }
+}
+.type-button-field{
+    @extend .input;
+    @extend .clickable;
+    width: 15rem;
 }
 
 .type__dropdown__container{
-    
-}
-
-.checkbox__wrapper__generic{
     display: flex;
-    flex-direction: row;
-    direction: rtl;
-    align-items: center;
-    margin-left: $m-size;
-    .checkbox__icon{
-        width:1.5rem;
-        height: 1.5rem;
-        border-radius: 0.1rem;
-        border: 1px solid black;
-        margin: 0 $s-size;
-        z-index: 20;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    }
-}
-.checkbox__wrapper__unselected{
-    @extend .checkbox__wrapper__generic;
-}
-.checkbox__wrapper__unselected:hover{
-    .checkbox__icon{
-        border-color: $orange;
-    }
+    flex-direction: column;
+    flex-wrap: wrap; 
+    max-height: 16rem;
+    position: relative;
 }
 
 .checkbox__wrapper__selected{

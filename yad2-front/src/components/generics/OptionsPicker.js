@@ -1,14 +1,22 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import onClickOutside from 'react-onclickoutside'
 import Checkbox from '../../../generics/Checkbox';
 const textResources = require('../../../../resources.json');
-const typeInput = textResources.body.searchBar.typeInput;
 const unicodeChars = textResources.general.unicodeChars;
+
+/*
+HOW TO USE
+recieves props:
+options: {value: any, text: string}[]
+selectedOptions: {value: any, text: string}[]
+dispatchAddOption: func(option)
+dispatchRemoveOption: func(option)
+*/
 
 class Type extends React.Component {
     state = {
-        selectedOptions: [],
+        selectedOptions: this.props.selectedOptions,
+        options: this.props.options,
         shouldShowDropDown: false,
         isExpanded: false
     };
@@ -16,6 +24,11 @@ class Type extends React.Component {
         this.setState((prevState) => ({ shouldShowDropDown: !prevState.shouldShowDropDown }));
     }
     toggleOption = (optionValue) => {
+        if(this.state.options.includes(optionValue)){
+            this.props.dispatchRemoveOption();
+        }else{
+            this.props.dispatchAddOption();
+        }
         this.setState((prevState) => {
             if (prevState.selectedOptions.includes(optionValue)) {
                 return {
@@ -42,7 +55,7 @@ class Type extends React.Component {
                     onClick={this.toggleShouldShowDropDown}
                 >
                     {typeInput.placeholder}
-                    <span>{unicodeChars[this.state.shouldShowDropDown?'upFacingArrow':'downFacingArrow']}</span>
+                    <span>{unicodeChars[this.state.shouldShowDropDown ? 'upFacingArrow' : 'downFacingArrow']}</span>
                 </div>
                 {
                     this.state.shouldShowDropDown
@@ -61,10 +74,8 @@ class Type extends React.Component {
         );
     }
 }
-const mapStateToProps = (state) => ({
-    category: state.filters.search.category
-});
-export default connect(mapStateToProps)(Type);
+
+export default Type;
 
 class TypeDropDownWithoutOnClickOutside extends React.Component {
     handleClickOutside = this.props.toggleShouldShowDropDown;
@@ -73,7 +84,7 @@ class TypeDropDownWithoutOnClickOutside extends React.Component {
         if (!this.props.isExpanded) {
             options = options.slice(0, 6);
         }
-        const style = {width: Math.ceil(options.length/6) * 180};
+        const style = { width: Math.ceil(options.length / 6) * 180 };
         return (
             <div className='type__dropdown__wrapper' style={style}>
                 <div className='type__dropdown__container'>

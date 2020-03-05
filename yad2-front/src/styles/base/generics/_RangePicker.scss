@@ -1,0 +1,53 @@
+.range-picker__dropdown__wrapper{
+    @extend .type__dropdown__wrapper;
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 7rem $m-size $m-size $m-size;
+}
+
+.range-picker__button__wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.range-picker__field{
+    @extend .input;
+    @extend .clickable;
+    width: 12rem;
+}
+.range-picker__button{
+    @extend .input;
+    @extend .clickable;
+    width: 8rem;
+}
+
+.range-picker__options__dropdown{
+    width: 8rem;
+    max-height: 30rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    direction: rtl;
+    position: absolute;
+    border: $regular-border;
+}
+.range-picker__option{
+    @extend .input;
+    @extend .clickable;
+    background: white;
+    color: $text-color;
+    border: none;
+}
+.range-picker__option:hover{
+    background: $very-very-light-gray;
+}
+
+.arrow-up__with-top-border{
+    position: absolute;
+    z-index: 10;
+    pointer-events: none;
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $very-light-gray;
+}

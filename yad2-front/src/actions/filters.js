@@ -28,3 +28,64 @@ export const toggleShowOnlyItemsWithPrice = () => ({
 export const toggleShowOnlyItemsWithImage = () => ({
     type: 'TOGGLE_SHOW_ONLY_ITEMS_WITH_IMAGE'
 });
+
+//SET MIN ROOMS
+export const setMinRooms = (minRooms)=>({
+    type: 'SET_MIN_ROOMS',
+    minRooms
+});
+//SET MAX ROOMS
+export const setMaxRooms = (maxRooms)=>({
+    type: 'SET_MAX_ROOMS',
+    maxRooms
+});
+//SET MIN PRICE
+export const setMinPrice = (minPrice)=>({
+    type: 'SET_MIN_PRICE',
+    minPrice
+});
+//SET MAX PRICE
+export const setMaxPrice = (maxPrice)=>({
+    type: 'SET_MAX_PRICE',
+    maxPrice
+});
+//SET MIN FLOOR
+export const setMinFloor = (minFloor)=>({
+    type: 'SET_MIN_FLOOR',
+    minFloor
+});
+//SET MAX FLOOR
+export const setMaxFloor = (maxFloor)=>({
+    type: 'SET_MAX_FLOOR',
+    maxFloor
+});
+//SET MIN SIZE
+export const setMinSize = (minSize)=>({
+    type: 'SET_MIN_SIZE',
+    minSize
+});
+//SET MAX SIZE
+export const setMaxSize = (maxSize)=>({
+    type: 'SET_MAX_SIZE',
+    maxSize
+});
+//SET MIN ROOMMATES
+export const setMinRoommates = (minRoommates)=>({
+    type: 'SET_MIN_ROOMMATES',
+    minRoommates
+});
+//SET MAX ROOMMATES
+export const setMaxRoommates = (maxRoommates)=>({
+    type: 'SET_MAX_ROOMMATES',
+    maxRoommates
+});
+//ADD TYPE
+export const addType = (propertyType)=>({
+    type: 'ADD_TYPE',
+    propertyType
+})
+//REMOVE TYPE
+export const removeType = (propertyType)=>({
+    type: 'REMOVE_TYPE',
+    propertyType
+})
