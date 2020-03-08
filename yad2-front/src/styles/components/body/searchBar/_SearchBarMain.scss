@@ -7,27 +7,24 @@
 .search-bar__main__advanced-button{
     background: $very-very-light-gray;
     border: none;
-    padding: $s-size $m-size;
-    margin: 0 $s-size;
+    padding: $s-size $s-size;
     height: $form-input-height;
 }
 
 .search-bar__main__advanced-button:hover{
-    background: darken($very-very-light-gray, 20%);
+    background: darken($very-very-light-gray, 15%);
 }
 
 .search-bar__main__search-button{
     background: $orange;
     color: white;
     border: none;
-    padding: $s-size $m-size;
-    margin: 0 $s-size;
+    padding: $s-size $s-size;
     >span{
         font-size: 1.5rem;
     }
     height: $form-input-height;
 }
-
-.search-field__wrapper{
-    margin-right: $m-size;
+.search-bar__main__search-button:hover{
+    background: darken($orange, 6%);
 }

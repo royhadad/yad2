@@ -35,23 +35,25 @@ export default SearchBarHeader;
 class SearchBarHeaderDropDownWithoutOnclickoutside extends React.Component {
     handleClickOutside = this.props.toggleDropDown;
     render() {
-        const preFix = '/realestate';
         return (
             <div className='search-bar__header__drop-down__wrapper'>
                 <div className='search-bar__header__drop-down__header'>{searchBarHeaderResources.dropDownHeader}</div>
-                <SearchBarHeaderDropDownItem text={propertyTypes['forsale']} url={preFix + '/forsale'} category={this.props.category} />
-                <SearchBarHeaderDropDownItem text={propertyTypes['rent']} url={preFix + '/rent'} category={this.props.category} />
-                <SearchBarHeaderDropDownItem text={propertyTypes['roommates']} url={preFix + '/roommates'} category={this.props.category} />
-                <SearchBarHeaderDropDownItem text={propertyTypes['commercial']} url={preFix + '/commercial'} category={this.props.category} />
+                <SearchBarHeaderDropDownItem currentCategory={this.props.category} itemCategory={'forsale'} />
+                <SearchBarHeaderDropDownItem currentCategory={this.props.category} itemCategory={'rent'} />
+                <SearchBarHeaderDropDownItem currentCategory={this.props.category} itemCategory={'roommates'} />
+                <SearchBarHeaderDropDownItem currentCategory={this.props.category} itemCategory={'commercial'} />
             </div>
         );
     }
 }
 const SearchBarHeaderDropDown = onClickOutside(SearchBarHeaderDropDownWithoutOnclickoutside);
 
-const SearchBarHeaderDropDownItem = ({ text, url, UrlCategory }) => {
+const SearchBarHeaderDropDownItem = ({ currentCategory, itemCategory }) => {
+    const preFix = '/realestate';
+    const url = preFix + '/' + itemCategory;
+    const text = propertyTypes[itemCategory];
     const specialStyleClass = ' search-bar__header__drop-down__item__selected';
-    const className = 'search-bar__header__drop-down__item' + ((text === UrlCategory) ? specialStyleClass : '');
+    const className = 'search-bar__header__drop-down__item' + ((itemCategory === currentCategory) ? specialStyleClass : '');
     return (
         <div className={className}>
             <Link to={url}>

@@ -19,6 +19,12 @@
     @extend .input;
     @extend .clickable;
     width: 8rem;
+    >.range-picker__button__placeholder{
+        color: $light-gray;
+    }
+    >.range-picker__button__selected-option{
+        color: $text-color;
+    }
 }
 
 .range-picker__options__dropdown{
@@ -50,4 +56,22 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid $very-light-gray;
+}
+
+.range-picker-simple__button__wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.range-picker-simple__button__wrapper{
+    @extend .range-picker__button__wrapper;
+    margin: 0;
+    width: auto;
+}
+.range-picker-simple__options__dropdown{
+    @extend .range-picker__options__dropdown;
+    width:12rem;
+}
+.range-picker-simple__button{
+    @extend .range-picker__button;
+    width: 12rem;
 }

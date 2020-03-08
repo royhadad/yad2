@@ -5,6 +5,7 @@ import Location from './SearchFields/Location';
 import Type from './SearchFields/Type';
 import Rooms from './SearchFields/Rooms';
 import Roommates from './SearchFields/Roommates';
+import Price from './SearchFields/Price';
 import resources from '../../../resources.json';
 const searchBarResources = resources.body.searchBar;
 class SearchBarMain extends React.Component {
@@ -20,7 +21,7 @@ class SearchBarMain extends React.Component {
                         <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
-                        <span>PRICE COMPONENT</span>
+                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
                     </React.Fragment>
                 );
             case 'rent':
@@ -29,14 +30,14 @@ class SearchBarMain extends React.Component {
                         <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
-                        <span>PRICE COMPONENT</span>
+                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
                     </React.Fragment>
                 );
             case 'roommates':
                 return (
                     <React.Fragment>
                         <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
-                        <span>PRICE COMPONENT</span>
+                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Roommates />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
                     </React.Fragment>
@@ -47,7 +48,7 @@ class SearchBarMain extends React.Component {
                         <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.commercialType.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
-                        <span>PRICE COMPONENT</span>
+                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
                     </React.Fragment>
                 );
             default:

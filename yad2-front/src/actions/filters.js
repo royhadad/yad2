@@ -89,3 +89,12 @@ export const removeType = (propertyType)=>({
     type: 'REMOVE_TYPE',
     propertyType
 })
+//TOGGLE ONLY IMMEDIATE ENTRY
+export const toggleOnlyImmediateEntry = ()=>({
+    type: 'TOGGLE_ONLY_IMMEDIATE_ENTRY'
+})
+//SET MIN ENTRY DATE
+export const setMinEntryDate = (date) =>({
+    type: 'SET_MIN_ENTRY_DATE',
+    date
+})

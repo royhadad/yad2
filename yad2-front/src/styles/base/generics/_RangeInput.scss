@@ -1,0 +1,7 @@
+.range-input__wrapper{
+    display: flex;
+    flex-direction: row;
+    >input{
+        width: 10rem;
+    }
+}

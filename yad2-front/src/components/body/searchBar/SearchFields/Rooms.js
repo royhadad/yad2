@@ -20,6 +20,7 @@ class Rooms extends React.Component {
                 dispatchTo={this.props.dispatchTo}
                 to={this.props.to}
                 from={this.props.from}
+                uuid={'roomsSearchFieldComponent'}
             />
         );
     }

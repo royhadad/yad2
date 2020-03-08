@@ -12,18 +12,13 @@ toOptions: any[]
 dispatchTo: func(any)
 dispatchFrom: func(any)
 uuid: string
+optional: minusOneValue //the value that is displayed instead of the number -1, if it exists
 */
 
 class RangePicker extends React.Component {
     state = {
-        shouldShowDropDown: false,
         from: this.props.from,
         to: this.props.to
-    }
-    toggleShouldShowDropDown = () => {
-        this.setState((prevState) => ({
-            shouldShowDropDown: !prevState.shouldShowDropDown
-        }));
     }
     setFrom = (optionValue) => {
         this.setState(() => ({ from: optionValue }), () => this.props.dispatchFrom(this.state.from));
@@ -57,28 +52,19 @@ class RangePicker extends React.Component {
         }
     }
     render() {
-        const ignoreClickOutsideClass = 'RangePickerDropDown__outsideClickIgnoreClass' + this.props.uuid;
         return (
             <div>
-                <div className={'range-picker__field ' + ignoreClickOutsideClass} onClick={this.toggleShouldShowDropDown}>
-                    {this.getPlaceholderText()}
-                    <span>{unicodeChars[this.state.shouldShowDropDown ? 'upFacingArrow' : 'downFacingArrow']}</span>
-                </div>
-                {
-                    this.state.shouldShowDropDown
-                    &&
-                    <RangePickerDropDown
-                        fromOptions={this.getCleanFromOptions()}
-                        toOptions={this.getCleanToOptions()}
-                        toggleShouldShowDropDown={this.toggleShouldShowDropDown}
-                        outsideClickIgnoreClass={ignoreClickOutsideClass}
-                        from={this.state.from}
-                        to={this.state.to}
-                        setFrom={this.setFrom}
-                        setTo={this.setTo}
-                        uuid={this.props.uuid + 'child'}
-                    />
-                }
+                <RangePickerDropDown
+                    fromOptions={this.getCleanFromOptions()}
+                    toOptions={this.getCleanToOptions()}
+                    toggleShouldShowDropDown={this.toggleShouldShowDropDown}
+                    from={this.state.from}
+                    to={this.state.to}
+                    setFrom={this.setFrom}
+                    setTo={this.setTo}
+                    uuid={this.props.uuid + 'child'}
+                    minusOneValue={this.props.minusOneValue}
+                />
             </div>
         );
     }
@@ -86,8 +72,7 @@ class RangePicker extends React.Component {
 
 export default RangePicker;
 
-class RangePickerDropDownWithOutOnClickOutside extends React.Component {
-    handleClickOutside = this.props.toggleShouldShowDropDown;
+class RangePickerDropDown extends React.Component {
     state = {
         shouldShowToDropDown: false,
         shouldShowFromDropDown: false
@@ -102,46 +87,41 @@ class RangePickerDropDownWithOutOnClickOutside extends React.Component {
             shouldShowToDropDown: !prevState.shouldShowToDropDown
         }));
     }
+    getPlaceholderTextByOptionValue = (option, isFrom) => {
+        if (option === undefined) {
+            return <span className='range-picker__button__placeholder'>{isFrom ? textData.fromPlaceholder : textData.toPlaceholder}</span>
+        }
+        return <span className='range-picker__button__selected-option'>{option === -1 ? this.props.minusOneValue : option}</span>
+    }
 
     render() {
         const onClickOutsideIgnoreClassFrom = 'RangePickerToDropDown__outsideClickIgnoreClass' + this.props.uuid + '1';
         const onClickOutsideIgnoreClassTo = 'RangePickerToDropDown__outsideClickIgnoreClass' + this.props.uuid + '2';
         return (
-            <div className={'range-picker__dropdown__wrapper'}>
-                <div className={'range-picker__button__wrapper'}>
-                    <div className={'range-picker__button ' + onClickOutsideIgnoreClassTo} onClick={this.toggleShouldShowToDropDown}>
-                        {
-                            this.props.to
-                                ?
-                                <span className='range-picker__button__selected-option'>{this.props.to}</span>
-                                :
-                                <span className='range-picker__button__placeholder'>{textData.toPlaceholder}</span>
-                        }
+            <div className={'range-picker-simple__button__wrapper'}>
+                <div className={'range-picker-simple__button__wrapper'}>
+                    <div className={'range-picker-simple__button ' + onClickOutsideIgnoreClassTo} onClick={this.toggleShouldShowToDropDown}>
+                        {this.getPlaceholderTextByOptionValue(this.props.to, false)}
                         <span>{unicodeChars[this.state.shouldShowToDropDown ? 'upFacingArrow' : 'downFacingArrow']}</span>
                     </div>
                     {
                         this.state.shouldShowToDropDown
                         &&
                         <React.Fragment>
-                            <div className={'arrow-up__with-top-border'} style={{ top: 62 }} />
                             <RangePickerOptionsDropDown
                                 selected={this.props.to}
                                 options={this.props.toOptions}
                                 setOption={this.props.setTo}
                                 toggleShouldShowDropDown={this.toggleShouldShowToDropDown}
-                                outsideClickIgnoreClass={onClickOutsideIgnoreClassTo} />
+                                outsideClickIgnoreClass={onClickOutsideIgnoreClassTo}
+                                minusOneValue={this.props.minusOneValue}
+                            />
                         </React.Fragment>
                     }
                 </div>
-                <div className={'range-picker__button__wrapper'}>
-                    <div className={'range-picker__button ' + onClickOutsideIgnoreClassFrom} onClick={this.toggleShouldShowFromDropDown}>
-                        {
-                            this.props.from
-                                ?
-                                <span className='range-picker__button__selected-option'>{this.props.from}</span>
-                                :
-                                <span className='range-picker__button__placeholder'>{textData.fromPlaceholder}</span>
-                        }
+                <div className={'range-picker-simple__button__wrapper'}>
+                    <div className={'range-picker-simple__button ' + onClickOutsideIgnoreClassFrom} onClick={this.toggleShouldShowFromDropDown}>
+                        {this.getPlaceholderTextByOptionValue(this.props.from, true)}
                         <span>{unicodeChars[this.state.shouldShowFromDropDown ? 'upFacingArrow' : 'downFacingArrow']}</span>
                     </div>
                     {
@@ -154,7 +134,9 @@ class RangePickerDropDownWithOutOnClickOutside extends React.Component {
                                 options={this.props.fromOptions}
                                 setOption={this.props.setFrom}
                                 toggleShouldShowDropDown={this.toggleShouldShowFromDropDown}
-                                outsideClickIgnoreClass={onClickOutsideIgnoreClassFrom} />
+                                outsideClickIgnoreClass={onClickOutsideIgnoreClassFrom}
+                                minusOneValue={this.props.minusOneValue}
+                            />
                         </React.Fragment>
                     }
                 </div>
@@ -162,14 +144,21 @@ class RangePickerDropDownWithOutOnClickOutside extends React.Component {
         );
     }
 }
-const RangePickerDropDown = onClickOutSide(RangePickerDropDownWithOutOnClickOutside);
 
 class RangePickerOptionsDropDownWithOutOnClickOutside extends React.Component {
     handleClickOutside = this.props.toggleShouldShowDropDown;
-
+    getTextByOptionValue = (option) => {
+        if (option === undefined) {
+            return textData.allTextValue;
+        }
+        if (option === -1) {
+            return this.props.minusOneValue;
+        }
+        return option;
+    }
     render() {
         return (
-            <div className={'range-picker__options__dropdown'} style={{ top: 72 }}>
+            <div className={'range-picker-simple__options__dropdown'} style={{ top: 72 }}>
                 {
                     this.props.options.map((option, index) => (
                         <div
@@ -181,7 +170,7 @@ class RangePickerOptionsDropDownWithOutOnClickOutside extends React.Component {
                             }}
                             style={this.props.selected === option ? { fontWeight: 600 } : {}}
                         >
-                            {option === undefined ? textData.allTextValue : option}
+                            {this.getTextByOptionValue(option)}
                         </div>
                     ))
                 }

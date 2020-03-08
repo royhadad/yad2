@@ -2,6 +2,17 @@ import React from 'react';
 const textResources = require('../../resources.json');
 const unicodeChars = textResources.general.unicodeChars;
 
+/*
+HOW TO USE
+receives props:
+option: {
+    text: string,
+    value: any
+}
+isSelected: bool
+toggleOption: func(option.value)
+*/
+
 class Checkbox extends React.Component {
     render() {
         return (
@@ -14,14 +25,3 @@ class Checkbox extends React.Component {
 }
 
 export default Checkbox;
-
-/*
-HOW TO USE
-recieves props:
-option: {
-    text: string,
-    value: any
-}
-isSelected: bool
-toggleOption: func(option.value)
-*/

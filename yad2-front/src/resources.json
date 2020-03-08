@@ -37,7 +37,7 @@
             "typeInput": {
                 "metaText": "סוג נכס",
                 "placeholder": "בחרו סוגי נכסים",
-                "expandButtonText":{
+                "expandButtonText": {
                     "expand": "עוד סוגים >",
                     "collapse": "< פחות סוגים"
                 },
@@ -278,12 +278,33 @@
                     ]
                 }
             },
-            "commercialType":{
+            "commercialType": {
                 "metaText": "בחרו עסקה",
                 "placeholder": "סוג עסקה"
             },
             "rooms": {
                 "metaText": "חדרים"
+            },
+            "price": {
+                "metaText": "מחיר בש\"ח",
+                "fromPlaceholder": "ממחיר",
+                "toPlaceholder": "עד מחיר"
+            },
+            "size": {
+                "metaText": "גודל דירה (במ\"ר)",
+                "fromPlaceholder": "מ-",
+                "toPlaceholder": "עד-"
+            },
+            "floor":{
+                "metaText": "קומה",
+                "fromPlaceholder": "מ-",
+                "toPlaceholder": "עד-"
+            },
+            "entryDate":{
+                "metaText": "תאריך כניסה"
+            },
+            "immediateEntryCheckbox":{
+                "text": "כניסה מיידית"
             }
         },
         "searchResults": {
@@ -321,6 +342,13 @@
             "rent": "השכרה",
             "roommates": "שותפים",
             "commercial": "מסחרי"
+        },
+        "generics": {
+            "RangePicker": {
+                "fromPlaceholder": "מ-",
+                "toPlaceholder": "עד-",
+                "allTextValue": "הכל"
+            }
         }
     }
 }

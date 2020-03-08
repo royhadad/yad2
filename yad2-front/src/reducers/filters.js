@@ -151,17 +151,33 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 search: {
                     ...state.search,
-                    type: [...state.search.types, action.propertyType]
+                    types: [...state.search.types, action.propertyType]
                 }
             };
-        case 'REMOVE_TYPE':
+        case 'REMOVE_TYPE':            
             return {
                 ...state,
                 search: {
                     ...state.search,
-                    type: state.search.types.filter((type) => type !== action.propertyType)
+                    types: state.search.types.filter((type) => type !== action.propertyType)
                 }
             };
+        case 'TOGGLE_ONLY_IMMEDIATE_ENTRY':
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    onlyImmediateEntry: !state.search.onlyImmediateEntry
+                }
+            }
+        case 'SET_MIN_ENTRY_DATE':
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    minEntryDate: action.date
+                }
+            }
         default:
             return state;
     }

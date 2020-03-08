@@ -4,6 +4,7 @@
 @import './base/generics/RadioButton';
 @import './base/generics/SearchField';
 @import './base/generics/RangePicker';
+@import './base/generics/RangeInput';
 @import './components/footer';
 @import './components//MainNavBar';
 @import './components/RealEstateNavBar';
@@ -21,3 +22,5 @@
 @import './components/body/searchBar/searchFields/Location';
 @import './components/body/searchBar/searchFields/Type';
 @import './components/body/searchBar/searchFields/Rooms';
+@import './components/body/searchBar/searchFields/ImmediateEntryCheckbox';
+@import './components/body/searchBar/SearchBarAdvancedFilters';
