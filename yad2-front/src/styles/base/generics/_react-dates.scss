@@ -1,0 +1,22 @@
+.CalendarDay:hover{
+background: lighten($orange, 20%);
+color: white;
+}
+
+// Will edit selected date or the endpoints of a range of dates
+.CalendarDay__selected {
+background: $orange;
+color: white;
+}
+
+// Will edit when hovered over. _span style also has this property
+.CalendarDay__selected:hover {
+background: lighten($orange, 20%);
+color: white;
+}
+
+.SingleDatePicker {
+    *{
+        z-index: 20;
+    } 
+}

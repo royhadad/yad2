@@ -6,6 +6,7 @@ import Paging from './Paging';
 import { connect } from 'react-redux';
 
 class SearchResultsWrapper extends React.Component {
+
     render() {
         return (
             <div className='search-results__wrapper'>

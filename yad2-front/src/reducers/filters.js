@@ -172,12 +172,12 @@ export default (state = filtersReducerDefaultState, action) => {
                     onlyImmediateEntry: !state.search.onlyImmediateEntry
                 }
             }
-        case 'SET_MIN_ENTRY_DATE':
+        case 'SET_MIN_ENTRY_DATE':            
             return {
                 ...state,
                 search: {
                     ...state.search,
-                    minEntryDate: action.date
+                    minEntryDate: action.minEntryDate
                 }
             }
         case 'SET_TEXT':

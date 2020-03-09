@@ -312,7 +312,7 @@
                 "toPlaceholder": "עד-"
             },
             "entryDate": {
-                "metaText": "תאריך כניסה"
+                "metaText": "תאריך כניסה החל מ:"
             },
             "immediateEntryCheckbox": {
                 "text": "כניסה מיידית"

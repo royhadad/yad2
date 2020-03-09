@@ -3,16 +3,42 @@ import { connect } from 'react-redux';
 import { setLocation } from '../../../../actions/filters';
 
 class Location extends React.Component {
+    state = {
+        autoCompleteOptions: []
+    }
+    fetchAutoCompleteOptions = async (input) => {
+        if (input !== undefined) {
+            try {
+                let response = await fetch(`googlePlacesAutoComplete?input=${input}`);
+                response = await response.json();
+                console.log(response);
+                
+                
+                this.setState({ autoCompleteOptions: response.options });
+            } catch (e) {
+                console.log('google places api error', e);
+            }
+        }
+    }
     getPlaceHolderText() {
-        return 'לדוגמא: באר שבע, רמות';
+        return 'לדוגמא: באר שבע';
     }
     render() {
         return (
-            <input
-                placeholder={this.getPlaceHolderText()}
-                value={this.props.location === undefined ? '' : this.props.location}
-                onChange={(e) => this.props.setLocation(e.target.value)}
-            />
+            <div>
+                <input
+                    placeholder={this.getPlaceHolderText()}
+                    value={this.props.location}
+                    onChange={(e) => this.fetchAutoCompleteOptions(e.target.value)}
+                />
+                {
+                    this.state.autoCompleteOptions.length>0
+                    &&
+                    <div>
+                        {this.state.autoCompleteOptions.map((option)=><span>option</span>)}
+                    </div>
+                }
+            </div>
         );
     }
 }

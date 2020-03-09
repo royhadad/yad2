@@ -99,9 +99,9 @@ export const toggleOnlyImmediateEntry = ()=>({
     type: 'TOGGLE_ONLY_IMMEDIATE_ENTRY'
 })
 //SET MIN ENTRY DATE
-export const setMinEntryDate = (date) =>({
+export const setMinEntryDate = (minEntryDate) =>({
     type: 'SET_MIN_ENTRY_DATE',
-    date
+    minEntryDate
 })
 //SET TEXT
 export const setText = (text)=>({
