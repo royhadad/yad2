@@ -19,8 +19,6 @@ uuid: string
 
 class Type extends React.Component {
     state = {
-        selectedOptions: this.props.selectedOptions,
-        options: this.props.options,
         shouldShowDropDown: false,
         isExpanded: false
     };
@@ -28,22 +26,11 @@ class Type extends React.Component {
         this.setState((prevState) => ({ shouldShowDropDown: !prevState.shouldShowDropDown }));
     }
     toggleOption = (optionValue) => {
-        if (this.state.selectedOptions.includes(optionValue)) {
+        if (this.props.selectedOptions.includes(optionValue)) {
             this.props.dispatchRemoveOption(optionValue);
         } else {
             this.props.dispatchAddOption(optionValue);
         }
-        this.setState((prevState) => {
-            if (prevState.selectedOptions.includes(optionValue)) {
-                return {
-                    selectedOptions: prevState.selectedOptions.filter((option) => option !== optionValue)
-                }
-            } else {
-                return {
-                    selectedOptions: [...prevState.selectedOptions, optionValue]
-                }
-            }
-        });
     }
     toggleIsExpanded = () => {
         this.setState((prevState => ({
@@ -56,7 +43,7 @@ class Type extends React.Component {
             <div className='.search-field__wrapper'>
                 <div
                     className={'type-button-field '+ignoreClickOutsideClass}
-                    style={this.state.selectedOptions.length > 0 ? { color: 'black' } : {}}
+                    style={this.props.selectedOptions.length > 0 ? { color: 'black' } : {}}
                     onClick={this.toggleShouldShowDropDown}
                 >
                     {this.props.placeholder}
@@ -67,7 +54,7 @@ class Type extends React.Component {
                     &&
                     <TypeDropDown
                         toggleOption={this.toggleOption}
-                        selectedOptions={this.state.selectedOptions}
+                        selectedOptions={this.props.selectedOptions}
                         options={this.props.options}
                         category={this.props.category}
                         isExpanded={this.state.isExpanded}

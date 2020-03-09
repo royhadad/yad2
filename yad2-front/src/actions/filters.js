@@ -1,3 +1,8 @@
+//SET FILTERS
+export const setFilters = (filters)=>({
+    type: 'SET_FILTERS',
+    filters
+})
 //SET CATAGORY
 export const setCategory = (category) => ({
     type: 'SET_CATEGORY',
@@ -97,4 +102,27 @@ export const toggleOnlyImmediateEntry = ()=>({
 export const setMinEntryDate = (date) =>({
     type: 'SET_MIN_ENTRY_DATE',
     date
+})
+//SET TEXT
+export const setText = (text)=>({
+    type: 'SET_TEXT',
+    text
+})
+//TOGGLE PROPERTY
+export const toggleProperty = (property)=>({
+    type: 'TOGGLE_PROPERTY',
+    property  
+})
+//CLEAR SEARCH
+export const clearSearch = () =>({
+    type: 'CLEAR_SEARCH'
+})
+//CLEAR FILTERS
+export const clearFilters = ()=>({
+    type: 'CLEAR_FILTERS'
+})
+//SET LOCATION
+export const setLocation = (location)=>({
+    type: 'SET_LOCATION',
+    location
 })

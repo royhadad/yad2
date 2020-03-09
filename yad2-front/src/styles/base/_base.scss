@@ -57,7 +57,7 @@ button, input, textarea:focus{
 }
 
 .input{
-    width: 20rem;
+    width: 18rem;
     height: $form-input-height;
     background: white;
     padding: $xs-size;
@@ -75,4 +75,7 @@ input{
 
 .clickable{
     cursor: pointer;
+}
+.invisible{
+    visibility: hidden;
 }

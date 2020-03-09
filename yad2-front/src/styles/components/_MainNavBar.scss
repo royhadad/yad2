@@ -195,6 +195,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    .react-link{
+        font-size: $font-size-l;
+    }
 }
 .prev-searches-button__drop-down__to-all-searches:hover{
     background: $very-very-light-gray;
@@ -208,6 +212,8 @@
         color: $text-color;
         width:100%;
         height:100%;
+        display: flex;
+        justify-content: right;
     }
 }
 
@@ -216,11 +222,14 @@
 }
 
 .prev-searches-item__container {
-    margin: $s-size $m-size;
+    margin: 0 $l-size;
     >h4{
+        font-size: $font-size-l;
         color: $light-gray;
+        margin: $m-size 0;
     }
     >p{
+        font-size: $font-size-m;
         direction: rtl;
         text-align: right;
     }

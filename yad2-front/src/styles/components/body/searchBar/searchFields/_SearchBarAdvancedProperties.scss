@@ -1,0 +1,22 @@
+.search-bar-advanced-properties__wrapper{
+    display: flex;
+    flex-direction: column;
+    >.metaText__wrapper{
+        display: flex;
+        flex-direction: row;
+        justify-content: right;
+        align-items: center;
+        >h4{
+            margin: $xs-size 0;
+        }
+    }
+    >.options__wrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        >div{
+            margin: $m-size 0;
+            width: 17rem;
+        }
+    }
+}

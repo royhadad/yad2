@@ -8,8 +8,13 @@
 
 .top-info__currentNav{
     color: $light-gray;
+    direction: rtl;
 }
-
+.top-info__currentNav__item{
+    padding: $s-size $s-size;
+    color: $light-gray;
+    font-size: $font-size-s;
+}
 .top-info__accessibility-button{
     display: flex;
     align-items: center;

@@ -7,10 +7,17 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 //#endregion
 
-router.get('/api/feed', (req, res) => {
+router.get('/feed', (req, res) => {
     let responseObj = new ResponseObj();
-    responseObj.data = ['item1', 'item2', 'item3'];
-    res.send(JSON.stringify(responseObj));
+    //const filters = JSON.parse(Buffer.from(req.query.filters, 'base64').toString('binary'));
+
+    responseObj.data = {};
+    responseObj.data.itemsArr = ['item1', 'item2', 'item3'];
+    responseObj.data.totalItems = 1273;
+    //TODO
+    setTimeout(() => {
+        res.send(JSON.stringify(responseObj));
+    }, 2000);
 });
 
 router.get('/favicon.ico', (req, res) => {

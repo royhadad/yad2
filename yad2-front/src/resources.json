@@ -29,6 +29,7 @@
                 "titleLeft": " תרצו לחפש?"
             },
             "searchButton": " חיפוש",
+            "clearButtonText": "נקה",
             "advancedSearchButton": "+ חיפוש מתקדם",
             "locationInput": {
                 "metaText": "חפשו אזור, עיר, שכונה או רחוב",
@@ -278,9 +279,19 @@
                     ]
                 }
             },
-            "commercialType": {
+            "dealTypeInput": {
                 "metaText": "בחרו עסקה",
-                "placeholder": "סוג עסקה"
+                "placeholder": "סוג עסקה",
+                "types": [
+                    {
+                        "value": "forsale",
+                        "text": "מכירה"
+                    },
+                    {
+                        "value": "rent",
+                        "text": "השכרה"
+                    }
+                ]
             },
             "rooms": {
                 "metaText": "חדרים"
@@ -295,16 +306,226 @@
                 "fromPlaceholder": "מ-",
                 "toPlaceholder": "עד-"
             },
-            "floor":{
+            "floor": {
                 "metaText": "קומה",
                 "fromPlaceholder": "מ-",
                 "toPlaceholder": "עד-"
             },
-            "entryDate":{
+            "entryDate": {
                 "metaText": "תאריך כניסה"
             },
-            "immediateEntryCheckbox":{
+            "immediateEntryCheckbox": {
                 "text": "כניסה מיידית"
+            },
+            "text": {
+                "metaText": "חיפוש חופשי"
+            },
+            "advancedProperties": {
+                "metaText": "מאפייני דירה",
+                "forsale": [
+                    {
+                        "value": "pandorDoors",
+                        "text": "דלתות פנדור"
+                    },
+                    {
+                        "value": "parking",
+                        "text": "חניה"
+                    },
+                    {
+                        "value": "elevator",
+                        "text": "מעלית"
+                    },
+                    {
+                        "value": "airConditioning",
+                        "text": "מיזוג"
+                    },
+                    {
+                        "value": "balcony",
+                        "text": "מרפסת"
+                    },
+                    {
+                        "value": "mamad",
+                        "text": "ממ\"ד"
+                    },
+                    {
+                        "value": "bars",
+                        "text": "סורגים"
+                    },
+                    {
+                        "value": "storage",
+                        "text": "מחסן"
+                    },
+                    {
+                        "value": "disabledFriendly",
+                        "text": "גישה לנכים"
+                    },
+                    {
+                        "value": "reconditioned",
+                        "text": "משופצת"
+                    },
+                    {
+                        "value": "furnished",
+                        "text": "מרוהטת"
+                    },
+                    {
+                        "value": "exclusive",
+                        "text": "בבלעדיות"
+                    }
+                ],
+                "rent": [
+                    {
+                        "value": "pandorDoors",
+                        "text": "דלתות פנדור"
+                    },
+                    {
+                        "value": "parking",
+                        "text": "חניה"
+                    },
+                    {
+                        "value": "elevator",
+                        "text": "מעלית"
+                    },
+                    {
+                        "value": "airConditioning",
+                        "text": "מיזוג"
+                    },
+                    {
+                        "value": "balcony",
+                        "text": "מרפסת"
+                    },
+                    {
+                        "value": "mamad",
+                        "text": "ממ\"ד"
+                    },
+                    {
+                        "value": "bars",
+                        "text": "סורגים"
+                    },
+                    {
+                        "value": "storage",
+                        "text": "מחסן"
+                    },
+                    {
+                        "value": "disabledFriendly",
+                        "text": "גישה לנכים"
+                    },
+                    {
+                        "value": "reconditioned",
+                        "text": "משופצת"
+                    },
+                    {
+                        "value": "furnished",
+                        "text": "מרוהטת"
+                    },
+                    {
+                        "value": "petsFriendly",
+                        "text": "חיות מחמד"
+                    },
+                    {
+                        "value": "roommates",
+                        "text": "לשותפים"
+                    },
+                    {
+                        "value": "longTerm",
+                        "text": "לטווח ארוך"
+                    },
+                    {
+                        "value": "exclusive",
+                        "text": "בבלעדיות"
+                    }
+                ],
+                "roommates": [
+                    {
+                        "value": "parking",
+                        "text": "חניה"
+                    },
+                    {
+                        "value": "elevator",
+                        "text": "מעלית"
+                    },
+                    {
+                        "value": "airConditioning",
+                        "text": "מיזוג"
+                    },
+                    {
+                        "value": "balcony",
+                        "text": "מרפסת"
+                    },
+                    {
+                        "value": "mamad",
+                        "text": "ממ\"ד"
+                    },
+                    {
+                        "value": "bars",
+                        "text": "סורגים"
+                    },
+                    {
+                        "value": "storage",
+                        "text": "מחסן"
+                    },
+                    {
+                        "value": "disabledFriendly",
+                        "text": "גישה לנכים"
+                    },
+                    {
+                        "value": "reconditioned",
+                        "text": "משופצת"
+                    },
+                    {
+                        "value": "furnished",
+                        "text": "מרוהטת"
+                    },
+                    {
+                        "value": "petsFriendly",
+                        "text": "חיות מחמד"
+                    },
+                    {
+                        "value": "nonSmoking",
+                        "text": "שותף לא מעשן"
+                    },
+                    {
+                        "value": "kosherKeeper",
+                        "text": "שומר כשרות"
+                    }
+                ],
+                "commercial": [
+                    {
+                        "value": "parking",
+                        "text": "חניה"
+                    },
+                    {
+                        "value": "elevator",
+                        "text": "מעלית"
+                    },
+                    {
+                        "value": "airConditioning",
+                        "text": "מיזוג"
+                    },
+                    {
+                        "value": "furnished",
+                        "text": "מרוהטת"
+                    },
+                    {
+                        "value": "storage",
+                        "text": "מחסן"
+                    },
+                    {
+                        "value": "balcony",
+                        "text": "מרפסת"
+                    },
+                    {
+                        "value": "disabledFriendly",
+                        "text": "גישה לנכים"
+                    },
+                    {
+                        "value": "rentalProperty",
+                        "text": "נכס מניב"
+                    },
+                    {
+                        "value": "exclusive",
+                        "text": "בבלעדיות"
+                    }
+                ]
             }
         },
         "searchResults": {
@@ -319,6 +540,10 @@
                 "filterWithPriceText": "עם מחיר",
                 "filterWithImageText": "עם תמונה",
                 "showMapText": "תצוגת מפה"
+            },
+            "searchResultsMetaData": {
+                "numOfResultsTextStart": "מציג ",
+                "numOfResultsTextEnd": " מודעות"
             }
         }
     },

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCurrentPage } from '../../../actions/items';
 import { deriveYfromViewPortY } from '../../../utility/calculatePositions';
+import { fetchItems } from '../../../selectors/items';
 
 class Paging extends React.Component {
     numOfPagesToShow = 7;
@@ -59,7 +59,11 @@ const mapStateToProps1 = (state) => ({
 });
 export default connect(mapStateToProps1)(Paging);
 
-const PagingItemWithoutStore = ({ pageNumber, isSelected, setCurrentPage }) => {
+const PagingItemWithoutStore = ({ pageNumber, isSelected }) => {
+    const setCurrentPage = () => {
+        fetchItems(pageNumber);
+        window.scrollTo(0, getScrollToYPositionTopOfSearchBar());
+    }
     return (
         <div className={isSelected ? 'paging__item__selected' : 'paging__item'} onClick={setCurrentPage}>
             {pageNumber}
@@ -74,11 +78,4 @@ const getScrollToYPositionTopOfSearchBar = () => {
 const mapStateToProps2 = (state, ownProps) => ({
     isSelected: state.items.currentPage === ownProps.pageNumber
 });
-const mapDispatchToProps2 = (dispatch, ownProps) => ({
-    setCurrentPage: () => {
-        dispatch(setCurrentPage(ownProps.pageNumber));
-
-        window.scrollTo(0, getScrollToYPositionTopOfSearchBar());
-    }
-});
-const PagingItem = connect(mapStateToProps2, mapDispatchToProps2)(PagingItemWithoutStore);
+const PagingItem = connect(mapStateToProps2)(PagingItemWithoutStore);

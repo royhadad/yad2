@@ -1,5 +1,5 @@
 import React from 'react';
-
+import deriveStringFromNumber from '../../utility/deriveStringFromNumber';
 /*
 HOW TO USE
 receives props:
@@ -18,19 +18,6 @@ class RangeInput extends React.Component {
         }
         return parseInt(str.replace(/,/g, ''));
     }
-    deriveStringFromNumber = (num) => {
-        if (num === undefined) {
-            return '';
-        }
-        let str = num.toString();
-        let res = '';
-        for (let index = str.length - 1, counter = 0; index >= 0; index-- , counter++) {
-            res += (counter % 3 === 0 && index !== str.length - 1) ? ',' : '';
-            res += str[index];
-        }
-        res = res.split('').reverse().join('');
-        return res;
-    }
     dispatchFrom = (e) => {
         const number = this.deriveNumberFromString(e.target.value);
         if (!isNaN(number) || number === undefined) {
@@ -46,8 +33,8 @@ class RangeInput extends React.Component {
     render() {
         return (
             <div className='range-input__wrapper'>
-                <input placeholder={this.props.fromPlaceholder} value={this.deriveStringFromNumber(this.props.from)} onChange={this.dispatchFrom} />
-                <input placeholder={this.props.toPlaceholder} value={this.deriveStringFromNumber(this.props.to)} onChange={this.dispatchTo} />
+                <input placeholder={this.props.fromPlaceholder} value={deriveStringFromNumber(this.props.from)} onChange={this.dispatchFrom} />
+                <input placeholder={this.props.toPlaceholder} value={deriveStringFromNumber(this.props.to)} onChange={this.dispatchTo} />
             </div>
         );
     }

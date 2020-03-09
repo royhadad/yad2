@@ -1,9 +1,12 @@
 const itemsReducerDefaultState = {
     currentPage: 1,
-    numOfPages: 20,
-    totalItems: 20 * 40 - 6,
+    numOfPages: 0,
+    totalItems: 0,
+    isLoading: true,
+    searchedLocation: undefined,
     itemsArr: []
 };
+const itemsPerPage = 40;
 
 export default (state = itemsReducerDefaultState, action) => {
     switch (action.type) {
@@ -12,15 +15,26 @@ export default (state = itemsReducerDefaultState, action) => {
                 ...state,
                 currentPage: action.currentPage
             };
-        case 'SET_NUM_OF_PAGES':
-            return {
-                ...state,
-                numOfPages: action.numOfPages
-            };
         case 'SET_TOTAL_ITEMS':
             return {
                 ...state,
-                totalItems: action.totalItems
+                totalItems: action.totalItems,
+                numOfPages: Math.ceil(action.totalItems/itemsPerPage)
+            }
+        case 'SET_ITEMS_ARR':
+            return {
+                ...state,
+                itemsArr: action.itemsArr
+            }
+        case 'SET_IS_LOADING':
+            return {
+                ...state,
+                isLoading: action.isLoading
+            }
+        case 'SET_SEARCHED_LOCATION':
+            return {
+                ...state,
+                searchedLocation: action.searchedLocation
             }
         default:
             return state;

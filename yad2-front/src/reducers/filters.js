@@ -25,6 +25,8 @@ const filtersReducerDefaultState = {
 
 export default (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
+        case 'SET_FILTERS':
+            return action.filters;
         case 'SET_CATEGORY':
             return {
                 ...state,
@@ -154,7 +156,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     types: [...state.search.types, action.propertyType]
                 }
             };
-        case 'REMOVE_TYPE':            
+        case 'REMOVE_TYPE':
             return {
                 ...state,
                 search: {
@@ -176,6 +178,44 @@ export default (state = filtersReducerDefaultState, action) => {
                 search: {
                     ...state.search,
                     minEntryDate: action.date
+                }
+            }
+        case 'SET_TEXT':
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    text: action.text
+                }
+            }
+        case 'TOGGLE_PROPERTY':
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    properties: state.search.properties.includes(action.property)
+                        ?
+                        state.search.properties.filter((property) => property !== action.property)
+                        :
+                        [...state.search.properties, action.property]
+                }
+            }
+        case 'CLEAR_SEARCH':
+            return {
+                sortBy: state.sortBy,
+                search: {
+                    ...filtersReducerDefaultState.search,
+                    category: state.search.category
+                }
+            }
+        case 'CLEAR_FILTERS':
+            return filtersReducerDefaultState;
+        case 'SET_LOCATION':            
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    location: action.location === '' ? undefined : action.location
                 }
             }
         default:

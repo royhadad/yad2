@@ -3,28 +3,25 @@ import { connect } from 'react-redux';
 import { addType, removeType } from '../../../../actions/filters';
 import OptionsPicker from '../../../generics/OptionsPicker';
 const textResources = require('../../../../resources.json');
-const typeInput = textResources.body.searchBar.typeInput;
+const dealTypeInput = textResources.body.searchBar.dealTypeInput;
 
 class Type extends React.Component {
-    render() {        
+    render() {
         return (
             <div className='.search-field__wrapper'>
                 <OptionsPicker
-                    options={typeInput.types[this.props.category]}
+                    options={dealTypeInput.types}
                     selectedOptions={this.props.types}
-                    placeholder={typeInput.placeholder}
-                    expandText={typeInput.expandButtonText.expand}
-                    collapseText={typeInput.expandButtonText.collapse}
+                    placeholder={dealTypeInput.placeholder}
                     dispatchAddOption={this.props.dispatchAddOption}
                     dispatchRemoveOption={this.props.dispatchRemoveOption}
-                    uuid={'typeSearchFieldComponent1'}
+                    uuid={'dealTypeSearchFieldComponent1'}
                 />
             </div>
         );
     }
 }
 const mapStateToProps = (state) => ({
-    category: state.filters.search.category,
     types: state.filters.search.types
 });
 const mapDispatchToProps = (dispatch) => ({

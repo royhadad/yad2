@@ -3,8 +3,25 @@
     background: white;
     position: absolute;
     border-top: $very-light-gray;
-    height: 30rem;
     border-top: 1px solid $very-light-gray;
     box-shadow: $top-and-sides-box-shadow;
     text-align: center;
+    padding: $m-size $xl-size;
+    >hr{
+        width: 90%;
+        border: 1px solid $very-light-gray;
+        margin-top: $m-size;
+    }
+}
+.search-bar-advanced__bottom-buttons__wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.search-bar-advanced__bottom-buttons__clear-button{
+    background: inherit;
+    border: none;
+    color: $text-color;
+    padding: $s-size $l-size;
 }

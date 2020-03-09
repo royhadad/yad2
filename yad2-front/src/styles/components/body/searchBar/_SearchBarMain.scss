@@ -1,7 +1,13 @@
 .search-bar__main__container{
     display: flex;
     margin-top: $l-size;
-    position: relative;
+    flex-wrap: wrap;
+    >.search-buttons__container{
+        padding:0;
+        margin:0;
+        display: flex;
+        flex-direction: row;
+    }
 }
 
 .search-bar__main__advanced-button{

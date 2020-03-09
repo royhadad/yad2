@@ -3,16 +3,14 @@ import { connect } from 'react-redux';
 import SearchField from '../../generics/SearchField';
 import Location from './SearchFields/Location';
 import Type from './SearchFields/Type';
+import DealType from './SearchFields/DealType';
 import Rooms from './SearchFields/Rooms';
 import Roommates from './SearchFields/Roommates';
 import Price from './SearchFields/Price';
 import resources from '../../../resources.json';
+import { fetchItems } from '../../../selectors/items';
 const searchBarResources = resources.body.searchBar;
 class SearchBarMain extends React.Component {
-
-    onClickSearch = () => {
-        alert('TODO');
-    }
     renderSearchFieldsByCategory = (category) => {
         switch (category) {
             case 'forsale':
@@ -46,7 +44,7 @@ class SearchBarMain extends React.Component {
                 return (
                     <React.Fragment>
                         <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
-                        <SearchField metaText={searchBarResources.commercialType.metaText} selectorJSX={<Type />} />
+                        <SearchField metaText={searchBarResources.dealTypeInput.metaText} selectorJSX={<DealType />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
                     </React.Fragment>
@@ -59,15 +57,14 @@ class SearchBarMain extends React.Component {
         return (
             <div className='search-bar__main__container'>
                 {this.renderSearchFieldsByCategory(this.props.category)}
-                <SearchField metaText='' selectorJSX={<button className='search-bar__main__advanced-button' onClick={this.props.toggleShouldLoadAdvancedSearch}>{searchBarResources.advancedSearchButton}</button>} />
-                <SearchField metaText='' selectorJSX={(
-                    <button className='search-bar__main__search-button' onClick={this.onClickSearch}>
-                        <span>{resources.general.unicodeChars.search}</span>{searchBarResources.searchButton}
-                    </button>
-                )} />
-
-
-
+                <span className='search-buttons__container'>
+                    <SearchField metaText='' selectorJSX={<button className='search-bar__main__advanced-button' onClick={this.props.toggleShouldLoadAdvancedSearch}>{searchBarResources.advancedSearchButton}</button>} />
+                    <SearchField metaText='' selectorJSX={(
+                        <button className='search-bar__main__search-button' onClick={() => fetchItems()}>
+                            <span>{resources.general.unicodeChars.search}</span>{searchBarResources.searchButton}
+                        </button>
+                    )} />
+                </span>
             </div>
         );
     }
