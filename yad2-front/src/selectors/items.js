@@ -1,4 +1,4 @@
-import { setFilters } from '../actions/filters';
+import { setFilters, setLocationCurrentText } from '../actions/filters';
 import { setCurrentPage, setTotalItems, setItemsArr, setIsLoading, setSearchedLocation } from '../actions/items';
 import { store } from '../index';
 
@@ -37,8 +37,9 @@ export const fetchItems = async (currentPage = 1) => {
     store.dispatch(setFilters(cleanFilters(filters)));
     store.dispatch(setCurrentPage(currentPage));
     store.dispatch(setSearchedLocation(filters.search.location));
+    store.dispatch(setLocationCurrentText(filters.search.location === undefined ? '' : filters.search.location.description));
     store.dispatch(setIsLoading(true));
-    
+
     const queryString = Buffer.from(JSON.stringify({ ...filters, currentPage }), 'binary').toString('base64');
     try {
         let response = await fetch(`/feed?filters=${queryString}`);
@@ -52,7 +53,7 @@ export const fetchItems = async (currentPage = 1) => {
         store.dispatch(setItemsArr(data.itemsArr));
     } catch (e) {
         console.log(e);
-    }finally{
+    } finally {
         store.dispatch(setIsLoading(false));
     }
 }

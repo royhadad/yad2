@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import SearchField from '../../generics/SearchField';
-import Location from './SearchFields/Location';
 import Type from './SearchFields/Type';
 import DealType from './SearchFields/DealType';
 import Rooms from './SearchFields/Rooms';
@@ -9,6 +8,7 @@ import Roommates from './SearchFields/Roommates';
 import Price from './SearchFields/Price';
 import resources from '../../../resources.json';
 import { fetchItems } from '../../../selectors/items';
+import Location from './SearchFields/Location';
 const searchBarResources = resources.body.searchBar;
 class SearchBarMain extends React.Component {
     renderSearchFieldsByCategory = (category) => {
@@ -16,7 +16,6 @@ class SearchBarMain extends React.Component {
             case 'forsale':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
                         <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
@@ -25,7 +24,6 @@ class SearchBarMain extends React.Component {
             case 'rent':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
                         <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
@@ -34,7 +32,6 @@ class SearchBarMain extends React.Component {
             case 'roommates':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Roommates />} />
                         <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
@@ -43,7 +40,6 @@ class SearchBarMain extends React.Component {
             case 'commercial':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                         <SearchField metaText={searchBarResources.dealTypeInput.metaText} selectorJSX={<DealType />} />
                         <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
                         <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
@@ -56,6 +52,7 @@ class SearchBarMain extends React.Component {
     render() {
         return (
             <div className='search-bar__main__container'>
+                <SearchField metaText={searchBarResources.locationInput.metaText} selectorJSX={<Location />} />
                 {this.renderSearchFieldsByCategory(this.props.category)}
                 <span className='search-buttons__container'>
                     <SearchField metaText='' selectorJSX={<button className='search-bar__main__advanced-button' onClick={this.props.toggleShouldLoadAdvancedSearch}>{searchBarResources.advancedSearchButton}</button>} />

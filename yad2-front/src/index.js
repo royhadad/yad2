@@ -4,8 +4,8 @@ import { Provider } from 'react-redux';
 import AppRouter, {  } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import 'normalize.css/normalize.css';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates-temp/initialize';
+import 'react-dates-temp/lib/css/_datepicker.css';
 import './styles/styles.scss';
 import 'moment/locale/he'
 

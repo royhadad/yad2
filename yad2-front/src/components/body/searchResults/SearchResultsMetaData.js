@@ -16,7 +16,7 @@ class SearchResultsMetaData extends React.Component {
             text += 'נדל"ן ';
         }
         text += propertyTypes[category];
-        if (searchedLocation !== undefined) {
+        if (searchedLocation !== '') {
             text += ' - ' + searchedLocation;
         }
         return text;
@@ -33,6 +33,6 @@ class SearchResultsMetaData extends React.Component {
 
 const mapStateToProps = (state) => ({
     category: state.filters.search.category,
-    searchedLocation: state.items.searchedLocation
+    searchedLocation: state.items.searchedLocation === undefined ? '' : state.items.searchedLocation.description
 })
 export default connect(mapStateToProps)(SearchResultsMetaData);

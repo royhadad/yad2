@@ -1,5 +1,6 @@
 const filtersReducerDefaultState = {
     sortBy: 'date',
+    locationCurrentText: '',
     search: {
         category: 'forsale',
         location: undefined,
@@ -172,7 +173,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     onlyImmediateEntry: !state.search.onlyImmediateEntry
                 }
             }
-        case 'SET_MIN_ENTRY_DATE':            
+        case 'SET_MIN_ENTRY_DATE':
             return {
                 ...state,
                 search: {
@@ -210,13 +211,19 @@ export default (state = filtersReducerDefaultState, action) => {
             }
         case 'CLEAR_FILTERS':
             return filtersReducerDefaultState;
-        case 'SET_LOCATION':            
+        case 'SET_LOCATION':
             return {
                 ...state,
+                locationCurrentText: action.location === undefined ? '' : action.location.description,
                 search: {
                     ...state.search,
-                    location: action.location === '' ? undefined : action.location
+                    location: action.location
                 }
+            }
+        case 'SET_LOCATION_CURRENT_TEXT':
+            return {
+                ...state,
+                locationCurrentText: action.locationCurrentText || ''
             }
         default:
             return state;

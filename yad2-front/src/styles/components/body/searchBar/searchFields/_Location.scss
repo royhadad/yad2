@@ -1,0 +1,36 @@
+.location-search-input{
+    border: $regular-border;
+}
+
+.autocomplete-dropdown-container{
+    position: absolute;
+    z-index: 20;
+    border: $regular-border;
+    min-width: 18rem;
+
+    .suggestion-item{
+        padding: $xs-size $s-size;
+        cursor: pointer;
+        >span{
+            color: $text-color;
+        }
+    }
+
+    >.suggestion-item--unactive{
+        @extend .suggestion-item;
+        background: white;
+    }
+    >.suggestion-item--active{
+        @extend .suggestion-item;
+        background: $very-very-light-gray;
+    }
+    >.suggestions--header{
+        background: white;
+        padding: 0 $s-size;
+        cursor: context-menu;
+        >span{
+            color: $light-gray;
+            font-size: $font-size-s;
+        }
+    }
+}

@@ -1,22 +1,46 @@
+//setting z index
+.SingleDatePicker, 
+.SingleDatePicker .DayPickerNavigation{
+    z-index: 20;
+}
+
+//getting rid of unwanted stuff
+.CalendarMonth_table td,
+.CalendarMonth_table td:hover{
+    border: none;
+}
+.SingleDatePicker .DayPickerNavigation_button{
+    border: none;
+}
+input.DateInput_input{
+    border-bottom: none;
+}
+.DayPickerKeyboardShortcuts_show__bottomRight::before {
+    display: none;
+}
+
+//styling
+.CalendarDay{
+    border-radius: 3rem;
+    width: 50%;
+}
 .CalendarDay:hover{
 background: lighten($orange, 20%);
 color: white;
 }
-
-// Will edit selected date or the endpoints of a range of dates
 .CalendarDay__selected {
 background: $orange;
 color: white;
 }
-
-// Will edit when hovered over. _span style also has this property
 .CalendarDay__selected:hover {
 background: lighten($orange, 20%);
 color: white;
 }
-
-.SingleDatePicker {
-    *{
-        z-index: 20;
-    } 
+.DateInput,
+.DateInput *{
+    width: 18rem;
+}
+input.DateInput_input{
+    color: $light-gray;
+    font-size: $font-size-m;
 }

@@ -5,6 +5,7 @@ const ResponseObj = require('../ResponseObj.js');
 const express = require('express');
 const jwt = require("jsonwebtoken");
 const router = express.Router();
+const { itemsArr } = require('../data/fixtures');
 //#endregion
 
 router.get('/feed', (req, res) => {
@@ -12,7 +13,7 @@ router.get('/feed', (req, res) => {
     //const filters = JSON.parse(Buffer.from(req.query.filters, 'base64').toString('binary'));
 
     responseObj.data = {};
-    responseObj.data.itemsArr = ['item1', 'item2', 'item3'];
+    responseObj.data.itemsArr = itemsArr;
     responseObj.data.totalItems = 1273;
     //TODO
     setTimeout(() => {

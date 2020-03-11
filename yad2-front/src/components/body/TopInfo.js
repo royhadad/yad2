@@ -27,7 +27,7 @@ class TopInfo extends React.Component {
 }
 const mapStateToProps = (state) => ({
     category: state.filters.search.category,
-    searchedLocation: state.items.searchedLocation
+    searchedLocation: state.items.searchedLocation === undefined ? '' : state.items.searchedLocation.description
 });
 const mapDispatchToProps = (dispatch) => ({
     clearSearchLocation: () => {

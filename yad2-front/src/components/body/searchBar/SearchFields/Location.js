@@ -1,52 +1,70 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setLocation } from '../../../../actions/filters';
+import { setLocation, setLocationCurrentText } from '../../../../actions/filters';
+import PlacesAutocomplete from 'react-places-autocomplete';
+import resources from '../../../../resources.json';
+const locationInputResources = resources.body.searchBar.locationInput;
 
 class Location extends React.Component {
-    state = {
-        autoCompleteOptions: []
-    }
-    fetchAutoCompleteOptions = async (input) => {
-        if (input !== undefined) {
-            try {
-                let response = await fetch(`googlePlacesAutoComplete?input=${input}`);
-                response = await response.json();
-                console.log(response);
-                
-                
-                this.setState({ autoCompleteOptions: response.options });
-            } catch (e) {
-                console.log('google places api error', e);
-            }
-        }
-    }
-    getPlaceHolderText() {
-        return 'לדוגמא: באר שבע';
-    }
-    render() {
+    handleChange = (locationCurrentText) => {
+        this.props.setLocationCurrentText(locationCurrentText);
+    };
+    handleSelect = (location) => {
+        this.props.setLocation(location);
+        document.getElementById('LocationInputId1').style.display = 'none';
+    };
+
+    render() {        
         return (
-            <div>
-                <input
-                    placeholder={this.getPlaceHolderText()}
-                    value={this.props.location}
-                    onChange={(e) => this.fetchAutoCompleteOptions(e.target.value)}
-                />
-                {
-                    this.state.autoCompleteOptions.length>0
-                    &&
+            <PlacesAutocomplete
+                value={this.props.locationCurrentText}
+                onChange={this.handleChange}
+                searchOptions={{
+                    types: ['(regions)'],
+                    componentRestrictions: { country: "il" }
+                }}
+                onError={(status, clearSuggestions) => { clearSuggestions(); }}
+            >
+                {({ getInputProps, suggestions, getSuggestionItemProps }) => (
                     <div>
-                        {this.state.autoCompleteOptions.map((option)=><span>option</span>)}
+                        <input
+                            {...getInputProps({
+                                placeholder: locationInputResources.placeholder,
+                                className: 'location-search-input',
+                            })}
+                        />
+                        {suggestions.length > 0 &&
+                            <div className="autocomplete-dropdown-container" id="LocationInputId1">
+                                {suggestions.length > 0 && <div className='suggestions--header'><span>{locationInputResources.suggestionsHeader}</span></div>}
+                                {suggestions.map((suggestion) => {
+                                    const className = suggestion.active
+                                        ? 'suggestion-item--active'
+                                        : 'suggestion-item--unactive';
+                                    return (
+                                        <div
+                                            {...getSuggestionItemProps(suggestion, {
+                                                className
+                                            })}
+                                            onClick={() => this.handleSelect(suggestion)}
+                                        >
+                                            <span>{suggestion.description}</span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        }
                     </div>
-                }
-            </div>
+                )}
+            </PlacesAutocomplete>
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    location: state.filters.search.location
+    locationCurrentText: state.filters.locationCurrentText
 });
 const mapDispatchToProps = (dispatch) => ({
-    setLocation: (location) => dispatch(setLocation(location))
-});
+    setLocation: (location) => dispatch(setLocation(location)),
+    setLocationCurrentText: (locationCurrentText) => dispatch(setLocationCurrentText(locationCurrentText))
+})
 export default connect(mapStateToProps, mapDispatchToProps)(Location);

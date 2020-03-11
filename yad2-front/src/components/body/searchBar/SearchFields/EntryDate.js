@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setMinEntryDate } from '../../../../actions/filters';
-import { SingleDatePicker } from 'react-dates';
-import { OPEN_UP } from 'react-dates/constants';
+import { SingleDatePicker } from 'react-dates-temp';
+import { OPEN_UP } from 'react-dates-temp/constants';
+import resources from '../../../../resources.json';
+const entryDateResources = resources.body.searchBar.entryDate;
+const calendarUnicode = resources.general.unicodeChars.calendar;
 
 class EntryDate extends React.Component {
     state = {
@@ -12,6 +15,7 @@ class EntryDate extends React.Component {
         return (
             <div>
                 <SingleDatePicker
+                    placeholder={entryDateResources.placeholder + calendarUnicode}
                     date={this.props.minEntryDate}
                     onDateChange={(minEntryDate) => this.props.setMinEntryDate(minEntryDate)}
                     focused={this.state.focused}

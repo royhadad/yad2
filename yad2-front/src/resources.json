@@ -33,7 +33,8 @@
             "advancedSearchButton": "+ חיפוש מתקדם",
             "locationInput": {
                 "metaText": "חפשו אזור, עיר, שכונה או רחוב",
-                "placeholder": "לדוגמא: רמות, באר שבע"
+                "placeholder": "לדוגמא: רמות, באר שבע",
+                "suggestionsHeader": "חפשו אזור, עיר, שכונה או רחוב"
             },
             "typeInput": {
                 "metaText": "סוג נכס",
@@ -312,7 +313,8 @@
                 "toPlaceholder": "עד-"
             },
             "entryDate": {
-                "metaText": "תאריך כניסה החל מ:"
+                "metaText": "תאריך כניסה החל מ:",
+                "placeholder": "החל מ- הזינו תאריך "
             },
             "immediateEntryCheckbox": {
                 "text": "כניסה מיידית"
@@ -560,7 +562,8 @@
             "shekel": "₪",
             "image": "🖼",
             "map": "🗺️",
-            "checkmark": "✔"
+            "checkmark": "✔",
+            "calendar": "📅"
         },
         "propertyTypes": {
             "forsale": "מכירה",

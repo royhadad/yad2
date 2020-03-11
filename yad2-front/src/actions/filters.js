@@ -126,3 +126,8 @@ export const setLocation = (location)=>({
     type: 'SET_LOCATION',
     location
 })
+//SET LOCATION CURRENT TEXT
+export const setLocationCurrentText = (locationCurrentText)=>({
+    type: 'SET_LOCATION_CURRENT_TEXT',
+    locationCurrentText
+})
