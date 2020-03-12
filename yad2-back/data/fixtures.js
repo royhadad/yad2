@@ -34,6 +34,7 @@ const location = {
 };
 const itemsArr = [
     {
+        id: '57362456',
         category: 'forsale',
         location: location,
         types: [],
@@ -50,6 +51,7 @@ const itemsArr = [
         isBrokerage: false
     },
     {
+        id: '57362812',
         category: 'forsale',
         location: location,
         types: [],
@@ -66,6 +68,7 @@ const itemsArr = [
         isBrokerage: false
     },
     {
+        id: '57362222',
         category: 'forsale',
         location: location,
         types: [],

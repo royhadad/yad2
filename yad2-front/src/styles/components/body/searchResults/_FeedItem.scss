@@ -5,22 +5,6 @@
 .feed-item:hover{
     box-shadow: $lighter-box-shadow;
 }
-.feed-item--closed{
-    @extend .feed-item;
-    height: 8.6rem;
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: row;
-    >.feed-item--closed__image__wrapper{
-        height: 100%;
-        width: 50%;
-    }
-    >.feed-item--closed__props__wrapper{
-        height: 100%;
-        width: 30%;
-    }
-    >.feed-item--closed__price__wrapper{
-        height: 100%;
-        width: 20%;
-    }   
-}
+
+@import './FeedItemClosed';
+@import './FeedItemOpened';

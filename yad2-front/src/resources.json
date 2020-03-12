@@ -546,7 +546,23 @@
             "searchResultsMetaData": {
                 "numOfResultsTextStart": "מציג ",
                 "numOfResultsTextEnd": " מודעות"
+            },
+            "feedItem":{
+                "header":{
+                    "roomsText": "חדרים",
+                    "floorText": "קומה",
+                    "sizeText": "מ\"ר",
+                    "openInNewTabText": "פתיחה בטאב חדש"
+                },
+                "body":{
+                    "descriptionTitle":"תיאור הנכס"
+                },
+                "footer":{
+                    "itemIdText": "מספר מודעה: ",
+                    "foundMistakeText": "מצאתי טעות"
+                }
             }
+            
         }
     },
     "footer": {},
@@ -563,7 +579,11 @@
             "image": "🖼",
             "map": "🗺️",
             "checkmark": "✔",
-            "calendar": "📅"
+            "calendar": "📅",
+            "printer": "🖶",
+            "link": "🔗",
+            "email": "✉",
+            "shekel": "₪"
         },
         "propertyTypes": {
             "forsale": "מכירה",

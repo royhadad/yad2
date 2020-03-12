@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 const { itemsArr } = require('../data/fixtures');
 //#endregion
+const DELAY_TIME = 500;
 
 router.get('/feed', (req, res) => {
     let responseObj = new ResponseObj();
@@ -18,7 +19,7 @@ router.get('/feed', (req, res) => {
     //TODO
     setTimeout(() => {
         res.send(JSON.stringify(responseObj));
-    }, 2000);
+    }, DELAY_TIME);
 });
 
 router.get('/favicon.ico', (req, res) => {

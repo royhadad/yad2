@@ -11,8 +11,8 @@ const RealEstatePageBody = () => {
                 <SearchBar/>
                 <div className='search-results__spacer'></div>
                 <SearchResultsWrapper/>
-            </div> 
-        </div> 
+            </div>
+        </div>
     );
 }
 

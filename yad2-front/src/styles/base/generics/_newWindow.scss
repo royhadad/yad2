@@ -1,0 +1,45 @@
+.newWindow {
+    display:inline-block;
+    margin-left:5px;
+    position: relative;
+    border: 1px solid;
+    width: 16px;
+    height: 16px;
+}
+.newWindow:after {
+    position: absolute;
+    top:-8px;
+    right:-2px;
+    font-size:0.8em;
+    content:"\1f855";
+}
+.newWindow:before {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    content: " ";
+    border: 4px solid white;
+}
+
+.newWindow--small {
+    display:inline-block;
+    margin-left:5px;
+    position: relative;
+    border: 1px solid;
+    width: 11px;
+    height: 11px;
+}
+.newWindow--small:after {
+    position: absolute;
+    top:-8px;
+    right:-2px;
+    font-size:0.8em;
+    content:"\1f855";
+}
+.newWindow--small:before {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    content: " ";
+    border: 4px solid $item-yellow;
+}

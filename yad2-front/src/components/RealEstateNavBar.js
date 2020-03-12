@@ -1,20 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-/*
 
-                <RealEstateNavBarLinks
-                    url='/kones'
-                    text='כונס נכסים'
-                    icon={<img className='icon__yad1' src='/images/kones-nehasim.svg' alt='kones nehasim' />}
-                />
-                <RealEstateNavBarLinks
-                    url='/realestateindex'
-                    text='מדד הנדל"ן'
-                    icon={<img className='icon__yad1' src='/images/realEstateIndex.svg' alt='placeholder' />}
-                />
-
-*/
 const RealEstateNavBar = () => {
     return (
         <div className="real-estate-nav-bar">
