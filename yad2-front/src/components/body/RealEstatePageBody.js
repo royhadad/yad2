@@ -12,7 +12,7 @@ const RealEstatePageBody = () => {
                 <div className='search-results__spacer'></div>
                 <SearchResultsWrapper/>
             </div> 
-        </div>
+        </div> 
     );
 }
 
