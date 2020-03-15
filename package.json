@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\""
+    "dev": "concurrently \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\"",
+    "build": "cd yad2-front && npm run build"
   },
   "repository": {
     "type": "git",
