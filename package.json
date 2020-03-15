@@ -6,7 +6,8 @@
     "scripts": {
         "dev": "concurrently \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\"",
         "build": "cd yad2-front && npm run build",
-        "postinstall": "cd yad2-front && npm install && cd .. && cd yad2-back && npm install"
+        "postinstall": "cd yad2-front && npm install && cd .. && cd yad2-back && npm install",
+        "start": "cd yad2-back && npm start"
     },
     "repository": {
         "type": "git",
