@@ -8,6 +8,7 @@ const path = require('path');
 //choose port
 const normalizePort = (port) => parseInt(port, 10);
 PORT = normalizePort(process.env.PORT || 5000);
+console.log(process.env.PORT);
 
 //routes
 const feed = require('./routes/feed.js');
