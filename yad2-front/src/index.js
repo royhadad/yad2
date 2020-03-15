@@ -10,9 +10,10 @@ import './styles/styles.scss';
 import 'moment/locale/he'
 
 import * as serviceWorker from './serviceWorker';
-alert(process.env);
-alert(process.env.PORT);
 export const store = configureStore();
+const envVars = require('dotenv').config({path: '../.env'}).parsed;
+
+console.log(envVars);
 
 const jsx = (
     <Provider store={store}>

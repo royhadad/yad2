@@ -5,10 +5,15 @@ const compression = require('compression');
 const morgan = require('morgan');
 const path = require('path');
 
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config({ path: '../.env' });
+}
+console.log('hi!!!');
+console.log(process.env);
+
 //choose port
 const normalizePort = (port) => parseInt(port, 10);
-PORT = normalizePort(process.env.PORT || 5000);
-console.log(process.env.PORT);
+const PORT = normalizePort(process.env.PORT);
 
 //routes
 const feed = require('./routes/feed.js');
@@ -20,7 +25,7 @@ const useAPIRoutes = () => {
     app.use(apiRoutePrefix, feed);
     app.use(apiRoutePrefix, utils);
 }
-const serveReactApp = () =>{
+const serveReactApp = () => {
     app.use(express.static(path.resolve(__dirname, '../yad2-front/build')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../yad2-front/build/index.html'));
