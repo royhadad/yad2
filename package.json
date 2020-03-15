@@ -1,0 +1,22 @@
+{
+  "name": "yad2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/royhadad/yad2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/royhadad/yad2/issues"
+  },
+  "homepage": "https://github.com/royhadad/yad2#readme",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}

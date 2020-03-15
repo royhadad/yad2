@@ -1,14 +1,44 @@
 const express = require('express');
 const chalk = require('chalk');
-PORT_NUMBER = 8080;
+const cors = require('cors')
+const compression = require('compression');
+const morgan = require('morgan');
+const path = require('path');
+
+//choose port
+const normalizePort = (port) => parseInt(port, 10);
+PORT = normalizePort(process.env.PORT || 5000);
+
+//routes
 const feed = require('./routes/feed.js');
 const utils = require('./routes/utils');
-var cors = require('cors')
+const useAPIRoutes = () => {
+    app.use(express.json());
+    app.use(cors())
+    const apiRoutePrefix = '/api';
+    app.use(apiRoutePrefix, feed);
+    app.use(apiRoutePrefix, utils);
+}
+const serveReactApp = () =>{
+    app.use(express.static(path.resolve(__dirname, '../yad2-front/build')));
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, '../yad2-front/build/index.html'));
+    });
+}
+
 const app = express();
-app.use(express.json());
-app.use(cors())
+const isDev = app.get('env') !== 'production';
 
-app.use(feed);
-app.use(utils);
+if (isDev) {
+    app.use(morgan('dev'));
+    useAPIRoutes();
+} else {
+    app.disable('x-powered-by');
+    app.use(compression());
+    app.use(morgan('common'));
 
-app.listen(PORT_NUMBER, () => console.log(chalk.green(`listening on port ${PORT_NUMBER}...`)));
+    useAPIRoutes();
+    serveReactApp();
+}
+
+app.listen(PORT, () => console.log(chalk.green(`listening on port ${PORT}...`)));

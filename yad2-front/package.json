@@ -2,7 +2,7 @@
   "name": "yad2",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://ec2-63-35-229-122.eu-west-1.compute.amazonaws.com:8080",
+  "proxy": "http://localhost:5000/api",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
