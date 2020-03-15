@@ -11,9 +11,10 @@ import 'moment/locale/he'
 
 import * as serviceWorker from './serviceWorker';
 export const store = configureStore();
-const envVars = require('dotenv').config({path: '../.env'}).parsed;
 
-console.log(envVars);
+const headers = require(process.env.PUBLIC_URL+'/headers.json');
+console.log(headers);
+
 
 const jsx = (
     <Provider store={store}>

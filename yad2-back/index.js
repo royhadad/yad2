@@ -5,11 +5,8 @@ const compression = require('compression');
 const morgan = require('morgan');
 const path = require('path');
 
-if (process.env.NODE_ENV !== "production") {
-    require('dotenv').config({ path: '../.env' });
-}
-console.log('hi!!!');
-console.log(process.env);
+//add headers to index.html file
+require('./handle_env');
 
 //choose port
 const normalizePort = (port) => parseInt(port, 10);
