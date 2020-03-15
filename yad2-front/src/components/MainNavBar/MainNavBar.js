@@ -16,7 +16,7 @@ class MainNavBar extends React.Component {
                 <div className="main-nav-bar__right-side">
                     <div className='main-nav-bar__yad2-icon__wrapper'>
                         <Link to="/realestate">
-                            <img className="main-nav-bar__yad2-icon" alt="yad 2" src='/images/yad2.png' />
+                            <img className="main-nav-bar__yad2-icon" alt="yad 2" src={'/images/yad2.png'} />
                         </Link>
                     </div>
                     {

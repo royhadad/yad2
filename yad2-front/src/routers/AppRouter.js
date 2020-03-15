@@ -19,6 +19,7 @@ const AppRouter = () => (
                 <Route path="/login" component={LoginPage} />
                 <Route path="/realestate" component={RealEstatePage} />
                 <Route path="/" component={RedirectToHome} exact={true} />
+                <Route path="/index.html" component={RedirectToHome} exact={true} />
                 <Route component={NotFoundPage} />
             </Switch>
         </div>

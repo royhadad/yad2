@@ -44,8 +44,8 @@ class FeedItemClosed extends React.Component {
                         <span onClick={this.notImplementedOnClickHandler}>{resources.general.unicodeChars.printer}</span>
                         <span onClick={this.notImplementedOnClickHandler} style={{ opacity: '50%' }}>{resources.general.unicodeChars.link}</span>
                         <span onClick={this.notImplementedOnClickHandler}>{resources.general.unicodeChars.email}</span>
-                        <span onClick={this.notImplementedOnClickHandler}><img style={{ width: 27, height: 20 }} src='/images/facebook.png' alt='share to facebook' /></span>
-                        <span onClick={this.notImplementedOnClickHandler}><img style={{ width: 27, height: 27 }} src='/images/whatsapp.png' alt='share to whatsapp' /></span>
+                        <span onClick={this.notImplementedOnClickHandler}><img style={{ width: 27, height: 20 }} src={'/images/facebook.png'} alt='share to facebook' /></span>
+                        <span onClick={this.notImplementedOnClickHandler}><img style={{ width: 27, height: 27 }} src={'/images/whatsapp.png'} alt='share to whatsapp' /></span>
                     </div>
                     <div className='feed-item--opened__footer__left'>
                         <span className='feed-item--opened__footer__left__found-mistake' onClick={this.foundMistakeOnClickHandler}>

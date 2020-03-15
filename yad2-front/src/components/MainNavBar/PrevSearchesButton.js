@@ -47,7 +47,7 @@ class PrevSearchesButton extends React.Component {
 
     render() {
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
-        const imojiJSX = <img src='/images/prevSearchesButton.png' alt='circular arrow with clock inside' />
+        const imojiJSX = <img src={'/images/prevSearchesButton.png'} alt='circular arrow with clock inside' />
 
         return (
             <div className={this.state.className + ' generic-nav-item'} id={this.state.id}>

@@ -16,22 +16,22 @@ const RealEstateNavBar = () => {
                 <RealEstateNavBarLinks
                     url='/yadata'
                     text=' הערכת שווי נכס'
-                    icon={<img className='icon__yadata' src='/images/yadata_logo_black.svg' alt='yadata' viewBox='1' />}
+                    icon={<img className='icon__yadata' src={'/images/yadata_logo_black.svg'} alt='yadata' viewBox='1' />}
                 />
                 <RealEstateNavBarLinks
                     url='/yad1'
                     text='יד1 דירות חדשות'
-                    icon={<img className='icon__yad1' src='/images/yad1_logo.svg' alt='yad1' viewBox='1' />}
+                    icon={<img className='icon__yad1' src={'/images/yad1_logo.svg'} alt='yad1' viewBox='1' />}
                 />
                 <RealEstateNavBarLinks
                     url='/realestateindex'
                     text='מדד הנדל"ן'
-                    icon={<img className='icon__real-estate-index' src='/images/realEstateIndex.svg' alt='real estate index' viewBox='1' />}
+                    icon={<img className='icon__real-estate-index' src={'/images/realEstateIndex.svg'} alt='real estate index' viewBox='1' />}
                 />
                 <RealEstateNavBarLinks
                     url='/kones'
                     text='כונס נכסים'
-                    icon={<img className='icon__kones' src='/images/kones-nehasim.svg' alt='kones nehasim' viewBox='1' />}
+                    icon={<img className='icon__kones' src={'/images/kones-nehasim.svg'} alt='kones nehasim' viewBox='1' />}
                 />
             </div>
         </div>

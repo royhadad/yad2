@@ -33,3 +33,6 @@ renderApp();
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+//dev-proxy: "http://localhost:8080"
+//production-proxy: "http://ec2-63-35-229-122.eu-west-1.compute.amazonaws.com:8080"

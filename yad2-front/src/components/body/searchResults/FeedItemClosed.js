@@ -14,6 +14,7 @@ class FeedItemClosed extends React.Component {
                 <div className={'feed-item--closed__image__wrapper'}>
                     <div className='feed-item--closed__image__value'>
                         <img className='feed-item-image' src={this.props.item.imageURL} alt={this.props.item.text}/>
+                        <div className='feed-item--closed__image__heart'>{resources.general.unicodeChars.heart}</div>
                     </div>
                     <div className='feed-item--closed__image__text'>
                         <p className='feed-item--closed__image__text__header'>{this.props.item.location.description}</p>
