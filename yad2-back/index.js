@@ -35,7 +35,7 @@ const serveReactApp = () => {
 const app = express();
 
 app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src https://static.ads-twitter.com https://www.google-analytics.com 'sha256-q2sY7jlDS4SrxBg6oq/NBYk9XVSwDsterXWpH99SAn0='; img-src 'self' https://s3.amazonaws.com https://twitter.com https://pbs.twimg.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; frame-ancestors 'none';");
+    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src 'self' https://static.ads-twitter.com https://www.google-analytics.com https://maps.googleapis.com 'sha256-m5KNzjvGgQ8MgzI8EMIRHyNyascjtXxEnY9EhqPShvM='; img-src 'self' https://s3.amazonaws.com https://twitter.com https://pbs.twimg.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; frame-ancestors 'none';");
     res.setHeader("Referrer-Policy", "no-referrer, strict-origin-when-cross-origin");
     res.setHeader("Strict-Transport-Security", "max-age=63072000; includeSubDomains");
     res.setHeader("X-Content-Type-Options", "nosniff");
