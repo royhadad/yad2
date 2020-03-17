@@ -13,8 +13,9 @@ require('dotenv').config();
 
 export const store = configureStore();
 
-const isDev = process.env.REACT_APP_NODE_ENV ==='production';
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
+const isDev = process.env.NODE_ENV !=='production';
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+console.log(process.env);
 
 console.log(GOOGLE_API_KEY);
 console.log('isDEV?', isDev);
