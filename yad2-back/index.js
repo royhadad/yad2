@@ -9,21 +9,24 @@ require('dotenv').config();
 
 //choose port
 const PORT = parseInt(process.env.PORT, 10);
-const isDev = process.env.NODE_ENV==='production';
+const isDev = process.env.NODE_ENV === 'production';
 
 //routes
 const feed = require('./routes/feed.js');
 const utils = require('./routes/utils');
 const useAPIRoutes = () => {
-    app.use(favicon(path.resolve(__dirname,'../yad2-front/build/favicon.ico')));
+    app.use(favicon(path.resolve(__dirname, '../yad2-front/build/favicon.ico')));
     app.use(express.json());
     app.use(cors())
+    app.get('/ping', function (req, res) {
+        return res.send('pong');
+    });
     const apiRoutePrefix = '/api';
     app.use(apiRoutePrefix, feed);
     app.use(apiRoutePrefix, utils);
 }
 const serveReactApp = () => {
-    app.use(express.static(path.resolve(__dirname, '../yad2-front/build')));
+    app.use(express.static(path.resolve(__dirname, '../yad2-front/build'), { setHeaders: (res) => res.set('Content-Security-Policy', "default-src 'self'; script-src https://static.ads-twitter.com https://www.google-analytics.com; img-src 'self' https://s3.amazonaws.com https://twitter.com https://pbs.twimg.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; frame-ancestors 'none';") }));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../yad2-front/build/index.html'));
     });
