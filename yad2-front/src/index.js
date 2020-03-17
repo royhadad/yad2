@@ -7,13 +7,18 @@ import 'normalize.css/normalize.css';
 import 'react-dates-temp/initialize';
 import 'react-dates-temp/lib/css/_datepicker.css';
 import './styles/styles.scss';
-import 'moment/locale/he'
-
+import 'moment/locale/he';
 import * as serviceWorker from './serviceWorker';
+require('dotenv').config();
+
 export const store = configureStore();
 
-const headers = require(process.env.PUBLIC_URL+'/headers.json');
-console.log(headers);
+const isDev = process.env.REACT_APP_NODE_ENV ==='production';
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
+console.log(GOOGLE_API_KEY);
+console.log('isDEV?', isDev);
+
 
 
 const jsx = (
@@ -36,6 +41,3 @@ renderApp();
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-//dev-proxy: "http://localhost:8080"
-//production-proxy: "http://ec2-63-35-229-122.eu-west-1.compute.amazonaws.com:8080"

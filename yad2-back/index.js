@@ -4,13 +4,11 @@ const cors = require('cors')
 const compression = require('compression');
 const morgan = require('morgan');
 const path = require('path');
-
-//add headers to index.html file
-require('./handle_env');
+require('dotenv').config();
 
 //choose port
-const normalizePort = (port) => parseInt(port, 10);
-const PORT = normalizePort(process.env.PORT);
+const PORT = parseInt(process.env.PORT, 10);
+const isDev = process.env.NODE_ENV==='production';
 
 //routes
 const feed = require('./routes/feed.js');
@@ -30,7 +28,6 @@ const serveReactApp = () => {
 }
 
 const app = express();
-const isDev = app.get('env') !== 'production';
 
 if (isDev) {
     app.use(morgan('dev'));

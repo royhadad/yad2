@@ -42,7 +42,7 @@ export const fetchItems = async (currentPage = 1) => {
 
     const queryString = Buffer.from(JSON.stringify({ ...filters, currentPage }), 'binary').toString('base64');
     try {
-        let response = await fetch(`/feed?filters=${queryString}`);
+        let response = await fetch(`/api/feed?filters=${queryString}`);
         response = await response.json();
         if (response.error) {
             throw response.error;
