@@ -47,7 +47,7 @@ const itemsArr = [
         entryDate: moment(),
         isImmediateEntry: true,
         text: 'דירה מהממת בצפון הישן',
-        imageURL: 'https://specials-images.forbesimg.com/imageserve/1026205392/960x0.jpg?fit=scale',
+        imageURL: 'item1.jpg',
         isBrokerage: false
     },
     {
@@ -64,7 +64,7 @@ const itemsArr = [
         entryDate: moment(),
         isImmediateEntry: true,
         text: 'מטר מדיזנגוף סנטר',
-        imageURL: 'https://bringmethenews.com/.image/t_share/MTY2NjgyNTIzMDM5MDQ4NzU5/hgtv-urban-oasis-2019-front-yard.jpg',
+        imageURL: 'item2.jpg',
         isBrokerage: false
     },
     {
@@ -81,7 +81,7 @@ const itemsArr = [
         entryDate: moment(),
         isImmediateEntry: true,
         text: 'בית קטן בדרום תל אביב',
-        imageURL: 'https://cdn.aarp.net/content/dam/aarp/home-and-family/your-home/2018/06/1140-house-inheriting.imgcache.rev68c065601779c5d76b913cf9ec3a977e.jpg',
+        imageURL: 'item3.jpg',
         isBrokerage: true
     }
 ];

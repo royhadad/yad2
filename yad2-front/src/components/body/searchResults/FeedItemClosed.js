@@ -1,5 +1,6 @@
 import React from 'react';
 import resources from '../../../resources.json';
+import getFullImageURL from '../../../utility/getFullImageURL';
 const headerResources = resources.body.searchResults.feedItem.header;
 
 class FeedItemClosed extends React.Component {
@@ -13,7 +14,7 @@ class FeedItemClosed extends React.Component {
             <div className='feed-item--closed' onClick={this.props.toggleIsOpened}>
                 <div className={'feed-item--closed__image__wrapper'}>
                     <div className='feed-item--closed__image__value'>
-                        <img className='feed-item-image' src={this.props.item.imageURL} alt={this.props.item.text}/>
+                        <img className='feed-item-image' src={getFullImageURL('items/'+this.props.item.imageURL)} alt={this.props.item.text}/>
                         <div className='feed-item--closed__image__heart'>{resources.general.unicodeChars.heart}</div>
                     </div>
                     <div className='feed-item--closed__image__text'>
