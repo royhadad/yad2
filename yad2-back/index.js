@@ -18,7 +18,7 @@ const useAPIRoutes = () => {
     app.use(favicon(path.resolve(__dirname, '../yad2-front/build/favicon.ico')));
     app.use(express.json());
     app.use(cors())
-    app.get('/ping', function (req, res) {
+    app.get('/ping', (req, res) => {
         return res.send('pong');
     });
     const apiRoutePrefix = '/api';
@@ -26,7 +26,6 @@ const useAPIRoutes = () => {
     app.use(apiRoutePrefix, utils);
 }
 const serveReactApp = () => {
-    app.use(express.static('./headers.json'));
     app.use(express.static(path.resolve(__dirname, '../yad2-front/build')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../yad2-front/build/index.html'));
@@ -34,6 +33,16 @@ const serveReactApp = () => {
 }
 
 const app = express();
+
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'self'; script-src https://static.ads-twitter.com https://www.google-analytics.com 'sha256-q2sY7jlDS4SrxBg6oq/NBYk9XVSwDsterXWpH99SAn0='; img-src 'self' https://s3.amazonaws.com https://twitter.com https://pbs.twimg.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; frame-ancestors 'none';");
+    res.setHeader("Referrer-Policy", "no-referrer, strict-origin-when-cross-origin");
+    res.setHeader("Strict-Transport-Security", "max-age=63072000; includeSubDomains");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "DENY");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    return next();
+});
 
 if (isDev) {
     app.use(morgan('dev'));
