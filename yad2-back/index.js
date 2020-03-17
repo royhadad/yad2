@@ -9,7 +9,7 @@ require('dotenv').config();
 
 //choose port
 const PORT = parseInt(process.env.PORT, 10);
-const isDev = process.env.NODE_ENV === 'production';
+const isDev = process.env.NODE_ENV !== 'production';
 
 //routes
 const feed = require('./routes/feed.js');
