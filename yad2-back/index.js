@@ -57,3 +57,5 @@ if (isDev) {
 }
 
 app.listen(PORT, () => console.log(chalk.green(`listening on port ${PORT}...`)));
+
+//<link rel="icon" type="image/png" href="/favicon.ico" />
