@@ -4,6 +4,7 @@ const cors = require('cors')
 const compression = require('compression');
 const morgan = require('morgan');
 const path = require('path');
+const favicon = require('serve-favicon');
 require('dotenv').config();
 
 //choose port
@@ -14,6 +15,7 @@ const isDev = process.env.NODE_ENV==='production';
 const feed = require('./routes/feed.js');
 const utils = require('./routes/utils');
 const useAPIRoutes = () => {
+    app.use(favicon(path.resolve(__dirname,'../yad2-front/build/favicon.ico')));
     app.use(express.json());
     app.use(cors())
     const apiRoutePrefix = '/api';

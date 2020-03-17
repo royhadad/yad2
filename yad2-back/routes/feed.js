@@ -22,8 +22,4 @@ router.get('/feed', (req, res) => {
     }, DELAY_TIME);
 });
 
-router.get('/favicon.ico', (req, res) => {
-    res.status(ERROR_CODES.NO_CONTENT);
-});
-
 module.exports = router;
