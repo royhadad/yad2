@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setLocation, setLocationCurrentText } from '../../../../actions/filters';
-import PlacesAutocomplete from 'react-places-autocomplete';
 import resources from '../../../../resources.json';
 const locationInputResources = resources.body.searchBar.locationInput;
 
@@ -14,7 +13,7 @@ class Location extends React.Component {
         document.getElementById('LocationInputId1').style.display = 'none';
     };
 
-    render() {        
+    renderPlacesAutoComplete = (PlacesAutocomplete) => {
         return (
             <PlacesAutocomplete
                 value={this.props.locationCurrentText}
@@ -58,10 +57,25 @@ class Location extends React.Component {
             </PlacesAutocomplete>
         );
     }
+
+    render() {
+        if (this.props.isGoogleAPILoaded) {
+            return false;
+        } else {
+            return import('react-places-autocomplete')
+                .then((PlacesAutocomplete) => {
+                    return this.renderPlacesAutoComplete();
+                });
+        }
+    }
 }
+//TODO
+//FIX USING:
+//https://medium.com/front-end-weekly/loading-components-asynchronously-in-react-app-with-an-hoc-61ca27c4fda7
 
 const mapStateToProps = (state) => ({
-    locationCurrentText: state.filters.locationCurrentText
+    locationCurrentText: state.filters.locationCurrentText,
+    isGoogleAPILoaded: state.items.isGoogleAPILoaded
 });
 const mapDispatchToProps = (dispatch) => ({
     setLocation: (location) => dispatch(setLocation(location)),

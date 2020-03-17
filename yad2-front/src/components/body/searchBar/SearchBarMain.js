@@ -10,6 +10,7 @@ import resources from '../../../resources.json';
 import { fetchItems } from '../../../selectors/items';
 import Location from './SearchFields/Location';
 const searchBarResources = resources.body.searchBar;
+
 class SearchBarMain extends React.Component {
     renderSearchFieldsByCategory = (category) => {
         switch (category) {

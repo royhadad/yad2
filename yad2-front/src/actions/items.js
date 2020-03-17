@@ -31,3 +31,7 @@ export const setSearchedLocation = (searchedLocation)=>({
     type: 'SET_SEARCHED_LOCATION',
     searchedLocation
 });
+//SET IS GOOGLE API LOADED
+export const googleAPILoaded = () => ({
+    type: 'GOOGLE_API_LOADED'
+});
