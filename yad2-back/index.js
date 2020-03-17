@@ -26,7 +26,8 @@ const useAPIRoutes = () => {
     app.use(apiRoutePrefix, utils);
 }
 const serveReactApp = () => {
-    app.use(express.static(path.resolve(__dirname, '../yad2-front/build'), { setHeaders: (res) => res.set('Content-Security-Policy', "default-src 'self'; script-src https://static.ads-twitter.com https://www.google-analytics.com; img-src 'self' https://s3.amazonaws.com https://twitter.com https://pbs.twimg.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' https://fonts.googleapis.com; frame-ancestors 'none';") }));
+    app.use(express.static('./headers.json'));
+    app.use(express.static(path.resolve(__dirname, '../yad2-front/build')));
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, '../yad2-front/build/index.html'));
     });
