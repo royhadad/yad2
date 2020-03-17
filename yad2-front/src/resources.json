@@ -597,6 +597,9 @@
                 "toPlaceholder": "עד-",
                 "allTextValue": "הכל"
             }
+        },
+        "constants":{
+            "IMAGES_URL_PREFIX": "https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/"
         }
     }
 }

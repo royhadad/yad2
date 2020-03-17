@@ -6,6 +6,7 @@ import PersonalAreaButton from './PersonalAreaButton';
 import SavedItemsButton from './SavedItemsButton';
 import PrevSearchesButton from './PrevSearchesButton';
 import {Link} from 'react-router-dom';
+import getFullImageURL from '../../utility/getFullImageURL';
 class MainNavBar extends React.Component {
 
 
@@ -16,7 +17,7 @@ class MainNavBar extends React.Component {
                 <div className="main-nav-bar__right-side">
                     <div className='main-nav-bar__yad2-icon__wrapper'>
                         <Link to="/realestate">
-                            <img className="main-nav-bar__yad2-icon" alt="yad 2" src={'/images/yad2.png'} />
+                            <img className="main-nav-bar__yad2-icon" alt="yad 2" src={getFullImageURL('yad2.png')} />
                         </Link>
                     </div>
                     {

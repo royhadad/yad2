@@ -4,6 +4,7 @@ import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calcul
 import { Link } from 'react-router-dom';
 import resources from '../../resources.json';
 import uuid from 'uuid';
+import getFullImageURL from '../../utility/getFullImageURL';
 const prevSearchesResources = resources.header.prevSearchesButton;
 
 class PrevSearchesButton extends React.Component {
@@ -47,7 +48,7 @@ class PrevSearchesButton extends React.Component {
 
     render() {
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
-        const imojiJSX = <img src={'/images/prevSearchesButton.png'} alt='circular arrow with clock inside' />
+        const imojiJSX = <img src={getFullImageURL('prevSearchesButton.png')} alt='circular arrow with clock inside' />
 
         return (
             <div className={this.state.className + ' generic-nav-item'} id={this.state.id}>
