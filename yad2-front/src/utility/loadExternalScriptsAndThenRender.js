@@ -8,10 +8,10 @@ const loadGooglePlacesAPI = (callback) => {
     googlePlacesAPIScript.async = true;
     document.head.appendChild(googlePlacesAPIScript);
     googlePlacesAPIScript.onload = () => {
-        renderApp(callback);
+        callback();
     };
 }
 
-export default loadExternalScriptsAndThenRender = (renderFunc) => {
+export default (renderFunc) => {
     loadGooglePlacesAPI(renderFunc);
 }

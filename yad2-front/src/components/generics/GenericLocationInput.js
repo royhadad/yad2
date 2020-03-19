@@ -1,4 +1,5 @@
 import React from 'react';
+import PlacesAutocomplete from 'react-places-autocomplete';
 
 /**
 HOW TO USE
@@ -11,9 +12,8 @@ setLocationCurrentText: function (dispatch to store)
 setLocation: function (dispatch picked location to store)
 **/
 
-
-class Location extends React.Component {
-    idPreFix = 'genericLocationId_';
+class GenericLocationInput extends React.Component {
+    idPreFix = 'genericLocationInputId_';
     handleChange = (locationCurrentText) => {
         this.props.setLocationCurrentText(locationCurrentText);
     };
@@ -21,8 +21,7 @@ class Location extends React.Component {
         this.props.setLocation(location);
         document.getElementById(this.idPreFix + this.props.uuid).style.display = 'none';
     };
-
-    renderPlacesAutoComplete = (PlacesAutocomplete) => {
+    render() {
         return (
             <PlacesAutocomplete
                 value={this.props.locationCurrentText}
@@ -66,17 +65,6 @@ class Location extends React.Component {
             </PlacesAutocomplete>
         );
     }
-
-    render() {
-        if (this.props.isGoogleAPILoaded) {
-            return false;
-        } else {
-            return import('react-places-autocomplete')
-                .then((PlacesAutocomplete) => {
-                    return this.renderPlacesAutoComplete();
-                });
-        }
-    }
 }
 
-export default Location;
+export default GenericLocationInput;

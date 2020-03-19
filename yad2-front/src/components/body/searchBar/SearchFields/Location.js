@@ -1,20 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setLocation, setLocationCurrentText } from '../../../../actions/filters';
-import Location from '../../../generics/Location';
+import GenericLocationInput from '../../../generics/GenericLocationInput';
 import resources from '../../../../resources.json';
 const locationInputResources = resources.body.searchBar.locationInput;
 
 class Location extends React.Component {
     render() {
-        <Location
-            uuid={'searchBarLocationId'}
-            placeholder={locationInputResources.placeholder}
-            suggestionsHeader={locationInputResources.suggestionsHeader}
-            locationCurrentText={this.props.locationCurrentText}
-            setLocation={this.props.setLocation}
-            setLocationCurrentText={this.props.setLocationCurrentText}
-        />
+        return (
+            <GenericLocationInput
+                uuid={'searchBarLocationId'}
+                placeholder={locationInputResources.placeholder}
+                suggestionsHeader={locationInputResources.suggestionsHeader}
+                locationCurrentText={this.props.locationCurrentText}
+                setLocation={this.props.setLocation}
+                setLocationCurrentText={this.props.setLocationCurrentText}
+            />
+        );
     }
 }
 
