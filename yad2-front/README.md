@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## To clone and develop
 git clone https://github.com/royhadad/yad2.git
+add .env files to yad2-front and yad2-back
 in /yad2: 
 npm install
 cd yad2-front
