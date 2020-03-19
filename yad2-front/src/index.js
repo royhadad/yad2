@@ -15,7 +15,6 @@ require('dotenv').config();
 export const store = configureStore();
 
 //const isDev = process.env.NODE_ENV !=='production';
-console.log('this is a commit!');
 
 const loadGooglePlacesAPI = () => {
     const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
