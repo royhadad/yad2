@@ -4,8 +4,7 @@ const itemsReducerDefaultState = {
     totalItems: 0,
     isLoading: true,
     searchedLocation: undefined,
-    itemsArr: [],
-    isGoogleAPILoaded: false
+    itemsArr: []
 };
 const itemsPerPage = 40;
 
@@ -20,7 +19,7 @@ export default (state = itemsReducerDefaultState, action) => {
             return {
                 ...state,
                 totalItems: action.totalItems,
-                numOfPages: Math.ceil(action.totalItems/itemsPerPage)
+                numOfPages: Math.ceil(action.totalItems / itemsPerPage)
             }
         case 'SET_ITEMS_ARR':
             return {
@@ -36,11 +35,6 @@ export default (state = itemsReducerDefaultState, action) => {
             return {
                 ...state,
                 searchedLocation: action.searchedLocation
-            }
-        case 'GOOGLE_API_LOADED':
-            return {
-                ...state,
-                isGoogleAPILoaded: true
             }
         default:
             return state;

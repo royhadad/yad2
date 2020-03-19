@@ -5,13 +5,13 @@ export const setCurrentPage = (currentPage) => ({
 });
 
 //SET NUM OF PAGES
-export const setNumOfPages = (numOfPages) =>({
+export const setNumOfPages = (numOfPages) => ({
     type: 'SET_NUM_OF_PAGES',
     numOfPages
 });
 
 //SET TOTAL ITEMS
-export const setTotalItems = (totalItems) =>({
+export const setTotalItems = (totalItems) => ({
     type: 'SET_TOTAL_ITEMS',
     totalItems
 });
@@ -22,16 +22,12 @@ export const setItemsArr = (itemsArr) => ({
     itemsArr
 })
 //SET IS LOADING
-export const setIsLoading = (isLoading)=>({
+export const setIsLoading = (isLoading) => ({
     type: 'SET_IS_LOADING',
     isLoading
 })
 //SET SEARCHED LOCATION
-export const setSearchedLocation = (searchedLocation)=>({
+export const setSearchedLocation = (searchedLocation) => ({
     type: 'SET_SEARCHED_LOCATION',
     searchedLocation
-});
-//SET IS GOOGLE API LOADED
-export const googleAPILoaded = () => ({
-    type: 'GOOGLE_API_LOADED'
 });
