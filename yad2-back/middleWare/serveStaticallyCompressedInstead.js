@@ -5,6 +5,7 @@ module.exports = (req, res, next) => {
     if (/\.js$/.test(req.originalUrl) && req.headers["accept-encoding"].includes("gzip")) {
         const gzippedPath = path.join(PATH_TO_BUILD, req.originalUrl + '.gz');
         if (fs.existsSync(gzippedPath)) {
+            res.set("Content-Type", "application/javascript");
             res.set("Content-Encoding", "gzip");
             return res.sendFile(gzippedPath);
         }
