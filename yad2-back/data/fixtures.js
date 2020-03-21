@@ -47,7 +47,7 @@ const itemsArr = [
         entryDate: moment(),
         isImmediateEntry: true,
         text: 'דירה מהממת בצפון הישן',
-        imageURL: 'item1.jpg',
+        imagesURLs: ['item1.jpg'],
         isBrokerage: false
     },
     {
@@ -64,7 +64,7 @@ const itemsArr = [
         entryDate: moment(),
         isImmediateEntry: true,
         text: 'מטר מדיזנגוף סנטר',
-        imageURL: 'item2.jpg',
+        imagesURLs: ['item2.jpg'],
         isBrokerage: false
     },
     {
@@ -81,7 +81,7 @@ const itemsArr = [
         entryDate: moment(),
         isImmediateEntry: true,
         text: 'בית קטן בדרום תל אביב',
-        imageURL: 'item3.jpg',
+        imagesURLs: ['item3.jpg'],
         isBrokerage: true
     }
 ];

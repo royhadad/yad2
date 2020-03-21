@@ -1,0 +1,13 @@
+.feed-item__description__wrapper{
+    height: 100%;
+    flex-grow: 1;
+    padding-right: $s-size;
+    >.feed-item__description__header{
+        font-size: $font-size-m;
+        margin-bottom: 0;
+    }
+    >.feed-item__description__body{
+        font-size: $font-size-s;
+        margin-top: 0;
+    }
+}

@@ -547,22 +547,23 @@
                 "numOfResultsTextStart": "מציג ",
                 "numOfResultsTextEnd": " מודעות"
             },
-            "feedItem":{
-                "header":{
+            "feedItem": {
+                "header": {
                     "roomsText": "חדרים",
                     "floorText": "קומה",
                     "sizeText": "מ\"ר",
-                    "openInNewTabText": "פתיחה בטאב חדש"
+                    "openInNewTabText": "פתיחה בטאב חדש",
+                    "updatedToday": "עודכן היום",
+                    "clickForDetails": "לחצו לפרטים"
                 },
-                "body":{
-                    "descriptionTitle":"תיאור הנכס"
+                "body": {
+                    "descriptionTitle": "תיאור הנכס"
                 },
-                "footer":{
+                "footer": {
                     "itemIdText": "מספר מודעה: ",
                     "foundMistakeText": "מצאתי טעות"
                 }
             }
-            
         }
     },
     "footer": {},
@@ -598,7 +599,7 @@
                 "allTextValue": "הכל"
             }
         },
-        "constants":{
+        "constants": {
             "IMAGES_URL_PREFIX": "https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/"
         }
     }

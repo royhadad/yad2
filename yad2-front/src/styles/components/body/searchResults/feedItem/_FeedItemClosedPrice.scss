@@ -1,0 +1,45 @@
+.feed-item--closed__price__wrapper{
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+    >.open-in-new-tab{
+        direction: ltr;
+        >.open-in-new-tab-text{
+            color:$light-gray;
+            margin-left: $xs-size;
+            font-size: $s-size;
+            visibility: hidden;
+        }
+    }
+    >.open-in-new-tab:hover{
+        >.open-in-new-tab-text{
+            color:$text-color;
+        }
+    }
+    >.feed-item--closed__price__value{
+        direction: ltr;
+        margin-left: $s-size;
+    }
+    >.feed-item--closed__price__bottom-text{
+        direction: ltr;
+        margin-left: $s-size;
+        transition: all 500ms ease-in-out;
+        >.feed-item--closed__price__update-time{
+            opacity: 1;
+            color: $light-gray;
+            font-size: $font-size-s;
+        }
+        >.feed-item--closed__price__click-for-details{
+            opacity: 0;
+        }
+    }
+}
+.feed-item--closed__price__update-time,
+.feed-item--closed__price__click-for-details{
+    transition: all 200ms linear;
+    position: absolute;
+    z-index: inherit;
+}

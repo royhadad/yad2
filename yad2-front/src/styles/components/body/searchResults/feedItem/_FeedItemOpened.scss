@@ -1,11 +1,12 @@
 .feed-item--opened{
     @extend .feed-item;
     >.feed-item--opened__header{
+        @extend .clickable;
         font-size: $font-size-m;
         display: flex;
         flex-direction: row;
         height: 13.7rem;
-        background: white;
+        background:  $item-yellow;
         border-bottom: $regular-border;
         
         >.feed-item--opened__header__image__wrapper{

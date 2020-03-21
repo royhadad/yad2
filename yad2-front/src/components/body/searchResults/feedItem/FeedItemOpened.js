@@ -1,4 +1,7 @@
 import React from 'react';
+import FeedItemImage from './FeedItemImage';
+import FeedItemClosedProps from './FeedItemProps';
+import FeedItemClosedPrice from './FeedItemClosedPrice';
 import resources from '#resources#';
 import getFullImageURL from '#src#/utility/getFullImageURL';
 const feedItemResources = resources.body.searchResults.feedItem;
@@ -16,23 +19,9 @@ class FeedItemClosed extends React.Component {
         return (
             <div className='feed-item--opened'>
                 <div className='feed-item--opened__header' onClick={this.props.toggleIsOpened}>
-                    <div className={'feed-item--opened__header__image__wrapper'}>
-                        image
-                    </div>
-                    <div className={'feed-item--opened__header__props__wrapper'}>
-                        {
-                            headerResources.roomsText
-                        }
-                        {
-                            headerResources.floorText
-                        }
-                        {
-                            headerResources.sizeText
-                        }
-                    </div>
-                    <div className={'feed-item--opened__header__price__wrapper'}>
-                        price
-                    </div>
+                    <FeedItemImage item={this.props.item} isOpen={true} />
+                    <FeedItemClosedProps item={this.props.item} isOpen={true} />
+                    <FeedItemClosedPrice item={this.props.item} isOpen={true} />
                 </div>
                 <div className='feed-item--opened__body'>
                     {
