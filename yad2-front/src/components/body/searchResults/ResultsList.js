@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchItems } from '../../../selectors/items';
 import ReactLoading from 'react-loading';
-import FeedItem from './FeedItem';
+import FeedItem from './feedItem/FeedItem';
 
 class SearchResults extends React.Component {
     componentDidMount() {
