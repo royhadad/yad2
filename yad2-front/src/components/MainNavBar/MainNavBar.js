@@ -1,12 +1,12 @@
 import React from 'react';
 import NavItem from './NavItem';
-import { linksSections } from '../../data/textData/MainNavBar';
+import { linksSections } from '#src#/data/textData/MainNavBar';
 import AddItemButton from './AddItemButton';
 import PersonalAreaButton from './PersonalAreaButton';
 import SavedItemsButton from './SavedItemsButton';
 import PrevSearchesButton from './PrevSearchesButton';
-import {Link} from 'react-router-dom';
-import getFullImageURL from '../../utility/getFullImageURL';
+import { Link } from 'react-router-dom';
+import getFullImageURL from '#src#/utility/getFullImageURL';
 class MainNavBar extends React.Component {
 
 
@@ -29,9 +29,9 @@ class MainNavBar extends React.Component {
                 <div className="main-nav-bar__left-side">
                     <AddItemButton />
                     <PersonalAreaButton />
-                    <SavedItemsButton type="savedItems"/>
+                    <SavedItemsButton type="savedItems" />
                     <PrevSearchesButton />
-                    <SavedItemsButton type="carComparison"/>
+                    <SavedItemsButton type="carComparison" />
                 </div>
             </div>
         );

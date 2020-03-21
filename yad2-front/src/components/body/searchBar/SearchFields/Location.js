@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setLocation, setLocationCurrentText } from '../../../../actions/filters';
-import GenericLocationInput from '../../../generics/GenericLocationInput';
-import resources from '../../../../resources.json';
+import { setLocation, setLocationCurrentText } from '#actions#/filters';
+import GenericLocationInput from '#components#/generics/GenericLocationInput';
+import resources from '#resources#';
 const locationInputResources = resources.body.searchBar.locationInput;
 
 class Location extends React.Component {

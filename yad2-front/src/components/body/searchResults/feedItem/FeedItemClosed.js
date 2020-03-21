@@ -1,6 +1,6 @@
 import React from 'react';
-import resources from '../../../../resources.json';
-import getFullImageURL from '../../../../utility/getFullImageURL';
+import resources from '#resources#';
+import getFullImageURL from '#src#/utility/getFullImageURL';
 const headerResources = resources.body.searchResults.feedItem.header;
 
 class FeedItemClosed extends React.Component {

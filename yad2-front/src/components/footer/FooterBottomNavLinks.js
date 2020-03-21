@@ -1,5 +1,5 @@
 import React from 'react';
-import { bottomNavLinks } from '../../data/textData/footer/Footer';
+import { bottomNavLinks } from '#src#/data/textData/footer/Footer';
 import { Link } from 'react-router-dom';
 
 const FooterBottomNavLinks = () => (

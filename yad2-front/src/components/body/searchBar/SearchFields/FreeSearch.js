@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setText } from '../../../../actions/filters';
+import { setText } from '#actions#/filters';
 
 class FreeSearch extends React.Component {
 

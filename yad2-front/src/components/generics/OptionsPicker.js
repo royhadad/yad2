@@ -1,7 +1,7 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside'
 import Checkbox from './Checkbox';
-const textResources = require('../../resources.json');
+const textResources = require('#resources#');
 const unicodeChars = textResources.general.unicodeChars;
 
 /*
@@ -38,11 +38,11 @@ class Type extends React.Component {
         })));
     }
     render() {
-        const ignoreClickOutsideClass = 'options-picker__dropdown__wrapper__ignoreClickOutside'+this.props.uuid;
+        const ignoreClickOutsideClass = 'options-picker__dropdown__wrapper__ignoreClickOutside' + this.props.uuid;
         return (
             <div className='.search-field__wrapper'>
                 <div
-                    className={'type-button-field '+ignoreClickOutsideClass}
+                    className={'type-button-field ' + ignoreClickOutsideClass}
                     style={this.props.selectedOptions.length > 0 ? { color: 'black' } : {}}
                     onClick={this.toggleShouldShowDropDown}
                 >

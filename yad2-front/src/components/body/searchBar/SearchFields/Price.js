@@ -1,14 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import RangeInput from '../../../generics/RangeInput';
-import {setMinPrice, setMaxPrice} from '../../../../actions/filters';
-import resources from '../../../../resources.json';
+import { connect } from 'react-redux';
+import RangeInput from '#components#/generics/RangeInput';
+import { setMinPrice, setMaxPrice } from '#actions#/filters';
+import resources from '#resources#';
 const textData = resources.body.searchBar.price;
 
-class Price extends React.Component{
-    render(){
-        return(
-            <RangeInput 
+class Price extends React.Component {
+    render() {
+        return (
+            <RangeInput
                 from={this.props.from}
                 to={this.props.to}
                 fromPlaceholder={textData.fromPlaceholder}
@@ -19,12 +19,12 @@ class Price extends React.Component{
         );
     }
 }
-const mapStateToProps = (state)=>({
+const mapStateToProps = (state) => ({
     from: state.filters.search.minPrice,
     to: state.filters.search.maxPrice
 });
-const mapDispatchToProps = (dispatch)=>({
-    dispatchFrom: (price)=>dispatch(setMinPrice(price)),
-    dispatchTo: (price)=>dispatch(setMaxPrice(price))
+const mapDispatchToProps = (dispatch) => ({
+    dispatchFrom: (price) => dispatch(setMinPrice(price)),
+    dispatchTo: (price) => dispatch(setMaxPrice(price))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Price);

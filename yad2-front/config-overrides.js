@@ -13,6 +13,7 @@ module.exports = (config) => {
         "#src#": path.join(__dirname, "src"),
         "#resources#": path.join(__dirname, "src", "resources.json"),
         "#components#": path.join(__dirname, "src", "components"),
+        "#body#": path.join(__dirname, "src", "components", "body"),
         "#actions#": path.join(__dirname, "src", "actions")
     }
     config.plugins = [

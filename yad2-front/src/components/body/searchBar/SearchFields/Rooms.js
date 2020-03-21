@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMinRooms, setMaxRooms } from '../../../../actions/filters';
-import RangePicker from '../../../generics/RangePicker';
+import { setMinRooms, setMaxRooms } from '#actions#/filters';
+import RangePicker from '#components#/generics/RangePicker';
 class Rooms extends React.Component {
     getOptions = () => {
         const options = [];

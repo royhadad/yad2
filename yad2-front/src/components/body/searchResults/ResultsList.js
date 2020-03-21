@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchItems } from '../../../selectors/items';
+import { fetchItems } from '#src#/selectors/items';
 import ReactLoading from 'react-loading';
 import FeedItem from './feedItem/FeedItem';
 

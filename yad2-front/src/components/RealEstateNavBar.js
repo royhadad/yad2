@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import getFullImageURL from '../utility/getFullImageURL';
+import getFullImageURL from '#src#/utility/getFullImageURL';
 
-const RealEstateNavBar = () => {    
+const RealEstateNavBar = () => {
     return (
         <div className="real-estate-nav-bar">
             <div className="main-nav-bar__right-side">

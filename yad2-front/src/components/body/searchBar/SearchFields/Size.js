@@ -1,14 +1,14 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import RangeInput from '../../../generics/RangeInput';
-import {setMinSize, setMaxSize} from '../../../../actions/filters';
-import resources from '../../../../resources.json';
+import { connect } from 'react-redux';
+import RangeInput from '#components#/generics/RangeInput';
+import { setMinSize, setMaxSize } from '#actions#/filters';
+import resources from '#resources#';
 const textData = resources.body.searchBar.size;
 
-class Size extends React.Component{
-    render(){
-        return(
-            <RangeInput 
+class Size extends React.Component {
+    render() {
+        return (
+            <RangeInput
                 from={this.props.from}
                 to={this.props.to}
                 fromPlaceholder={textData.fromPlaceholder}
@@ -19,12 +19,12 @@ class Size extends React.Component{
         );
     }
 }
-const mapStateToProps = (state)=>({
+const mapStateToProps = (state) => ({
     from: state.filters.search.minSize,
     to: state.filters.search.maxSize
 });
-const mapDispatchToProps = (dispatch)=>({
-    dispatchFrom: (price)=>dispatch(setMinSize(price)),
-    dispatchTo: (price)=>dispatch(setMaxSize(price))
+const mapDispatchToProps = (dispatch) => ({
+    dispatchFrom: (price) => dispatch(setMinSize(price)),
+    dispatchTo: (price) => dispatch(setMaxSize(price))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Size);

@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addType, removeType } from '../../../../actions/filters';
-import OptionsPicker from '../../../generics/OptionsPicker';
-const textResources = require('../../../../resources.json');
+import { addType, removeType } from '#actions#/filters';
+import OptionsPicker from '#components#/generics/OptionsPicker';
+const textResources = require('#resources#');
 const typeInput = textResources.body.searchBar.typeInput;
 
 class Type extends React.Component {
-    render() {        
+    render() {
         return (
             <div className='.search-field__wrapper'>
                 <OptionsPicker

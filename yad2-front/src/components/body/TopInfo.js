@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearFilters, setLocation } from '../../actions/filters';
-import resources from '../../resources.json';
-import { fetchItems } from '../../selectors/items';
+import { clearFilters, setLocation } from '#actions#/filters';
+import resources from '#resources#';
+import { fetchItems } from '#src#/selectors/items';
 const propertyTypes = resources.general.propertyTypes;
 
 class TopInfo extends React.Component {

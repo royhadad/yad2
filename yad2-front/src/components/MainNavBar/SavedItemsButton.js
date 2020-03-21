@@ -1,7 +1,7 @@
 import React from 'react';
-import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '#src#/utility/calculatePositions';
 import { Link } from 'react-router-dom';
-import resources from '../../resources.json';
+import resources from '#resources#';
 import uuid from 'uuid';
 const savedItemsButtonResources = resources.header.savedItemsButton;
 const carComparisonButtonResources = resources.header.carComparisonButton;

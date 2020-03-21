@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deriveYfromViewPortY } from '../../../utility/calculatePositions';
-import { fetchItems } from '../../../selectors/items';
+import { deriveYfromViewPortY } from '#src#/utility/calculatePositions';
+import { fetchItems } from '#src#/selectors/items';
 
 class Paging extends React.Component {
     numOfPagesToShow = 7;

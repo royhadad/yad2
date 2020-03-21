@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMinEntryDate } from '../../../../actions/filters';
+import { setMinEntryDate } from '#actions#/filters';
 import { SingleDatePicker } from 'react-dates-temp';
 import { OPEN_UP } from 'react-dates-temp/constants';
-import resources from '../../../../resources.json';
+import resources from '#resources#';
 const entryDateResources = resources.body.searchBar.entryDate;
 const calendarUnicode = resources.general.unicodeChars.calendar;
 

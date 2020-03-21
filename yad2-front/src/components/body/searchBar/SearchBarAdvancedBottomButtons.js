@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearSearch } from '../../../actions/filters';
-import { fetchItems } from '../../../selectors/items';
-import resources from '../../../resources.json';
+import { clearSearch } from '#actions#/filters';
+import { fetchItems } from '#src#/selectors/items';
+import resources from '#resources#';
 const searchBarResources = resources.body.searchBar;
 
 class SearchBarAdvancedBottomButtons extends React.Component {
@@ -13,9 +13,9 @@ class SearchBarAdvancedBottomButtons extends React.Component {
                 <button className='search-bar__main__search-button' onClick={() => fetchItems()}>
                     {searchBarResources.searchButton}
                 </button>
-            <button className='search-bar-advanced__bottom-buttons__clear-button' onClick={this.props.clearSearch}>
-                {searchBarResources.clearButtonText}
-            </button>
+                <button className='search-bar-advanced__bottom-buttons__clear-button' onClick={this.props.clearSearch}>
+                    {searchBarResources.clearButtonText}
+                </button>
             </div >
         );
     }

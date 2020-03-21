@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import resources from '../../resources.json';
+import resources from '#resources#';
 
 const PersonalAreaButton = () => {
     return (

@@ -1,10 +1,10 @@
 import React from 'react';
-import {paragraph} from '../../data/textData/footer/RealEstatePageFooter';
+import { paragraph } from '#src#/data/textData/footer/RealEstatePageFooter';
 import FooterLinks from './FooterLinks';
 import SocialMediaLinks from './SocialMediaLinks';
-import {copyRightText} from '../../data/textData/footer/Footer';
+import { copyRightText } from '#src#/data/textData/footer/Footer';
 import FooterBottomNavLinks from './FooterBottomNavLinks';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const RealEstatePageFooter = () => {
     return (
@@ -13,10 +13,10 @@ const RealEstatePageFooter = () => {
             <FooterLinks />
             <SocialMediaLinks />
             <p className="footer__copy-right-text">{copyRightText}</p>
-            <hr/>
+            <hr />
             <FooterBottomNavLinks />
             <div className="footer__version-pro-link"><Link to="url" className='react-link-regular'>pro :גירסה</Link></div>
-      </div>
+        </div>
     );
 }
 

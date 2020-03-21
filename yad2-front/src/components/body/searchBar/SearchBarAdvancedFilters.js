@@ -3,9 +3,9 @@ import Size from './SearchFields/Size';
 import Floor from './SearchFields/Floor';
 import EntryDate from './SearchFields/EntryDate';
 import ImmediateEntryCheckbox from './SearchFields/ImmediateEntryCheckbox';
-import SearchField from '../../generics/SearchField';
+import SearchField from '#components#/generics/SearchField';
 import { connect } from 'react-redux';
-import resources from '../../../resources.json';
+import resources from '#resources#';
 const searchBarResources = resources.body.searchBar;
 
 class SearchBarAdvancedFilters extends React.Component {

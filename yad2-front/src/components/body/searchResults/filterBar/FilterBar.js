@@ -6,7 +6,7 @@ import {
     sortByPriceLowHigh,
     toggleShowOnlyItemsWithPrice,
     toggleShowOnlyItemsWithImage
-} from '../../../../actions/filters';
+} from '#actions#/filters';
 import FilterButtons from './FilterButtons';
 import SortBy from './SortBy';
 import ShowMap from './ShowMap';

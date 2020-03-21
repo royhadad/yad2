@@ -1,5 +1,5 @@
 import React from 'react';
-const textResources = require('../../resources.json');
+const textResources = require('#resources#');
 const unicodeChars = textResources.general.unicodeChars;
 
 /*

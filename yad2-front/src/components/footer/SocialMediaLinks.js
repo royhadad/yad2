@@ -1,5 +1,5 @@
 import React from 'react';
-import getFullImageURL from '../../utility/getFullImageURL';
+import getFullImageURL from '#src#/utility/getFullImageURL';
 
 const SocialMediaLinks = () => {
     return (

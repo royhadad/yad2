@@ -1,10 +1,10 @@
 import React from 'react';
-import prevSearchesFixture from '../../data/fixtures/PrevSearchesButton';
-import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../utility/calculatePositions';
+import prevSearchesFixture from '#src#/data/fixtures/PrevSearchesButton';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '#src#/utility/calculatePositions';
 import { Link } from 'react-router-dom';
-import resources from '../../resources.json';
+import resources from '#resources#';
 import uuid from 'uuid';
-import getFullImageURL from '../../utility/getFullImageURL';
+import getFullImageURL from '#src#/utility/getFullImageURL';
 const prevSearchesResources = resources.header.prevSearchesButton;
 
 class PrevSearchesButton extends React.Component {

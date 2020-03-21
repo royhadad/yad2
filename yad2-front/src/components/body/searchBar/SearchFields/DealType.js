@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addType, removeType } from '../../../../actions/filters';
-import OptionsPicker from '../../../generics/OptionsPicker';
-const textResources = require('../../../../resources.json');
+import { addType, removeType } from '#actions#/filters';
+import OptionsPicker from '#components#/generics/OptionsPicker';
+const textResources = require('#resources#');
 const dealTypeInput = textResources.body.searchBar.dealTypeInput;
 
 class Type extends React.Component {

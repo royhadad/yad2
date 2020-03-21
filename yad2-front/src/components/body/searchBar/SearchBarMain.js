@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SearchField from '../../generics/SearchField';
+import SearchField from '#components#/generics/SearchField';
 import Type from './SearchFields/Type';
 import DealType from './SearchFields/DealType';
 import Rooms from './SearchFields/Rooms';
 import Roommates from './SearchFields/Roommates';
 import Price from './SearchFields/Price';
-import resources from '../../../resources.json';
-import { fetchItems } from '../../../selectors/items';
+import resources from '#resources#';
+import { fetchItems } from '#src#/selectors/items';
 import Location from './SearchFields/Location';
 const searchBarResources = resources.body.searchBar;
 

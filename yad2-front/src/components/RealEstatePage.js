@@ -1,10 +1,10 @@
 import React from 'react';
-import MainNavBar from './MainNavBar/MainNavBar';
-import RealEstateNavBar from './RealEstateNavBar';
-import RealEstatePageBody from './body/RealEstatePageBody';
-import RealEstatePageFooter from './footer/RealEstatePageFooter';
+import MainNavBar from '#components#/MainNavBar/MainNavBar';
+import RealEstateNavBar from '#components#/RealEstateNavBar';
+import RealEstatePageBody from '#body#/RealEstatePageBody';
+import RealEstatePageFooter from '#components#/footer/RealEstatePageFooter';
 import { connect } from 'react-redux';
-import { setCategory } from '../actions/filters';
+import { setCategory } from '#src#/actions/filters';
 
 class RealEstatePage extends React.Component {
     preFix = '/realestate';

@@ -1,11 +1,11 @@
 import React from 'react';
 import onClickOutside from 'react-onclickoutside'
-import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../../../utility/calculatePositions';
-import resources from '../../../../resources.json';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '#src#/utility/calculatePositions';
+import resources from '#resources#';
 import uuid from 'uuid';
-import RadioButton from '../../../generics/RadioButton';
+import RadioButton from '#components#/generics/RadioButton';
 import { connect } from 'react-redux';
-import { sortByDate, sortByPriceHighlow, sortByPriceLowHigh } from '../../../../actions/filters';
+import { sortByDate, sortByPriceHighlow, sortByPriceLowHigh } from '#actions#/filters';
 const filterBarResources = resources.body.searchResults.filterBar;
 const sortByDropDownOptions = filterBarResources.sortByDropDown;
 

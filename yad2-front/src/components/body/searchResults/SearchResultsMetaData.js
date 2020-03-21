@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import deriveStringFromNumber from '../../../utility/deriveStringFromNumber';
-import resources from '../../../resources.json';
+import deriveStringFromNumber from '#src#/utility/deriveStringFromNumber';
+import resources from '#resources#';
 const searchResultsMetaDataResources = resources.body.searchResults.searchResultsMetaData;
 const propertyTypes = resources.general.propertyTypes;
 

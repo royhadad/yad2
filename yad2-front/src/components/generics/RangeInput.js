@@ -1,5 +1,5 @@
 import React from 'react';
-import deriveStringFromNumber from '../../utility/deriveStringFromNumber';
+import deriveStringFromNumber from '#src#/utility/deriveStringFromNumber';
 /*
 HOW TO USE
 receives props:

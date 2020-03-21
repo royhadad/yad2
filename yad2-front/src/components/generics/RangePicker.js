@@ -1,6 +1,6 @@
 import React from 'react';
 import onClickOutSide from 'react-onclickoutside';
-import resources from '../../resources.json';
+import resources from '#resources#';
 const unicodeChars = resources.general.unicodeChars;
 const textData = resources.general.generics.RangePicker;
 /*

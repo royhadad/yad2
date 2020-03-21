@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMinFloor, setMaxFloor } from '../../../../actions/filters';
-import RangePickerSimple from '../../../generics/RangePickerSimple';
-import resources from '../../../../resources.json';
+import { setMinFloor, setMaxFloor } from '#actions#/filters';
+import RangePickerSimple from '#components#/generics/RangePickerSimple';
+import resources from '#resources#';
 const minusOneValue = resources.body.searchBar.typeInput.types.forsale.filter((type) => type.value === 'basementAndParter')[0].text;
 class Floor extends React.Component {
     getOptions = () => {
@@ -12,7 +12,7 @@ class Floor extends React.Component {
         }
         return options;
     }
-    render() {        
+    render() {
         return (
             <RangePickerSimple
                 fromOptions={this.getOptions()}

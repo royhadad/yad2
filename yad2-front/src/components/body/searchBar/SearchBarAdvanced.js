@@ -1,12 +1,12 @@
 import React from 'react';
-import { deriveXfromViewPortX, deriveYfromViewPortY } from '../../../utility/calculatePositions';
+import { deriveXfromViewPortX, deriveYfromViewPortY } from '#src#/utility/calculatePositions';
 import FreeSearch from './SearchFields/FreeSearch';
 import onClickOutside from 'react-onclickoutside';
-import SearchField from '../../generics/SearchField';
+import SearchField from '#components#/generics/SearchField';
 import SearchBarAdvancedProperties from './SearchFields/SearchBarAdvancedProperties';
 import SearchBarAdvancedFilters from './SearchBarAdvancedFilters';
 import SearchBarAdvancedBottomButtons from './SearchBarAdvancedBottomButtons';
-import resources from '../../../resources.json';
+import resources from '#resources#';
 const searchBarResources = resources.body.searchBar;
 
 class SearchBarAdvanced extends React.Component {

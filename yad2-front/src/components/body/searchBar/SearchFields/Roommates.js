@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setMinRoommates, setMaxRoommates } from '../../../../actions/filters';
-import RangePicker from '../../../generics/RangePicker';
+import { setMinRoommates, setMaxRoommates } from '#actions#/filters';
+import RangePicker from '#components#/generics/RangePicker';
 class Roommates extends React.Component {
     getOptions = () => {
         const options = [];

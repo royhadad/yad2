@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside'
-import resources from '../../../resources.json';
+import resources from '#resources#';
 import { connect } from 'react-redux';
 const propertyTypes = resources.general.propertyTypes;
 const searchBarHeaderResources = resources.body.searchBar.searchBarHeader;
