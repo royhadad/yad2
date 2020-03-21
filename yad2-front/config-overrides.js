@@ -9,7 +9,11 @@ module.exports = (config) => {
             "react-dom": "preact/compat",
             "react-dom/test-utils": "preact/test-utils",
         }),
-        "#src#": path.join(__dirname, "src")
+        "#base#": __dirname,
+        "#src#": path.join(__dirname, "src"),
+        "#resources#": path.join(__dirname, "src", "resources.json"),
+        "#components#": path.join(__dirname, "src", "components"),
+        "#actions#": path.join(__dirname, "src", "actions")
     }
     config.plugins = [
         ...config.plugins,

@@ -1,6 +1,6 @@
-import { setFilters, setLocationCurrentText } from '../actions/filters';
-import { setCurrentPage, setTotalItems, setItemsArr, setIsLoading, setSearchedLocation } from '../actions/items';
-import { store } from '../index';
+import { setFilters, setLocationCurrentText } from '#actions#/filters';
+import { setCurrentPage, setTotalItems, setItemsArr, setIsLoading, setSearchedLocation } from '#actions#/items';
+import { store } from '#src#/index';
 
 const cleanFilters = (filters) => {
     let temp;

@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import AppRouter, { } from './routers/AppRouter';
-import configureStore from './store/configureStore';
-import loadExternalScriptsAndThenRender from './utility/loadExternalScriptsAndThenRender';
+import AppRouter, { } from '#src#/routers/AppRouter';
+import configureStore from '#src#/store/configureStore';
+import loadExternalScriptsAndThenRender from '#src#/utility/loadExternalScriptsAndThenRender';
 import 'normalize.css/normalize.css';
 import 'react-dates-temp/initialize';
 import 'react-dates-temp/lib/css/_datepicker.css';
-import './styles/styles.scss';
+import '#src#/styles/styles.scss';
 import 'moment/locale/he';
 import * as serviceWorker from './serviceWorker';
 require('dotenv').config();

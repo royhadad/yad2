@@ -1,4 +1,4 @@
-import Search from '../../entities/Search';
+import Search from '#src#/entities/Search';
 const searches = [];
 
 searches.push(new Search(
