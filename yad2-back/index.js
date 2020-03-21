@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const favicon = require('serve-favicon');
 const setHeaders = require('./middleWare/setHeaders');
-const serveStaticScripts = require('./serveStaticallyCompressedInstead.js');
+const serveStaticScripts = require('./middleWare/serveStaticallyCompressedInstead');
 require('dotenv').config();
 
 //choose port
