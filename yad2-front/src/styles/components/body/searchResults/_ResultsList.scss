@@ -3,9 +3,7 @@
     margin-bottom: $l-size;
 }
 .results-list__loading{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .flex-center;
 
     border: 1px solid $very-light-gray;
     margin-bottom: $l-size;

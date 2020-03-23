@@ -4,6 +4,23 @@
 }
 .feed-item:hover{
     box-shadow: $lighter-box-shadow;
+    .feed-item__image__wrapper{
+        >.feed-item__image__container{
+            overflow: hidden;
+            >img.feed-item-image{
+                transform: scale(1.05);
+            }
+        }
+    }
+}
+.item-background-yellow{
+    background: $item-yellow;
+}
+.item-background-red{
+    background: $item-red;
+}
+.item-background-white{
+    background: $item-white;
 }
 
 @import './FeedItemClosed';

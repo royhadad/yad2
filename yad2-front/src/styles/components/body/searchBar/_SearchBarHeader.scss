@@ -20,9 +20,7 @@
 }
 
 .search-bar__header__drop-down__item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .flex-center;
     border-top: 1px solid $very-light-gray;
     >a{
         padding: $s-size 8rem;

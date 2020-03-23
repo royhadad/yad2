@@ -16,9 +16,7 @@
     font-size: $font-size-s;
 }
 .top-info__accessibility-button{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .flex-center;
     color: white;
     border-radius: 0.3rem;
     border: none;

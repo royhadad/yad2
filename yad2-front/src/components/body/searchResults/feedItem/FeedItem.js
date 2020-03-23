@@ -12,8 +12,8 @@ class FeedItem extends React.Component {
     render() {
         return (
             this.state.isOpened
-                ? <FeedItemOpened item={this.props.item} toggleIsOpened={this.toggleIsOpened}/>
-                : <FeedItemClosed item={this.props.item} toggleIsOpened={this.toggleIsOpened}/>
+                ? <FeedItemOpened item={this.props.item} toggleIsOpened={this.toggleIsOpened} />
+                : <FeedItemClosed item={this.props.item} toggleIsOpened={this.toggleIsOpened} />
         );
     }
 }

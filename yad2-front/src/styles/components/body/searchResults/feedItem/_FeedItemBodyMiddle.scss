@@ -1,0 +1,11 @@
+.feed-item__body__middle{    
+    >span{
+        font-weight: $bold-weight;
+    }
+    >.feed-item__body__middle__items{
+        height: 15rem;
+        background: $very-very-light-gray;
+        width:100%;
+        margin-bottom: $m-size;
+    }
+}

@@ -6,9 +6,7 @@
 }
 
 .real-estate-nav-item__wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @extend .flex-center;
 }
 .real-estate-nav-item__wrapper:hover{
     background: $very-very-light-gray;

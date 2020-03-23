@@ -30,9 +30,7 @@ button:disabled {
 
 .react-link{
     padding: 0 $m-size;
-    display: flex;
-    align-items: center;
-    justify-content: center;;
+    @extend .flex-center;
     text-decoration: none;
     color: $text-color;
     height:100%;
@@ -78,4 +76,9 @@ input{
 }
 .invisible{
     visibility: hidden;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

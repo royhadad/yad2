@@ -5,9 +5,7 @@
 }
 
 .sort-by__wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @extend .flex-center;
     >span{
         direction: ltr;
     }

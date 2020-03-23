@@ -2,7 +2,7 @@
     height: 8.6rem;
     width: 13rem;
 }
->.feed-item__image__wrapper--open{
+.feed-item__image__wrapper--open{
     height: 13.7rem;
     width: 21.5rem;
 }
@@ -22,9 +22,7 @@
         >.feed-item__image__heart{
             position: absolute;
             z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @extend .flex-center;
             background: white;
             height: 2.5rem;
             width: 2.5rem;
@@ -44,8 +42,14 @@
                 color: $orange;
             }
         }
-        >.feed-item__image_num-of-images{
+        >.feed-item__image__num-of-images__wrapper{
             display: none;
+        }
+        >.feed-item__image_num-of-images__content{
+            display: none;
+            >.feed-item__image_num-of-images__text{
+                display: none;
+            }
         }
     }
 }

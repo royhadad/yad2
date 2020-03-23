@@ -3,11 +3,13 @@ import FeedItemImage from './FeedItemImage';
 import FeedItemClosedProps from './FeedItemProps';
 import FeedItemClosedPrice from './FeedItemClosedPrice';
 import FeedItemDescription from './FeedItemDescription';
+import getBackgroundColorClassByItem from '#src#/utility/getBackgroundColorClassByItem';
 
 class FeedItemClosed extends React.Component {
     render() {
+
         return (
-            <div className='feed-item--closed' onClick={this.props.toggleIsOpened}>
+            <div className={'feed-item--closed ' + getBackgroundColorClassByItem(this.props.item)} onClick={this.props.toggleIsOpened}>
                 <FeedItemImage item={this.props.item} isOpen={false} />
                 <FeedItemDescription item={this.props.item} isOpen={false} />
                 <FeedItemClosedProps item={this.props.item} isOpen={false} />

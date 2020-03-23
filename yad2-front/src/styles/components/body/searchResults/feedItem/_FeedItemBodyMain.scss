@@ -1,0 +1,13 @@
+.feed-item__body__main{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+    margin: 0 $m-size;
+    hr{
+        width: 90%;
+        border: 1px solid $very-light-gray;
+        margin-top: 0;
+        margin-bottom: $s-size;
+    }
+}

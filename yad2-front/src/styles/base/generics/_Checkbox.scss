@@ -13,9 +13,7 @@
         border: 1px solid black;
         margin: 0 $s-size;
         z-index: 20;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @extend .flex-center;
         color: white;
     }
 }

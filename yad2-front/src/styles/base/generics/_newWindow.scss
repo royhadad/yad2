@@ -43,3 +43,18 @@
     content: " ";
     border: 4px solid $item-yellow;
 }
+.item-background-yellow{
+    .newWindow--small:before {
+        border: 4px solid $item-yellow;
+    }
+}
+.item-background-red{
+    .newWindow--small:before {
+        border: 4px solid $item-red;
+    }
+}
+.item-background-white{
+    .newWindow--small:before {
+        border: 4px solid $item-white;
+    }
+}

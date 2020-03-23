@@ -554,10 +554,27 @@
                     "sizeText": "מ\"ר",
                     "openInNewTabText": "פתיחה בטאב חדש",
                     "updatedToday": "עודכן היום",
-                    "clickForDetails": "לחצו לפרטים"
+                    "clickForDetails": "לחצו לפרטים",
+                    "sellerDetails": {
+                        "headerText": "פרטי משרד התיווך",
+                        "showPhoneNumberText": "הצגת מספר טלפון",
+                        "toSellerPageText": "לאתר המשרד"
+                    }
                 },
                 "body": {
-                    "descriptionTitle": "תיאור הנכס"
+                    "descriptionTitle": "תיאור הנכס",
+                    "realEstateOfficeNameText": "שם משרד התיווך: ",
+                    "privateNameText": "שם המוכר: ",
+                    "topProperties": {
+                        "entryDate": "תאריך כניסה:",
+                        "balconies": "מרפסות:",
+                        "numOfFloors": "קומות בבניין:",
+                        "parkingSpots": "חניות:",
+                        "numberOfPayments": "מס תשלומים:",
+                        "maintenance": "וועד בית (לחודש):",
+                        "unspecified": "לא צוין"
+                    },
+                    "middleHeader": "מה יש בנכס?"
                 },
                 "footer": {
                     "itemIdText": "מספר מודעה: ",
@@ -576,7 +593,6 @@
             "personInWheelchair": "♿",
             "oppositeArrows": "⇆",
             "heart": "♡",
-            "shekel": "₪",
             "image": "🖼",
             "map": "🗺️",
             "checkmark": "✔",
@@ -584,7 +600,8 @@
             "printer": "🖶",
             "link": "🔗",
             "email": "✉",
-            "shekel": "₪"
+            "shekel": "₪",
+            "telephone": "📞"
         },
         "propertyTypes": {
             "forsale": "מכירה",

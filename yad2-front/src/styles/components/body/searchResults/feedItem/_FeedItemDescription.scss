@@ -5,9 +5,14 @@
     >.feed-item__description__header{
         font-size: $font-size-m;
         margin-bottom: 0;
+        display: inline-block;
     }
     >.feed-item__description__body{
         font-size: $font-size-s;
         margin-top: 0;
+    }
+    >.feed-item__show-in-map{
+        color: $orange;
+        font-weight: $bold-weight;
     }
 }

@@ -35,6 +35,7 @@ const location = {
 const itemsArr = [
     {
         id: '57362456',
+        sellerId: '1111',
         category: 'forsale',
         location: location,
         types: [],
@@ -44,7 +45,7 @@ const itemsArr = [
         floor: 3,
         size: 115,
         numOfRoommates: 0,
-        entryDate: moment(),
+        entryDate: moment().add(2, 'days'),
         isImmediateEntry: true,
         text: 'דירה מהממת בצפון הישן',
         imagesURLs: ['item1.jpg'],
@@ -52,6 +53,7 @@ const itemsArr = [
     },
     {
         id: '57362812',
+        sellerId: '1111',
         category: 'forsale',
         location: location,
         types: [],
@@ -61,7 +63,7 @@ const itemsArr = [
         floor: 4,
         size: 125,
         numOfRoommates: 0,
-        entryDate: moment(),
+        entryDate: moment().add(2, 'days'),
         isImmediateEntry: true,
         text: 'מטר מדיזנגוף סנטר',
         imagesURLs: ['item2.jpg'],
@@ -69,6 +71,7 @@ const itemsArr = [
     },
     {
         id: '57362222',
+        sellerId: '2222',
         category: 'forsale',
         location: location,
         types: [],
@@ -78,13 +81,28 @@ const itemsArr = [
         floor: 3,
         size: 105,
         numOfRoommates: 0,
-        entryDate: moment(),
+        entryDate: undefined,
         isImmediateEntry: true,
         text: 'בית קטן בדרום תל אביב',
         imagesURLs: ['item3.jpg'],
         isBrokerage: true
     }
 ];
+const usersArr = [
+    {
+        id: "1111",
+        name: "אמיר הנדל\"ן",
+        isPrivate: false,
+        phoneNumber: "0544970131",
+        itemsIdArr: ["57362456", "57362812"]
+    },
+    {
+        id: "2222",
+        name: "עידו הנדל נכסים",
+        isPrivate: false,
+        phoneNumber: "0523451231",
+        itemsIdArr: ["57362222"]
+    }
+]
 
-
-module.exports = { itemsArr };
+module.exports = { itemsArr, usersArr };
