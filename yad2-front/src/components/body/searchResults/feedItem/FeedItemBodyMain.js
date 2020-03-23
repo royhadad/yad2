@@ -3,10 +3,10 @@ import FeedItemBodyTop from './FeedItemBodyTop';
 import FeedItemBodyMiddle from './FeedItemBodyMiddle';
 import FeedItemBodyBottom from './FeedItemBodyBottom';
 
-export default (props) => (
+export default ({ item }) => (
     <div className='feed-item__body__main'>
-        <FeedItemBodyTop item={props.item} />
-        <FeedItemBodyMiddle item={props.item} />
-        <FeedItemBodyBottom item={props.item} />
+        <FeedItemBodyTop item={item} />
+        <FeedItemBodyMiddle item={item} />
+        <FeedItemBodyBottom item={item} />
     </div>
 );

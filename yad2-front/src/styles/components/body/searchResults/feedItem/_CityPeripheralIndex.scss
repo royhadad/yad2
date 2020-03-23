@@ -1,0 +1,16 @@
+.peripheral-index__wrapper{
+    height: 11.6rem;
+    width: 11.1rem;
+    margin-left: $s-size;
+    .progress-bar__inside{
+        @extend .flex-center;
+        flex-direction: column;
+        >.progress-bar__inside__header{
+            font-size: $l-size;
+            font-weight: $bold-weight;
+        }
+        >.progress-bar__inside__body{
+            font-size: $font-size-m;
+        }
+    }
+}

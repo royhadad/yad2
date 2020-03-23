@@ -17,7 +17,7 @@ const getTopPropertiesJSXByItem = (item) => {
         <div className='items__half__wrapper'>
             {
                 entries.map(([key, value]) => (
-                    <div className='item__wrapper'>
+                    <div key={key} className='item__wrapper'>
                         <span className='item__key'>{topProperties[key]}</span>
                         <span className='item__value'>{value === undefined ? topProperties['unspecified'] : value}</span>
                     </div>

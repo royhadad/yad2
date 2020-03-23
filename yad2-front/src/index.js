@@ -7,6 +7,7 @@ import loadExternalScriptsAndThenRender from '#src#/utility/loadExternalScriptsA
 import 'normalize.css/normalize.css';
 import 'react-dates-temp/initialize';
 import 'react-dates-temp/lib/css/_datepicker.css';
+import 'react-circular-progressbar/dist/styles.css';
 import '#src#/styles/styles.scss';
 import 'moment/locale/he';
 import * as serviceWorker from './serviceWorker';

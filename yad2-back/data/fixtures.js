@@ -7,7 +7,7 @@ const location = {
     active: true,
     index: 0,
     formattedSuggestion: {
-        mainText: 'תל אביב',
+        mainText: 'תל מונד',
         secondaryText: 'ישראל'
     },
     matchedSubstrings: [
