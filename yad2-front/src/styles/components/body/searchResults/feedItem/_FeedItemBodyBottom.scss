@@ -4,6 +4,10 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: $m-size;
+    @media (max-width: $desktop-breakpoint) {
+        flex-direction: column-reverse;
+    }
+
     >.feed-item__body__bottom__text{
         >p{
             font-size: $font-size-s;
