@@ -21,6 +21,8 @@ $details-hovered-green: #0e9664;
 $item-yellow: #F5F1BF;
 $item-red: lighten(red, 30%);
 $item-white: white;
+$restore-password-color: #3A4750;
+$login-button-background: #697580;
 
 //Font Size
 $font-size-s: 1.4rem;
@@ -41,6 +43,7 @@ $form-input-height: 4rem;
 
 // Others
 $regular-border: 1px solid $very-light-gray;
+$restore-password-border: 0.5rem solid #cacaca;
 $regular-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
 $lighter-box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
 $top-and-sides-box-shadow: 1.5rem 1.5rem 1.5rem -1.5rem rgba(0, 0, 0, 0.3), -1.5rem 1.5rem 1.5rem -1.5rem rgba(0, 0, 0, 0.2);

@@ -3,9 +3,28 @@
         font-weight: $bold-weight;
     }
     >.feed-item__body__middle__items{
-        height: 15rem;
-        background: $very-very-light-gray;
         width:100%;
         margin-bottom: $m-size;
+        padding: $m-size;
+        display: flex;
+        flex-direction: row;
+
+        >.feed-item__body__items__column{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25%;
+            .feed-item__body__item{
+                margin: $s-size 0;
+                font-size: $font-size-s;
+            }
+            >.feed-item__body__item__on{
+                @extend .feed-item__body__item;
+            }
+            >.feed-item__body__item__off{
+                @extend .feed-item__body__item;
+                opacity: 50%;
+            }
+        }
     }
 }

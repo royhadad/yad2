@@ -590,6 +590,16 @@
             }
         }
     },
+    "personalPage": {
+        "header": "האיזור האישי"
+    },
+    "login": {
+        "header": "כניסה לרשומים",
+        "email": "אימייל",
+        "password": "סיסמה",
+        "login": "כניסה",
+        "restorePasswordText": "שכחתי סיסמה"
+    },
     "footer": {},
     "general": {
         "unicodeChars": {

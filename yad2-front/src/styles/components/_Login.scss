@@ -1,0 +1,68 @@
+.login__body__wrapper{
+    @extend .flex-center;
+    background: $off-white;
+    >.login__body{
+        @extend .flex-center;
+        @extend .real-estate-page-body__container;
+        align-self: center;
+        background: $very-very-light-gray;
+        
+        >.login__box{
+            width: 42.1rem;
+            margin: 10rem 0 30rem 0;
+            border-radius: 1rem;
+            >.login__box__body{
+                background: lighten($orange, 5%);
+                border-top-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+                padding: $s-size;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+        
+                >.login__box__inputs{
+                    display: flex;
+                    flex-direction: column;
+                    width: 38.9rem;
+                    .login__header{
+                        @extend .flex-center;
+                        font-size: $font-size-l;
+                        color: white;
+                        font-weight: $bold-weight;
+                        margin: 0 0 $s-size 0;
+                        align-self: flex-end;
+                    }
+                    >input{
+                        margin: 0 0 $s-size 0;
+                        direction: rtl;
+                        width: 100%;
+                        height: 4.5rem;
+                        border-radius: 0.5rem;
+                        
+                    }
+                    >button{
+                        align-self: flex-start;
+                        background: $login-button-background;
+                        border: none;
+                        color: white;
+                        padding: 0.5rem $m-size;
+                        border-radius: 0.5rem;
+                    }
+                }
+            }
+            >.login__box__restore-password{
+                @extend .flex-center;
+                @extend .clickable;
+                color: $restore-password-color;
+                font-weight: 900;
+                font-size: $font-size-l;
+                padding: $s-size;
+                border-left: $restore-password-border;
+                border-bottom: $restore-password-border;
+                border-right: $restore-password-border;
+                border-bottom-right-radius: 1rem;
+                border-bottom-left-radius: 1rem;
+            }
+        }
+    }
+}

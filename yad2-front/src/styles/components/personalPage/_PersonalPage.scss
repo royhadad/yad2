@@ -1,0 +1,9 @@
+.personal-page__wrapper{
+    @extend .flex-center;
+    >.personal-page__body{
+        @extend .real-estate-page-body__container;
+        @extend .flex-center;
+        background: $very-very-light-gray;
+        min-height: 100rem;
+    }
+}

@@ -19,6 +19,9 @@ body {
 button {
   cursor: pointer;
 }
+p{
+  margin: 0;
+}
 
 button:disabled {
   cursor: default;
