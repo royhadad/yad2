@@ -1,7 +1,7 @@
 //#region requirments
-const secretVariables = require('dotenv').config().parsed;
-const ERROR_CODES = require('../errorCodes.js');
-const ResponseObj = require('../ResponseObj.js');
+const Item = require('../models/item')
+const ERROR_CODES = require('../utils/errorCodes.js');
+const ResponseObj = require('../utils/ResponseObj.js');
 const express = require('express');
 const jwt = require("jsonwebtoken");
 const router = express.Router();
@@ -16,7 +16,7 @@ router.get('/feed', (req, res) => {
     responseObj.data = {};
     const itemsArrWithSellerDetails = itemsArr.map((item) => ({ ...item, sellerDetails: usersArr.find((user) => (user.id === item.sellerId)) }));
     responseObj.data.itemsArr = itemsArrWithSellerDetails;
-
+    responseObj.data.itemsArr = Item.find();
     responseObj.data.totalItems = itemsArr.length;
 
     //TODO

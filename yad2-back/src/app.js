@@ -1,23 +1,23 @@
 const express = require('express');
-const chalk = require('chalk');
 const cors = require('cors')
 const morgan = require('morgan');
 const path = require('path');
 const favicon = require('serve-favicon');
-const setHeaders = require('./middleWare/setHeaders');
-const serveStaticScripts = require('./middleWare/serveStaticallyCompressedInstead');
-require('dotenv').config();
+const setHeaders = require('./middleware/setHeaders');
+const serveStaticScripts = require('./middleware/serveStaticallyCompressedInstead');
 
-//choose port
-const PORT = parseInt(process.env.PORT, 10);
-const PATH_TO_BUILD = path.resolve(__dirname, '../yad2-front/build');
+require('./db/mongoose')
+
+const PATH_TO_BUILD = path.resolve(__dirname, '../../yad2-front/build');
 const isDev = process.env.NODE_ENV !== 'production';
 
 //routes
-const feed = require('./routes/feed.js');
-const utils = require('./routes/utils');
+const feed = require('./routers/feed.js');
+const utils = require('./routers/utils');
+const user = require('./routers/user');
+const item = require('./routers/item');
 const useAPIRoutes = () => {
-    app.use(favicon(path.resolve(__dirname, '../yad2-front/build/favicon.ico')));
+    app.use(favicon(path.resolve(PATH_TO_BUILD, 'favicon.ico')));
     app.use(express.json());
     app.use(cors())
     app.get('/ping', (req, res) => {
@@ -26,6 +26,8 @@ const useAPIRoutes = () => {
     const apiRoutePrefix = '/api';
     app.use(apiRoutePrefix, feed);
     app.use(apiRoutePrefix, utils);
+    app.use(apiRoutePrefix, user);
+    app.use(apiRoutePrefix, item);
 }
 const serveReactApp = () => {
     app.use(serveStaticScripts);
@@ -50,6 +52,4 @@ if (isDev) {
     serveReactApp();
 }
 
-app.listen(PORT, () => console.log(chalk.green(`listening on port ${PORT}...`)));
-
-//<link rel="icon" type="image/png" href="/favicon.ico" />
+module.exports = app;

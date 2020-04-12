@@ -1,0 +1,6 @@
+list of all bugs:
+#1
+in search bar, for roommates, metatext says "חדרים" instead of "שותפים"
+
+#2
+in advanced search bar, floor dropdowns are not displayed properly
