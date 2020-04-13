@@ -16,7 +16,11 @@ class SearchResults extends React.Component {
                         ?
                         <ReactLoading type='bubbles' color='#ff7100' width={256} height={256} />
                         :
-                        this.props.itemsArr.map((item, index) => <FeedItem key={index} item={item} />)
+                        this.props.itemsArr.map((item, index) => {
+                            console.log(item);
+
+                            return <FeedItem key={index} item={item} />
+                        })
                 }
             </div>
         );

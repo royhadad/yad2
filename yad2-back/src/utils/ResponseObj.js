@@ -1,7 +1,6 @@
-class ResponseObj
-{
-    constructor()
-    {
+// depracated
+class ResponseObj {
+    constructor() {
         this.data = null;
         this.error = null;
     }

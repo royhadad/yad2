@@ -40,17 +40,17 @@ export const fetchItems = async (currentPage = 1) => {
     store.dispatch(setLocationCurrentText(filters.search.location === undefined ? '' : filters.search.location.description));
     store.dispatch(setIsLoading(true));
 
-    const queryString = Buffer.from(JSON.stringify({ ...filters, currentPage }), 'binary').toString('base64');
     try {
-        let response = await fetch(`/api/feed?filters=${queryString}`);
+        let response = await fetch(`/api/feed`);
         response = await response.json();
         if (response.error) {
             throw response.error;
         }
 
-        const data = response.data;
+        const data = response;
+
         store.dispatch(setTotalItems(data.totalItems));
-        store.dispatch(setItemsArr(data.itemsArr));
+        store.dispatch(setItemsArr(data.items));
     } catch (e) {
         console.log(e);
     } finally {

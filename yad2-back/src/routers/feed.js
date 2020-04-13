@@ -1,28 +1,32 @@
 //#region requirments
-const Item = require('../models/item')
-const ERROR_CODES = require('../utils/errorCodes.js');
-const ResponseObj = require('../utils/ResponseObj.js');
+const Item = require('../models/item');
+const User = require('../models/user');
 const express = require('express');
-const jwt = require("jsonwebtoken");
 const router = express.Router();
-const { itemsArr, usersArr } = require('../data/fixtures');
 //#endregion
-const DELAY_TIME = 500;
 
-router.get('/feed', (req, res) => {
-    let responseObj = new ResponseObj();
-    //const filters = JSON.parse(Buffer.from(req.query.filters, 'base64').toString('binary'));
+router.get('/feed', async (req, res) => {
+    try {
+        searchParams = {};
+        if (req.query.category) {
+            searchParams.category = req.query.category
+        }
 
-    responseObj.data = {};
-    const itemsArrWithSellerDetails = itemsArr.map((item) => ({ ...item, sellerDetails: usersArr.find((user) => (user.id === item.sellerId)) }));
-    responseObj.data.itemsArr = itemsArrWithSellerDetails;
-    responseObj.data.itemsArr = Item.find();
-    responseObj.data.totalItems = itemsArr.length;
+        let items = await Item
+            .find(searchParams)
+            .populate('sellerDetails')
+            .exec();
 
-    //TODO
-    setTimeout(() => {
-        res.send(JSON.stringify(responseObj));
-    }, DELAY_TIME);
+        res.send({
+            items: items,
+            totalItems: items.length
+        });
+    } catch (e) {
+        res.status(400).send({ error: e.message });
+    }
 });
 
+const populateOwner = (items) => {
+    items
+};
 module.exports = router;

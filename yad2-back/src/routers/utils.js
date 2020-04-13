@@ -1,26 +1,17 @@
 //#region requirments
 const ERROR_CODES = require('../utils/errorCodes.js');
-const ResponseObj = require('../utils/ResponseObj.js');
 const express = require('express');
 const router = express.Router();
 const peripheralIndex = require('../data/peripheralIndex.json');
 //#endregion
 //TODO convert to mongo!
 router.get('/peripheralIndex/:cityName', (req, res) => {
-    let responseObj = new ResponseObj();
     const cityName = req.params.cityName;
-    if (!cityName) {
-        responseObj.error = 'city not found';
-        return res.status(400).send(JSON.stringify(responseObj));
+    let score;
+    if (!cityName || !(score = peripheralIndex[cityName])) {
+        return res.status(404).send({ error: 'city not found' });
     }
-    const score = peripheralIndex[cityName];
-    if (score === undefined) {
-        responseObj.error = 'city not found';
-        return res.status(404).send(JSON.stringify(responseObj));
-    }
-    responseObj.data = {};
-    responseObj.data.peripheralIndex = score;
-    res.send(JSON.stringify(responseObj));
+    res.send({ peripheralIndex: score });
 });
 
 module.exports = router;

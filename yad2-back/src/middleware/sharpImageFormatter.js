@@ -21,7 +21,9 @@ const getAllSharpenedFiles = async (files) => {
 
 const sharpImageFormatter = async (req, res, next) => {
     try {
-        req.files = await getAllSharpenedFiles(req.files);
+        if (req.files && req.files.length) {
+            req.files = await getAllSharpenedFiles(req.files);
+        }
         next();
     } catch (e) {
         res.status(500).send(e);

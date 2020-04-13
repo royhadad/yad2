@@ -10,7 +10,7 @@ const fetchCityIndex = async (cityName, setCityIndex) => {
         if (response.error) {
             setCityIndex(null);
         } else {
-            setCityIndex(response.data.peripheralIndex);
+            setCityIndex(response.peripheralIndex);
         }
     } catch (e) {
         setCityIndex(null);
@@ -19,7 +19,7 @@ const fetchCityIndex = async (cityName, setCityIndex) => {
 
 export default ({ item }) => {
     const [cityIndex, setCityIndex] = useState(undefined);
-    useEffect(() => { fetchCityIndex(item.location.formattedSuggestion.mainText, setCityIndex) }, [item]);
+    useEffect(() => { fetchCityIndex(item.location.city, setCityIndex) }, [item]);
 
     return (
         <div className='feed-item__body__bottom'>

@@ -2,12 +2,11 @@ const moment = require('moment');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const getArrWithoutDuplicates = require('../utils/getArrWithoutDuplicates');
+const { uploadMultiple, uploadSingle, deleteMultiple, deleteSingle } = require('../utils/s3Services');
 const resources = require('../utils/resources');
 const categories = resources.general.propertyTypes;
 const types = resources.body.searchBar.typeInput.types;
 const properties = resources.body.searchBar.advancedProperties;
-
-const s3ItemsImagesUrlsPrefix = 'https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/items/';
 
 const locationSchema = new Schema({
     placeId: {
@@ -133,7 +132,6 @@ const itemSchema = new Schema({
         type: Boolean,
         default: false
     },
-    //not saving the s3 images prefix
     imagesURLs: [{
         type: String
     }],
@@ -146,25 +144,67 @@ const itemSchema = new Schema({
     timestamps: true
 })
 
+itemSchema.virtual('sellerDetails', {
+    ref: 'User',
+    localField: 'owner',
+    foreignField: '_id'
+});
+
 //lifecycle methods
 itemSchema.pre('save', function (next) {
     this.types = getArrWithoutDuplicates(this.types);
     this.properties = getArrWithoutDuplicates(this.properties);
+
     next();
 })
 
-//make JSON.stringify return item object with full imageURLs
+itemSchema.pre('remove', function (next) {
+    deleteMultiple(this.imagesURLs);
+    next();
+});
+
+//make JSON.stringify return item object with user populated
 itemSchema.methods.toJSON = function () {
     const itemObject = this.toObject();
-
-    itemObject.imagesURLs = itemObject.imagesURLs.map((id) => (s3ItemsImagesUrlsPrefix + id));
-
+    if (itemObject.sellerDetails) {
+        itemObject.sellerDetails = itemObject.sellerDetails[0];
+    }
     return itemObject;
 }
+itemSchema.set('toObject', { virtuals: true });
+itemSchema.set('toJSON', { virtuals: true });
 
 //static functions
 
 //Schema methods
+itemSchema.methods.deleteImages = async function (urlsToDelete) {
+    const item = this;
+    await deleteMultiple(urlsToDelete);
+    item.imagesURLs = item.imagesURLs.filter((url) => !urlsToDelete.includes(url));
+    await item.save();
+    return item;
+}
+itemSchema.methods.addImages = async function (imagesToAdd) {
+    const item = this;
+    const files = imagesToAdd;
 
+    let newImagesURLs = [];
+    if (files && files.length) {
+        newImagesURLs = await uploadMultiple(files);
+    }
+    if (item.imagesURLs) {
+        item.imagesURLs = item.imagesURLs.concat(newImagesURLs);
+    } else {
+        item.imagesURLs = newImagesURLs;
+    }
+    await item.save();
+    return item;
+}
+
+//private helper functions
+const getDeletedURLs = (beforeArr, afterArr) => {
+    const deletedURLs = beforeArr.filter((url) => (!afterArr.includes(url)));
+    return deletedURLs;
+}
 const Item = mongoose.model('Item', itemSchema)
 module.exports = Item;

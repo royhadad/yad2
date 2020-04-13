@@ -16,7 +16,7 @@ const getInsideJSXAndCityIndex = (cityIndex) => {
         if (cityIndex === null) {
             insideTextHeader = bottomResources.noData;
             cityIndex = 0;
-            headerStyle['font-size'] = '1.6rem';
+            headerStyle['fontSize'] = '1.6rem';
         } else {
             if (cityIndex.toString().length < 2) {
                 insideTextHeader = cityIndex + '.0';
