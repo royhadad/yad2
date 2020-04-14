@@ -1,21 +1,42 @@
 //#region requirments
 const Item = require('../models/item');
 const User = require('../models/user');
+const { getFilterObject, getSortObject } = require('../utils/getFeedUtils');
+const { base64decode } = require('nodejs-base64');
 const express = require('express');
 const router = express.Router();
 //#endregion
 
+// GET /feed
+// page=10
+// itemsPerPage=30
+// sortBy=date/priceHighLow/priceLowHigh
+// search=base64(json)
 router.get('/feed', async (req, res) => {
     try {
-        searchParams = {};
-        if (req.query.category) {
-            searchParams.category = req.query.category
-        }
+        const clientSearchObject = JSON.parse(base64decode(req.query.search));
+        const filter = getFilterObject(clientSearchObject);
+        const sortObject = getSortObject(req.query.sortBy);
+        const limit = parseInt(req.query.itemsPerPage) || 40;
+        const page = parseInt(req.query.page) || 1;
+        const skip = limit * (page - 1);
 
         let items = await Item
-            .find(searchParams)
+            .find(filter)
+            .sort(sortObject)
+            .limit(limit)
+            .skip(skip)
             .populate('sellerDetails')
             .exec();
+
+        // console.log({
+        //     filter,
+        //     sortObject,
+        //     limit,
+        //     page,
+        //     skip,
+        //     items
+        // });
 
         res.send({
             items: items,
@@ -26,7 +47,4 @@ router.get('/feed', async (req, res) => {
     }
 });
 
-const populateOwner = (items) => {
-    items
-};
 module.exports = router;

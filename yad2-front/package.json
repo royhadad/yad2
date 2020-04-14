@@ -11,6 +11,7 @@
     "dotenv": "^8.2.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
+    "nodejs-base64": "^1.0.3",
     "normalize.css": "^8.0.1",
     "path": "^0.12.7",
     "preact": "^10.3.4",

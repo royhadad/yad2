@@ -7,7 +7,7 @@ class FreeSearch extends React.Component {
     render() {
         return (
             <input className={'free-search__input'}
-                value={this.props.text}
+                value={this.props.text || ''}
                 onChange={(e) => this.props.setText(e.target.value)}
             />
         );

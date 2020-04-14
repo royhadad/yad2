@@ -4,3 +4,12 @@ in search bar, for roommates, metatext says "חדרים" instead of "שותפי�
 
 #2
 in advanced search bar, floor dropdowns are not displayed properly
+
+#3
+cant clear search by simply deleting it's content
+
+#4
+change minSize minFloor etc to generic reusable form
+
+#5
+make proper search on first load of page instead of getting forsale always

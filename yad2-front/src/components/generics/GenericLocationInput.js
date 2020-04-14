@@ -24,7 +24,7 @@ class GenericLocationInput extends React.Component {
     render() {
         return (
             <PlacesAutocomplete
-                value={this.props.locationCurrentText}
+                value={this.props.locationCurrentText || ''}
                 onChange={this.handleChange}
                 searchOptions={{
                     types: ['(regions)'],

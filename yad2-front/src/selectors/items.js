@@ -1,6 +1,7 @@
 import { setFilters, setLocationCurrentText } from '#actions#/filters';
 import { setCurrentPage, setTotalItems, setItemsArr, setIsLoading, setSearchedLocation } from '#actions#/items';
 import { store } from '#src#/index';
+import getFeedQueryString from '#src#/utility/getFeedQueryString';
 
 const cleanFilters = (filters) => {
     let temp;
@@ -41,7 +42,7 @@ export const fetchItems = async (currentPage = 1) => {
     store.dispatch(setIsLoading(true));
 
     try {
-        let response = await fetch(`/api/feed`);
+        let response = await fetch(`/api/feed${getFeedQueryString(store.getState())}`);
         response = await response.json();
         if (response.error) {
             throw response.error;
