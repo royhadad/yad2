@@ -26,7 +26,7 @@ export default (props) => (
             </span>
             <span className='feed-item__footer__left__item-id'>
                 {
-                    footerResources.itemIdText + props.item.id
+                    footerResources.itemIdText + props.item.serialNumber
                 }
             </span>
         </div>
