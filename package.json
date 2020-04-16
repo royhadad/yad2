@@ -25,7 +25,5 @@
     "engines": {
         "node": "12.14.0"
     },
-    "dependencies": {
-        "mongoose-sequence": "^5.2.2"
-    }
+    "dependencies": {}
 }
