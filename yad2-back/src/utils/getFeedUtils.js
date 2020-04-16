@@ -1,7 +1,6 @@
 const moment = require('moment');
 
 const getFilterObject = (clientSearchObject) => {
-    console.log(clientSearchObject);
     search = clientSearchObject; //shorter code
 
     filter = {};
