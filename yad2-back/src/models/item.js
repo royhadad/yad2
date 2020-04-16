@@ -1,5 +1,6 @@
 const moment = require('moment');
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 const Schema = mongoose.Schema;
 const getArrWithoutDuplicates = require('../utils/getArrWithoutDuplicates');
 const { uploadMultiple, uploadSingle, deleteMultiple, deleteSingle } = require('../utils/s3Services');
@@ -143,6 +144,8 @@ const itemSchema = new Schema({
 }, {
     timestamps: true
 })
+
+itemSchema.plugin(AutoIncrement, { inc_field: 'serialNumber' });
 
 itemSchema.virtual('sellerDetails', {
     ref: 'User',
