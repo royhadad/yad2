@@ -5,7 +5,7 @@ const itemsReducerDefaultState = {
     itemsPerPage: 40,
     isLoading: true,
     searchedLocation: undefined,
-    itemsArr: []
+    itemsArr: [],
 };
 
 export default (state = itemsReducerDefaultState, action) => {

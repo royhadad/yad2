@@ -1,0 +1,13 @@
+.image-slider__wrapper{
+    @extend .flex-center;
+    background: $image-slider-background;
+    height: 100%;
+    width: 100%;
+    >.image-slider__container{
+        max-width: 50rem;
+        max-height: 50rem;
+    }
+    >.image-slider__container:hover{
+        box-shadow: $image-slider-box-shadow;
+    }
+}

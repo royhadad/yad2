@@ -1,10 +1,8 @@
 import React from 'react';
-import MainNavBar from '#components#/MainNavBar/MainNavBar';
-import RealEstateNavBar from '#components#/RealEstateNavBar';
 import RealEstatePageBody from '#body#/RealEstatePageBody';
-import RealEstatePageFooter from '#components#/footer/RealEstatePageFooter';
 import { connect } from 'react-redux';
 import { setCategory } from '#src#/actions/filters';
+import { fetchItems } from '#src#/selectors/items';
 
 class RealEstatePage extends React.Component {
     preFix = '/realestate';
@@ -13,6 +11,7 @@ class RealEstatePage extends React.Component {
         this.unlisten = this.props.history.listen((location) => {
             this.setCategoryAndValidateUrl(location);
         });
+        fetchItems();
     }
     setCategoryAndValidateUrl(location) {
         const currentPath = location.pathname;
@@ -38,10 +37,7 @@ class RealEstatePage extends React.Component {
     render() {
         return (
             <div>
-                <MainNavBar />
-                <RealEstateNavBar />
                 <RealEstatePageBody />
-                <RealEstatePageFooter />
             </div>
         );
     }

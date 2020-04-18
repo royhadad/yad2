@@ -128,7 +128,6 @@ class RangePickerDropDown extends React.Component {
                         this.state.shouldShowFromDropDown
                         &&
                         <React.Fragment>
-                            <div className={'arrow-up__with-top-border'} style={{ top: 62 }} />
                             <RangePickerOptionsDropDown
                                 selected={this.props.from}
                                 options={this.props.fromOptions}
@@ -158,7 +157,7 @@ class RangePickerOptionsDropDownWithOutOnClickOutside extends React.Component {
     }
     render() {
         return (
-            <div className={'range-picker-simple__options__dropdown'} style={{ top: 72 }}>
+            <div className={'range-picker-simple__options__dropdown'}>
                 {
                     this.props.options.map((option, index) => (
                         <div

@@ -1,17 +1,25 @@
 import React from 'react';
-import MainNavBar from '#components#/MainNavBar/MainNavBar';
-import RealEstateNavBar from '#components#/RealEstateNavBar';
-import RealEstatePageFooter from '#components#/footer/RealEstatePageFooter';
+import { startLogin, setLoginError } from '../actions/auth';
 import { connect } from 'react-redux';
 import resources from '#resources#';
+const loginErrors = resources.errors.loginErrors;
+
 const loginResources = resources.login;
 
 class Login extends React.Component {
+    handleLogin = (e) => {
+        e.stopPropagation();
+        const email = document.getElementById('login-input-email').value;
+        const password = document.getElementById('login-input-password').value;
+        if (!email || !password) {
+            this.props.setLoginError(loginErrors.emailOrPasswordMissing);
+        } else {
+            startLogin(email, password);
+        }
+    }
     render() {
         return (
             <div>
-                <MainNavBar />
-                <RealEstateNavBar />
                 <div className='login__body__wrapper'>
                     <div className='login__body'>
                         <div className='login__box'>
@@ -21,9 +29,9 @@ class Login extends React.Component {
                                     <p className='login__header'>
                                         {loginResources.header}
                                     </p>
-                                    <input placeholder={loginResources.email} />
-                                    <input type='password' placeholder={loginResources.password} />
-                                    <button>{loginResources.login}</button>
+                                    <input id='login-input-email' placeholder={loginResources.email} />
+                                    <input id='login-input-password' type='password' placeholder={loginResources.password} />
+                                    <button onClick={this.handleLogin}>{loginResources.login}</button>
                                 </div>
                             </div>
                             <div className='login__box__restore-password' onClick={(e) => alert('not implemented')}>
@@ -32,10 +40,11 @@ class Login extends React.Component {
                         </div>
                     </div>
                 </div>
-                <RealEstatePageFooter />
             </div>
         );
     }
 }
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+    setLoginError: (error) => dispatch(setLoginError(error))
+});
 export default connect(undefined, mapDispatchToProps)(Login);

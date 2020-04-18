@@ -7,7 +7,7 @@ import getBackgroundColorClassByItem from '#src#/utility/getBackgroundColorClass
 
 export default (props) => (
     <div className={'feed-item__header ' + getBackgroundColorClassByItem(props.item)} onClick={props.toggleIsOpened}>
-        <FeedItemImage item={props.item} isOpen={true} />
+        <FeedItemImage item={props.item} isOpen={true} toggleIsOpened={props.toggleIsOpened} />
         <div className='feed-item__header__middle'>
             <FeedItemDescription item={props.item} isOpen={true} />
             <FeedItemClosedProps item={props.item} isOpen={true} />

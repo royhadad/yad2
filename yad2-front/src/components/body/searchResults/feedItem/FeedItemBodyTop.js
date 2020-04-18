@@ -1,5 +1,6 @@
 import React from 'react';
 import resources from '#resources#';
+import moment from 'moment';
 const bodyResources = resources.body.searchResults.feedItem.body;
 const topProperties = bodyResources.topProperties;
 //TODO get the actual properties to show
@@ -19,7 +20,7 @@ const getTopPropertiesJSXByItem = (item) => {
                 entries.map(([key, value]) => (
                     <div key={key} className='item__wrapper'>
                         <span className='item__key'>{topProperties[key]}</span>
-                        <span className='item__value'>{value === undefined ? topProperties['unspecified'] : value}</span>
+                        <span className='item__value'>{value === undefined ? topProperties['unspecified'] : (key === 'entryDate' ? moment(value).format('DD/MM/YYYY') : value)}</span>
                     </div>
                 ))
             }

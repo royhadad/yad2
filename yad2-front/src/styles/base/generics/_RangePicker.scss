@@ -59,16 +59,16 @@
 }
 
 .range-picker-simple__button__wrapper{
+    position: relative;
     display: flex;
     flex-direction: row-reverse;
-}
-.range-picker-simple__button__wrapper{
-    @extend .range-picker__button__wrapper;
     margin: 0;
     width: auto;
 }
 .range-picker-simple__options__dropdown{
     @extend .range-picker__options__dropdown;
+    top: $form-input-height;
+    max-height: 20rem;
     width:12rem;
 }
 .range-picker-simple__button{

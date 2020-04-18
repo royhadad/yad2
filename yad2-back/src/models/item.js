@@ -8,6 +8,7 @@ const resources = require('../utils/resources');
 const categories = resources.general.propertyTypes;
 const types = resources.body.searchBar.typeInput.types;
 const properties = resources.body.searchBar.advancedProperties;
+const ITEM_PLACEHOLDER_IMAGE_URL = 'https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/item_placeholder_image.jpg';
 
 const locationSchema = new Schema({
     placeId: {
@@ -171,6 +172,9 @@ itemSchema.methods.toJSON = function () {
     const itemObject = this.toObject();
     if (itemObject.sellerDetails) {
         itemObject.sellerDetails = itemObject.sellerDetails[0];
+    }
+    if (itemObject.imagesURLs.length === 0) {
+        itemObject.imagesURLs[0] = ITEM_PLACEHOLDER_IMAGE_URL;
     }
     return itemObject;
 }

@@ -1,13 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchItems } from '#src#/selectors/items';
 import ReactLoading from 'react-loading';
 import FeedItem from './feedItem/FeedItem';
 
 class SearchResults extends React.Component {
-    componentDidMount() {
-        fetchItems();
-    }
     render() {
         return (
             <div className={this.props.isLoading ? 'results-list__loading' : 'results-list'}>
@@ -17,8 +13,6 @@ class SearchResults extends React.Component {
                         <ReactLoading type='bubbles' color='#ff7100' width={256} height={256} />
                         :
                         this.props.itemsArr.map((item, index) => {
-                            console.log(item);
-
                             return <FeedItem key={index} item={item} />
                         })
                 }

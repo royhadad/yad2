@@ -16,6 +16,9 @@ class GenericLocationInput extends React.Component {
     idPreFix = 'genericLocationInputId_';
     handleChange = (locationCurrentText) => {
         this.props.setLocationCurrentText(locationCurrentText);
+        if (locationCurrentText === '') {
+            this.props.setLocation();
+        }
     };
     handleSelect = (location) => {
         this.props.setLocation(location);

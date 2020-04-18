@@ -10,7 +10,7 @@ class FeedItemClosed extends React.Component {
 
         return (
             <div className={'feed-item--closed ' + getBackgroundColorClassByItem(this.props.item)} onClick={this.props.toggleIsOpened}>
-                <FeedItemImage item={this.props.item} isOpen={false} />
+                <FeedItemImage item={this.props.item} isOpen={false} toggleIsOpened={this.props.toggleIsOpened} />
                 <FeedItemDescription item={this.props.item} isOpen={false} />
                 <FeedItemClosedProps item={this.props.item} isOpen={false} />
                 <FeedItemClosedPrice item={this.props.item} isOpen={false} />

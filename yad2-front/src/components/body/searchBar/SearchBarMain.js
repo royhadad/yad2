@@ -11,39 +11,49 @@ import { fetchItems } from '#src#/selectors/items';
 import Location from './SearchFields/Location';
 const searchBarResources = resources.body.searchBar;
 
+const searchFields = {
+    type: (<SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />),
+    rooms: (<SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />),
+    price: (<SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />),
+    roommates: (<SearchField metaText={searchBarResources.numOfRoommates.metaText} selectorJSX={<Roommates />} />),
+    dealType: (<SearchField metaText={searchBarResources.dealTypeInput.metaText} selectorJSX={<DealType />} />)
+}
+
+
+
 class SearchBarMain extends React.Component {
     renderSearchFieldsByCategory = (category) => {
         switch (category) {
             case 'forsale':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
-                        <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
-                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
+                        {searchFields.type}
+                        {searchFields.rooms}
+                        {searchFields.price}
                     </React.Fragment>
                 );
             case 'rent':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
-                        <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
-                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
+                        {searchFields.type}
+                        {searchFields.rooms}
+                        {searchFields.price}
                     </React.Fragment>
                 );
             case 'roommates':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
-                        <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Roommates />} />
-                        <SearchField metaText={searchBarResources.rooms.metaText} selectorJSX={<Rooms />} />
+                        {searchFields.price}
+                        {searchFields.roommates}
+                        {searchFields.rooms}
                     </React.Fragment>
                 );
             case 'commercial':
                 return (
                     <React.Fragment>
-                        <SearchField metaText={searchBarResources.dealTypeInput.metaText} selectorJSX={<DealType />} />
-                        <SearchField metaText={searchBarResources.typeInput.metaText} selectorJSX={<Type />} />
-                        <SearchField metaText={searchBarResources.price.metaText} selectorJSX={<Price />} />
+                        {searchFields.dealType}
+                        {searchFields.type}
+                        {searchFields.price}
                     </React.Fragment>
                 );
             default:

@@ -1,0 +1,19 @@
+.close-modal-button{
+    @extend .flex-center;
+    @extend .clickable;
+    @extend .unselectable-text;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 3rem;
+    height: 3rem;
+    background: $orange;
+    color: white;
+    font-weight: $bold-weight;
+    font-size: $font-size-l;
+    padding: 1rem;
+    border-radius: 3rem;
+}
+.close-modal-button:hover{
+    background: lighten($orange, 10%)
+}

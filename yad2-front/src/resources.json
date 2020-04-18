@@ -297,6 +297,9 @@
             "rooms": {
                 "metaText": "חדרים"
             },
+            "numOfRoommates": {
+                "metaText": "שותפים"
+            },
             "price": {
                 "metaText": "מחיר בש\"ח",
                 "fromPlaceholder": "ממחיר",
@@ -635,6 +638,11 @@
         },
         "constants": {
             "IMAGES_URL_PREFIX": "https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/"
+        }
+    },
+    "errors": {
+        "loginErrors": {
+            "emailOrPasswordMissing": "אנא מלא שם משתמש וסיסמה"
         }
     }
 }
