@@ -2,18 +2,23 @@ export default (state = {}, action) => {
     switch (action.type) {
         case 'LOGIN':
             return {
+                ...state,
                 token: action.token,
-                error: undefined
             };
         case 'LOGOUT':
             return {
+                ...state,
                 token: undefined,
-                error: undefined
             };
         case 'SET_LOGIN_ERROR':
             return {
                 ...state,
-                error: action.error
+                loginError: action.error
+            }
+        case 'SET_SIGNUP_ERROR':
+            return {
+                ...state,
+                signupError: action.error
             }
         default:
             return state;

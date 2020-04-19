@@ -601,7 +601,17 @@
         "email": "אימייל",
         "password": "סיסמה",
         "login": "כניסה",
-        "restorePasswordText": "שכחתי סיסמה"
+        "restorePasswordText": "שכחתי סיסמה",
+        "signupLink": "אין לך משתמש עדיין? הירשם"
+    },
+    "signup": {
+        "header": "יצירת משתמש",
+        "email": "אימייל",
+        "password": "סיסמה",
+        "phone": "מספר טלפון",
+        "name": "שם מלא",
+        "signup": "צור משתמש",
+        "loginLink": "כבר יש לך משתמש? התחבר"
     },
     "footer": {},
     "general": {
@@ -642,7 +652,19 @@
     },
     "errors": {
         "loginErrors": {
-            "emailOrPasswordMissing": "אנא מלא שם משתמש וסיסמה"
+            "emailOrPasswordMissing": "אנא מלא שם משתמש וסיסמה",
+            "incorrectCredentials": "שם משתמש או סיסמה שגויים",
+            "somethingWentWrong": "ההתחברות נכשלה, נסה שוב"
+        },
+        "signupErrors": {
+            "emailMissing": "אנא הזן אימייל",
+            "passwordMissing": "אנא הזן סיסמה",
+            "phoneMissing": "אנא הזן מספר טלפון",
+            "nameMissing": "אנא הזן שם",
+            "invalidEmail": "אימייל לא תקין",
+            "invalidPassword": "על הסיסמה להיות באורך 6 תווים לפחות",
+            "invalidPhone": "אנא הזן מספר טלפון תקין",
+            "emailTaken": "אימייל כבר בשימוש"
         }
     }
 }
