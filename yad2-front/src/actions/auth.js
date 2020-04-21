@@ -1,15 +1,17 @@
 import { store } from '#src#/index';
 import validator from 'validator';
 import resources from '#resources#';
+import UnexpectedAuthErrorHandler from '../utility/UnexpectedAuthErrorHandler';
 const loginErrors = resources.errors.loginErrors;
 const signupErrors = resources.errors.signupErrors;
+const updatedSuccessfullyError = resources.personalPage.editProfile.updatedSuccessfully;
+
 
 //LOGIN
 export const login = (token) => ({
     type: 'LOGIN',
     token
 });
-
 export const startLogin = async (email, password) => {
     try {
         const requestOptions = {
@@ -46,25 +48,19 @@ export const logout = (token) => ({
 
 const startLogoutAllOrOnce = async (shouldLogoutAll) => {
     try {
-        const token = store.getState().auth.token;
-        if (!token) {
-            throw new Error();
-        }
         const requestOptions = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Content-Type': 'application/json'
             }
         }
         var response = await fetch(`/api/users/logout${shouldLogoutAll ? 'All' : ''}`, requestOptions);
         if (response.status !== 200) {
-            throw response.error;
+            throw response.status;
         }
-        store.dispatch(logout(token));
+        store.dispatch(logout());
     } catch (e) {
-        //using an alert because this shouldn't happen for regular users
-        alert('error in logout');
+        UnexpectedAuthErrorHandler(e);
     }
 }
 
@@ -108,8 +104,7 @@ export const startSignup = async (user) => {
         if (e === 409) {
             store.dispatch(setSignupError(signupErrors.emailTaken));
         } else {
-            //using an alert because this shouldn't happen for regular users
-            alert('error in signup!');
+            UnexpectedAuthErrorHandler(e);
         }
     }
 }
@@ -139,6 +134,67 @@ const isSignupValid = ({ email, password, phone, name }) => {
     }
     //check password is atleast 6 characters long
     if (password.length < 6) {
+        return dispatchError(signupErrors.invalidPassword);
+    }
+    //check phone number is valid
+    if (phone.length < 6 || !validator.isInt(phone)) {
+        return dispatchError(signupErrors.invalidPhone);
+    }
+    return true;
+}
+
+export const updateUser = async (user) => {
+    if (!isUpdateValid(user)) {
+        return;
+    }
+    if (!user.password) {
+        delete user.password;
+    }
+    try {
+        const requestOptions = {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        }
+        var response = await fetch(`/api/users/me`, requestOptions);
+        if (response.status !== 200) {
+            throw response.status;
+        }
+        response = await response.json();
+        store.dispatch(setSignupError(updatedSuccessfullyError));
+    } catch (e) {
+        if (e === 409) {
+            store.dispatch(setSignupError(signupErrors.emailTaken));
+        } else {
+            UnexpectedAuthErrorHandler(e);
+        }
+    }
+}
+
+const isUpdateValid = ({ email, password, phone, name }) => {
+    const dispatchError = (error) => {
+        store.dispatch(setSignupError(error));
+        return false;
+    }
+    //check all fields exist
+    if (!email) {
+        return dispatchError(signupErrors.emailMissing);
+    }
+    if (!name) {
+        return dispatchError(signupErrors.nameMissing);
+    }
+    if (!phone) {
+        return dispatchError(signupErrors.phoneMissing);
+    }
+
+    //check email is valid
+    if (!validator.isEmail(email)) {
+        return dispatchError(signupErrors.invalidEmail);
+    }
+    //check password is atleast 6 characters long
+    if (password.length > 0 && password.length < 6) {
         return dispatchError(signupErrors.invalidPassword);
     }
     //check phone number is valid

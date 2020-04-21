@@ -6,7 +6,7 @@
 @import './base/generics/RangePicker';
 @import './base/generics/RangeInput';
 @import './base/generics/newWindow';
-@import './components/footer';
+@import './components/Footer';
 @import './components//MainNavBar';
 @import './components/RealEstateNavBar';
 @import './components/body/RealEstatePageBody';
@@ -43,4 +43,8 @@
 @import './components/personalPage/PersonalPage';
 @import './base/generics/ImageSlider';
 @import './base/generics/Modal';
-@import './components/Signup'
+@import './components/Signup';
+@import './components/personalPage/PersonalPageNavBar';
+@import './components/personalPage/EditProfile';
+@import './components/NotFoundPage';
+@import './base/generics/Img';

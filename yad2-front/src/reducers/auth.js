@@ -1,11 +1,21 @@
-export default (state = {}, action) => {
+import Cookies from 'js-cookie';
+
+const defaultState = {}
+const auth = Cookies.get("Authorization");
+if (auth) {
+    defaultState.token = auth.replace('Bearer ', '');
+}
+
+export default (state = defaultState, action) => {
     switch (action.type) {
         case 'LOGIN':
+            Cookies.set("Authorization", `Bearer ${action.token}`, { expires: 7 });
             return {
                 ...state,
                 token: action.token,
             };
         case 'LOGOUT':
+            Cookies.remove("Authorization");
             return {
                 ...state,
                 token: undefined,

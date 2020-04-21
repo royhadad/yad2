@@ -1,9 +1,18 @@
 .personal-page__wrapper{
     @extend .flex-center;
-    >.personal-page__body{
+    >.personal-page__container{
         @extend .real-estate-page-body__container;
-        @extend .flex-center;
-        background: $very-very-light-gray;
-        min-height: 100rem;
+        >h1{
+            text-align: right;
+            padding: 0 3rem 0 0;
+            font-size: 5rem;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+        >.personal-page__body{
+            min-height: 100rem;
+            background: $very-very-light-gray;
+        }
+    
     }
 }

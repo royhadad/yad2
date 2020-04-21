@@ -5,6 +5,7 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const setHeaders = require('./middleware/setHeaders');
 const serveStaticScripts = require('./middleware/serveStaticallyCompressedInstead');
+const cookieParser = require('cookie-parser');
 
 require('./db/mongoose')
 
@@ -20,6 +21,7 @@ const useAPIRoutes = () => {
     app.use(favicon(path.resolve(PATH_TO_BUILD, 'favicon.ico')));
     app.use(express.json());
     app.use(cors())
+    app.use(cookieParser());
     app.get('/ping', (req, res) => {
         return res.send('pong');
     });

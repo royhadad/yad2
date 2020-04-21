@@ -7,7 +7,9 @@
         "dev": "concurrently \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\"",
         "postinstall": "cd yad2-front && npm install && cd .. && cd yad2-back && npm install",
         "build": "cd yad2-front && npm run build",
-        "start": "cd yad2-back && npm start"
+        "start": "cd yad2-back && npm start",
+        "start-mongo": "/home/roy/mongodb/bin/mongod --dbpath=/home/roy/mongodb-data",
+        "kill-process-3000": "sudo kill -9 $(sudo lsof -t -i:3000)"
     },
     "repository": {
         "type": "git",

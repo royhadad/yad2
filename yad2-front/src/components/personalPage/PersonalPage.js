@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { startLogout, startLogoutAll } from '../../actions/auth';
+import PersonalPageNavBar from './PersonalPageNavBar';
 import resources from '#resources#';
 const personalPageResources = resources.personalPage;
 
@@ -9,12 +8,12 @@ class PersonalPage extends React.Component {
         return (
             <div>
                 <div className='personal-page__wrapper'>
-                    <div className='personal-page__body'>
-                        <h1>
-                            {personalPageResources.header}
-                            <button onClick={startLogout}>logout</button>
-                            <button onClick={startLogoutAll}>logout all</button>
-                        </h1>
+                    <div className='personal-page__container'>
+                        <h1>{personalPageResources.header}</h1>
+                        <div className='personal-page__body'>
+                            <PersonalPageNavBar selected={this.props.selected} />
+                            {this.props.children}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -22,5 +21,4 @@ class PersonalPage extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => ({});
-export default connect(undefined, mapDispatchToProps)(PersonalPage);
+export default PersonalPage;

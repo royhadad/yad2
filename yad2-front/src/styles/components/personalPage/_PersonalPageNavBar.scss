@@ -1,0 +1,43 @@
+.personal-page-nav-bar__wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    background: $orange;
+    padding: 1rem;
+    height: 5.8rem;
+    >.personal-page__nav-bar__left-side{
+        height: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        a{
+            text-decoration: none;
+        }
+        .react-link{
+            margin-left: 1rem;
+            height: 3.8rem;
+            color: white;
+            font-size: $font-size-l;
+        }
+        .react-link-selected{
+            @extend .react-link;
+            color: black;
+            background: #FFB644;
+        }
+    }
+    >.logout-button{
+        @extend .clickable;
+        @extend .flex-center;
+        height: 3.8rem;
+        >span{
+            padding: 0rem 2rem;
+            color: white;
+        }
+        background: darken($orange, 10%);
+    }
+    >.logout-button:hover{
+        background: darken($orange, 20%);
+    }
+}

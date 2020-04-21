@@ -1,0 +1,35 @@
+.not-found-page__wrapper{
+    @extend .flex-center;
+    background: white;
+    >.not-found-page__container{
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        >.not-found-page__img-container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            >span{
+                margin-top: 10rem;
+                font-size: 6rem;
+                color: lighten($text-color, 25)
+               
+            }
+        }
+        >.react-link{
+            color: $orange;
+            font-size: 2rem;
+            border: 2px solid $orange;
+            border-radius: 0px;
+            @extend .flex-center;
+            margin:1rem 0 20rem 0;
+        }
+        >.not-found-page__bottom-text{
+            margin-top: 1rem;
+            @extend .flex-center;
+            font-size: 2.5rem;
+            color: lighten($text-color, 25);
+        }
+    }
+}

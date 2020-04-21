@@ -8,16 +8,19 @@ import RealEstatePage from '#components#/RealEstatePage';
 import NotFoundPage from '#components#/NotFoundPage';
 import LoginPage from '#components#/Login';
 import SignupPage from '#components#/Signup';
-import PersonalPage from '#components#/personalPage/PersonalPage';
+import MyItems from '../components/personalPage/MyItems';
+import EditProfile from '../components/personalPage/EditProfile';
+import AddItem from '../components/personalPage/AddItem';
 import Modal from '../components/generics/Modal';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
-
-//import PrivateRoute from './PrivateRoute';
-//import PublicRoute from './PublicRoute';
 const RedirectToHome = (props) => {
     props.history.push('/realestate');
+    return null;
+}
+const RedirectToMyItems = (props) => {
+    props.history.push('/personal/edit');
     return null;
 }
 export const history = createBrowserHistory();
@@ -29,9 +32,12 @@ const AppRouter = () => (
             <MainNavBar />
             <RealEstateNavBar />
             <Switch>
-                <PublicRoute path="/login" component={LoginPage} />
-                <PublicRoute path="/signup" component={SignupPage} />
-                <PrivateRoute path="/personal" component={PersonalPage} />
+                <PrivateRoute path="/personal/edit" component={MyItems} exact={true} />
+                <PrivateRoute path="/personal/new" component={AddItem} exact={true} />
+                <PrivateRoute path="/personal/me" component={EditProfile} exact={true} />
+                <PrivateRoute path="/personal" component={RedirectToMyItems} />
+                <PublicRoute path="/login" component={LoginPage} exact={true} />
+                <PublicRoute path="/signup" component={SignupPage} exact={true} />
                 <Route path="/realestate" component={RealEstatePage} />
                 <Route path="/" component={RedirectToHome} exact={true} />
                 <Route path="/index.html" component={RedirectToHome} exact={true} />

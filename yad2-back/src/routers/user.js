@@ -16,9 +16,11 @@ router.post('/users', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({ user, token })
     } catch (e) {
+        //email already exists
         if (e.code === 11000) {
             return res.status(409).send();
         }
+        //bad request
         res.status(400).send()
     }
 })
@@ -57,12 +59,12 @@ router.post('/users/logoutAll', auth, async (req, res) => {
 })
 
 router.get('/users/me', auth, async (req, res) => {
-    res.send(req.user)
+    res.send(req.user);
 })
 
 router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['name', 'email', 'password', 'age']
+    const allowedUpdates = ['name', 'email', 'password', 'phone']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {

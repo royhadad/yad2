@@ -1,0 +1,16 @@
+.generic-img-preload{
+    position:absolute;
+    opacity: 0;
+}
+
+.generic-img-loaded{
+    opacity: 1;
+    transition: opacity 100ms linear;
+}
+
+.generic-img__spinner{
+    @extend .flex-center;
+    background: white;
+    height:100%;
+    width: 100%;
+}

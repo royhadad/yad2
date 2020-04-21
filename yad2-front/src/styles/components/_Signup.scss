@@ -5,74 +5,74 @@
         @extend .flex-center;
         @extend .real-estate-page-body__container;
         align-self: center;
-        background: $very-very-light-gray;
-        
-        >.signup__box{
-            width: 42.1rem;
-            margin: 10rem 0 30rem 0;
-            border-radius: 1rem;
-            >.signup__box__body{
-                background: lighten($orange, 5%);
-                border-top-right-radius: 1rem;
-                border-top-left-radius: 1rem;
-                padding: $s-size;
+        background: $very-very-light-gray; 
+    }
+}
+
+.signup__box{
+    width: 42.1rem;
+    margin: 10rem 0 30rem 0;
+    border-radius: 1rem;
+    >.signup__box__body{
+        background: lighten($orange, 5%);
+        border-top-right-radius: 1rem;
+        border-top-left-radius: 1rem;
+        padding: $s-size;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        >.signup__box__inputs{
+            display: flex;
+            flex-direction: column;
+            width: 38.9rem;
+            .signup__header{
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-        
-                >.signup__box__inputs{
-                    display: flex;
-                    flex-direction: column;
-                    width: 38.9rem;
-                    .signup__header{
-                        display: flex;
-                        flex-direction: row-reverse;
-                        justify-content: space-between;
-                        .react-link{
-                            margin: 0;
-                            padding: 0;
-                        }
-                        .react-link-login{
-                            text-decoration: none;
-                            font-size: $font-size-m;
-                            color: white;
-                            margin: 0 0 $s-size 0;
-                        }
-                        >span{
-                            font-size: $loginHeaderSize;
-                            color: white;
-                            font-weight: $bold-weight;
-                            margin: 0 0 $s-size 0;
-                            align-self: flex-end;
-                        }
-                    }
-                    >input{
-                        margin: 0 0 $s-size 0;
-                        direction: rtl;
-                        width: 100%;
-                        height: 4.5rem;
-                        border-radius: 0.5rem;
-                        
-                    }
-                    >.signup-error{
-                        color: $error-color;
-                        align-self: flex-end;
-                    }
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                .react-link{
+                    margin: 0;
+                    padding: 0;
+                }
+                .react-link-login{
+                    text-decoration: none;
+                    font-size: $font-size-m;
+                    color: white;
+                    margin: 0 0 $s-size 0;
+                }
+                >span{
+                    font-size: $loginHeaderSize;
+                    color: white;
+                    font-weight: $bold-weight;
+                    margin: 0 0 $s-size 0;
+                    align-self: flex-end;
                 }
             }
-            >.signup-button{
-                @extend .flex-center;
-                @extend .clickable;
-                color: $restore-password-color;
-                font-weight: 900;
-                font-size: $font-size-l;
-                padding: $s-size;
-                border-left: $restore-password-border;
-                border-bottom: $restore-password-border;
-                border-right: $restore-password-border;
-                border-bottom-right-radius: 1rem;
-                border-bottom-left-radius: 1rem;
+            >input{
+                margin: 0 0 $s-size 0;
+                direction: rtl;
+                width: 100%;
+                height: 4.5rem;
+                border-radius: 0.5rem;
+                
+            }
+            >.signup-error{
+                color: $error-color;
+                align-self: flex-end;
             }
         }
+    }
+    >.signup-button{
+        @extend .flex-center;
+        @extend .clickable;
+        color: $restore-password-color;
+        font-weight: 900;
+        font-size: $font-size-l;
+        padding: $s-size;
+        border-left: $restore-password-border;
+        border-bottom: $restore-password-border;
+        border-right: $restore-password-border;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
     }
 }

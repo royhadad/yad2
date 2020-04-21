@@ -22,7 +22,9 @@ button {
 p{
   margin: 0;
 }
-
+h1{
+  direction: rtl;
+}
 button:disabled {
   cursor: default;
 }
@@ -34,6 +36,7 @@ button:disabled {
 .react-link{
     padding: 0 $m-size;
     @extend .flex-center;
+    @extend .clickable;
     text-decoration: none;
     color: $text-color;
     height:100%;
@@ -75,10 +78,12 @@ input{
   }
 
 .clickable{
-    cursor: pointer;
+  @extend .unselectable-text;
+
+  cursor: pointer;
 }
 .invisible{
-    visibility: hidden;
+  visibility: hidden;
 }
 .flex-center{
   display: flex;
@@ -90,5 +95,6 @@ input{
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
   -ms-user-select: none;      /* IE 10+ */
-  user-select: none;          /* Likely future */  
+  user-select: none;          /* Likely future */ 
+  -webkit-user-drag: none;
 }

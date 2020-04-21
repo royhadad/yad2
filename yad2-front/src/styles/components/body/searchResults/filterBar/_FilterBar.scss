@@ -12,6 +12,7 @@
 }
 
 .filter-bar__sort-by__button {
+    @extend .clickable;
     width: 20rem;
     background: white;
     padding: $xs-size;
@@ -40,6 +41,7 @@
   }
 
 .filter-bar__sort-by__drop-down__item{
+    @extend .clickable;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,6 +67,7 @@
     }
 }
 .filter-bar__button {
+    @extend .clickable;
     background: white;
     border: 1px solid $very-light-gray;
     color: $text-color;

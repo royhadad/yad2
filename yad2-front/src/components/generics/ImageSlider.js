@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import Img from '../generics/Img';
 
 //HOW TO USE:
 //recieves the following props:
@@ -28,7 +29,12 @@ class ImageSlider extends React.Component {
                     >
                         {this.props.images.map((url, index) => (
                             <div key={index}>
-                                <img className='image-slider__image' alt={`property ${index + 1}`} src={url} />
+                                <Img
+                                    className='image-slider__image'
+                                    alt={`property ${index + 1}`}
+                                    src={url}
+                                    spinnerSize={70}
+                                />
                             </div>
                         ))}
                     </Carousel>

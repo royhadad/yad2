@@ -9,7 +9,7 @@ class ShowMap extends React.Component {
             <div className='filter-bar__filter__wrapper'>
                 <button
                     className='filter-bar__button'
-                    onClick={() => { console.log('show map not implemented!!'); }}
+                    onClick={() => { alert('Not implemented'); }}
                 >
                     {unicode.map} {filterBarResources.showMapText}
                 </button>

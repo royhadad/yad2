@@ -11,6 +11,7 @@
 }
 
 .search-bar__main__advanced-button{
+    @extend .clickable;
     background: $very-very-light-gray;
     border: none;
     padding: $s-size $s-size;
@@ -22,6 +23,7 @@
 }
 
 .search-bar__main__search-button{
+    @extend .clickable;
     background: $orange;
     color: white;
     border: none;

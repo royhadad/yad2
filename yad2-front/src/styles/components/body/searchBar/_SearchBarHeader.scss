@@ -5,11 +5,11 @@
 }
 
 .search-bar__header__special-word{
+    @extend .clickable;
     color: $orange;
     text-decoration-line: underline;
     text-decoration-style: dotted;
     text-decoration-skip-ink: none;
-    cursor: pointer;
 }
 
 .search-bar__header__drop-down__wrapper{
