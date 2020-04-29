@@ -6,7 +6,12 @@
 }
 
 html {
-  font-size: 62.5%;
+  @media (max-width: $desktop-breakpoint) {
+    font-size: 48%;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    font-size: 62.5%;
+  }
 }
 
 body {

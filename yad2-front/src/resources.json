@@ -551,6 +551,7 @@
                 "numOfResultsTextEnd": " מודעות"
             },
             "feedItem": {
+                "editButtonText": "ערוך",
                 "header": {
                     "roomsText": "חדרים",
                     "floorText": "קומה",
@@ -606,6 +607,19 @@
             "updateButton": "עדכן פרטים",
             "passwordPlaceholder": "סיסמה - השאר ריק בשביל לא לעדכן",
             "updatedSuccessfully": "הפרטים עודכנו בהצלחה"
+        },
+        "editItem": {
+            "updatedSuccessfully": "הפרטים עודכנו בהצלחה",
+            "onSubmitText": "עדכן",
+            "header": "עדכן פריט:"
+        },
+        "addItem": {
+            "createdSuccessfully": "הפריט נוצר בהצלחה",
+            "onSubmitText": "צור פריט",
+            "header": "יצירת פריט:"
+        },
+        "itemForm": {
+            "inputs": {}
         }
     },
     "login": {

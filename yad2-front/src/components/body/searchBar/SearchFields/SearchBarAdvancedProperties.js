@@ -38,4 +38,5 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     toggleProperty: (property) => dispatch(toggleProperty(property))
 });
+export const SearchBarAdvancedPropertiesWithoutStore = SearchBarAdvancedProperties;
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBarAdvancedProperties);

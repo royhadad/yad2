@@ -2,8 +2,10 @@ import { setFilters, setLocationCurrentText } from '#actions#/filters';
 import { setCurrentPage, setTotalItems, setItemsArr, setIsLoading, setSearchedLocation } from '#actions#/items';
 import { store } from '#src#/index';
 import getFeedQueryString from '#src#/utility/getFeedQueryString';
+import UnexpectedAuthErrorHandler from '../utility/UnexpectedAuthErrorHandler';
 
-const cleanFilters = (filters) => {
+const cleanFilters = (allFilters) => {
+    const filters = allFilters.search;
     let temp;
     if (filters.minPrice > filters.maxPrice) {
         temp = filters.minPrice;
@@ -30,7 +32,8 @@ const cleanFilters = (filters) => {
         filters.minRoommates = filters.maxRoommates;
         filters.maxRoommates = temp;
     }
-    return filters;
+
+    return { ...allFilters, search: filters };
 }
 
 export const fetchItems = async (currentPage = 1) => {
@@ -56,5 +59,31 @@ export const fetchItems = async (currentPage = 1) => {
         console.log(e);
     } finally {
         store.dispatch(setIsLoading(false));
+    }
+}
+
+export const fetchUserItems = async () => {
+    try {
+        let response = await fetch(`/api/items/me`);
+        if (response.status !== 200 && response.status !== 304) {
+            throw response.status;
+        }
+        response = await response.json();
+        return response;
+    } catch (e) {
+        UnexpectedAuthErrorHandler(e);
+    }
+}
+
+export const fetchItemById = async (id) => {
+    try {
+        let response = await fetch(`/api/items/${id}`);
+        if (response.status !== 200 && response.status !== 304) {
+            throw response.status;
+        }
+        response = await response.json();
+        return response;
+    } catch (e) {
+        UnexpectedAuthErrorHandler(e);
     }
 }

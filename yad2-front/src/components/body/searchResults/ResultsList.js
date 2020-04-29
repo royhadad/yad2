@@ -1,8 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import ReactLoading from 'react-loading';
 import FeedItem from './feedItem/FeedItem';
 
+//PROPS:
+//isLoading: boolean
+//itemsArr: item[]
 class SearchResults extends React.Component {
     render() {
         return (
@@ -13,15 +15,12 @@ class SearchResults extends React.Component {
                         <ReactLoading type='bubbles' color='#ff7100' width={256} height={256} />
                         :
                         this.props.itemsArr.map((item, index) => {
-                            return <FeedItem key={index} item={item} />
+                            return <FeedItem key={index} item={item} showEditLink={this.props.showEditLink} />
                         })
                 }
             </div>
         );
     }
 }
-const mapStateToProps = (state) => ({
-    itemsArr: state.items.itemsArr,
-    isLoading: state.items.isLoading
-});
-export default connect(mapStateToProps)(SearchResults);
+
+export default SearchResults;

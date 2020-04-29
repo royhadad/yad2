@@ -21,11 +21,11 @@ class Location extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    locationCurrentText: state.filters.locationCurrentText,
-    isGoogleAPILoaded: state.items.isGoogleAPILoaded
+    locationCurrentText: state.filters.locationCurrentText
 });
 const mapDispatchToProps = (dispatch) => ({
     setLocation: (location) => dispatch(setLocation(location)),
     setLocationCurrentText: (locationCurrentText) => dispatch(setLocationCurrentText(locationCurrentText))
 })
+export const LocationWithoutStore = Location;
 export default connect(mapStateToProps, mapDispatchToProps)(Location);

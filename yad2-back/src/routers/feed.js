@@ -29,15 +29,6 @@ router.get('/feed', async (req, res) => {
             .populate('sellerDetails')
             .exec();
 
-        // console.log({
-        //     filter,
-        //     sortObject,
-        //     limit,
-        //     page,
-        //     skip,
-        //     items
-        // });
-
         res.send({
             items: items,
             totalItems: items.length

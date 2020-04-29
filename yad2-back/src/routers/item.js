@@ -16,6 +16,7 @@ router.post('/items', auth, async (req, res) => {
         await item.save()
         res.status(201).send(item)
     } catch (e) {
+        console.log('failed:', e);
         res.status(400).send();
     }
 })
@@ -49,16 +50,20 @@ router.get('/items/me', auth, async (req, res) => {
     const sort = { createdAt: -1 };
     try {
         const user = req.user;
-        const items = await Item.find({
-            owner: user._id
-        }, undefined, { sort })
+
+        const items = await Item
+            .find({ owner: user._id })
+            .sort(sort)
+            .populate('sellerDetails')
+            .exec();
+
         res.send(items)
     } catch (e) {
         res.status(500).send()
     }
 })
 
-router.get('/items/:id', auth, async (req, res) => {
+router.get('/items/:id', auth, authItem, async (req, res) => {
     const _id = req.params.id
     try {
         const item = await Item.findOne({ _id, owner: req.user._id });
@@ -74,7 +79,22 @@ router.get('/items/:id', auth, async (req, res) => {
 router.patch('/items/:id', auth, authItem, async (req, res) => {
     const item = req.item;
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['description', 'completed']
+    const allowedUpdates = [
+        'text',
+        'location',
+        'category',
+        'type',
+        'properties',
+        'rooms',
+        'price',
+        'floor',
+        'size',
+        'numOfRoommates',
+        'entryDate',
+        'isImmediateEntry',
+        'isBrokerage',
+        'isCommercialSale'
+    ]
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     if (!isValidOperation) {
         return res.status(400).send({ error: 'Invalid updates!' })

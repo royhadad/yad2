@@ -1,7 +1,6 @@
 //setting z index
 .SingleDatePicker, 
 .SingleDatePicker .DayPickerNavigation{
-    z-index: 20;
 }
 
 //getting rid of unwanted stuff
@@ -17,6 +16,11 @@ input.DateInput_input{
 }
 .DayPickerKeyboardShortcuts_show__bottomRight::before {
     display: none;
+}
+
+.DateInput_input__disabled{
+    font-style: normal;
+    
 }
 
 //styling

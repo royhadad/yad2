@@ -1,0 +1,48 @@
+.item-form{
+    align-self: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 100%;
+    .input{
+        direction: rtl;
+        @extend .input-border;
+    }
+    .text-input{
+        direction: rtl;
+        width: 40rem;
+        max-width: 100%;
+        height: 13rem;
+        resize: none;
+        @extend .input-border;     
+    }
+    .search-field__wrapper{
+        display: flex;
+        max-width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        direction: rtl;
+        margin: 0 0 3rem 0;
+    }
+    .checkbox__icon{
+        margin-right: 0;
+    }
+    .is-brokerage__wrapper{
+        margin-bottom: 3rem;
+    }
+    .search-bar-advanced-properties__wrapper{
+        width: 90%;
+        direction: rtl;
+        margin-bottom: 5rem;
+    }
+}
+
+.input-border{
+    border: 1px solid rgb(204, 204, 204);
+    &:hover{
+        border: 1px solid rgb(179, 179, 179);
+    }
+    &:focus{
+        border: 1px solid rgb(120, 120, 120);
+    }
+}

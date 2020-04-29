@@ -1,6 +1,7 @@
 .search-field__wrapper{
     margin-right: $s-size;
     >p{
+        direction: rtl;
         font-size: $font-size-s;
         margin-bottom: 0;
         text-align: right;

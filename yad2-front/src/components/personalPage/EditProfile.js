@@ -50,4 +50,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 })
 const Body = connect(mapStateToProps, mapDispatchToProps)(EditProfile);
-export default () => (<PersonalPage children={<Body />} selected={'me'} />);
+export default () => (<PersonalPage childComponent={Body} selected={'me'} />);

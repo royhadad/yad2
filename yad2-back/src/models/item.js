@@ -28,7 +28,6 @@ const locationSchema = new Schema({
 const itemSchema = new Schema({
     text: {
         type: String,
-        required: true,
         trim: true
     },
     location: {
@@ -44,7 +43,7 @@ const itemSchema = new Schema({
             }
         }
     },
-    types: [{
+    type: {
         type: String,
         required: true,
         validate(value) {
@@ -56,7 +55,7 @@ const itemSchema = new Schema({
                 throw new Error(`type ${value} is invalid for category ${this.category}`);
             }
         }
-    }],
+    },
     properties: [{
         type: String,
         required: true,
@@ -75,7 +74,7 @@ const itemSchema = new Schema({
         min: 1,
         max: 12,
         validate(value) {
-            if (!Number.isInteger(value)) {
+            if (value % 0.5 !== 0) {
                 throw new Error(`${value} is not a valid number of rooms`);
             }
         }
@@ -130,9 +129,15 @@ const itemSchema = new Schema({
         default: false
     },
     isBrokerage: {
-        required: true,
+        required: false,
         type: Boolean,
         default: false
+    },
+    isCommercialSale: {
+        required: function () {
+            return this.category === 'commercial'
+        },
+        type: Boolean
     },
     imagesURLs: [{
         type: String
@@ -143,7 +148,7 @@ const itemSchema = new Schema({
         ref: 'User'
     }
 }, {
-    timestamps: true
+    timestamps: true,
 })
 
 itemSchema.plugin(AutoIncrement, { inc_field: 'serialNumber' });

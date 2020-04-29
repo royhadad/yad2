@@ -13,7 +13,7 @@ class SearchResultsWrapper extends React.Component {
                 <div className='search-results__wrapper__right-side'>
                     <SearchResultsMetaData totalItems={this.props.totalItems} />
                     <FilterBar />
-                    <ResultsList />
+                    <ResultsList itemsArr={this.props.itemsArr} isLoading={this.props.isLoading} />
                     {this.props.numOfPages > 1 && <Paging />}
                 </div>
                 <div className='search-results__wrapper__left-side'>
@@ -24,6 +24,8 @@ class SearchResultsWrapper extends React.Component {
 }
 const mapStateToProps = (state) => ({
     numOfPages: state.items.numOfPages,
-    totalItems: state.items.totalItems
+    totalItems: state.items.totalItems,
+    itemsArr: state.items.itemsArr,
+    isLoading: state.items.isLoading
 });
 export default connect(mapStateToProps)(SearchResultsWrapper);

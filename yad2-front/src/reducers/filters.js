@@ -19,6 +19,7 @@ const filtersReducerDefaultState = {
         minEntryDate: undefined,
         onlyImmediateEntry: false,
         text: undefined,
+        dealTypes: [],
         showOnlyItemsWithImage: false,
         showOnlyItemsWithPrice: false
     }
@@ -199,6 +200,20 @@ export default (state = filtersReducerDefaultState, action) => {
                         state.search.properties.filter((property) => property !== action.property)
                         :
                         [...state.search.properties, action.property]
+                }
+            }
+        case 'TOGGLE_DEAL_TYPE':
+            let newDealTypesArr = [...state.search.dealTypes];
+            if (state.search.dealTypes.includes(action.dealType)) {
+                newDealTypesArr = newDealTypesArr.filter((dealType) => dealType !== action.dealType);
+            } else {
+                newDealTypesArr.push(action.dealType);
+            }
+            return {
+                ...state,
+                search: {
+                    ...state.search,
+                    dealTypes: newDealTypesArr
                 }
             }
         case 'CLEAR_SEARCH':

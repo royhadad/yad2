@@ -5,6 +5,7 @@ const personalPageResources = resources.personalPage;
 
 class PersonalPage extends React.Component {
     render() {
+        const ChildComponent = this.props.childComponent;
         return (
             <div>
                 <div className='personal-page__wrapper'>
@@ -12,7 +13,7 @@ class PersonalPage extends React.Component {
                         <h1>{personalPageResources.header}</h1>
                         <div className='personal-page__body'>
                             <PersonalPageNavBar selected={this.props.selected} />
-                            {this.props.children}
+                            {<ChildComponent {...this.props} />}
                         </div>
                     </div>
                 </div>

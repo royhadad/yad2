@@ -5,7 +5,12 @@
 }
 
 .real-estate-page-body__container{
-    width: 65%;
+    @media (max-width: $desktop-breakpoint) {
+        width: 100%;
+    }
+    @media (min-width: $desktop-breakpoint) {
+        width: 65%;
+    }
 }
 
 .search-results__spacer{

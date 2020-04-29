@@ -1,6 +1,7 @@
 .results-list{
     border: 1px solid $very-light-gray;
     margin-bottom: $l-size;
+    direction: rtl;
 }
 .results-list__loading{
     @extend .flex-center;

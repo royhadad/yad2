@@ -133,6 +133,11 @@ export const toggleProperty = (property) => ({
     type: 'TOGGLE_PROPERTY',
     property
 })
+//TOGGLE DEAL TYPE
+export const toggleDealType = (dealType) => ({
+    type: 'TOGGLE_DEAL_TYPE',
+    dealType
+})
 //CLEAR SEARCH
 export const clearSearch = () => ({
     type: 'CLEAR_SEARCH'

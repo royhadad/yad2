@@ -1,3 +1,16 @@
+.feed-item__wrapper{
+    display: flex;
+    flex-direction: row;
+    >.edit-item__button {
+        @extend .flex-center;
+        background: $orange;
+        flex-grow: 1;
+        border: $regular-border;
+        .edit-item__button__link{
+            @extend .react-link;
+        }
+    }
+}
 .feed-item {
     border: $regular-border;
     width: 100%;

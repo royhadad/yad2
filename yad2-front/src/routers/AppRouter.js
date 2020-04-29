@@ -11,16 +11,17 @@ import SignupPage from '#components#/Signup';
 import MyItems from '../components/personalPage/MyItems';
 import EditProfile from '../components/personalPage/EditProfile';
 import AddItem from '../components/personalPage/AddItem';
+import EditItem from '../components/personalPage/EditItem';
 import Modal from '../components/generics/Modal';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
-const RedirectToHome = (props) => {
-    props.history.push('/realestate');
+export const RedirectToHome = () => {
+    history.push('/realestate');
     return null;
 }
-const RedirectToMyItems = (props) => {
-    props.history.push('/personal/edit');
+export const RedirectToMyItems = () => {
+    history.push('/personal/edit');
     return null;
 }
 export const history = createBrowserHistory();
@@ -35,7 +36,8 @@ const AppRouter = () => (
                 <PrivateRoute path="/personal/edit" component={MyItems} exact={true} />
                 <PrivateRoute path="/personal/new" component={AddItem} exact={true} />
                 <PrivateRoute path="/personal/me" component={EditProfile} exact={true} />
-                <PrivateRoute path="/personal" component={RedirectToMyItems} />
+                <PrivateRoute path="/personal/edit/:id" component={EditItem} />
+                <Route path="/personal" component={RedirectToMyItems} />
                 <PublicRoute path="/login" component={LoginPage} exact={true} />
                 <PublicRoute path="/signup" component={SignupPage} exact={true} />
                 <Route path="/realestate" component={RealEstatePage} />

@@ -30,7 +30,7 @@ const getFilterObject = (clientSearchObject) => {
 
     //types
     if (search.types && search.types.length) {
-        filter.types = { $all: (search.types) };
+        filter.type = { $in: (search.types) };
     }
 
     //properties
@@ -66,6 +66,11 @@ const getFilterObject = (clientSearchObject) => {
             $gte: search.minRoommates || 0,
             $lte: search.maxRoommates || Infinity
         };
+    }
+
+    //isCommercialSale
+    if (search.category === 'commercial' && search.dealTypes.length === 1) {
+        filter.isCommercialSale = search.dealTypes[0] === 'forsale';
     }
 
     //minEntryDate

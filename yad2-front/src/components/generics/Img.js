@@ -5,6 +5,12 @@ export default (props) => {
     const [isLoading, setIsLoading] = useState(true);
     const preLoadClassName = (props.className ? `${props.className} generic-img-preload` : `generic-img-preload`);
     const afterLoadClassName = (props.className ? `${props.className} generic-img-loaded` : `generic-img-loaded`);
+
+    const imgProps = {};
+    Object.keys(props).forEach((key) => {
+        if (key !== 'spinnerSize')
+            imgProps[key] = props[key];
+    })
     return (
         <React.Fragment>
             {isLoading && (
@@ -17,7 +23,7 @@ export default (props) => {
             )}
             <img
                 alt='default alt text'
-                {...props}
+                {...imgProps}
                 className={(isLoading ? preLoadClassName : afterLoadClassName)}
                 onLoad={() => setIsLoading(false)}
                 onError={() => setIsLoading(false)}
