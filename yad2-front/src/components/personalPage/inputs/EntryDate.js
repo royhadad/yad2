@@ -22,7 +22,7 @@ class EntryDate extends React.Component {
             <React.Fragment>
                 <SingleDatePicker
                     placeholder={'בחר תאריך כניסה'}
-                    date={moment(this.props.entryDate)}
+                    date={this.props.entryDate ? moment(this.props.entryDate) : undefined}
                     onDateChange={(entryDate) => this.props.setEntryDate(moment(entryDate).valueOf())}
                     focused={this.state.focused}
                     onFocusChange={({ focused }) => this.setState({ focused })}

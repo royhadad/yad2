@@ -160,7 +160,7 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 item: {
                     ...state.item,
-                    entryDate: moment().startOf('day').valueOf(),
+                    entryDate: undefined,
                     isImmediateEntry: !state.item.isImmediateEntry
                 }
             };

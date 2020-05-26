@@ -11,6 +11,9 @@ class EntryDate extends React.Component {
     state = {
         focused: false
     }
+    componentDidMount() {
+        document.getElementsByClassName("DateInput_input")[0].readOnly = true;
+    }
     render() {
         return (
             <div>

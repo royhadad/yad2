@@ -56,7 +56,9 @@ export const fetchItems = async (currentPage = 1) => {
         store.dispatch(setTotalItems(data.totalItems));
         store.dispatch(setItemsArr(data.items));
     } catch (e) {
-        console.log(e);
+        store.dispatch(setTotalItems(0));
+        store.dispatch(setItemsArr([]));
+        alert('something went wrong');
     } finally {
         store.dispatch(setIsLoading(false));
     }

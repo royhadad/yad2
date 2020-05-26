@@ -7,11 +7,9 @@ const dispatchError = (error) => {
     return false;
 }
 
-// "type": "בחר את סוג הנכס"
-
 export default (item) => {
     try {
-        console.log(item);
+        console.log('before clean:\n' + JSON.stringify(item));
         if (item.location === undefined) {
             return dispatchError(errors.location);
         }
@@ -28,11 +26,13 @@ export default (item) => {
             return dispatchError(errors.rooms);
         }
 
-        if (item.entryDate === undefined && item.isImmediateEntry === false) {
-            return dispatchError(errors.entryDate);
-        }
-        if (item.entryDate === undefined && item.isImmediateEntry === false) {
-            item.entryDate = undefined;
+        //you dont have to insert a date
+        // if (item.entryDate === undefined && item.isImmediateEntry === false) {
+        //     return dispatchError(errors.entryDate);
+        // }
+
+        if (item.isImmediateEntry === true || !item.entryDate) {
+            item.entryDate = null;
         }
 
         item.location = {
@@ -67,6 +67,7 @@ export default (item) => {
         }
 
         console.log('returning the item!');
+        console.log('after clean:\n' + JSON.stringify(item));
         return item;
     } catch (e) {
         //TODO remove e

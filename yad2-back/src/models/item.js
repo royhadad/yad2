@@ -118,7 +118,7 @@ const itemSchema = new Schema({
         required: false,
         type: Number,
         validate(value) {
-            if (value < moment().startOf('day').valueOf()) {
+            if (value !== null && value < moment().startOf('day').valueOf()) {
                 throw new Error(`date has already passed!`);
             }
         }
