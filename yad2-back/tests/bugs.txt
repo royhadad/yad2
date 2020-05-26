@@ -8,3 +8,6 @@ https://medium.com/the-smyth-group/scalable-user-uploads-with-amazon-s3-9f523c04
 
 #11
 adding photos from browser to items
+
+#12
+fix warning from imageupload
