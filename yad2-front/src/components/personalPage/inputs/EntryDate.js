@@ -6,12 +6,16 @@ import { OPEN_UP } from 'react-dates-temp/constants';
 import moment from 'moment';
 import Checkbox from '../../generics/Checkbox';
 import SearchField from '../../generics/SearchField';
+import { store } from '#src#/index';
 import resources from '#resources#';
 const inputsResources = resources.personalPage.itemForm.inputs;
 
 class EntryDate extends React.Component {
     state = {
         focused: false
+    }
+    componentDidMount() {
+        document.getElementsByClassName("DateInput_input")[0].readOnly = true;
     }
     render() {
         return (

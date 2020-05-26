@@ -35,6 +35,25 @@
         direction: rtl;
         margin-bottom: 5rem;
     }
+    .item-form__buttonsWrapper{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .item-form__submit-button{
+            @extend .clickable;
+            background: white;
+            padding: 1rem 4rem;
+            border: $regular-border;
+            color:green;
+        }
+        .item-form__delete-button{
+            @extend .item-form__submit-button;
+            color: red;
+            padding: 1rem 1rem;
+        }
+    }
 }
 
 .input-border{

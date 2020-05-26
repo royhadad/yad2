@@ -4,7 +4,7 @@ import PersonalPage from './PersonalPage';
 import ItemForm from './ItemForm';
 import ReactLoading from 'react-loading';
 import { fetchItemById } from '../../selectors/items';
-import { startEditItem } from '../../actions/itemForm';
+import { startEditItem, startDeleteItem } from '../../actions/itemForm';
 import resources from '#resources#';
 const editItemResources = resources.personalPage.editItem;
 
@@ -34,6 +34,8 @@ class EditItem extends React.Component {
                                 onSubmit={() => (startEditItem(this.props.match.params.id))}
                                 onSubmitText={editItemResources.onSubmitText}
                                 successText={editItemResources.updatedSuccessfully}
+                                isEdit={true}
+                                startDeleteItem={() => (startDeleteItem(this.props.match.params.id))}
                             />
                         )
                 }

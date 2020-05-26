@@ -175,6 +175,10 @@ itemSchema.pre('remove', function (next) {
 //make JSON.stringify return item object with user populated
 itemSchema.methods.toJSON = function () {
     const itemObject = this.toObject();
+    if (itemObject.entryDate < moment().startOf('day').valueOf()) {
+        itemObject.entryDate = undefined;
+        itemObject.isImmediateEntry = true;
+    }
     if (itemObject.sellerDetails) {
         itemObject.sellerDetails = itemObject.sellerDetails[0];
     }

@@ -15,12 +15,15 @@ import EditItem from '../components/personalPage/EditItem';
 import Modal from '../components/generics/Modal';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import AppContainer from '#components#/AppContainer';
 
 export const RedirectToHome = () => {
+    window.scrollTo(0, 0);
     history.push('/realestate');
     return null;
 }
 export const RedirectToMyItems = () => {
+    window.scrollTo(0, 0);
     history.push('/personal/edit');
     return null;
 }
@@ -28,7 +31,7 @@ export const history = createBrowserHistory();
 
 const AppRouter = () => (
     <Router history={history}>
-        <div>
+        <AppContainer history={history}>
             <Modal />
             <MainNavBar />
             <RealEstateNavBar />
@@ -46,7 +49,7 @@ const AppRouter = () => (
                 <Route component={NotFoundPage} />
             </Switch>
             <RealEstatePageFooter />
-        </div>
+        </AppContainer>
     </Router>
 );
 

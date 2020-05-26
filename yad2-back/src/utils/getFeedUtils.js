@@ -80,7 +80,9 @@ const getFilterObject = (clientSearchObject) => {
     }
 
     //onlyImmediateEntry
-    filter.isImmediateEntry = search.onlyImmediateEntry;
+    if (search.onlyImmediateEntry) {
+        filter.isImmediateEntry = true;
+    }
 
     //text
     if (search.text) {

@@ -14,7 +14,8 @@ import Text from './inputs/Text';
 import Type from './inputs/Type';
 import IsBrokerage from './inputs/IsBrokerage';
 import DealType from './inputs/DealType';
-//import resources from '#resources#';
+import resources from '#resources#';
+const itemFormResources = resources.personalPage.itemForm;
 
 //PROPS:
 //onSubmit: function
@@ -23,10 +24,10 @@ import DealType from './inputs/DealType';
 //successText: string
 class ItemForm extends React.Component {
     componentDidMount() {
+        window.scrollTo(0, 0);
         this.props.resetToDefault();
         if (this.props.item) {
             this.props.setItem(this.props.item);
-            this.props.setLocation(this.props.item.location);
         }
     }
 
@@ -39,9 +40,17 @@ class ItemForm extends React.Component {
                 <SharedFields />
                 <UniqueFields />
                 <BottomFields />
-                <div className='item-form__submit-button' onClick={this.props.onSubmit}>
-                    {this.props.onSubmitText}
+                <div className='item-form__buttonsWrapper'>
+                    <div className='item-form__submit-button' onClick={this.props.onSubmit}>
+                        {this.props.onSubmitText}
+                    </div>
+                    {this.props.isEdit && (
+                        <div className='item-form__delete-button' onClick={this.props.startDeleteItem}>
+                            {itemFormResources.onDeleteText}
+                        </div>
+                    )}
                 </div>
+
                 <p style={{ color: 'red', margin: '30px 0px' }}>{this.props.error}</p>
             </div >
         );

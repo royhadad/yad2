@@ -1,6 +1,9 @@
 import { fetchItems } from '../selectors/items';
 const handleBottomFiltersChanged = () => {
-    fetchItems();
+    //wait for state to update before fetching
+    setTimeout(() => {
+        fetchItems();
+    }, 0);
 }
 
 //SET FILTERS
@@ -9,10 +12,13 @@ export const setFilters = (filters) => ({
     filters
 })
 //SET CATAGORY
-export const setCategory = (category) => ({
-    type: 'SET_CATEGORY',
-    category
-});
+export const setCategory = (category) => {
+    handleBottomFiltersChanged();
+    return {
+        type: 'SET_CATEGORY',
+        category
+    }
+};
 
 //SORT BY DATE
 export const sortByDate = () => {

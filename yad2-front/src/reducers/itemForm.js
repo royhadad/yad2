@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const emptyItem = {
     category: 'forsale',
     text: '',
@@ -38,7 +40,7 @@ const filtersReducerDefaultState = {
 
 export default (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
-        case 'SET_ITEM':
+        case 'ITEM_FORM_SET_ITEM':
             if (!action.item) {
                 return state;
             }
@@ -51,11 +53,12 @@ export default (state = filtersReducerDefaultState, action) => {
 
             return {
                 ...state,
+                locationCurrentText: item.location.description,
                 item: filteredItem
             };
-        case 'RESET_TO_DEFAULT':
+        case 'ITEM_FORM_RESET_TO_DEFAULT':
             return filtersReducerDefaultState;
-        case 'SET_CATEGORY':
+        case 'ITEM_FORM_SET_CATEGORY':
             return {
                 ...state,
                 item: {
@@ -63,7 +66,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     category: action.category
                 }
             };
-        case 'SET_TEXT':
+        case 'ITEM_FORM_SET_TEXT':
             return {
                 ...state,
                 item: {
@@ -71,7 +74,14 @@ export default (state = filtersReducerDefaultState, action) => {
                     text: action.text
                 }
             };
-        case 'SET_LOCATION':
+        case 'ITEM_FORM_SET_LOCATION':
+            if (action.location !== undefined) {
+                action.location = {
+                    placeId: action.location.placeId,
+                    description: action.location.description,
+                    city: action.location.formattedSuggestion.mainText
+                }
+            }
             return {
                 ...state,
                 locationCurrentText: action.location === undefined ? '' : action.location.description,
@@ -80,7 +90,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     location: action.location
                 }
             };
-        case 'SET_TYPE':
+        case 'ITEM_FORM_SET_TYPE':
             return {
                 ...state,
                 item: {
@@ -88,7 +98,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     type: action.propertyType
                 }
             };
-        case 'TOGGLE_PROPERTY':
+        case 'ITEM_FORM_TOGGLE_PROPERTY':
             return {
                 ...state,
                 item: {
@@ -97,7 +107,7 @@ export default (state = filtersReducerDefaultState, action) => {
                         state.item.properties.filter((property) => property !== action.property) : [...state.item.properties, action.property]
                 }
             };
-        case 'SET_ROOMS':
+        case 'ITEM_FORM_SET_ROOMS':
             return {
                 ...state,
                 item: {
@@ -105,7 +115,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     rooms: action.rooms
                 }
             };
-        case 'SET_PRICE':
+        case 'ITEM_FORM_SET_PRICE':
             return {
                 ...state,
                 item: {
@@ -113,7 +123,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     price: action.price
                 }
             };
-        case 'SET_FLOOR':
+        case 'ITEM_FORM_SET_FLOOR':
             return {
                 ...state,
                 item: {
@@ -121,7 +131,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     floor: action.floor
                 }
             };
-        case 'SET_SIZE':
+        case 'ITEM_FORM_SET_SIZE':
             return {
                 ...state,
                 item: {
@@ -129,7 +139,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     size: action.size
                 }
             };
-        case 'SET_ROOMMATES':
+        case 'ITEM_FORM_SET_ROOMMATES':
             return {
                 ...state,
                 item: {
@@ -137,7 +147,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     roommates: action.roommates
                 }
             };
-        case 'SET_ENTRY_DATE':
+        case 'ITEM_FORM_SET_ENTRY_DATE':
             return {
                 ...state,
                 item: {
@@ -145,16 +155,16 @@ export default (state = filtersReducerDefaultState, action) => {
                     entryDate: action.entryDate
                 }
             };
-        case 'TOGGLE_IS_IMMEDIATE_ENTRY':
+        case 'ITEM_FORM_TOGGLE_IS_IMMEDIATE_ENTRY':
             return {
                 ...state,
                 item: {
                     ...state.item,
-                    entryDate: undefined,
+                    entryDate: moment().startOf('day').valueOf(),
                     isImmediateEntry: !state.item.isImmediateEntry
                 }
             };
-        case 'TOGGLE_IS_BROKERAGE':
+        case 'ITEM_FORM_TOGGLE_IS_BROKERAGE':
             return {
                 ...state,
                 item: {
@@ -162,7 +172,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     isBrokerage: !state.item.isBrokerage
                 }
             };
-        case 'SET_IS_COMMERCIAL_SALE':
+        case 'ITEM_FORM_SET_IS_COMMERCIAL_SALE':
             return {
                 ...state,
                 item: {
@@ -170,7 +180,7 @@ export default (state = filtersReducerDefaultState, action) => {
                     isCommercialSale: action.isCommercialSale
                 }
             };
-        case 'CLEAR_FORM':
+        case 'ITEM_FORM_CLEAR_FORM':
             return {
                 sortBy: state.sortBy,
                 item: {
@@ -178,12 +188,12 @@ export default (state = filtersReducerDefaultState, action) => {
                     category: state.item.category
                 }
             };
-        case 'SET_ERROR':
+        case 'ITEM_FORM_SET_ERROR':
             return {
                 ...state,
                 error: action.error || ''
             };
-        case 'SET_LOCATION_CURRENT_TEXT':
+        case 'ITEM_FORM_SET_LOCATION_CURRENT_TEXT':
             return {
                 ...state,
                 locationCurrentText: action.locationCurrentText || ''

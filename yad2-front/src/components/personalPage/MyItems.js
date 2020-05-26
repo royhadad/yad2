@@ -6,6 +6,7 @@ import ResultsList from '../body/searchResults/ResultsList';
 import resources from '#resources#';
 const editItemSuccessMessage = resources.personalPage.editItem.updatedSuccessfully;
 const addItemSuccessMessage = resources.personalPage.addItem.createdSuccessfully;
+const deleteItemSuccessMessage = resources.personalPage.itemForm.deletedSuccessfully;
 
 class MyItems extends React.Component {
     state = {
@@ -22,16 +23,11 @@ class MyItems extends React.Component {
         }
     }
     render() {
-        console.log(editItemSuccessMessage);
-        console.log(addItemSuccessMessage);
-        console.log(this.props.error);
-
-
         return (
             <div className='my-items__wrapper'>
                 <h1>המודעות שלי:</h1>
                 {
-                    (this.props.error === editItemSuccessMessage || this.props.error === addItemSuccessMessage) && (
+                    (this.props.error === editItemSuccessMessage || this.props.error === addItemSuccessMessage || this.props.error === deleteItemSuccessMessage) && (
                         <p className='success-message'>{this.props.error}</p>
                     )
                 }

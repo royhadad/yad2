@@ -619,7 +619,20 @@
             "header": "יצירת פריט:"
         },
         "itemForm": {
-            "inputs": {}
+            "inputs": {},
+            "onDeleteText": "מחק פריט",
+            "deletedSuccessfully": "הפריט נמחק בהצלחה",
+            "errors": {
+                "location": "הזן מיקום",
+                "price": "הזן מחיר",
+                "size": "הזן גודל",
+                "entryDate": "הזן תאריך כניסה",
+                "floor": "הזן קומה",
+                "rooms": "הזן מספר חדרים",
+                "type": "בחר את סוג הנכס",
+                "isCommercialSale": "בחר את סוג העסקה",
+                "roommates": "בחר מספר שותפים"
+            }
         }
     },
     "login": {
