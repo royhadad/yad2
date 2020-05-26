@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addType, removeType, toggleDealType } from '#actions#/filters';
+import { toggleDealType } from '#actions#/filters';
 import OptionsPicker from '#components#/generics/OptionsPicker';
 const textResources = require('#resources#');
 const dealTypeInput = textResources.body.searchBar.dealTypeInput;

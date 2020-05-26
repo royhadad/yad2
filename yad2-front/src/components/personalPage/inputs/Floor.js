@@ -26,7 +26,7 @@ class Floor extends React.Component {
                         this.props.setFloor(selectedValue.value);
                     }}
                     options={options}
-                    placeholder={'בחר'}
+                    placeholder={inputsResources.genericDropDownPlaceholder}
                     className='react-select'
                 />
             </div>
@@ -42,5 +42,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const FloorWithStore = connect(mapStateToProps, mapDispatchToProps)(Floor);
 export default () => (
-    <SearchField metaText={'קומה'} selectorJSX={<FloorWithStore />} />
+    <SearchField metaText={inputsResources.Floor.metaText} selectorJSX={<FloorWithStore />} />
 )

@@ -26,7 +26,7 @@ class Category extends React.Component {
                     this.props.setCategory(selectedValue.value);
                 }}
                 options={options}
-                placeholder={'בחר'}
+                placeholder={inputsResources.genericDropDownPlaceholder}
                 className='react-select'
             />
         )
@@ -41,5 +41,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const CategoryWithStore = connect(mapStateToProps, mapDispatchToProps)(Category);
 export default () => (
-    <SearchField metaText={'קטגוריה'} selectorJSX={<CategoryWithStore />} />
+    <SearchField metaText={inputsResources.category.metaText} selectorJSX={<CategoryWithStore />} />
 )

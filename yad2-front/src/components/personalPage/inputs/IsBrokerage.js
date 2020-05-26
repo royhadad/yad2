@@ -1,10 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { toggleIsBrokerage } from '../../../actions/itemForm';
-import moment from 'moment';
 import Checkbox from '../../generics/Checkbox';
-import resources from '#resources#';
-const inputsResources = resources.personalPage.itemForm.inputs;
 
 class IsBrokerage extends React.Component {
     state = {

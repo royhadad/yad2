@@ -6,9 +6,9 @@ import { OPEN_UP } from 'react-dates-temp/constants';
 import moment from 'moment';
 import Checkbox from '../../generics/Checkbox';
 import SearchField from '../../generics/SearchField';
-import { store } from '#src#/index';
 import resources from '#resources#';
 const inputsResources = resources.personalPage.itemForm.inputs;
+const entryDateResources = inputsResources.EntryDate;
 
 class EntryDate extends React.Component {
     state = {
@@ -21,7 +21,7 @@ class EntryDate extends React.Component {
         return (
             <React.Fragment>
                 <SingleDatePicker
-                    placeholder={'בחר תאריך כניסה'}
+                    placeholder={entryDateResources.placeholder}
                     date={this.props.entryDate ? moment(this.props.entryDate) : undefined}
                     onDateChange={(entryDate) => this.props.setEntryDate(moment(entryDate).valueOf())}
                     focused={this.state.focused}
@@ -55,5 +55,5 @@ const mapDispatchToProps = (dispatch) => ({
 })
 const EntryDateWithStore = connect(mapStateToProps, mapDispatchToProps)(EntryDate);
 export default () => (
-    <SearchField metaText={'תאריך כניסה:'} selectorJSX={<EntryDateWithStore />} />
+    <SearchField metaText={entryDateResources.metaText} selectorJSX={<EntryDateWithStore />} />
 )

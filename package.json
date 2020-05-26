@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "concurrently \"npm run start-mongo\" \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\"",
-        "postinstall": "cd yad2-front && npm install && cd .. && cd yad2-back && npm install",
+        "postinstall": "cd yad2-front && npm install && npx react-codemod rename-unsafe-lifecycles && cd .. && cd yad2-back && npm install",
         "build": "cd yad2-front && npm run build",
         "start": "cd yad2-back && npm start",
         "start-mongo": "/home/roy/mongodb/bin/mongod --dbpath=/home/roy/mongodb-data",

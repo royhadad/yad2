@@ -17,5 +17,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const Location = connect(mapStateToProps, mapDispatchToProps)(LocationWithoutStore);
 export default () => (
-    <SearchField metaText={'מיקום הנכס'} selectorJSX={<Location />} />
+    <SearchField metaText={inputsResources.Location.metaText} selectorJSX={<Location />} />
 )

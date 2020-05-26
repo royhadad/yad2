@@ -38,5 +38,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const PriceWithStore = connect(mapStateToProps, mapDispatchToProps)(Price);
 export default () => (
-    <SearchField metaText={'מחיר בש"ח'} selectorJSX={<PriceWithStore />} />
+    <SearchField metaText={inputsResources.Price.metaText} selectorJSX={<PriceWithStore />} />
 )

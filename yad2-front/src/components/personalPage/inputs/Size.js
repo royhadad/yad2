@@ -38,5 +38,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const SizeWithStore = connect(mapStateToProps, mapDispatchToProps)(Size);
 export default () => (
-    <SearchField metaText={'גודל הדירה במ"ר'} selectorJSX={<SizeWithStore />} />
+    <SearchField metaText={inputsResources.Size.metaText} selectorJSX={<SizeWithStore />} />
 )

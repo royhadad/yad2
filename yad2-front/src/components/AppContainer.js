@@ -3,7 +3,7 @@ import { setError } from '../actions/itemForm';
 import React from 'react';
 
 class AppContainer extends React.Component {
-    componentWillMount() {
+    componentDidMount() {
         this.unlisten = this.props.history.listen((location, action) => {
             //make sure you set the error/success message before redirecting
             store.dispatch(setError(undefined));

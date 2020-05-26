@@ -4,7 +4,6 @@ import { setType } from '../../../actions/itemForm';
 import SearchField from '#components#/generics/SearchField';
 import resources from '#resources#';
 import Select from 'react-select';
-import Category from './Category';
 const typesResources = resources.body.searchBar.typeInput.types;
 const inputsResources = resources.personalPage.itemForm.inputs;
 
@@ -19,7 +18,7 @@ class Type extends React.Component {
                         this.props.setType(selectedValue.value);
                     }}
                     options={options}
-                    placeholder={'בחר'}
+                    placeholder={inputsResources.genericDropDownPlaceholder}
                     className='react-select'
                 />
             </div>
@@ -36,5 +35,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const TypeWithStore = connect(mapStateToProps, mapDispatchToProps)(Type);
 export default () => (
-    <SearchField metaText={'סוג הנכס'} selectorJSX={<TypeWithStore />} />
+    <SearchField metaText={inputsResources.Type.metaText} selectorJSX={<TypeWithStore />} />
 )

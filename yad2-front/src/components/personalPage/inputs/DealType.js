@@ -6,7 +6,6 @@ import resources from '#resources#';
 import Select from 'react-select';
 
 const dealTypes = resources.body.searchBar.dealTypeInput;
-const inputsResources = resources.personalPage.itemForm.inputs;
 const getOptionsArr = () => {
     const options = dealTypes.types.map((type) => ({ value: type.value, label: type.text }));
     return options;

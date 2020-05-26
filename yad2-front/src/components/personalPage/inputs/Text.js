@@ -31,5 +31,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const TextWithStore = connect(mapStateToProps, mapDispatchToProps)(Text);
 export default () => (
-    <SearchField metaText={'תיאור הדירה:'} selectorJSX={<TextWithStore />} />
+    <SearchField metaText={inputsResources.Text.metaText} selectorJSX={<TextWithStore />} />
 )

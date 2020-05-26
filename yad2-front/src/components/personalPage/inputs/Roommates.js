@@ -25,7 +25,7 @@ class Roommates extends React.Component {
                         this.props.setRoommates(selectedValue.value);
                     }}
                     options={options}
-                    placeholder={'בחר'}
+                    placeholder={inputsResources.genericDropDownPlaceholder}
                     className='react-select'
                 />
             </div>
@@ -41,5 +41,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const RoommatesWithStore = connect(mapStateToProps, mapDispatchToProps)(Roommates);
 export default () => (
-    <SearchField metaText={'מספר שותפים'} selectorJSX={<RoommatesWithStore />} />
+    <SearchField metaText={inputsResources.Roommates.metaText} selectorJSX={<RoommatesWithStore />} />
 )

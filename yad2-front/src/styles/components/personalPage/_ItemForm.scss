@@ -54,6 +54,22 @@
             padding: 1rem 1rem;
         }
     }
+    .image-upload__wrapper{
+        div.deleteImage{
+            background: $orange;
+        }
+        button.chooseFileButton{
+            background-color: $orange;
+        }
+        div.fileContainer{
+            padding: 1rem;
+        }
+        div.errorMessage{
+            color: red;
+            direction: rtl;
+            text-align: center;
+        }
+    }
 }
 
 .input-border{

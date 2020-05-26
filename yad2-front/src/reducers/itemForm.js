@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 export const emptyItem = {
     category: 'forsale',
     text: '',

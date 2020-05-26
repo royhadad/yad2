@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside'
 import resources from '#resources#';
 import { connect } from 'react-redux';
-import { fetchItems } from '../../../selectors/items';
 const propertyTypes = resources.general.propertyTypes;
 const searchBarHeaderResources = resources.body.searchBar.searchBarHeader;
 

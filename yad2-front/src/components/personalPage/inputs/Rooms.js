@@ -25,7 +25,7 @@ class Rooms extends React.Component {
                         this.props.setRooms(selectedValue.value);
                     }}
                     options={options}
-                    placeholder={'בחר'}
+                    placeholder={inputsResources.genericDropDownPlaceholder}
                     className='react-select'
                 />
             </div>
@@ -41,5 +41,5 @@ const mapDispatchToProps = (dispatch) => ({
 
 const RoomsWithStore = connect(mapStateToProps, mapDispatchToProps)(Rooms);
 export default () => (
-    <SearchField metaText={'מספר חדרים'} selectorJSX={<RoomsWithStore />} />
+    <SearchField metaText={inputsResources.Rooms.metaText} selectorJSX={<RoomsWithStore />} />
 )

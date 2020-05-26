@@ -14,6 +14,7 @@ import Text from './inputs/Text';
 import Type from './inputs/Type';
 import IsBrokerage from './inputs/IsBrokerage';
 import DealType from './inputs/DealType';
+import ImageUpload from './inputs/ImageUpload';
 import resources from '#resources#';
 const itemFormResources = resources.personalPage.itemForm;
 
@@ -107,6 +108,7 @@ const formBody = {
         <React.Fragment>
             <Text />
             <Properties />
+            <ImageUpload />
         </React.Fragment>
     )
 }

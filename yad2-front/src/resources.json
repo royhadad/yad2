@@ -619,7 +619,47 @@
             "header": "יצירת פריט:"
         },
         "itemForm": {
-            "inputs": {},
+            "inputs": {
+                "genericDropDownPlaceholder": "בחר",
+                "category": {
+                    "metaText": "קטגוריה"
+                },
+                "EntryDate": {
+                    "metaText": "תאריך כניסה:",
+                    "placeholder": "בחר תאריך כניסה"
+                },
+                "Floor": {
+                    "metaText": "קומה"
+                },
+                "ImageUpload": {
+                    "metaText": "העלאת תמונות:",
+                    "buttonText": "בחר תמונות",
+                    "label": "עד 5 מגה לתמונה jpg. או png.",
+                    "fileSizeError": "התמונה שנבחרה גדולה מידי",
+                    "fileTypeError": "סוג הקובץ לא נתמך"
+                },
+                "Location": {
+                    "metaText": "מיקום הנכס"
+                },
+                "Price": {
+                    "metaText": "מחיר בש\"ח"
+                },
+                "Roommates": {
+                    "metaText": "מספר שותפים"
+                },
+                "Rooms": {
+                    "metaText": "מספר חדרים"
+                },
+                "Size": {
+                    "metaText": "גודל הדירה במ\"ר"
+                },
+                "Text": {
+                    "metaText": "תיאור הדירה:"
+                },
+                "Type": {
+                    "metaText": "סוג הנכס"
+                }
+            },
             "onDeleteText": "מחק פריט",
             "deletedSuccessfully": "הפריט נמחק בהצלחה",
             "errors": {
