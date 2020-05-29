@@ -33,7 +33,8 @@ const itemProps = [
 const filtersReducerDefaultState = {
     locationCurrentText: '',
     error: '',
-    item: emptyItem
+    item: emptyItem,
+    images: []
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -195,6 +196,11 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 locationCurrentText: action.locationCurrentText || ''
+            };
+        case 'ITEM_FORM_SET_IMAGES':
+            return {
+                ...state,
+                images: action.images
             };
         default:
             return state;

@@ -95,6 +95,19 @@ export const setLocationCurrentText = (locationCurrentText) => ({
     type: 'ITEM_FORM_SET_LOCATION_CURRENT_TEXT',
     locationCurrentText
 });
+//SET IMAGES
+export const setImages = (images) => ({
+    type: 'ITEM_FORM_SET_IMAGES',
+    images
+})
+
+const callAddImagesAfterAddOrEdit = async (item) => {
+    const itemId = item._id;
+    const imagesStatus = await addImagesToItem(itemId);
+    if (imagesStatus !== 201) {
+        throw imagesStatus;
+    }
+}
 
 export const startEditItem = async (itemId) => {
     const item = store.getState().itemForm.item;
@@ -114,10 +127,15 @@ export const startEditItem = async (itemId) => {
             throw response.status;
         }
         response = await response.json();
+
+        await callAddImagesAfterAddOrEdit(response);
+
         const successMessage = resources.personalPage.editItem.updatedSuccessfully;
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
     } catch (e) {
+        console.log(e);
+
         response = await response.json();
         console.log(response);
 
@@ -146,6 +164,9 @@ export const startAddItem = async () => {
         }
 
         response = await response.json();
+
+        await callAddImagesAfterAddOrEdit(response);
+
         const successMessage = resources.personalPage.addItem.createdSuccessfully;
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
@@ -155,7 +176,6 @@ export const startAddItem = async () => {
         UnexpectedAuthErrorHandler(e);
     }
 }
-
 
 export const startDeleteItem = async (itemId) => {
     let response;
@@ -173,5 +193,26 @@ export const startDeleteItem = async (itemId) => {
         store.dispatch(setError(successMessage));
     } catch (e) {
         UnexpectedAuthErrorHandler(e);
+    }
+}
+
+export const addImagesToItem = async (itemId) => {
+    let response;
+    try {
+        const files = store.getState().itemForm.images;
+        const formData = new FormData();
+        files.forEach((file) => {
+            formData.append('image', file)
+        })
+        const requestOptions = {
+            method: 'POST',
+            headers: {},
+            body: formData
+        }
+        response = await fetch(`/api/items/images/${itemId}`, requestOptions);
+        return response.status;
+    } catch (e) {
+        response = await response.json();
+        alert('something went wrong! ' + response);
     }
 }

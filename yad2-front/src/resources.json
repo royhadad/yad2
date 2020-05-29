@@ -638,6 +638,9 @@
                     "fileSizeError": "התמונה שנבחרה גדולה מידי",
                     "fileTypeError": "סוג הקובץ לא נתמך"
                 },
+                "ImageDeletion": {
+                    "metaText": "מחיקת תמונות קיימות:"
+                },
                 "Location": {
                     "metaText": "מיקום הנכס"
                 },

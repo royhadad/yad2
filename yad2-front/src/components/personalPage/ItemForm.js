@@ -14,6 +14,7 @@ import Text from './inputs/Text';
 import Type from './inputs/Type';
 import IsBrokerage from './inputs/IsBrokerage';
 import DealType from './inputs/DealType';
+import ImageDeletion from './inputs/ImageDeletion';
 import ImageUpload from './inputs/ImageUpload';
 import resources from '#resources#';
 const itemFormResources = resources.personalPage.itemForm;
@@ -40,7 +41,12 @@ class ItemForm extends React.Component {
             <div className='item-form'>
                 <SharedFields />
                 <UniqueFields />
-                <BottomFields />
+                <BottomFields item={this.props.item} />
+                {
+                    this.props.isEdit && (
+                        <ImageDeletion item={this.props.item} />
+                    )
+                }
                 <div className='item-form__buttonsWrapper'>
                     <div className='item-form__submit-button' onClick={this.props.onSubmit}>
                         {this.props.onSubmitText}
@@ -104,11 +110,14 @@ const formBody = {
             <Rooms />
         </React.Fragment>
     ),
-    'bottomFields': () => (
-        <React.Fragment>
-            <Text />
-            <Properties />
-            <ImageUpload />
-        </React.Fragment>
-    )
+    'bottomFields': (props) => {
+        return (
+            <React.Fragment>
+                <Text />
+                <Properties />
+                <ImageUpload item={props.item} />
+            </React.Fragment>
+        )
+    }
+
 }

@@ -9,7 +9,7 @@ const dispatchError = (error) => {
 
 export default (item) => {
     try {
-        console.log('before clean:\n' + JSON.stringify(item));
+        //console.log('before clean:\n' + JSON.stringify(item));
         if (item.location === undefined) {
             return dispatchError(errors.location);
         }
@@ -66,8 +66,8 @@ export default (item) => {
             item.roommates = undefined;
         }
 
-        console.log('returning the item!');
-        console.log('after clean:\n' + JSON.stringify(item));
+        //console.log('returning the item!');
+        //console.log('after clean:\n' + JSON.stringify(item));
         return item;
     } catch (e) {
         //TODO remove e

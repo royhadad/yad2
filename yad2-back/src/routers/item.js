@@ -26,6 +26,8 @@ router.post('/items', auth, async (req, res) => {
 router.post('/items/images/:id', auth, authItem, multerFilter, sharpImageFormatter, async (req, res) => {
     const item = req.item;
     const files = req.files;
+    console.log('adding images!:', item, files);
+
     try {
         await item.addImages(files);
         res.status(201).send(item)
