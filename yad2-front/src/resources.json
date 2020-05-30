@@ -639,7 +639,8 @@
                     "fileTypeError": "סוג הקובץ לא נתמך"
                 },
                 "ImageDeletion": {
-                    "metaText": "מחיקת תמונות קיימות:"
+                    "metaText": "מחיקת תמונות קיימות:",
+                    "noImagesFound": "לא נמצאו תמונות"
                 },
                 "Location": {
                     "metaText": "מיקום הנכס"
@@ -665,6 +666,7 @@
             },
             "onDeleteText": "מחק פריט",
             "deletedSuccessfully": "הפריט נמחק בהצלחה",
+            "deletedImageSuccessfully": "התמונה נמחקה בהצלחה",
             "errors": {
                 "location": "הזן מיקום",
                 "price": "הזן מחיר",

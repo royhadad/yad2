@@ -1,6 +1,7 @@
 import { store } from '../index';
 import cleanItemBeforeAdding from '../utility/cleanItemBeforeAdding';
 import UnexpectedAuthErrorHandler from '../utility/UnexpectedAuthErrorHandler';
+import { fetchItemById } from '../selectors/items';
 import { RedirectToMyItems } from '../routers/AppRouter';
 import resources from '#resources#';
 
@@ -100,13 +101,21 @@ export const setImages = (images) => ({
     type: 'ITEM_FORM_SET_IMAGES',
     images
 })
+//SET FETCHED ITEM
+export const setFetchedItem = (fetchedItem) => ({
+    type: 'ITEM_FORM_SET_FETCHED_ITEM',
+    fetchedItem
+})
+//SET IS LOADING
+export const setIsLoading = (isLoading) => ({
+    type: 'ITEM_FORM_SET_IS_LOADING',
+    isLoading
+})
 
 const callAddImagesAfterAddOrEdit = async (item) => {
     const itemId = item._id;
-    const imagesStatus = await addImagesToItem(itemId);
-    if (imagesStatus !== 201) {
-        throw imagesStatus;
-    }
+    const response = await addImagesToItem(itemId);
+    return response;
 }
 
 export const startEditItem = async (itemId) => {
@@ -123,13 +132,17 @@ export const startEditItem = async (itemId) => {
             body: JSON.stringify(cleanItem)
         }
         response = await fetch(`/api/items/${itemId}`, requestOptions);
+
         if (response.status !== 200) {
             throw response.status;
         }
         response = await response.json();
 
-        await callAddImagesAfterAddOrEdit(response);
+        response = await callAddImagesAfterAddOrEdit(response);
 
+        if (response.status !== 201) {
+            throw response;
+        }
         const successMessage = resources.personalPage.editItem.updatedSuccessfully;
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
@@ -138,7 +151,6 @@ export const startEditItem = async (itemId) => {
 
         response = await response.json();
         console.log(response);
-
         UnexpectedAuthErrorHandler(e);
     }
 }
@@ -146,6 +158,7 @@ export const startEditItem = async (itemId) => {
 export const startAddItem = async () => {
     const item = store.getState().itemForm.item;
     const cleanItem = cleanItemBeforeAdding(item);
+    let response;
     if (!cleanItem) {
         return;
     }
@@ -156,7 +169,7 @@ export const startAddItem = async () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(cleanItem)
         }
-        let response = await fetch(`/api/items`, requestOptions);
+        response = await fetch(`/api/items`, requestOptions);
         console.log(response);
 
         if (response.status !== 201) {
@@ -165,14 +178,16 @@ export const startAddItem = async () => {
 
         response = await response.json();
 
-        await callAddImagesAfterAddOrEdit(response);
-
+        response = await callAddImagesAfterAddOrEdit(response);
+        if (response.status !== 201) {
+            throw response;
+        }
         const successMessage = resources.personalPage.addItem.createdSuccessfully;
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
     } catch (e) {
-        console.log(e);
-
+        response = await response.json();
+        console.log(response);
         UnexpectedAuthErrorHandler(e);
     }
 }
@@ -200,6 +215,9 @@ export const addImagesToItem = async (itemId) => {
     let response;
     try {
         const files = store.getState().itemForm.images;
+        if (!files) {
+            return { status: 201 };
+        }
         const formData = new FormData();
         files.forEach((file) => {
             formData.append('image', file)
@@ -210,7 +228,42 @@ export const addImagesToItem = async (itemId) => {
             body: formData
         }
         response = await fetch(`/api/items/images/${itemId}`, requestOptions);
-        return response.status;
+        return response;
+    } catch (e) {
+        if (!response) {
+            UnexpectedAuthErrorHandler(e);
+        } else {
+            return response;
+        }
+    }
+}
+
+export const deleteImageFromItem = async (itemId, imageURL) => {
+    let response;
+    try {
+        const body = {
+            deleteImages: [imageURL]
+        }
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body)
+        }
+        response = await fetch(`/api/items/images/${itemId}`, requestOptions);
+        if (response.status !== 200) {
+            throw response.status;
+        }
+
+        store.dispatch(setIsLoading(true));
+        const item = await fetchItemById(itemId);
+        if (item) {
+            store.dispatch(setFetchedItem(item));
+            store.dispatch(setIsLoading(false));
+            const successMessage = resources.personalPage.itemForm.deletedImageSuccessfully;
+            store.dispatch(setError(successMessage));
+        } else {
+            alert('couldn\'t find item');
+        }
     } catch (e) {
         response = await response.json();
         alert('something went wrong! ' + response);

@@ -1,11 +1,11 @@
 import React from 'react';
 
-class SearchField extends React.Component{
-    render(){
-        const classForEmptyMetaText = this.props.metaText===''?'search-field__invisible-meta-text':'';
-        const metaText = this.props.metaText===''?'.':this.props.metaText;
+class SearchField extends React.Component {
+    render() {
+        const classForEmptyMetaText = this.props.metaText === '' ? 'search-field__invisible-meta-text' : '';
+        const metaText = this.props.metaText === '' ? '.' : this.props.metaText;
         return (
-            <div className='search-field__wrapper'>
+            <div className={'search-field__wrapper' + (this.props.className ? ' ' + this.props.className : '')}>
                 <p className={classForEmptyMetaText}>{metaText}</p>
                 {this.props.selectorJSX}
             </div>

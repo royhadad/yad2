@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setItem, setError, setLocation, resetToDefault } from '../../actions/itemForm';
+import { setItem, setError, setLocation, resetToDefault, setIsLoading } from '../../actions/itemForm';
 import Category from './inputs/Category';
 import EntryDate from './inputs/EntryDate';
 import Floor from './inputs/Floor';
@@ -31,6 +31,7 @@ class ItemForm extends React.Component {
         if (this.props.item) {
             this.props.setItem(this.props.item);
         }
+        this.props.setIsLoading(false);
     }
 
     render() {
@@ -71,7 +72,8 @@ const mapDispatchToProps = (dispatch) => ({
     setItem: (item) => (dispatch(setItem(item))),
     setLocation: (location) => (dispatch(setLocation(location))),
     setError: (error) => (dispatch(setError(error))),
-    resetToDefault: () => (dispatch(resetToDefault()))
+    resetToDefault: () => (dispatch(resetToDefault())),
+    setIsLoading: (isLoading) => (dispatch(setIsLoading(isLoading)))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ItemForm);
 

@@ -34,7 +34,9 @@ const filtersReducerDefaultState = {
     locationCurrentText: '',
     error: '',
     item: emptyItem,
-    images: []
+    images: [],
+    fetchedItem: undefined,
+    isLoading: true
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -56,7 +58,10 @@ export default (state = filtersReducerDefaultState, action) => {
                 item: filteredItem
             };
         case 'ITEM_FORM_RESET_TO_DEFAULT':
-            return filtersReducerDefaultState;
+            return {
+                filtersReducerDefaultState,
+                fetchedItem: state.fetchedItem
+            };
         case 'ITEM_FORM_SET_CATEGORY':
             return {
                 ...state,
@@ -201,6 +206,16 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 images: action.images
+            };
+        case 'ITEM_FORM_SET_FETCHED_ITEM':
+            return {
+                ...state,
+                fetchedItem: action.fetchedItem
+            };
+        case 'ITEM_FORM_SET_IS_LOADING':
+            return {
+                ...state,
+                isLoading: action.isLoading
             };
         default:
             return state;
