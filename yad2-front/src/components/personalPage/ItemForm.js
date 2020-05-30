@@ -27,6 +27,7 @@ const itemFormResources = resources.personalPage.itemForm;
 class ItemForm extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+        this.props.setIsLoading(true);
         this.props.resetToDefault();
         if (this.props.item) {
             this.props.setItem(this.props.item);
@@ -65,7 +66,7 @@ class ItemForm extends React.Component {
     }
 }
 const mapStateToProps = (state) => ({
-    category: state.itemForm.item.category,
+    category: (state.itemForm.item.category),
     error: state.itemForm.error
 })
 const mapDispatchToProps = (dispatch) => ({

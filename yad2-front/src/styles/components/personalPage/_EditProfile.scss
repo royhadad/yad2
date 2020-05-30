@@ -6,4 +6,15 @@
     .signup__box{
         margin-top: 0rem;
     }
+    .delete-account-button{
+        @extend .clickable;
+        justify-self: flex-end;
+        color: red;
+        background: white;
+        border: $regular-border;
+        padding: 2rem 4rem;
+    }
+    .delete-account-button:hover{
+        background: lighten(red, 45);
+    }
 }

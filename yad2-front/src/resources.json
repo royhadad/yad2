@@ -605,6 +605,7 @@
         "editProfile": {
             "header": "עדכן פרטים:",
             "updateButton": "עדכן פרטים",
+            "deleteProfilebutton": "מחק משתמש",
             "passwordPlaceholder": "סיסמה - השאר ריק בשביל לא לעדכן",
             "updatedSuccessfully": "הפרטים עודכנו בהצלחה"
         },
@@ -686,7 +687,8 @@
         "password": "סיסמה",
         "login": "כניסה",
         "restorePasswordText": "שכחתי סיסמה",
-        "signupLink": "אין לך משתמש עדיין? הירשם"
+        "signupLink": "אין לך משתמש עדיין? הירשם",
+        "loginToAddItems": "התחבר על מנת לפרסם מודעות"
     },
     "signup": {
         "header": "יצירת משתמש",

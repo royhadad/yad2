@@ -25,6 +25,11 @@ export default (state = defaultState, action) => {
                 ...state,
                 loginError: action.error
             }
+        case 'SET_LOGIN_TOP_MSG':
+            return {
+                ...state,
+                loginTopMsg: action.loginTopMsg
+            };
         case 'SET_SIGNUP_ERROR':
             return {
                 ...state,

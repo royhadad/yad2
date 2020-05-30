@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PersonalPage from './PersonalPage';
+import { deleteUser } from '../../actions/auth';
 import { SignupBox } from '../Signup';
 import { fetchUser } from '../../selectors/users';
 import ReactLoading from 'react-loading';
@@ -38,6 +39,7 @@ class EditProfile extends React.Component {
                             />
                         )
                 }
+                <div className='delete-account-button' onClick={() => deleteUser(this.state.user)}>{editProfileResources.deleteProfilebutton}</div>
             </div>
         );
     }

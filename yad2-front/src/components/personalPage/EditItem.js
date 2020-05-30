@@ -10,6 +10,7 @@ const editItemResources = resources.personalPage.editItem;
 
 class EditItem extends React.Component {
     async componentDidMount() {
+        this.props.setIsLoading(true);
         const item = await fetchItemById(this.props.match.params.id);
         if (item) {
             this.props.setFetchedItem(item);

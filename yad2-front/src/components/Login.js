@@ -33,6 +33,11 @@ class Login extends React.Component {
                 <div className='login__body__wrapper'>
                     <div className='login__body'>
                         <div className='login__box'>
+                            {
+                                this.props.loginTopMsg && (
+                                    <p className='top-message'>{this.props.loginTopMsg}</p>
+                                )
+                            }
                             <div className='login__box__body'>
 
                                 <div className='login__box__inputs'>
@@ -65,7 +70,8 @@ class Login extends React.Component {
     }
 }
 const mapStateToProps = (state) => ({
-    loginError: state.auth.loginError
+    loginError: state.auth.loginError,
+    loginTopMsg: state.auth.loginTopMsg
 })
 const mapDispatchToProps = (dispatch) => ({
     setLoginError: (error) => dispatch(setLoginError(error))

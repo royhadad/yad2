@@ -6,8 +6,5 @@ change minSize minFloor etc to generic reusable form
 upload images directly to s3 instead of passing them through the server, article:
 https://medium.com/the-smyth-group/scalable-user-uploads-with-amazon-s3-9f523c049543
 
-#11
-adding photos from browser to items
-
 #12
 fix warning from imageupload (only in dev? )

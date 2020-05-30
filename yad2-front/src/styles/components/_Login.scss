@@ -11,6 +11,12 @@
             width: 42.1rem;
             margin: 10rem 0 30rem 0;
             border-radius: 1rem;
+            >p.top-message{
+                color:red;
+                font-size: 2rem;
+                margin-bottom: 2rem;
+                direction: rtl;
+            }
             >.login__box__body{
                 background: lighten($orange, 5%);
                 border-top-right-radius: 1rem;

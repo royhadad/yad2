@@ -1,5 +1,6 @@
 import { store } from '#src#/index';
 import validator from 'validator';
+import { RedirectToHome } from '../routers/AppRouter';
 import resources from '#resources#';
 import UnexpectedAuthErrorHandler from '../utility/UnexpectedAuthErrorHandler';
 const loginErrors = resources.errors.loginErrors;
@@ -79,6 +80,10 @@ export const setLoginError = (error) => ({
 export const setSignupError = (error) => ({
     type: 'SET_SIGNUP_ERROR',
     error
+})
+export const setLoginTopMsg = (loginTopMsg) => ({
+    type: 'SET_LOGIN_TOP_MSG',
+    loginTopMsg
 })
 
 export const startSignup = async (user) => {
@@ -170,6 +175,30 @@ export const updateUser = async (user) => {
         } else {
             UnexpectedAuthErrorHandler(e);
         }
+    }
+}
+
+
+export const deleteUser = async (user) => {
+    let response;
+    try {
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        }
+        response = await fetch(`/api/users/me`, requestOptions);
+        if (response.status !== 200) {
+            throw response.status;
+        }
+        store.dispatch(logout());
+        RedirectToHome();
+    } catch (e) {
+        response = await response.json();
+        console.log(response);
+        UnexpectedAuthErrorHandler(e);
     }
 }
 

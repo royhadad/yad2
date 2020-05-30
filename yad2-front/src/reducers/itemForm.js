@@ -58,10 +58,7 @@ export default (state = filtersReducerDefaultState, action) => {
                 item: filteredItem
             };
         case 'ITEM_FORM_RESET_TO_DEFAULT':
-            return {
-                filtersReducerDefaultState,
-                fetchedItem: state.fetchedItem
-            };
+            return filtersReducerDefaultState;
         case 'ITEM_FORM_SET_CATEGORY':
             return {
                 ...state,
