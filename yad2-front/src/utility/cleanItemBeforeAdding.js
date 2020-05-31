@@ -59,11 +59,11 @@ export default (item) => {
         }
 
         if (item.category === 'roommates') {
-            if (item.roommates === undefined) {
+            if (item.numOfRoommates === undefined) {
                 return dispatchError(errors.roommates);
             }
         } else {
-            item.roommates = undefined;
+            item.numOfRoommates = undefined;
         }
 
         //console.log('returning the item!');

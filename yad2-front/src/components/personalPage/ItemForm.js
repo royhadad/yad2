@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setItem, setError, setLocation, resetToDefault, setIsLoading } from '../../actions/itemForm';
+import { setItem, setError, setLocation, resetToDefault } from '../../actions/itemForm';
 import Category from './inputs/Category';
 import EntryDate from './inputs/EntryDate';
 import Floor from './inputs/Floor';
@@ -27,12 +27,10 @@ const itemFormResources = resources.personalPage.itemForm;
 class ItemForm extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
-        this.props.setIsLoading(true);
         this.props.resetToDefault();
         if (this.props.item) {
             this.props.setItem(this.props.item);
         }
-        this.props.setIsLoading(false);
     }
 
     render() {
@@ -46,7 +44,7 @@ class ItemForm extends React.Component {
                 <BottomFields item={this.props.item} />
                 {
                     this.props.isEdit && (
-                        <ImageDeletion item={this.props.item} />
+                        <ImageDeletion />
                     )
                 }
                 <div className='item-form__buttonsWrapper'>
@@ -73,8 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
     setItem: (item) => (dispatch(setItem(item))),
     setLocation: (location) => (dispatch(setLocation(location))),
     setError: (error) => (dispatch(setError(error))),
-    resetToDefault: () => (dispatch(resetToDefault())),
-    setIsLoading: (isLoading) => (dispatch(setIsLoading(isLoading)))
+    resetToDefault: () => (dispatch(resetToDefault()))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(ItemForm);
 

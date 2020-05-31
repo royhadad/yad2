@@ -3,6 +3,7 @@ import resources from '#resources#';
 import moment from 'moment';
 const bodyResources = resources.body.searchResults.feedItem.body;
 const topProperties = bodyResources.topProperties;
+
 //TODO get the actual properties to show
 const getTopPropertiesJSXByItem = (item) => {
     const getTopPropertiesByItem = (item) => {
@@ -14,13 +15,30 @@ const getTopPropertiesJSXByItem = (item) => {
         }
         return Object.entries(topProps);
     }
+    const getTextFromValue = (key, value) => {
+        if (key === 'entryDate') {
+            if (item.isImmediateEntry) {
+                return resources.body.searchBar.immediateEntryCheckbox.text;
+            } else if (value === undefined) {
+                return topProperties['unspecified'];
+            } else {
+                return moment(value).format('DD/MM/YYYY');
+            }
+        } else {
+            if (value === undefined) {
+                return topProperties['unspecified'];
+            } else {
+                return value;
+            }
+        }
+    }
     const mapEntriesToHalfList = (entries) => (
         <div className='items__half__wrapper'>
             {
                 entries.map(([key, value]) => (
                     <div key={key} className='item__wrapper'>
                         <span className='item__key'>{topProperties[key]}</span>
-                        <span className='item__value'>{value === undefined ? topProperties['unspecified'] : (key === 'entryDate' ? moment(value).format('DD/MM/YYYY') : value)}</span>
+                        <span className='item__value'>{getTextFromValue(key, value)}</span>
                     </div>
                 ))
             }

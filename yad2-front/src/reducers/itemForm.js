@@ -12,7 +12,8 @@ export const emptyItem = {
     entryDate: undefined,
     isImmediateEntry: false,
     isBrokerage: false,
-    isCommercialSale: undefined
+    isCommercialSale: undefined,
+    imagesURLs: []
 }
 const itemProps = [
     'category',
@@ -34,9 +35,8 @@ const filtersReducerDefaultState = {
     locationCurrentText: '',
     error: '',
     item: emptyItem,
-    images: [],
-    fetchedItem: undefined,
-    isLoading: true
+    images: [], //adding new images
+    imagesURLs: [] //existing images
 };
 
 export default (state = filtersReducerDefaultState, action) => {
@@ -55,7 +55,9 @@ export default (state = filtersReducerDefaultState, action) => {
             return {
                 ...state,
                 locationCurrentText: item.location.description,
-                item: filteredItem
+                item: filteredItem,
+                imagesURLs: item.imagesURLs,
+                itemId: item._id
             };
         case 'ITEM_FORM_RESET_TO_DEFAULT':
             return filtersReducerDefaultState;
@@ -145,7 +147,7 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 item: {
                     ...state.item,
-                    roommates: action.roommates
+                    numOfRoommates: action.roommates
                 }
             };
         case 'ITEM_FORM_SET_ENTRY_DATE':
@@ -204,15 +206,10 @@ export default (state = filtersReducerDefaultState, action) => {
                 ...state,
                 images: action.images
             };
-        case 'ITEM_FORM_SET_FETCHED_ITEM':
+        case 'ITEM_FORM_SET_IMAGES_URLS':
             return {
                 ...state,
-                fetchedItem: action.fetchedItem
-            };
-        case 'ITEM_FORM_SET_IS_LOADING':
-            return {
-                ...state,
-                isLoading: action.isLoading
+                imagesURLs: action.imagesURLs
             };
         default:
             return state;

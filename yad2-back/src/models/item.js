@@ -44,7 +44,7 @@ const itemSchema = new Schema({
     },
     type: {
         type: String,
-        required: true,
+        required: false,
         validate(value) {
             if (this.category === 'roommates') {
                 throw new Error('types are not allowed for roommates!');
@@ -194,6 +194,11 @@ itemSchema.set('toJSON', { virtuals: true });
 //Schema methods
 itemSchema.methods.deleteImages = async function (urlsToDelete) {
     const item = this;
+
+    if (urlsToDelete.some((urlToDelete) => (!item.imagesURLs.includes(urlToDelete)))) {
+        throw new Error('404');
+    }
+
     await deleteMultiple(urlsToDelete);
     item.imagesURLs = item.imagesURLs.filter((url) => !urlsToDelete.includes(url));
     await item.save();

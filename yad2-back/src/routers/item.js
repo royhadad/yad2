@@ -40,10 +40,17 @@ router.post('/items/images/:id', auth, authItem, multerFilter, sharpImageFormatt
 // body: {deleteImages: String[]}
 router.delete('/items/images/:id', auth, authItem, async (req, res) => {
     try {
+
         const item = await req.item.deleteImages(req.body.deleteImages);
         res.send(item);
     } catch (e) {
-        res.status(500).send();
+        console.log(e);
+
+        if (e.message === '404') {
+            res.status(404).send();
+        } else {
+            res.status(500).send();
+        }
     }
 })
 

@@ -1,21 +1,24 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PersonalPage from './PersonalPage';
 import ItemForm from './ItemForm';
 import ReactLoading from 'react-loading';
 import { fetchItemById } from '../../selectors/items';
-import { startEditItem, startDeleteItem, setFetchedItem, setIsLoading } from '../../actions/itemForm';
+import { startEditItem, startDeleteItem } from '../../actions/itemForm';
 import resources from '#resources#';
 const editItemResources = resources.personalPage.editItem;
 
 class EditItem extends React.Component {
+    state = {
+        isLoading: true,
+        fetchedItem: undefined
+    }
     async componentDidMount() {
-        this.props.setIsLoading(true);
+        this.setState(() => ({ isLoading: true }));
         const item = await fetchItemById(this.props.match.params.id);
         if (item) {
-            this.props.setFetchedItem(item);
-            this.props.setIsLoading(false);
+            this.setState(() => ({ fetchedItem: item, isLoading: false }));
         } else {
+            this.setState(() => ({ isLoading: false }));
             alert('couldn\'t find item');
         }
     }
@@ -24,13 +27,13 @@ class EditItem extends React.Component {
             <div className='add-item__wrapper'>
                 <h1>{editItemResources.header}</h1>
                 {
-                    this.props.isLoading ? (
+                    this.state.isLoading ? (
                         <div className='spinner-wrapper'>
                             <ReactLoading type='bubbles' color='#ff7100' width={256} height={256} />
                         </div>
                     ) : (
                             <ItemForm
-                                item={this.props.fetchedItem}
+                                item={this.state.fetchedItem}
                                 onSubmit={() => (startEditItem(this.props.match.params.id))}
                                 onSubmitText={editItemResources.onSubmitText}
                                 successText={editItemResources.updatedSuccessfully}
@@ -43,13 +46,4 @@ class EditItem extends React.Component {
         );
     }
 }
-const mapStateToProps = (state) => ({
-    fetchedItem: state.itemForm.fetchedItem,
-    isLoading: state.itemForm.isLoading
-})
-const mapDispatchToProps = (dispatch) => ({
-    setFetchedItem: (fetchedItem) => (dispatch(setFetchedItem(fetchedItem))),
-    setIsLoading: (isLoading) => (dispatch(setIsLoading(isLoading)))
-})
-const Body = connect(mapStateToProps, mapDispatchToProps)(EditItem);
-export default (props) => (<PersonalPage childComponent={Body} selected={'edit'} {...props} />);
+export default (props) => (<PersonalPage childComponent={EditItem} selected={'edit'} {...props} />);

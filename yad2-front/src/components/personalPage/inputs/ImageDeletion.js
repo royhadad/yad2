@@ -1,5 +1,6 @@
 import React from 'react';
 import Img from '../../generics/Img';
+import { connect } from 'react-redux';
 import SearchField from '#components#/generics/SearchField';
 import { deleteImageFromItem } from '../../../actions/itemForm';
 import resources from '#resources#';
@@ -7,21 +8,24 @@ const inputsResources = resources.personalPage.itemForm.inputs;
 const imageDeletionResources = inputsResources.ImageDeletion;
 const ITEM_PLACEHOLDER_IMAGE_URL = 'https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/item_placeholder_image.jpg';
 
-//recieves props: item
-class ImageDeletion extends React.Component {
+class ImageDeletionWithoutStore extends React.Component {
     render() {
         return (
             <div className='image-deletion'>
                 {
-                    this.props.item.imagesURLs.map((imageUrl, index) => (
-                        <ImageDeletionItem url={imageUrl} itemId={this.props.item._id} key={index} />
+                    this.props.imagesURLs.map((imageUrl, index) => (
+                        <ImageDeletionItem url={imageUrl} itemId={this.props.itemId} key={index} />
                     ))
                 }
             </div>
         )
     }
 }
-
+const mapStateToProps = (state) => ({
+    imagesURLs: state.itemForm.imagesURLs,
+    itemId: state.itemForm.itemId
+})
+const ImageDeletion = connect(mapStateToProps)(ImageDeletionWithoutStore);
 export default (props) => (
     <SearchField metaText={imageDeletionResources.metaText} className={'image-deletion__wrapper'} selectorJSX={<ImageDeletion {...props} />} />
 )

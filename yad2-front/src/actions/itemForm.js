@@ -101,15 +101,10 @@ export const setImages = (images) => ({
     type: 'ITEM_FORM_SET_IMAGES',
     images
 })
-//SET FETCHED ITEM
-export const setFetchedItem = (fetchedItem) => ({
-    type: 'ITEM_FORM_SET_FETCHED_ITEM',
-    fetchedItem
-})
-//SET IS LOADING
-export const setIsLoading = (isLoading) => ({
-    type: 'ITEM_FORM_SET_IS_LOADING',
-    isLoading
+//SET IMAGES_URLS
+export const setImagesURLs = (imagesURLs) => ({
+    type: 'ITEM_FORM_SET_IMAGES_URLS',
+    imagesURLs
 })
 
 const callAddImagesAfterAddOrEdit = async (item) => {
@@ -147,10 +142,6 @@ export const startEditItem = async (itemId) => {
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
     } catch (e) {
-        console.log(e);
-
-        response = await response.json();
-        console.log(response);
         UnexpectedAuthErrorHandler(e);
     }
 }
@@ -186,8 +177,6 @@ export const startAddItem = async () => {
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
     } catch (e) {
-        response = await response.json();
-        console.log(response);
         UnexpectedAuthErrorHandler(e);
     }
 }
@@ -241,6 +230,12 @@ export const addImagesToItem = async (itemId) => {
 export const deleteImageFromItem = async (itemId, imageURL) => {
     let response;
     try {
+        //disable all buttons
+        document.querySelectorAll('.image-deletion-item__button').forEach((button) => {
+            button.style.pointerEvents = 'none';
+        })
+
+
         const body = {
             deleteImages: [imageURL]
         }
@@ -251,21 +246,23 @@ export const deleteImageFromItem = async (itemId, imageURL) => {
         }
         response = await fetch(`/api/items/images/${itemId}`, requestOptions);
         if (response.status !== 200) {
-            throw response.status;
+            throw new Error();
         }
 
-        store.dispatch(setIsLoading(true));
         const item = await fetchItemById(itemId);
         if (item) {
-            store.dispatch(setFetchedItem(item));
-            store.dispatch(setIsLoading(false));
+            store.dispatch(setImagesURLs(item.imagesURLs));
             const successMessage = resources.personalPage.itemForm.deletedImageSuccessfully;
             store.dispatch(setError(successMessage));
         } else {
             alert('couldn\'t find item');
         }
     } catch (e) {
-        response = await response.json();
-        alert('something went wrong! ' + response);
+        alert('something went wrong! ' + response.status || '?');
+    } finally {
+        //enable all buttons
+        document.querySelectorAll('.image-deletion-item__button').forEach((button) => {
+            button.style.pointerEvents = 'auto';
+        })
     }
 }

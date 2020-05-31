@@ -34,7 +34,7 @@ class EntryDate extends React.Component {
                     disabled={this.props.isImmediateEntry}
                 />
                 <Checkbox
-                    option={{ text: 'כניסה מיידית', value: '1' }}
+                    option={{ text: resources.body.searchBar.immediateEntryCheckbox.text, value: '1' }}
                     isSelected={this.props.isImmediateEntry}
                     toggleOption={(value) => {
                         this.props.toggleIsImmediateEntry();
