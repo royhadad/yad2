@@ -5,9 +5,7 @@ module.exports = (config) => {
     config.resolve.alias = {
         ...config.resolve.alias,
         ...(process.env.NODE_ENV === "production" && {
-            "react": "preact/compat",
-            "react-dom": "preact/compat",
-            "react-dom/test-utils": "preact/test-utils",
+            //production replacements "devString": "productionString"
         }),
         "#base#": path.join(__dirname),
         "#src#": path.join(__dirname, "src"),
@@ -25,3 +23,13 @@ module.exports = (config) => {
     ];
     return config;
 }
+
+
+//if i want to use preact just plug this in production replacements:
+
+// "react": "preact/compat",
+// "react-dom": "preact/compat",
+// "react-dom/test-utils": "preact/test-utils",
+
+// and also install preact
+// and move react & react-dom to dev dependencies

@@ -8,10 +8,10 @@ import Img from '../generics/Img';
 const modalStyle = {
     overlay: {
         backgroundColor: '#353535',
-        zIndex: 5
+        zIndex: 11
     },
     content: {
-        zIndex: 5,
+        zIndex: 11,
         margin: '2rem 13%',
         padding: 0,
         border: 'none',

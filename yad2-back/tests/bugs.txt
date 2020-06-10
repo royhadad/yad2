@@ -8,6 +8,3 @@ https://medium.com/the-smyth-group/scalable-user-uploads-with-amazon-s3-9f523c04
 
 #12
 fix warning from imageupload (only in dev? )
-
-#13
-fix item adding and viewing in production
