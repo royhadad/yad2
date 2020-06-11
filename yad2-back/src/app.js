@@ -34,8 +34,14 @@ const useAPIRoutes = () => {
 const serveReactApp = () => {
     app.use(serveStaticScripts);
     app.use(express.static(PATH_TO_BUILD));
-    app.all('*', (req, res) => {
+    app.get('*', (req, res) => {
         res.sendFile(path.join(PATH_TO_BUILD, 'index.html'));
+    });
+    app.all('*', (req, res) => {
+        res.status(404).send({
+            status: 'fail',
+            message: `Can't find ${req.originalUrl} on this server!`
+        });
     });
 }
 
