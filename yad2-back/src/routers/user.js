@@ -9,7 +9,6 @@ router.post('/users', async (req, res) => {
 })
 
 router.post('/users/login', async (req, res) => {
-    throw new Error('alpaca');
     const response = await userServices.login(req.body.email, req.body.password);
     res.status(response.status).send(response.body);
 })
