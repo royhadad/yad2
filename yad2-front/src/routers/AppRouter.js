@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import MainNavBar from '#components#/MainNavBar/MainNavBar';
@@ -18,13 +18,17 @@ import PublicRoute from './PublicRoute';
 import AppContainer from '#components#/AppContainer';
 
 export const RedirectToHome = () => {
-    window.scrollTo(0, 0);
-    history.push('/realestate');
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        history.push('/realestate');
+    });
     return null;
 }
 export const RedirectToMyItems = () => {
-    window.scrollTo(0, 0);
-    history.push('/personal/edit');
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        history.push('/personal/edit');
+    });
     return null;
 }
 export const history = createBrowserHistory();
