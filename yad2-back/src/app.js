@@ -34,7 +34,7 @@ const useAPIRoutes = () => {
 const serveReactApp = () => {
     app.use(serveStaticScripts);
     app.use(express.static(PATH_TO_BUILD));
-    app.get('*', (req, res) => {
+    app.all('*', (req, res) => {
         res.sendFile(path.join(PATH_TO_BUILD, 'index.html'));
     });
 }
