@@ -6,9 +6,9 @@ const favicon = require('serve-favicon');
 const setHeaders = require('./middleware/setHeaders');
 const serveStaticScripts = require('./middleware/serveStaticallyCompressedInstead');
 const notFound = require('./utils/notFound');
-const { prodErrorHandler, devErrorHandler } = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
-
+const { prodErrorHandler, devErrorHandler } = require('./middleware/errorHandler');
+require('express-async-errors');
 require('./db/mongoose')
 
 const PATH_TO_BUILD = path.resolve(__dirname, '../../yad2-front/build');
