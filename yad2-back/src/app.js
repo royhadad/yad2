@@ -5,6 +5,8 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const setHeaders = require('./middleware/setHeaders');
 const serveStaticScripts = require('./middleware/serveStaticallyCompressedInstead');
+const notFound = require('./utils/notFound');
+const { prodErrorHandler, devErrorHandler } = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
 
 require('./db/mongoose')
@@ -37,12 +39,9 @@ const serveReactApp = () => {
     app.get('*', (req, res) => {
         res.sendFile(path.join(PATH_TO_BUILD, 'index.html'));
     });
-    app.all('*', (req, res) => {
-        res.status(404).send({
-            status: 'fail',
-            message: `Can't find ${req.originalUrl} on this server!`
-        });
-    });
+}
+
+const useNotFoundRoute = () => {
 }
 
 const app = express();
@@ -52,12 +51,17 @@ app.use(setHeaders);
 if (isDev) {
     app.use(morgan('dev'));
     useAPIRoutes();
+    app.all('*', notFound);
+    app.use(devErrorHandler);
+
 } else {
     app.disable('x-powered-by');
     app.use(morgan('common'));
 
     useAPIRoutes();
     serveReactApp();
+    app.all('*', notFound);
+    app.use(prodErrorHandler);
 }
 
 module.exports = app;
