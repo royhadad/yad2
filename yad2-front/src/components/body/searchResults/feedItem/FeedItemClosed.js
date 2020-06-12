@@ -7,7 +7,6 @@ import getBackgroundColorClassByItem from '#src#/utility/getBackgroundColorClass
 
 class FeedItemClosed extends React.Component {
     render() {
-
         return (
             <div className={'feed-item--closed ' + getBackgroundColorClassByItem(this.props.item)} onClick={this.props.toggleIsOpened}>
                 <FeedItemImage item={this.props.item} isOpen={false} toggleIsOpened={this.props.toggleIsOpened} />
