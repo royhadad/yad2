@@ -4,7 +4,6 @@ const auth = require('../middleware/auth');
 const authItem = require('../middleware/authItem');
 const multerFilter = require('../middleware/multerFilter');
 const sharpImageFormatter = require('../middleware/sharpImageFormatter');
-const { uploadMultiple, uploadSingle, deleteMultiple, deleteSingle } = require('../utils/s3Services');
 const router = new express.Router()
 
 router.post('/items', auth, async (req, res) => {
