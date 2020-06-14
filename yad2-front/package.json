@@ -74,6 +74,9 @@
       "^#components#(.*)$": "<rootDir>/src/components$1",
       "^#body#(.*)$": "<rootDir>/src/components/body$1",
       "^#actions#(.*)$": "<rootDir>/src/actions$1"
-    }
+    },
+    "setupFilesAfterEnv": [
+      "./src/tests/jest.setup.js"
+    ]
   }
 }

@@ -24,7 +24,7 @@ const itemFormResources = resources.personalPage.itemForm;
 //onSubmitText: string
 //item: item (optional)
 //successText: string
-class ItemForm extends React.Component {
+export class ItemForm extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         this.props.resetToDefault();
@@ -119,5 +119,4 @@ const formBody = {
             </React.Fragment>
         )
     }
-
 }
