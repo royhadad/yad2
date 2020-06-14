@@ -1,9 +1,0 @@
-list of all bugs:
-
-
-TODO:
-#1
-upload images directly to s3 instead of passing them through the server, article:
-https://medium.com/the-smyth-group/scalable-user-uploads-with-amazon-s3-9f523c049543
-
-#3 write tests for frontend
