@@ -24,6 +24,10 @@ module.exports = (config) => {
     return config;
 }
 
+//to change aliases, you need to change them in 3 places:
+//1. config-overrides - for dev and production
+//2. package.json - .jest.moduleNameMapper - for testing
+//3. jsconfig.json - for vscode autocomplete
 
 //if i want to use preact just plug this in production replacements:
 

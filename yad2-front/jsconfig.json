@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "allowSyntheticDefaultImports": false,
+        "baseUrl": "./",
+        "paths": {
+            "#base#/*": [
+                "*"
+            ],
+            "#src#/*": [
+                "src/*"
+            ],
+            "#resources#/*": [
+                "src/resources.json"
+            ],
+            "#components#/*": [
+                "src/components/*"
+            ],
+            "#body#/*": [
+                "src/components/body/*"
+            ],
+            "#actions#/*": [
+                "src/actions/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "dist"
+    ]
+}

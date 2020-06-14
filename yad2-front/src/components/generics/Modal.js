@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
 import { closeModal } from '../../actions/modal';
-Modal.setAppElement('#root');
+
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 class MyModal extends React.Component {
     render() {

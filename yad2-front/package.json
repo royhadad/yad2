@@ -65,5 +65,15 @@
     "enzyme-to-json": "^3.5.0",
     "react-test-renderer": "^16.13.1",
     "source-map-explorer": "^2.4.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "^#base#(.*)$": "<rootDir>$1",
+      "^#src#(.*)$": "<rootDir>/src$1",
+      "^#resources#(.*)$": "<rootDir>/src/resources.json$1",
+      "^#components#(.*)$": "<rootDir>/src/components$1",
+      "^#body#(.*)$": "<rootDir>/src/components/body$1",
+      "^#actions#(.*)$": "<rootDir>/src/actions$1"
+    }
   }
 }
