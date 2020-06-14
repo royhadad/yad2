@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import resources from '#resources#';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 const sellerDetailsResources = resources.body.searchResults.feedItem.header.sellerDetails;
 
 export default (props) => {
     const [shouldShowDropDown, toggleDropDown] = useState(false);
-
     return (
         <div className='feed-item__seller-details' onClick={(e) => e.stopPropagation()}>
             <div className='feed-item__seller-details__header' onClick={() => toggleDropDown(!shouldShowDropDown)}>
@@ -24,7 +23,8 @@ export default (props) => {
                             </span>
                         </div>
                         <div className='feed-item__seller-details__item3'>
-                            <Link to={"/users/" + props.item.sellerId} className='feed-item__seller-details__to-seller-page'>{sellerDetailsResources.toSellerPageText}</Link>
+                            {/**<Link to={"/users/" + props.item.sellerDetails._id} className='feed-item__seller-details__to-seller-page'>{sellerDetailsResources.toSellerPageText}</Link>**/}
+                            <div className='feed-item__seller-details__to-seller-page' onClick={() => alert('seller page not implemented, keep browsing :)')}>{sellerDetailsResources.toSellerPageText}</div>
                         </div>
                     </div>
                 )

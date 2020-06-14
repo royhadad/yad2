@@ -37,7 +37,7 @@
     "scripts": {
         "start": "node src/index.js",
         "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
-        "test": "concurrently \"npm run start-mongo\" \"env-cmd -f ./config/test.env jest --watch --runInBand --testEnvironment=node\"",
+        "test": "env-cmd -f ./config/test.env jest --watch --runInBand --testEnvironment=node",
         "start-mongo": "/home/roy/mongodb/bin/mongod --dbpath=/home/roy/mongodb-data",
         "kill-process-3000": "sudo kill -9 $(sudo lsof -t -i:3000)"
     },

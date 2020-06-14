@@ -12,10 +12,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '#src#/styles/styles.scss';
 import 'moment/locale/he';
 import * as serviceWorker from './serviceWorker';
-require('dotenv').config();
 
 export const store = configureStore();
-
 
 //const isDev = process.env.NODE_ENV !=='production';
 
