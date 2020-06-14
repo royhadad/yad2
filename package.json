@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "concurrently \"npm run start-mongo\" \"cd yad2-back && npm test\" \"cd yad2-front && npm test\"",
+        "test-server": "cd yad2-back && npm test",
+        "test-client": "cd yad2-front && npm test",
         "dev": "concurrently \"npm run start-mongo\" \"cd yad2-back && npm run dev\" \"cd yad2-front && npm start\"",
         "postinstall": "cd yad2-front && npm install && cd .. && cd yad2-back && npm install",
         "build": "cd yad2-front && npm run build",
