@@ -26,13 +26,12 @@ router.post('/items', auth, async (req, res) => {
 
 router.post('/itemsMany', auth, async (req, res) => {
     try {
-        const item = new Item({
-            ...req.body,
-            owner: req.user._id
-        })
         const promisesArr = [];
         for (let i = 0; i < 10; i++) {
-            promisesArr.push(item.save());
+            promisesArr.push(new Item({
+                ...req.body,
+                owner: req.user._id
+            }).save());
         }
         const resultsArr = await Promise.all(promisesArr);
         res.status(201).send(resultsArr)
