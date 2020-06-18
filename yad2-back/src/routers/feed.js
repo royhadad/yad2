@@ -21,7 +21,7 @@ router.get('/feed', async (req, res) => {
         const page = parseInt(req.query.page) || 1;
         const skip = limit * (page - 1);
 
-        const [items, totalItems] = await Promise.all([
+        const [items, totalNumberOfItems] = await Promise.all([
             Item
                 .find(filter)
                 .sort(sortObject)
@@ -31,12 +31,12 @@ router.get('/feed', async (req, res) => {
                 .exec(),
             Item
                 .find(filter)
-                .exec()
+                .count()
         ]);
 
         res.send({
             items: items,
-            totalItems: totalItems.length
+            totalItems: totalNumberOfItems
         });
     } catch (e) {
         res.status(400).send({ error: e.message });
