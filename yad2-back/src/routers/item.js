@@ -30,8 +30,12 @@ router.post('/itemsMany', auth, async (req, res) => {
             ...req.body,
             owner: req.user._id
         })
-        await item.save()
-        res.status(201).send(item)
+        const promisesArr = [];
+        for (let i = 0; i < 10; i++) {
+            promisesArr.push(item.save());
+        }
+        const resultsArr = await Promise.all(promisesArr);
+        res.status(201).send(resultsArr)
     } catch (e) {
         console.log('failed:', e);
         res.status(400).send();
