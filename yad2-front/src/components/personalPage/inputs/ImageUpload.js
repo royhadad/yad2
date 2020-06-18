@@ -26,7 +26,7 @@ class ImageUploadWithoutStore extends React.Component {
                     withIcon={true}
                     buttonText={imageUploadResources.buttonText}
                     onChange={this.onDrop}
-                    imgExtension={['.jpg', '.png']}
+                    imgExtension={['.jpg', , '.jpeg', '.png']}
                     maxFileSize={5242880}
                     singleImage={false}
                     withPreview={true}
