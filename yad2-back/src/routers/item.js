@@ -6,6 +6,7 @@ const multerFilter = require('../middleware/multerFilter');
 const sharpImageFormatter = require('../middleware/sharpImageFormatter');
 const { getPresignedUploadUrl } = require('../utils/s3Services');
 const resources = require('../../../yad2-front/src/resources.json');
+const modifyItemIfEntryDatePassed = require('../utils/modifyItemIfEntryDatePassed');
 const S3_BUCKET_URL = resources.general.constants.S3_BUCKET_URL;
 const router = new express.Router()
 
@@ -102,6 +103,7 @@ router.get('/items/:id', auth, authItem, async (req, res) => {
         if (!item) {
             return res.status(404).send()
         }
+        modifyItemIfEntryDatePassed(item);//has side effect on item
         res.send(item)
     } catch (e) {
         res.status(500).send()
@@ -136,6 +138,7 @@ router.patch('/items/:id', auth, authItem, async (req, res) => {
         updates.forEach((update) => {
             item[update] = req.body[update];
         });
+        modifyItemIfEntryDatePassed(item);//has side effect on item
         await item.save();
         res.send(item)
     } catch (e) {
