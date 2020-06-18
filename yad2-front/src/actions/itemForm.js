@@ -111,8 +111,6 @@ export const setImagesURLs = (imagesURLs) => ({
 const callAddImagesAfterAddOrEdit = async (item) => {
     const itemId = item._id;
     const response = await addImagesToItem(itemId);
-    console.log(response);
-
     return response;
 }
 
@@ -165,8 +163,6 @@ export const startAddItem = async () => {
             body: JSON.stringify(cleanItem)
         }
         response = await fetch(`/api/items`, requestOptions);
-        console.log(response);
-
         if (response.status !== 201) {
             throw response.status;
         }
@@ -228,7 +224,6 @@ export const addImagesToItem = async (itemId) => {
         return response;
     } catch (response) {
         if (!response.status) {
-            //console.log(response);
             throw response;
         } else {
             return response;

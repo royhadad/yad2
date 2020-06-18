@@ -196,8 +196,7 @@ export const deleteUser = async (user) => {
         store.dispatch(logout());
         RedirectToHome();
     } catch (e) {
-        response = await response.json();
-        console.log(response);
+        //response = await response.json();
         UnexpectedAuthErrorHandler(e);
     }
 }
