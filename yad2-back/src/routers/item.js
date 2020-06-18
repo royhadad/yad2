@@ -24,6 +24,20 @@ router.post('/items', auth, async (req, res) => {
     }
 })
 
+router.post('/itemsMany', auth, async (req, res) => {
+    try {
+        const item = new Item({
+            ...req.body,
+            owner: req.user._id
+        })
+        await item.save()
+        res.status(201).send(item)
+    } catch (e) {
+        console.log('failed:', e);
+        res.status(400).send();
+    }
+})
+
 //POST /items/images/:id
 // image: file (can have many)
 router.post('/items/oldimages/:id', auth, authItem, multerFilter, sharpImageFormatter, async (req, res) => {
