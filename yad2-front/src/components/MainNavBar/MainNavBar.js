@@ -14,12 +14,12 @@ class MainNavBar extends React.Component {
     render() {
         return (
             <div className="main-nav-bar">
-                <div className='main-nav-bar__yad2-icon__wrapper'>
-                    <Link to="/realestate">
-                        <img className="main-nav-bar__yad2-icon" alt="yad 2" src={getFullImageURL('yad2.png')} />
-                    </Link>
-                </div>
                 <div className="main-nav-bar__right-side">
+                    <div className='main-nav-bar__yad2-icon__wrapper'>
+                        <Link to="/realestate">
+                            <img className="main-nav-bar__yad2-icon" alt="yad 2" src={getFullImageURL('yad2.png')} />
+                        </Link>
+                    </div>
                     {
                         linksSections.map((linksSection) => (
                             <NavItem key={linksSection.title} linksSection={linksSection} />

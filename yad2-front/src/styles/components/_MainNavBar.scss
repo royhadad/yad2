@@ -16,10 +16,11 @@
 
 .main-nav-bar__yad2-icon__wrapper {
     @extend .main-nav-bar__nav-item;
-    width:10rem;
-    a {
-        height: 100%;
-        width:auto;
+    a{
+        @extend .flex-center;
+    }
+    img{
+        width: 10rem;
     }
     padding: 1rem $m-size 1rem 1rem;
 }
@@ -105,9 +106,9 @@
    background: $very-very-light-gray; 
 }
 
-.saved-items-button__wrapper{
+// .saved-items-button__wrapper{
 
-}
+// }
 .saved-items-button__wrapper:hover{
     @extend .personal-area-button__wrapper:hover
 }
@@ -157,11 +158,10 @@
 }
 .prev-searches-button__wrapper:hover{
     background: $very-very-light-gray;
-
 }
 
-.prev-searches-button__drop-down__wrapper{
-}
+// .prev-searches-button__drop-down__wrapper{
+// }
 
 .prev-searches-button__drop-down__container{
     padding: 0;
