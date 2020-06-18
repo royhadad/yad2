@@ -6,6 +6,9 @@
 }
 
 html {
+  @media (max-width: 350px) {
+    font-size: 14%;
+  }
   @media (min-width: 350px) {
     font-size: 18%;
   }
