@@ -52,7 +52,6 @@ export const fetchItems = async (currentPage = 1) => {
         }
 
         const data = response;
-
         store.dispatch(setTotalItems(data.totalItems));
         store.dispatch(setItemsArr(data.items));
     } catch (e) {

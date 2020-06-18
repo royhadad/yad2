@@ -21,17 +21,22 @@ router.get('/feed', async (req, res) => {
         const page = parseInt(req.query.page) || 1;
         const skip = limit * (page - 1);
 
-        let items = await Item
-            .find(filter)
-            .sort(sortObject)
-            .limit(limit)
-            .skip(skip)
-            .populate('sellerDetails')
-            .exec();
+        const [items, totalItems] = await Promise.all([
+            Item
+                .find(filter)
+                .sort(sortObject)
+                .limit(limit)
+                .skip(skip)
+                .populate('sellerDetails')
+                .exec(),
+            Item
+                .find(filter)
+                .exec()
+        ]);
 
         res.send({
             items: items,
-            totalItems: items.length
+            totalItems: totalItems.length
         });
     } catch (e) {
         res.status(400).send({ error: e.message });
