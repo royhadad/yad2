@@ -24,22 +24,22 @@ router.post('/items', auth, async (req, res) => {
     }
 })
 
-router.post('/itemsMany', auth, async (req, res) => {
-    try {
-        const promisesArr = [];
-        for (let i = 0; i < 10; i++) {
-            promisesArr.push(new Item({
-                ...req.body,
-                owner: req.user._id
-            }).save());
-        }
-        const resultsArr = await Promise.all(promisesArr);
-        res.status(201).send(resultsArr)
-    } catch (e) {
-        console.log('failed:', e);
-        res.status(400).send();
-    }
-})
+// router.post('/itemsMany', auth, async (req, res) => {
+//     try {
+//         const promisesArr = [];
+//         for (let i = 0; i < 10; i++) {
+//             promisesArr.push(new Item({
+//                 ...req.body,
+//                 owner: req.user._id
+//             }).save());
+//         }
+//         const resultsArr = await Promise.all(promisesArr);
+//         res.status(201).send(resultsArr)
+//     } catch (e) {
+//         console.log('failed:', e);
+//         res.status(400).send();
+//     }
+// })
 
 //POST /items/images/:id
 // image: file (can have many)
