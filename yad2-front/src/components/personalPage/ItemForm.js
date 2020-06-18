@@ -25,11 +25,48 @@ const itemFormResources = resources.personalPage.itemForm;
 //item: item (optional)
 //successText: string
 export class ItemForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.enableButtons = this.enableButtons.bind(this);
+        this.disableButtons = this.disableButtons.bind(this);
+        this.submitButtonRef = React.createRef();
+        if (props.isEdit) {
+            this.deleteButtonRef = React.createRef();
+        }
+    }
     componentDidMount() {
         window.scrollTo(0, 0);
         this.props.resetToDefault();
         if (this.props.item) {
             this.props.setItem(this.props.item);
+        }
+        this.enableButtons();
+    }
+
+    disableButtons() {
+        if (this.submitButtonRef.current) {
+            this.submitButtonRef.current.onclick = undefined;
+        }
+        if (this.props.isEdit && this.deleteButtonRef.current) {
+            this.deleteButtonRef.current.onclick = undefined;
+        }
+    }
+
+    enableButtons() {
+        if (this.submitButtonRef.current) {
+            this.submitButtonRef.current.onclick = async () => {
+                this.disableButtons();
+                await this.props.onSubmit();
+                this.enableButtons();
+            }
+        }
+
+        if (this.props.isEdit && this.deleteButtonRef.current) {
+            this.deleteButtonRef.current.onclick = async () => {
+                this.disableButtons();
+                await this.props.startDeleteItem();
+                this.enableButtons();
+            }
         }
     }
 
@@ -48,17 +85,17 @@ export class ItemForm extends React.Component {
                     )
                 }
                 <div className='item-form__buttonsWrapper'>
-                    <div className='item-form__submit-button' onClick={this.props.onSubmit}>
+                    <div className='item-form__submit-button' ref={this.submitButtonRef}>
                         {this.props.onSubmitText}
                     </div>
                     {this.props.isEdit && (
-                        <div className='item-form__delete-button' onClick={this.props.startDeleteItem}>
+                        <div className='item-form__delete-button' ref={this.deleteButtonRef}>
                             {itemFormResources.onDeleteText}
                         </div>
                     )}
                 </div>
 
-                <p style={{ color: 'red', margin: '30px 0px' }}>{this.props.error}</p>
+                <p style={{ color: 'red', margin: '3rem 0px' }}>{this.props.error}</p>
             </div >
         );
     }

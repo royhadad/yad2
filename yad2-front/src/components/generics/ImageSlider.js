@@ -26,6 +26,7 @@ class ImageSlider extends React.Component {
                     <Carousel
                         infiniteLoop={true}
                         showThumbs={false}
+                        width={'60rem'}
                     >
                         {this.props.images.map((url, index) => (
                             <div key={index}>

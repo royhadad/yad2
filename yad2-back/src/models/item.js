@@ -220,6 +220,13 @@ itemSchema.methods.addImages = async function (imagesToAdd) {
     await item.save();
     return item;
 }
+itemSchema.methods.addImagesURLs = async function (imagesURLs) {
+    const item = this;
+    if (imagesURLs && imagesURLs.length) {
+        item.imagesURLs = item.imagesURLs.concat(imagesURLs);
+        await item.save();
+    }
+}
 
 //private helper functions
 const getDeletedURLs = (beforeArr, afterArr) => {

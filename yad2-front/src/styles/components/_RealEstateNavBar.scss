@@ -33,9 +33,6 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    @media (min-width: $desktop-breakpoint-plus) {
-        white-space: nowrap;
-    }
 }
 
 .icon__yad1{

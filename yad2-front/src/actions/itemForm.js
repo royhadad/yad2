@@ -4,6 +4,7 @@ import UnexpectedAuthErrorHandler from '../utility/UnexpectedAuthErrorHandler';
 import { fetchItemById } from '../selectors/items';
 import { RedirectToMyItems } from '../routers/AppRouter';
 import resources from '#resources#';
+import { sendMultipleFiles, FileUploadObject, addImagesURLs, getSignedPost } from '../utility/fileUploads';
 
 //SET ITEM
 export const setItem = (item) => ({
@@ -110,6 +111,8 @@ export const setImagesURLs = (imagesURLs) => ({
 const callAddImagesAfterAddOrEdit = async (item) => {
     const itemId = item._id;
     const response = await addImagesToItem(itemId);
+    console.log(response);
+
     return response;
 }
 
@@ -138,6 +141,7 @@ export const startEditItem = async (itemId) => {
         if (response.status !== 201) {
             throw response;
         }
+
         const successMessage = resources.personalPage.editItem.updatedSuccessfully;
         RedirectToMyItems();
         store.dispatch(setError(successMessage));
@@ -170,6 +174,7 @@ export const startAddItem = async () => {
         response = await response.json();
 
         response = await callAddImagesAfterAddOrEdit(response);
+
         if (response.status !== 201) {
             throw response;
         }
@@ -201,26 +206,30 @@ export const startDeleteItem = async (itemId) => {
 }
 
 export const addImagesToItem = async (itemId) => {
-    let response;
     try {
+        let response;
         const files = store.getState().itemForm.images;
-        if (!files) {
+        if (!files || files.length === 0) {
             return { status: 201 };
         }
-        const formData = new FormData();
-        files.forEach((file) => {
-            formData.append('image', file)
-        })
-        const requestOptions = {
-            method: 'POST',
-            headers: {},
-            body: formData
-        }
-        response = await fetch(`/api/items/images/${itemId}`, requestOptions);
+
+        //get signed post
+        response = await getSignedPost(itemId, files)
+        const responseBody = await response.json();
+        const signedUploadUrls = responseBody.signedUploadUrls;
+
+        //upload using the signed post
+        const fileUploadObjectArr = signedUploadUrls.map((signedUploadUrl, index) => (new FileUploadObject(signedUploadUrl, files[index])))
+        const filesKeys = await sendMultipleFiles(fileUploadObjectArr);
+
+        //add the images urls to the item
+        response = await addImagesURLs(itemId, filesKeys)
+
         return response;
-    } catch (e) {
-        if (!response) {
-            UnexpectedAuthErrorHandler(e);
+    } catch (response) {
+        if (!response.status) {
+            //console.log(response);
+            throw response;
         } else {
             return response;
         }

@@ -18,13 +18,21 @@ import PublicRoute from './PublicRoute';
 import AppContainer from '#components#/AppContainer';
 
 export const RedirectToHome = () => {
+    window.scrollTo(0, 0);
+    history.push('/realestate');
+}
+export const RedirectToMyItems = () => {
+    window.scrollTo(0, 0);
+    history.push('/personal/edit');
+}
+export const RedirectToHomeComponent = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         history.push('/realestate');
     });
     return null;
 }
-export const RedirectToMyItems = () => {
+export const RedirectToMyItemsComponent = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         history.push('/personal/edit');
@@ -44,12 +52,12 @@ const AppRouter = () => (
                 <PrivateRoute path="/personal/new" component={AddItem} exact={true} />
                 <PrivateRoute path="/personal/me" component={EditProfile} exact={true} />
                 <PrivateRoute path="/personal/edit/:id" component={EditItem} />
-                <Route path="/personal" component={RedirectToMyItems} />
+                <Route path="/personal" component={RedirectToMyItemsComponent} />
                 <PublicRoute path="/login" component={LoginPage} exact={true} />
                 <PublicRoute path="/signup" component={SignupPage} exact={true} />
                 <Route path="/realestate" component={RealEstatePage} />
-                <Route path="/" component={RedirectToHome} exact={true} />
-                <Route path="/index.html" component={RedirectToHome} exact={true} />
+                <Route path="/" component={RedirectToHomeComponent} exact={true} />
+                <Route path="/index.html" component={RedirectToHomeComponent} exact={true} />
                 <Route component={NotFoundPage} />
             </Switch>
             <RealEstatePageFooter />

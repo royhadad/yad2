@@ -4,6 +4,9 @@ const auth = require('../middleware/auth');
 const authItem = require('../middleware/authItem');
 const multerFilter = require('../middleware/multerFilter');
 const sharpImageFormatter = require('../middleware/sharpImageFormatter');
+const { getPresignedUploadUrl } = require('../utils/s3Services');
+const resources = require('../../../yad2-front/src/resources.json');
+const S3_BUCKET_URL = resources.general.constants.S3_BUCKET_URL;
 const router = new express.Router()
 
 router.post('/items', auth, async (req, res) => {
@@ -22,7 +25,7 @@ router.post('/items', auth, async (req, res) => {
 
 //POST /items/images/:id
 // image: file (can have many)
-router.post('/items/images/:id', auth, authItem, multerFilter, sharpImageFormatter, async (req, res) => {
+router.post('/items/oldimages/:id', auth, authItem, multerFilter, sharpImageFormatter, async (req, res) => {
     const item = req.item;
     const files = req.files;
     console.log('adding images!:', item, files);
@@ -30,6 +33,27 @@ router.post('/items/images/:id', auth, authItem, multerFilter, sharpImageFormatt
     try {
         await item.addImages(files);
         res.status(201).send(item)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
+router.post('/items/images/:id', auth, authItem, async (req, res) => {
+    try {
+        const uploadUrlsPromises = req.body.imagesMetadata.map((imageMetadata) => (getPresignedUploadUrl(imageMetadata)));
+        const signedUploadUrls = await Promise.all(uploadUrlsPromises);
+        res.status(201).send({ signedUploadUrls })
+    } catch (e) {
+        res.status(400).send(e.message)
+    }
+})
+
+router.post('/items/imagesURLs/:id', auth, authItem, async (req, res) => {
+    try {
+        const item = req.item;
+        const imagesURLs = req.body.imagesURLs.map((url) => (`${S3_BUCKET_URL}${url}`));
+        await item.addImagesURLs(imagesURLs)
+        res.status(201).send();
     } catch (e) {
         res.status(400).send(e)
     }

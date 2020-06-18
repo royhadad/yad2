@@ -69,7 +69,38 @@ const getPathFromURL = (url) => {
     return path;
 }
 
+
+//new upload
+const getPresignedUploadUrl = async (imageMetadata) => {
+    try {
+        const key = `images/items/${imageMetadata.uuid}.${imageMetadata.type}`;
+        console.log(key);
+        // const key = 'image1key';
+
+        const params = {
+            Bucket: 'royhadad-yad2',
+            Expires: 300, //valid for 5 minutes
+            Fields: {
+                key: key,
+                'acl': 'public-read'
+            },
+            Conditions: [
+                {
+                    'bucket': 'royhadad-yad2'
+                },
+                { "acl": "public-read" },
+                ['content-length-range', 0, 5242880] // 5 Mb 5242880
+            ]
+        };
+        const presignedUploadUrl = await s3.createPresignedPost(params);
+        return presignedUploadUrl;
+    } catch (e) {
+        throw new Error(`Presigning post data encountered an error ${e}`);
+    }
+}
+
 module.exports = {
+    getPresignedUploadUrl,
     uploadMultiple,
     uploadSingle,
     deleteSingle,

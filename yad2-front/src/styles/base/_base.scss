@@ -6,10 +6,25 @@
 }
 
 html {
-  @media (max-width: $desktop-breakpoint) {
-    font-size: 48%;
+  @media (min-width: 350px) {
+    font-size: 18%;
+  }
+  @media (min-width: 450px) {
+    font-size: 26%;
+  }
+  @media (min-width: 550px) {
+    font-size: 30%;
   }
   @media (min-width: $desktop-breakpoint) {
+    font-size: 32%;
+  }
+  @media (min-width: 900px) {
+    font-size: 45%;
+  }
+  @media (min-width: 1100px) {
+    font-size: 58%;
+  }
+  @media (min-width: 1400px) {
     font-size: 62.5%;
   }
 }

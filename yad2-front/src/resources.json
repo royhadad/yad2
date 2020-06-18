@@ -734,7 +734,8 @@
             }
         },
         "constants": {
-            "IMAGES_URL_PREFIX": "https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/"
+            "IMAGES_URL_PREFIX": "https://royhadad-yad2.s3-eu-west-1.amazonaws.com/images/",
+            "S3_BUCKET_URL": "https://royhadad-yad2.s3-eu-west-1.amazonaws.com/"
         }
     },
     "errors": {

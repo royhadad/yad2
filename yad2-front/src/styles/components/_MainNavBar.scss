@@ -67,9 +67,6 @@
 .main-nav-bar__left-side{
     display: flex;
     flex-direction: row;
-    @media (max-width: $desktop-breakpoint) {
-        display: none;
-    }
 }
 
 .add-item-button__wrapper{
