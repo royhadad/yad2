@@ -8,6 +8,7 @@
     align-items: center;
 }
 .paging__item{
+    @extend .clickable;
     background: white;
     color:$text-color;
     padding: 0.7rem $s-size;  
