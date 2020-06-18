@@ -1,9 +1,9 @@
 const moment = require('moment');
 
 const getFilterObject = (clientSearchObject) => {
-    search = clientSearchObject; //shorter code
+    let search = clientSearchObject; //shorter code
 
-    filter = {};
+    let filter = {};
 
     //category
     filter.category = search.category || 'forsale';
@@ -49,7 +49,21 @@ const getFilterObject = (clientSearchObject) => {
             $gte: search.minPrice || 0,
             $lte: search.maxPrice || Infinity
         };
-    }
+    } else { //this is the only or in query object, if i need more then combine with $and
+        filter.$or = [
+            {
+                price: {
+                    $exists: false
+                }
+            },
+            {
+                price: {
+                    $gte: search.minPrice || 0,
+                    $lte: search.maxPrice || Infinity
+                }
+            }
+        ];
+    };
     //floor
     filter.floor = {
         $gte: search.minFloor || 0,

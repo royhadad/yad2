@@ -39,6 +39,8 @@ router.get('/feed', async (req, res) => {
             totalItems: totalNumberOfItems
         });
     } catch (e) {
+        console.log(e);
+
         res.status(400).send({ error: e.message });
     }
 });
