@@ -17,7 +17,7 @@ router.get('/feed', async (req, res) => {
         const clientSearchObject = JSON.parse(base64decode(req.query.search));
         const filter = getFilterObject(clientSearchObject);
         const sortObject = getSortObject(req.query.sortBy);
-        const limit = parseInt(req.query.itemsPerPage) || 40;
+        const limit = parseInt(req.query.itemsPerPage) || 20;
         const page = parseInt(req.query.page) || 1;
         const skip = limit * (page - 1);
 

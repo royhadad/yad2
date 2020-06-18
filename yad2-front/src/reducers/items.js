@@ -2,7 +2,7 @@ const itemsReducerDefaultState = {
     currentPage: 1,
     numOfPages: 0,
     totalItems: 0,
-    itemsPerPage: 40,
+    itemsPerPage: 20,
     isLoading: true,
     searchedLocation: undefined,
     itemsArr: [],
