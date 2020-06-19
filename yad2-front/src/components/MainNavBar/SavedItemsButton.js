@@ -64,15 +64,15 @@ class SavedItemsButton extends React.Component {
         let imojiJSX, title, body, url;
         if (this.props.type === 'carComparison') {
             imojiJSX = <span>{resources.general.unicodeChars.oppositeArrows}</span>;
-            title = savedItemsButtonResources.title;
-            body = savedItemsButtonResources.body;
-            url = savedItemsButtonResources.url;
-        }
-        else if (this.props.type === 'savedItems') {
-            imojiJSX = <span>{resources.general.unicodeChars.heart}</span>;
             title = carComparisonButtonResources.title;
             body = carComparisonButtonResources.body;
             url = carComparisonButtonResources.url;
+        }
+        else if (this.props.type === 'savedItems') {
+            imojiJSX = <span>{resources.general.unicodeChars.heart}</span>;
+            title = savedItemsButtonResources.title;
+            body = savedItemsButtonResources.body;
+            url = savedItemsButtonResources.url;
         }
         const shouldShowDropDown = this.state.isNavItemHovered || this.state.isDropDownHovered;
         return (
