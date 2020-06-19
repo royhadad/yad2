@@ -66,6 +66,10 @@ button:disabled {
     direction: rtl;
 }
 
+.nav-item-header.react-link{
+  cursor: default;
+}
+
 .react-link-regular{
     direction: rtl;
     color: $footer-paragraph;
